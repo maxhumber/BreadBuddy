@@ -14,27 +14,24 @@ struct ContentView: View {
             } label: {
                 Text("Add step")
             }
-            VStack(spacing: 20) {
-                ForEach($viewModel.steps) { $step in
-                    Row(label: $step.label, value: $step.timeValue, unit: $step.timeUnit, date: $step.date)
+            ScrollView {
+                VStack(spacing: 20) {
+                    ForEach($viewModel.steps) { $step in
+                        Row(label: $step.label, value: $step.timeValue, unit: $step.timeUnit, date: $step.date)
+                    }
                 }
-//                Row(label: .constant(""), value: .constant(0), unit: .constant(.minute), date: .constant(nil))
             }
             Spacer()
-            DatePicker(selection: $viewModel.time, displayedComponents: .date) {
-                Text("Eat at:")
+            HStack {
+                Text("I want to eat at:")
+                Spacer()
+                VStack(alignment: .trailing, spacing: 0) {
+                    DatePickerField(date: $viewModel.date, displayedComponent: .hourAndMinute, alignment: .bottomTrailing)
+                        .font(.title3)
+                    DatePickerField(date: $viewModel.date, displayedComponent: .date, alignment: .topTrailing)
+                        .font(.caption)
+                }
             }
-            DatePicker(selection: $viewModel.time, displayedComponents: .hourAndMinute) {
-                Text("Eat at:")
-            }
-            DatePicker("Due Date", selection: $viewModel.time, displayedComponents: .date)
-                .labelsHidden()
-                .allowsHitTesting(true)
-                .opacity(0.0101)
-                .background(
-                    Text(dayFormatter.string(from: viewModel.time))
-                        .foregroundColor(.blue)
-                )
             Button {
                 viewModel.refresh()
             } label: {
@@ -43,19 +40,6 @@ struct ContentView: View {
         }
         .padding()
     }
-    
-    
-    private let timeFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "h:mm a"
-        return formatter
-    }()
-    
-    private let dayFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE"
-        return formatter
-    }()
 }
 
 struct ContentView_Previews: PreviewProvider {

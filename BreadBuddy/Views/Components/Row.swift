@@ -19,8 +19,8 @@ public struct Row: View {
         ZStack {
             Text("XX:XX XX").hidden()
             VStack(alignment: .trailing) {
-                Text(timeFormatter.string(from: unwrappedDate))
-                Text(dayFormatter.string(from: unwrappedDate))
+                Text(unwrappedDate.time())
+                Text(unwrappedDate.weekday())
                     .font(.caption2)
             }
             .opacity(timeStackOpacity)
@@ -34,18 +34,6 @@ public struct Row: View {
     private var timeStackOpacity: Double {
         date == nil ? 0 : 1
     }
-    
-    private let timeFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "h:mm a"
-        return formatter
-    }()
-    
-    private let dayFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE"
-        return formatter
-    }()
 }
 
 struct Row_Previews: PreviewProvider {

@@ -1,29 +1,17 @@
 import SwiftUI
 
-extension Date {
-    func weekday() -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE"
-        return formatter.string(from: self)
-    }
-    
-    func time() -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "h:mm a"
-        return formatter.string(from: self)
-    }
-}
-
 struct DatePickerField: View {
     @Binding var date: Date
     var displayedComponent: DatePickerComponents = .date
+    var alignment: Alignment = .center
     
     var body: some View {
-        DatePicker("", selection: $date, displayedComponents: displayedComponent)
-            .labelsHidden()
-            .allowsHitTesting(true)
-            .opacity(0.0101)
-            .background(Text(label))
+        ZStack(alignment: alignment) {
+            Text(label)
+            DatePicker("", selection: $date, displayedComponents: displayedComponent)
+                .labelsHidden()
+                .opacity(0.0101)
+        }
     }
     
     private var label: String {
@@ -44,10 +32,14 @@ struct DatePickerField_Previews: PreviewProvider {
         @State var date = Date()
         
         var body: some View {
-            VStack {
-                DatePickerField(date: $date)
-                DatePickerField(date: $date, displayedComponent: .hourAndMinute)
+            VStack(alignment: .trailing,spacing: 0) {
+                DatePickerField(date: $date, displayedComponent: .hourAndMinute, alignment: .bottomTrailing)
+                    .background(Rectangle().strokeBorder().foregroundColor(.red))
+                DatePickerField(date: $date, alignment: .topTrailing)
+                    .background(Rectangle().strokeBorder().foregroundColor(.red))
+                    .font(.caption)
             }
+            .frame(maxWidth: .infinity, alignment: .trailing)
         }
     }
 }

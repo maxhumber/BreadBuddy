@@ -1,20 +1,6 @@
 import Combine
 import SwiftUI
 
-enum TimeUnit: String, CaseIterable, Identifiable {
-    case minute = "Minute"
-    case hour = "Hour"
-    case day = "Day"
-    
-    var id: String {
-        rawValue
-    }
-    
-    func label(for value: Double) -> String {
-        value == 1 ? rawValue : rawValue + "s"
-    }
-}
-
 struct TimeInput: View {
     @Binding var value: Double
     @Binding var unit: TimeUnit
@@ -44,7 +30,7 @@ struct TimeInput: View {
             }
         } label: {
             ZStack {
-                Text("minutes").opacity(0)
+                Text("XXXXXXX").opacity(0)
                 Text(unit.label(for: value))
                     .animation(nil, value: UUID())
             }
@@ -70,7 +56,7 @@ struct NumberInput_Previews: PreviewProvider {
         
         var body: some View {
             TimeInput(value: $value, unit: $unit)
-                .background(Color.red)
+                .background(Rectangle().strokeBorder().foregroundColor(.red))
         }
     }
 }
