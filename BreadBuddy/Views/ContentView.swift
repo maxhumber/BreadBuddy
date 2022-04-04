@@ -8,16 +8,21 @@ struct ContentView: View {
     }
     
     var body: some View {
+        content()
+    }
+    
+    private func content() -> some View {
         VStack(spacing: 20) {
-            Button {
-                viewModel.add()
-            } label: {
-                Text("Add step")
-            }
+            header()
             ScrollView {
                 VStack(spacing: 20) {
                     ForEach($viewModel.steps) { $step in
                         Row(label: $step.label, value: $step.timeValue, unit: $step.timeUnit, date: $step.date)
+                    }
+                    Button {
+                        viewModel.add()
+                    } label: {
+                        Text("Add")
                     }
                 }
             }
@@ -27,18 +32,19 @@ struct ContentView: View {
                 Spacer()
                 VStack(alignment: .trailing, spacing: 0) {
                     DatePickerField(date: $viewModel.date, displayedComponent: .hourAndMinute, alignment: .bottomTrailing)
-                        .font(.title3)
                     DatePickerField(date: $viewModel.date, displayedComponent: .date, alignment: .topTrailing)
                         .font(.caption)
                 }
-            }
-            Button {
-                viewModel.refresh()
-            } label: {
-                Text("refresh")
+                .foregroundColor(.blue)
             }
         }
         .padding()
+    }
+    
+    private func header() -> some View {
+        HStack {
+            Text("Maggie's Baguette")
+        }
     }
 }
 

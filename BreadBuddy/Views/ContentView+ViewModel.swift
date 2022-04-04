@@ -13,9 +13,10 @@ extension ContentView {
         }
         
         func add() {
-            let label = String(UUID().uuidString.prefix(4))
-            let step = Step(label: "Step \(label)", timeValue: 30, timeUnit: .minute)
+//            let label = String(UUID().uuidString.prefix(4))
+            let step = Step(label: "", timeValue: 30, timeUnit: .minute)
             steps.append(step)
+            refresh()
         }
         
         func refresh() {
