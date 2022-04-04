@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		502200A827E265ED00041179 /* TimeInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502200A727E265ED00041179 /* TimeInput.swift */; };
 		5032A6B627FB47610031501D /* ContentView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6B527FB47610031501D /* ContentView+ViewModel.swift */; };
+		5032A6B827FB57D40031501D /* DatePickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6B727FB57D40031501D /* DatePickerField.swift */; };
 		504D3C1927E017B200C95123 /* BreadBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D3C1827E017B200C95123 /* BreadBuddyApp.swift */; };
 		504D3C1B27E017B200C95123 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D3C1A27E017B200C95123 /* ContentView.swift */; };
 		504D3C1D27E017B300C95123 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504D3C1C27E017B300C95123 /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		502200A727E265ED00041179 /* TimeInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInput.swift; sourceTree = "<group>"; };
 		5032A6B527FB47610031501D /* ContentView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView+ViewModel.swift"; sourceTree = "<group>"; };
+		5032A6B727FB57D40031501D /* DatePickerField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerField.swift; sourceTree = "<group>"; };
 		504D3C1527E017B200C95123 /* BreadBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreadBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		504D3C1827E017B200C95123 /* BreadBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadBuddyApp.swift; sourceTree = "<group>"; };
 		504D3C1A27E017B200C95123 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -60,6 +62,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5032A6B927FB58180031501D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		504D3C0C27E017B200C95123 = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +93,7 @@
 				50DCF1D827F7774300D0A369 /* App */,
 				50DCF1DF27FB344C00D0A369 /* Models */,
 				50DCF1D927F7774E00D0A369 /* Views */,
+				5032A6B927FB58180031501D /* Extensions */,
 			);
 			path = BreadBuddy;
 			sourceTree = "<group>";
@@ -137,6 +147,7 @@
 			children = (
 				502200A727E265ED00041179 /* TimeInput.swift */,
 				50DCF1DC27F781CF00D0A369 /* Row.swift */,
+				5032A6B727FB57D40031501D /* DatePickerField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -250,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5032A6B627FB47610031501D /* ContentView+ViewModel.swift in Sources */,
+				5032A6B827FB57D40031501D /* DatePickerField.swift in Sources */,
 				50DCF1DD27F781CF00D0A369 /* Row.swift in Sources */,
 				504D3C1B27E017B200C95123 /* ContentView.swift in Sources */,
 				50DCF1E127FB345C00D0A369 /* Step.swift in Sources */,

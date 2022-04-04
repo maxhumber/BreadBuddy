@@ -8,7 +8,7 @@ public struct Row: View {
     
     public var body: some View {
         HStack(alignment: .top, spacing: 20) {
-            TextField("", text: $label)
+            TextField("Add a step", text: $label)
             Spacer()
             TimeInput(value: $value, unit: $unit)
             timeStack()
