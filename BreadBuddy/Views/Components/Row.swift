@@ -5,12 +5,15 @@ public struct Row: View {
     @Binding var value: Double
     @Binding var unit: TimeUnit
     @Binding var date: Date?
+    var onCommit: (() -> ())? = nil
     
     public var body: some View {
         HStack(alignment: .top, spacing: 20) {
-            TextField("Add a step", text: $label)
+            TextField("Add a step", text: $label, onCommit: { onCommit?() })
             Spacer()
-            TimeInput(value: $value, unit: $unit)
+            TimeInput(value: $value, unit: $unit) {
+                onCommit?()
+            }
             timeStack()
         }
     }

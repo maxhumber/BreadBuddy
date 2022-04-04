@@ -4,6 +4,7 @@ import SwiftUI
 struct TimeInput: View {
     @Binding var value: Double
     @Binding var unit: TimeUnit
+    var onCommit: (() -> ())? = nil
     
     var body: some View {
         VStack(spacing: 0) {
@@ -13,7 +14,7 @@ struct TimeInput: View {
     }
     
     private func numberField() -> some View {
-        TextField("", value: $value, formatter: formatter)
+        TextField("", value: $value, formatter: formatter, onCommit: { onCommit?() })
             .fixedSize(horizontal: true, vertical: true)
             .keyboardType(.numberPad)
             .multilineTextAlignment(.center)

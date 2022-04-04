@@ -9,6 +9,9 @@ struct ContentView: View {
     
     var body: some View {
         content()
+            .onChange(of: viewModel.date) { _ in
+                viewModel.refresh()
+            }
     }
     
     private func content() -> some View {
@@ -17,7 +20,9 @@ struct ContentView: View {
             ScrollView {
                 VStack(spacing: 20) {
                     ForEach($viewModel.steps) { $step in
-                        Row(label: $step.label, value: $step.timeValue, unit: $step.timeUnit, date: $step.date)
+                        Row(label: $step.label, value: $step.timeValue, unit: $step.timeUnit, date: $step.date) {
+                            viewModel.refresh()
+                        }
                     }
                     Button {
                         viewModel.add()
