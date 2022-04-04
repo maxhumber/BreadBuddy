@@ -12,6 +12,17 @@ struct ContentView: View {
             .onChange(of: viewModel.date) { _ in
                 viewModel.refresh()
             }
+            .onTapGesture {
+                // Hide Keyboard
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            }
+            .gesture(
+                DragGesture(minimumDistance: 0, coordinateSpace: .local).onEnded({ gesture in
+                    // Hide keyboard on swipe down
+                    if gesture.translation.height > 0 {
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    }
+                }))
     }
     
     private func content() -> some View {
