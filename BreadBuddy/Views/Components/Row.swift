@@ -11,11 +11,34 @@ public struct Row: View {
     
     public var body: some View {
         HStack(alignment: .top, spacing: 0) {
+            Image(systemName: "circle")
+                .padding(5)
             description
             TimeInput(value: $value, unit: $unit) {
                 onChange?()
             }
             timeStack
+            Menu {
+                Button {
+                    
+                } label: {
+                    Label("Add step above", systemImage: "arrow.up")
+                }
+                Button(role: .destructive) {
+                    
+                } label: {
+                    Label("Delete", systemImage: "xmark")
+                }
+                Button {
+                    
+                } label: {
+                    Label("Add step below", systemImage: "arrow.down")
+                }
+            } label: {
+                Image(systemName: "ellipsis")
+            }
+            .padding(5)
+            .contentShape(Rectangle())
         }
     }
     
@@ -33,18 +56,14 @@ public struct Row: View {
     
     private var timeStack: some View {
         VStack(alignment: .trailing, spacing: 0) {
-            ZStack {
+            ZStack(alignment: .trailing) {
                 Text("XX:XX XX").opacity(0)
                 Text(unwrappedDate.time())
             }
             .padding(5)
-            .background(
-                RoundedRectangle(cornerRadius: 5)
-                    .strokeBorder()
-                    .foregroundColor(.gray.opacity(0.25))
-            )
             Text(unwrappedDate.weekday())
                 .font(.caption2)
+                .padding(.trailing, 5)
         }
         .opacity(timeStackOpacity)
     }

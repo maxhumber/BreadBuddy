@@ -20,33 +20,27 @@ struct TimeView: View {
     }
     
     private var content: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: 10) {
             header
-            List {
-                ForEach($viewModel.steps) { $step in
-                    Row(label: $step.description, value: $step.timeValue, unit: $step.timeUnit, date: $step.date) {
-                        viewModel.refresh()
+            VStack {
+                ScrollView(showsIndicators: false) {
+                    ForEach($viewModel.steps) { $step in
+                        Row(label: $step.description, value: $step.timeValue, unit: $step.timeUnit, date: $step.date) {
+                            viewModel.refresh()
+                        }
+                        .padding(.vertical)
                     }
-                    .padding(.vertical)
+                    Button {
+                        viewModel.add()
+                    } label: {
+                        Text("Add")
+                    }
+                    .buttonStyle(.bordered)
                 }
-                .onDelete(perform: viewModel.remove)
-                .listRowSeparator(.hidden)
-                .listRowInsets(.init())
-                Button {
-                    viewModel.add()
-                } label: {
-                    Text("Add")
-                }
-                .foregroundColor(.blue)
-                .frame(maxWidth: .infinity, alignment: .center)
-                .buttonStyle(PlainButtonStyle())
-                .listRowSeparator(.hidden)
-                .listRowInsets(.init())
             }
-            .listStyle(.plain)
             Spacer()
             HStack {
-                Text("I want to eat at:")
+                Text("Finish")
                 Spacer()
                 VStack(alignment: .trailing, spacing: 0) {
                     DatePickerField(date: $viewModel.date, displayedComponent: .hourAndMinute, alignment: .bottomTrailing)
@@ -56,7 +50,6 @@ struct TimeView: View {
                 .foregroundColor(.blue)
             }
         }
-        .padding()
         .ignoresSafeArea(.keyboard, edges: .bottom)
     }
     
