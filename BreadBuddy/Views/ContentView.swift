@@ -3,26 +3,20 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var viewModel: ViewModel
     
-    init() {
-        _viewModel = StateObject(wrappedValue: .init())
+    init(date: Date? = nil, steps: [Step] = [Step]()) {
+        let viewModel = ViewModel(date: date, steps: steps)
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
     
     var body: some View {
         content()
+            .onAppear {
+                viewModel.refresh()
+            }
             .onChange(of: viewModel.date) { _ in
                 viewModel.refresh()
             }
-            .onTapGesture {
-                // Hide Keyboard
-                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-            }
-            .gesture(
-                DragGesture(minimumDistance: 0, coordinateSpace: .local).onEnded({ gesture in
-                    // Hide keyboard on swipe down
-                    if gesture.translation.height > 0 {
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                    }
-                }))
+            .dismissKeyboard()
     }
     
     private func content() -> some View {
@@ -31,7 +25,7 @@ struct ContentView: View {
             ScrollView {
                 VStack(spacing: 20) {
                     ForEach($viewModel.steps) { $step in
-                        Row(label: $step.label, value: $step.timeValue, unit: $step.timeUnit, date: $step.date) {
+                        Row(label: $step.description, value: $step.timeValue, unit: $step.timeUnit, date: $step.date) {
                             viewModel.refresh()
                         }
                     }
@@ -66,6 +60,22 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Preview()
+    }
+    
+    struct Preview: View {
+        var date: Date = .init()
+        var steps: [Step] = [
+            Step(description: "Poolish", timeValue: 30, timeUnit: .minute),
+            Step(description: "Mix Dough", timeValue: 15, timeUnit: .minute),
+            Step(description: "Bulk rise", timeValue: 8, timeUnit: .hour),
+            Step(description: "Shape", timeValue: 15, timeUnit: .minute),
+            Step(description: "Proof", timeValue: 30, timeUnit: .minute),
+            Step(description: "Bake", timeValue: 60, timeUnit: .minute)
+        ]
+        
+        var body: some View {
+            ContentView(date: date, steps: steps)
+        }
     }
 }

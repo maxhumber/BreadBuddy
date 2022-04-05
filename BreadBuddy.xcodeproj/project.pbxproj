@@ -12,6 +12,8 @@
 		5032A6B827FB57D40031501D /* DatePickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6B727FB57D40031501D /* DatePickerField.swift */; };
 		5032A6BB27FB69500031501D /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6BA27FB69500031501D /* Date+.swift */; };
 		5032A6BD27FB699B0031501D /* TimeUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6BC27FB699B0031501D /* TimeUnit.swift */; };
+		5032A6BF27FC78520031501D /* View+dismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6BE27FC78520031501D /* View+dismissKeyboard.swift */; };
+		5032A6C127FC786E0031501D /* UIApplication+sendResignAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6C027FC786E0031501D /* UIApplication+sendResignAction.swift */; };
 		504D3C1927E017B200C95123 /* BreadBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D3C1827E017B200C95123 /* BreadBuddyApp.swift */; };
 		504D3C1B27E017B200C95123 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D3C1A27E017B200C95123 /* ContentView.swift */; };
 		504D3C1D27E017B300C95123 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504D3C1C27E017B300C95123 /* Assets.xcassets */; };
@@ -37,6 +39,8 @@
 		5032A6B727FB57D40031501D /* DatePickerField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerField.swift; sourceTree = "<group>"; };
 		5032A6BA27FB69500031501D /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		5032A6BC27FB699B0031501D /* TimeUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeUnit.swift; sourceTree = "<group>"; };
+		5032A6BE27FC78520031501D /* View+dismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+dismissKeyboard.swift"; sourceTree = "<group>"; };
+		5032A6C027FC786E0031501D /* UIApplication+sendResignAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+sendResignAction.swift"; sourceTree = "<group>"; };
 		504D3C1527E017B200C95123 /* BreadBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreadBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		504D3C1827E017B200C95123 /* BreadBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadBuddyApp.swift; sourceTree = "<group>"; };
 		504D3C1A27E017B200C95123 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -70,6 +74,8 @@
 			isa = PBXGroup;
 			children = (
 				5032A6BA27FB69500031501D /* Date+.swift */,
+				5032A6BE27FC78520031501D /* View+dismissKeyboard.swift */,
+				5032A6C027FC786E0031501D /* UIApplication+sendResignAction.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -272,6 +278,8 @@
 				504D3C1B27E017B200C95123 /* ContentView.swift in Sources */,
 				50DCF1E127FB345C00D0A369 /* Step.swift in Sources */,
 				502200A827E265ED00041179 /* TimeInput.swift in Sources */,
+				5032A6C127FC786E0031501D /* UIApplication+sendResignAction.swift in Sources */,
+				5032A6BF27FC78520031501D /* View+dismissKeyboard.swift in Sources */,
 				5032A6BD27FB699B0031501D /* TimeUnit.swift in Sources */,
 				504D3C1927E017B200C95123 /* BreadBuddyApp.swift in Sources */,
 				5032A6BB27FB69500031501D /* Date+.swift in Sources */,

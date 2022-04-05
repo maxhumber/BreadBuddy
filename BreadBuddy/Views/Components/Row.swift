@@ -9,7 +9,9 @@ public struct Row: View {
     
     public var body: some View {
         HStack(alignment: .top, spacing: 20) {
-            TextField("Add a step", text: $label, onCommit: { onCommit?() })
+            TextField("Description", text: $label) {
+                onCommit?()
+            }
             Spacer()
             TimeInput(value: $value, unit: $unit) {
                 onCommit?()

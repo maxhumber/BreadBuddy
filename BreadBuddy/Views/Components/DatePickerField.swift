@@ -16,9 +16,12 @@ struct DatePickerField: View {
     
     private var label: String {
         switch displayedComponent {
-        case .date: return date.weekday()
-        case .hourAndMinute: return date.time()
-        default: return ""
+        case .date:
+            return date.weekday()
+        case .hourAndMinute:
+            return date.time()
+        default:
+            return ""
         }
     }
 }
