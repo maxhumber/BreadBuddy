@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ContentView: View {
+struct TimeView: View {
     @StateObject var viewModel: ViewModel
     
     init(recipe: String = "", date: Date? = nil, steps: [Step] = [Step]()) {
@@ -89,7 +89,7 @@ struct ContentView_Previews: PreviewProvider {
         ]
         
         var body: some View {
-            ContentView(recipe: recipe, date: date, steps: steps)
+            TimeView(recipe: recipe, date: date, steps: steps)
         }
     }
 }

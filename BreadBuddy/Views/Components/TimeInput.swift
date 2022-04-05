@@ -42,6 +42,7 @@ struct TimeInput: View {
             }
             .font(.caption2)
         }
+        .contentShape(Rectangle())
         .onChange(of: unit) { _ in
             onChange?()
         }

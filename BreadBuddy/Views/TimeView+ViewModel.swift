@@ -1,7 +1,7 @@
 import Combine
 import Foundation
 
-extension ContentView {
+extension TimeView {
     final class ViewModel: ObservableObject {
         @Published var recipe: String
         @Published var date: Date
