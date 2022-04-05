@@ -3,8 +3,8 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var viewModel: ViewModel
     
-    init(date: Date? = nil, steps: [Step] = [Step]()) {
-        let viewModel = ViewModel(date: date, steps: steps)
+    init(recipe: String = "", date: Date? = nil, steps: [Step] = [Step]()) {
+        let viewModel = ViewModel(recipe: recipe, date: date, steps: steps)
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     
@@ -22,20 +22,28 @@ struct ContentView: View {
     private var content: some View {
         VStack(spacing: 20) {
             header
-            ScrollView {
-                VStack(spacing: 20) {
-                    ForEach($viewModel.steps) { $step in
-                        Row(label: $step.description, value: $step.timeValue, unit: $step.timeUnit, date: $step.date) {
-                            viewModel.refresh()
-                        }
+            List {
+                ForEach($viewModel.steps) { $step in
+                    Row(label: $step.description, value: $step.timeValue, unit: $step.timeUnit, date: $step.date) {
+                        viewModel.refresh()
                     }
-                    Button {
-                        viewModel.add()
-                    } label: {
-                        Text("Add")
-                    }
+                    .padding(.vertical)
                 }
+                .onDelete(perform: viewModel.remove)
+                .listRowSeparator(.hidden)
+                .listRowInsets(.init())
+                Button {
+                    viewModel.add()
+                } label: {
+                    Text("Add")
+                }
+                .foregroundColor(.blue)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .buttonStyle(PlainButtonStyle())
+                .listRowSeparator(.hidden)
+                .listRowInsets(.init())
             }
+            .listStyle(.plain)
             Spacer()
             HStack {
                 Text("I want to eat at:")
@@ -54,7 +62,9 @@ struct ContentView: View {
     
     private var header: some View {
         HStack {
-            Text("Maggie's Baguette")
+            TextField("Recipe name", text: $viewModel.recipe)
+                .frame(maxWidth: .infinity)
+                .multilineTextAlignment(.center)
         }
     }
 }
@@ -65,6 +75,7 @@ struct ContentView_Previews: PreviewProvider {
     }
     
     struct Preview: View {
+        var recipe = "Maggie's Baguette"
         var date: Date = .init()
         var steps: [Step] = [
             Step(description: "Poolish", timeValue: 30, timeUnit: .minute),
@@ -76,7 +87,7 @@ struct ContentView_Previews: PreviewProvider {
         ]
         
         var body: some View {
-            ContentView(date: date, steps: steps)
+            ContentView(recipe: recipe, date: date, steps: steps)
         }
     }
 }

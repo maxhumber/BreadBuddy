@@ -2,23 +2,29 @@ import Combine
 import Foundation
 
 extension ContentView {
-    @MainActor final class ViewModel: ObservableObject {
+    final class ViewModel: ObservableObject {
+        @Published var recipe: String
         @Published var date: Date
         @Published var steps: [Step]
         
-        init(date: Date? = nil, steps: [Step] = [Step]()) {
+        init(recipe: String, date: Date? = nil, steps: [Step] = [Step]()) {
+            self.recipe = recipe
             let nextSunday = Date().next(.sunday)?.withAdded(hours: 15)
             self.date = date ?? nextSunday ?? Date()
             self.steps = steps
         }
         
-        func add() {
+        @MainActor func add() {
             let step = Step(description: "", timeValue: 30, timeUnit: .minute)
             steps.append(step)
             refresh()
         }
         
-        func refresh() {
+        func remove(at offsets: IndexSet) {
+            steps.remove(atOffsets: offsets)
+        }
+        
+        @MainActor func refresh() {
             var currentTime = date
             for step in steps.reversed() {
                 switch step.timeUnit {

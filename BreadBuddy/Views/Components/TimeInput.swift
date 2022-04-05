@@ -4,7 +4,7 @@ import SwiftUI
 struct TimeInput: View {
     @Binding var value: Double
     @Binding var unit: TimeUnit
-    var onCommit: (() -> ())? = nil
+    var onChange: (() -> ())? = nil
     
     var body: some View {
         VStack(spacing: 0) {
@@ -15,7 +15,10 @@ struct TimeInput: View {
     
     private var numberField: some View {
         TextField("", value: $value, formatter: formatter) {
-            onCommit?()
+            onChange?()
+        }
+        .if(value == 0) {
+            $0.foregroundColor(.gray.opacity(0.5))
         }
         .fixedSize(horizontal: true, vertical: true)
         .keyboardType(.numberPad)
@@ -40,7 +43,7 @@ struct TimeInput: View {
             .font(.caption2)
         }
         .onChange(of: unit) { _ in
-            onCommit?()
+            onChange?()
         }
     }
     
@@ -61,8 +64,11 @@ struct NumberInput_Previews: PreviewProvider {
         @State var unit = TimeUnit.minute
         
         var body: some View {
-            TimeInput(value: $value, unit: $unit)
-                .background(Rectangle().strokeBorder().foregroundColor(.red))
+            VStack {
+                TimeInput(value: $value, unit: $unit)
+                    .background(Rectangle().strokeBorder().foregroundColor(.red))
+                TimeInput(value: .constant(0), unit: .constant(.minute))
+            }
         }
     }
 }
