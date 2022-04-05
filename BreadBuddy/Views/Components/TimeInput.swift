@@ -14,15 +14,24 @@ struct TimeInput: View {
     }
     
     private var numberField: some View {
-        TextField("", value: $value, formatter: formatter) {
-            onChange?()
+        ZStack {
+            Text("000").opacity(0)
+            TextField("", value: $value, formatter: formatter) {
+                onChange?()
+            }
+            .fixedSize(horizontal: true, vertical: true)
+            .keyboardType(.numberPad)
+            .multilineTextAlignment(.center)
         }
         .if(value == 0) {
             $0.foregroundColor(.gray.opacity(0.5))
         }
-        .fixedSize(horizontal: true, vertical: true)
-        .keyboardType(.numberPad)
-        .multilineTextAlignment(.center)
+        .padding(5)
+        .background(
+            RoundedRectangle(cornerRadius: 5)
+                .strokeBorder()
+                .foregroundColor(.gray.opacity(0.25))
+        )
     }
     
     private var menu: some View {

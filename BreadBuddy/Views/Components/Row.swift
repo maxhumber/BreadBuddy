@@ -1,6 +1,8 @@
 import SwiftUI
 
 public struct Row: View {
+    @Environment(\.editMode) private var editMode
+    
     @Binding var label: String
     @Binding var value: Double
     @Binding var unit: TimeUnit
@@ -8,11 +10,8 @@ public struct Row: View {
     var onChange: (() -> ())? = nil
     
     public var body: some View {
-        HStack(alignment: .top, spacing: 20) {
-            TextField("Description", text: $label) {
-                onChange?()
-            }
-            Spacer()
+        HStack(alignment: .top, spacing: 0) {
+            description
             TimeInput(value: $value, unit: $unit) {
                 onChange?()
             }
@@ -20,16 +19,34 @@ public struct Row: View {
         }
     }
     
-    private var timeStack: some View {
-        ZStack {
-            Text("XX:XX XX").hidden()
-            VStack(alignment: .trailing) {
-                Text(unwrappedDate.time())
-                Text(unwrappedDate.weekday())
-                    .font(.caption2)
-            }
-            .opacity(timeStackOpacity)
+    private var description: some View {
+        TextField("Description", text: $label) {
+            onChange?()
         }
+        .padding(5)
+        .background(
+            RoundedRectangle(cornerRadius: 5)
+                .strokeBorder()
+                .foregroundColor(.gray.opacity(0.25))
+        )
+    }
+    
+    private var timeStack: some View {
+        VStack(alignment: .trailing, spacing: 0) {
+            ZStack {
+                Text("XX:XX XX").opacity(0)
+                Text(unwrappedDate.time())
+            }
+            .padding(5)
+            .background(
+                RoundedRectangle(cornerRadius: 5)
+                    .strokeBorder()
+                    .foregroundColor(.gray.opacity(0.25))
+            )
+            Text(unwrappedDate.weekday())
+                .font(.caption2)
+        }
+        .opacity(timeStackOpacity)
     }
     
     private var unwrappedDate: Date {
@@ -38,6 +55,10 @@ public struct Row: View {
     
     private var timeStackOpacity: Double {
         date == nil ? 0 : 1
+    }
+    
+    private var isEditing: Bool {
+        editMode?.wrappedValue.isEditing ?? false
     }
 }
 
@@ -55,8 +76,8 @@ struct Row_Previews: PreviewProvider {
         var body: some View {
             VStack(spacing: 20) {
                 Row(label: $label, value: $value, unit: $unit, date: $date)
+                    .environment(\.editMode, .constant(.active))
             }
-            .padding()
         }
     }
 }
