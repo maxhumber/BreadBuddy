@@ -8,19 +8,21 @@ struct TimeInput: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            numberField()
-            menu()
+            numberField
+            menu
         }
     }
     
-    private func numberField() -> some View {
-        TextField("", value: $value, formatter: formatter, onCommit: { onCommit?() })
-            .fixedSize(horizontal: true, vertical: true)
-            .keyboardType(.numberPad)
-            .multilineTextAlignment(.center)
+    private var numberField: some View {
+        TextField("", value: $value, formatter: formatter) {
+            onCommit?()
+        }
+        .fixedSize(horizontal: true, vertical: true)
+        .keyboardType(.numberPad)
+        .multilineTextAlignment(.center)
     }
     
-    private func menu() -> some View {
+    private var menu: some View {
         Menu {
             ForEach(TimeUnit.allCases) { unit in
                 Button {
@@ -36,6 +38,9 @@ struct TimeInput: View {
                     .animation(nil, value: UUID())
             }
             .font(.caption2)
+        }
+        .onChange(of: unit) { _ in
+            onCommit?()
         }
     }
     

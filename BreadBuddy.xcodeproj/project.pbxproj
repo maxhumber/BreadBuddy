@@ -156,9 +156,9 @@
 		50DCF1DE27FB341000D0A369 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				5032A6B727FB57D40031501D /* DatePickerField.swift */,
 				502200A727E265ED00041179 /* TimeInput.swift */,
 				50DCF1DC27F781CF00D0A369 /* Row.swift */,
-				5032A6B727FB57D40031501D /* DatePickerField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";

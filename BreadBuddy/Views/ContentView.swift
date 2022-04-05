@@ -9,19 +9,19 @@ struct ContentView: View {
     }
     
     var body: some View {
-        content()
+        content
+            .dismissKeyboard()
             .onAppear {
                 viewModel.refresh()
             }
             .onChange(of: viewModel.date) { _ in
                 viewModel.refresh()
             }
-            .dismissKeyboard()
     }
     
-    private func content() -> some View {
+    private var content: some View {
         VStack(spacing: 20) {
-            header()
+            header
             ScrollView {
                 VStack(spacing: 20) {
                     ForEach($viewModel.steps) { $step in
@@ -49,9 +49,10 @@ struct ContentView: View {
             }
         }
         .padding()
+        .ignoresSafeArea(.keyboard, edges: .bottom)
     }
     
-    private func header() -> some View {
+    private var header: some View {
         HStack {
             Text("Maggie's Baguette")
         }

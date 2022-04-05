@@ -16,11 +16,11 @@ public struct Row: View {
             TimeInput(value: $value, unit: $unit) {
                 onCommit?()
             }
-            timeStack()
+            timeStack
         }
     }
     
-    private func timeStack() -> some View {
+    private var timeStack: some View {
         ZStack {
             Text("XX:XX XX").hidden()
             VStack(alignment: .trailing) {
