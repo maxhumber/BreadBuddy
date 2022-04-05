@@ -61,10 +61,12 @@ struct ContentView: View {
     }
     
     private var header: some View {
-        HStack {
+        ZStack {
             TextField("Recipe name", text: $viewModel.recipe)
                 .frame(maxWidth: .infinity)
                 .multilineTextAlignment(.center)
+            EditButton()
+                .frame(maxWidth: .infinity, alignment: .trailing)
         }
     }
 }
