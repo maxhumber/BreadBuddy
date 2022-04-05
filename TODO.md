@@ -1,13 +1,18 @@
 ### TODO
-
-- Edit Mode
-- Schedule all notifications
-- SQLite
-- Manage Multiple
-- RevenueCat
+- Edit Mode vs. Display Mode
 - Add above/below functionality
 - Delete functionality
-- Icon/Logo
-- Change time for individual row
+- Manage Multiple
+  - SQLite?
 - Add link to recipe or note
+- Schedule all notifications (for step times)
+- Icon/Logo
+- Make it cute
+  - Dribbble for inspiration
+- RevenueCat / StoreKit2
+
+### Later
 - Share link to recipe / import
+- Change time for individual row
+- AWS
+- Analytics

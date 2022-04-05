@@ -4,7 +4,7 @@ struct Step {
     var id: UUID = .init()
     var description: String
     var timeValue: TimeInterval
-    var timeUnit: TimeUnit = .minute
+    var timeUnit: TimeUnit = .minutes
     var date: Date?
 }
 

@@ -1,9 +1,9 @@
 import Foundation
 
 enum TimeUnit: String, CaseIterable {
-    case minute = "Minute"
-    case hour = "Hour"
-    case day = "Day"
+    case minutes = "Minutes"
+    case hours = "Hours"
+    case days = "Days"
 
     func label(for value: Double) -> String {
         value == 1 ? rawValue : rawValue + "s"

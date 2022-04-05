@@ -87,12 +87,12 @@ struct ContentView_Previews: PreviewProvider {
         var recipe = "Maggie's Baguette"
         var date: Date = Date().withAdded(hours: 6)
         var steps: [Step] = [
-            Step(description: "Poolish", timeValue: 30, timeUnit: .minute),
-            Step(description: "Mix Dough", timeValue: 15, timeUnit: .minute),
-            Step(description: "Bulk rise", timeValue: 8, timeUnit: .hour),
-            Step(description: "Shape", timeValue: 15, timeUnit: .minute),
-            Step(description: "Proof", timeValue: 30, timeUnit: .minute),
-            Step(description: "Bake", timeValue: 60, timeUnit: .minute)
+            Step(description: "Poolish", timeValue: 30, timeUnit: .minutes),
+            Step(description: "Mix Dough", timeValue: 15, timeUnit: .minutes),
+            Step(description: "Bulk rise", timeValue: 8, timeUnit: .hours),
+            Step(description: "Shape", timeValue: 15, timeUnit: .minutes),
+            Step(description: "Proof", timeValue: 30, timeUnit: .minutes),
+            Step(description: "Bake", timeValue: 60, timeUnit: .minutes)
         ]
         
         var body: some View {

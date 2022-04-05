@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		502200A827E265ED00041179 /* TimeInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502200A727E265ED00041179 /* TimeInput.swift */; };
 		5032A6B627FB47610031501D /* TimeView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6B527FB47610031501D /* TimeView+ViewModel.swift */; };
 		5032A6B827FB57D40031501D /* DatePickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6B727FB57D40031501D /* DatePickerField.swift */; };
 		5032A6BB27FB69500031501D /* Date+string.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6BA27FB69500031501D /* Date+string.swift */; };
@@ -18,6 +17,8 @@
 		5032A6C527FC83280031501D /* Date+withAdded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6C427FC83280031501D /* Date+withAdded.swift */; };
 		5032A6C727FC833D0031501D /* Date+next.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6C627FC833D0031501D /* Date+next.swift */; };
 		5032A6C927FC892F0031501D /* NotificationTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6C827FC892F0031501D /* NotificationTestView.swift */; };
+		5032A6CB27FCC85C0031501D /* NumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6CA27FCC85C0031501D /* NumberField.swift */; };
+		5032A6CD27FCCB9B0031501D /* Formatter+number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6CC27FCCB9B0031501D /* Formatter+number.swift */; };
 		504D3C1927E017B200C95123 /* BreadBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D3C1827E017B200C95123 /* BreadBuddyApp.swift */; };
 		504D3C1B27E017B200C95123 /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D3C1A27E017B200C95123 /* TimeView.swift */; };
 		504D3C1D27E017B300C95123 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504D3C1C27E017B300C95123 /* Assets.xcassets */; };
@@ -38,7 +39,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		502200A727E265ED00041179 /* TimeInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInput.swift; sourceTree = "<group>"; };
 		5032A6B527FB47610031501D /* TimeView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeView+ViewModel.swift"; sourceTree = "<group>"; };
 		5032A6B727FB57D40031501D /* DatePickerField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerField.swift; sourceTree = "<group>"; };
 		5032A6BA27FB69500031501D /* Date+string.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+string.swift"; sourceTree = "<group>"; };
@@ -49,6 +49,8 @@
 		5032A6C427FC83280031501D /* Date+withAdded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+withAdded.swift"; sourceTree = "<group>"; };
 		5032A6C627FC833D0031501D /* Date+next.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+next.swift"; sourceTree = "<group>"; };
 		5032A6C827FC892F0031501D /* NotificationTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTestView.swift; sourceTree = "<group>"; };
+		5032A6CA27FCC85C0031501D /* NumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberField.swift; sourceTree = "<group>"; };
+		5032A6CC27FCCB9B0031501D /* Formatter+number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+number.swift"; sourceTree = "<group>"; };
 		504D3C1527E017B200C95123 /* BreadBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreadBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		504D3C1827E017B200C95123 /* BreadBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadBuddyApp.swift; sourceTree = "<group>"; };
 		504D3C1A27E017B200C95123 /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				5032A6C027FC786E0031501D /* UIApplication+sendResignAction.swift */,
 				5032A6BE27FC78520031501D /* View+dismissKeyboard.swift */,
 				5032A6C227FC81360031501D /* View+if.swift */,
+				5032A6CC27FCCB9B0031501D /* Formatter+number.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -169,7 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				5032A6B727FB57D40031501D /* DatePickerField.swift */,
-				502200A727E265ED00041179 /* TimeInput.swift */,
+				5032A6CA27FCC85C0031501D /* NumberField.swift */,
 				50DCF1DC27F781CF00D0A369 /* Row.swift */,
 			);
 			path = Components;
@@ -291,8 +294,9 @@
 				50DCF1E127FB345C00D0A369 /* Step.swift in Sources */,
 				5032A6C327FC81360031501D /* View+if.swift in Sources */,
 				5032A6C727FC833D0031501D /* Date+next.swift in Sources */,
+				5032A6CD27FCCB9B0031501D /* Formatter+number.swift in Sources */,
 				5032A6C527FC83280031501D /* Date+withAdded.swift in Sources */,
-				502200A827E265ED00041179 /* TimeInput.swift in Sources */,
+				5032A6CB27FCC85C0031501D /* NumberField.swift in Sources */,
 				5032A6C127FC786E0031501D /* UIApplication+sendResignAction.swift in Sources */,
 				5032A6BF27FC78520031501D /* View+dismissKeyboard.swift in Sources */,
 				5032A6BD27FB699B0031501D /* TimeUnit.swift in Sources */,

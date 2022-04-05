@@ -15,7 +15,7 @@ extension TimeView {
         }
         
         @MainActor func add() {
-            let step = Step(description: "", timeValue: 30, timeUnit: .minute)
+            let step = Step(description: "", timeValue: 30, timeUnit: .minutes)
             steps.append(step)
             refresh()
         }
@@ -28,11 +28,11 @@ extension TimeView {
             var currentTime = date
             for step in steps.reversed() {
                 switch step.timeUnit {
-                case .minute:
+                case .minutes:
                     currentTime = currentTime.withAdded(minutes: -step.timeValue)
-                case .hour:
+                case .hours:
                     currentTime = currentTime.withAdded(hours: -step.timeValue)
-                case .day:
+                case .days:
                     currentTime = currentTime.withAdded(days: -step.timeValue)
                 }
                 if let index = steps.firstIndex(where: { $0 == step }) {
