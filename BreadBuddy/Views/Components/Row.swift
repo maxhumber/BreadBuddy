@@ -11,8 +11,6 @@ public struct Row: View {
     
     public var body: some View {
         HStack(alignment: .top, spacing: 0) {
-            Image(systemName: "circle")
-                .padding(5)
             description
             TimeInput(value: $value, unit: $unit) {
                 onChange?()
@@ -24,21 +22,27 @@ public struct Row: View {
                 } label: {
                     Label("Add step above", systemImage: "arrow.up")
                 }
-                Button(role: .destructive) {
-                    
-                } label: {
-                    Label("Delete", systemImage: "xmark")
-                }
                 Button {
                     
                 } label: {
                     Label("Add step below", systemImage: "arrow.down")
                 }
+                Button(role: .destructive) {
+                    
+                } label: {
+                    Label("Delete", systemImage: "xmark")
+                }
             } label: {
-                Image(systemName: "ellipsis")
+                ZStack {
+                    Image(systemName: "circle").opacity(0)
+                    Image(systemName: "ellipsis")
+                }
             }
             .padding(5)
             .contentShape(Rectangle())
+        }
+        .if(unwrappedDate < Date()) {
+            $0.opacity(0.5)
         }
     }
     

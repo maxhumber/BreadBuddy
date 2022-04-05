@@ -42,7 +42,7 @@ struct TimeView: View {
             HStack {
                 Text("Finish")
                 Spacer()
-                VStack(alignment: .trailing, spacing: 0) {
+                VStack(alignment: .trailing, spacing: 5) {
                     DatePickerField(date: $viewModel.date, displayedComponent: .hourAndMinute, alignment: .bottomTrailing)
                     DatePickerField(date: $viewModel.date, displayedComponent: .date, alignment: .topTrailing)
                         .font(.caption)
@@ -56,10 +56,24 @@ struct TimeView: View {
     private var header: some View {
         ZStack {
             TextField("Recipe name", text: $viewModel.recipe)
+                .fixedSize()
+                .padding(5)
+                .background(
+                    RoundedRectangle(cornerRadius: 5)
+                        .strokeBorder()
+                        .foregroundColor(.gray.opacity(0.25))
+                )
                 .frame(maxWidth: .infinity)
                 .multilineTextAlignment(.center)
             EditButton()
                 .frame(maxWidth: .infinity, alignment: .trailing)
+            Button {
+                
+            } label: {
+                Image(systemName: "chevron.left")
+            }
+            .contentShape(Rectangle())
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
 }
@@ -71,7 +85,7 @@ struct ContentView_Previews: PreviewProvider {
     
     struct Preview: View {
         var recipe = "Maggie's Baguette"
-        var date: Date = .init()
+        var date: Date = Date().withAdded(hours: 6)
         var steps: [Step] = [
             Step(description: "Poolish", timeValue: 30, timeUnit: .minute),
             Step(description: "Mix Dough", timeValue: 15, timeUnit: .minute),
