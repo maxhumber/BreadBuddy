@@ -131,6 +131,16 @@
 			path = BreadBuddyTests;
 			sourceTree = "<group>";
 		};
+		50B6A4C927FDD63600A1F834 /* Time */ = {
+			isa = PBXGroup;
+			children = (
+				50DCF1DC27F781CF00D0A369 /* Row.swift */,
+				504D3C1A27E017B200C95123 /* TimeView.swift */,
+				5032A6B527FB47610031501D /* TimeView+ViewModel.swift */,
+			);
+			path = Time;
+			sourceTree = "<group>";
+		};
 		50DCF1D827F7774300D0A369 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,8 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				50DCF1DE27FB341000D0A369 /* Components */,
-				504D3C1A27E017B200C95123 /* TimeView.swift */,
-				5032A6B527FB47610031501D /* TimeView+ViewModel.swift */,
+				50B6A4C927FDD63600A1F834 /* Time */,
 				5032A6C827FC892F0031501D /* NotificationTestView.swift */,
 			);
 			path = Views;
@@ -173,7 +182,6 @@
 			children = (
 				5032A6B727FB57D40031501D /* DatePickerField.swift */,
 				5032A6CA27FCC85C0031501D /* NumberField.swift */,
-				50DCF1DC27F781CF00D0A369 /* Row.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";

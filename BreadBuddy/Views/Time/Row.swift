@@ -25,9 +25,9 @@ public struct Row: View {
                 ellipsis
             }
         }
-//        .if(unwrappedDate < Date()) {
-//            $0.opacity(0.5)
-//        }
+        .if(unwrappedDate < Date()) {
+            $0.opacity(0.5)
+        }
     }
     
     private var description: some View {
@@ -133,6 +133,7 @@ public struct Row: View {
             }
         }
         .padding(5)
+        .padding(.horizontal, 5)
         .contentShape(Rectangle())
     }
 }
@@ -152,6 +153,8 @@ struct Row_Previews: PreviewProvider {
             VStack(spacing: 20) {
                 Row(label: $label, value: $value, unit: $unit, date: $date)
                     .environment(\.editMode, .constant(.active))
+                Row(label: $label, value: $value, unit: $unit, date: $date)
+                    .environment(\.editMode, .constant(.inactive))
             }
         }
     }

@@ -8,6 +8,13 @@ struct Step {
     var date: Date?
 }
 
+extension Step {
+    var isInPast: Bool {
+        guard let date = date else { return false }
+        return date < Date()
+    }
+}
+
 extension Step: Identifiable {}
 
 extension Step: Equatable {}
