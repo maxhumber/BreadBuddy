@@ -86,10 +86,10 @@
 				5032A6C627FC833D0031501D /* Date+next.swift */,
 				5032A6BA27FB69500031501D /* Date+string.swift */,
 				5032A6C427FC83280031501D /* Date+withAdded.swift */,
+				5032A6CC27FCCB9B0031501D /* Formatter+number.swift */,
 				5032A6C027FC786E0031501D /* UIApplication+sendResignAction.swift */,
 				5032A6BE27FC78520031501D /* View+dismissKeyboard.swift */,
 				5032A6C227FC81360031501D /* View+if.swift */,
-				5032A6CC27FCCB9B0031501D /* Formatter+number.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";

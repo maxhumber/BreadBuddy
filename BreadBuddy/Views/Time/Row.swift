@@ -25,9 +25,9 @@ public struct Row: View {
                 ellipsis
             }
         }
-        .if(unwrappedDate < Date()) {
-            $0.opacity(0.5)
-        }
+//        .if(unwrappedDate < Date()) {
+//            $0.opacity(0.5)
+//        }
     }
     
     private var description: some View {
@@ -147,7 +147,7 @@ struct Row_Previews: PreviewProvider {
         @State var label = "Mix Ingredients"
         @State var value = 0.5
         @State var unit: TimeUnit = .minutes
-        @State var date: Date? = Date()
+        @State var date: Date? = Date().withAdded(hours: 3)
         
         var body: some View {
             VStack(spacing: 20) {

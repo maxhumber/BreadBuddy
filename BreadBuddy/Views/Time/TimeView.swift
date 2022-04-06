@@ -76,7 +76,12 @@ struct TimeView: View {
                         viewModel.refresh()
                     }
                 }
-                addButton
+                if isEditing {
+                    Row(label: $viewModel.step.description, value: $viewModel.step.timeValue, unit: $viewModel.step.timeUnit, date: $viewModel.step.date) {
+                        viewModel.refresh()
+                    }
+                }
+//                addButton
             }
             .padding(.horizontal, 5)
         }

@@ -2,8 +2,8 @@ import Foundation
 
 struct Step {
     var id: UUID = .init()
-    var description: String
-    var timeValue: TimeInterval
+    var description: String = ""
+    var timeValue: TimeInterval = 30
     var timeUnit: TimeUnit = .minutes
     var date: Date?
 }

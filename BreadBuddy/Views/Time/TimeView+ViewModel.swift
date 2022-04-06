@@ -6,6 +6,7 @@ extension TimeView {
         @Published var recipe: String
         @Published var date: Date
         @Published var steps: [Step]
+        @Published var step: Step = .init()
         
         init(recipe: String, date: Date? = nil, steps: [Step] = [Step]()) {
             self.recipe = recipe
