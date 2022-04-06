@@ -1,11 +1,16 @@
 import SwiftUI
 
 struct TimeView: View {
+    @Environment(\.editMode) private var editMode
     @StateObject var viewModel: ViewModel
     
     init(recipe: String = "", date: Date? = nil, steps: [Step] = [Step]()) {
         let viewModel = ViewModel(recipe: recipe, date: date, steps: steps)
         _viewModel = StateObject(wrappedValue: viewModel)
+    }
+    
+    private var isEditing: Bool {
+        editMode?.wrappedValue.isEditing ?? false
     }
     
     var body: some View {
@@ -22,13 +27,12 @@ struct TimeView: View {
     private var content: some View {
         VStack(spacing: 10) {
             header
-            VStack {
-                ScrollView(showsIndicators: false) {
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 20) {
                     ForEach($viewModel.steps) { $step in
                         Row(label: $step.description, value: $step.timeValue, unit: $step.timeUnit, date: $step.date) {
                             viewModel.refresh()
                         }
-                        .padding(.vertical)
                     }
                     Button {
                         viewModel.add()
@@ -36,9 +40,9 @@ struct TimeView: View {
                         Text("Add")
                     }
                     .buttonStyle(.bordered)
+                    .opacity(isEditing ? 1 : 0)
                 }
             }
-            Spacer()
             HStack {
                 Text("Finish")
                 Spacer()
@@ -56,12 +60,14 @@ struct TimeView: View {
     private var header: some View {
         ZStack {
             TextField("Recipe name", text: $viewModel.recipe)
+                .disabled(!isEditing)
                 .fixedSize()
                 .padding(5)
                 .background(
                     RoundedRectangle(cornerRadius: 5)
                         .strokeBorder()
                         .foregroundColor(.gray.opacity(0.25))
+                        .if(!isEditing) { $0.opacity(0) }
                 )
                 .frame(maxWidth: .infinity)
                 .multilineTextAlignment(.center)

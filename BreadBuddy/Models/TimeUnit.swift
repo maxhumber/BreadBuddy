@@ -6,7 +6,7 @@ enum TimeUnit: String, CaseIterable {
     case days = "Days"
 
     func label(for value: Double) -> String {
-        value == 1 ? rawValue : rawValue + "s"
+        value == 1 ? String(rawValue.dropLast()) : rawValue
     }
 }
 

@@ -26,7 +26,9 @@ struct NumberField_Previews: PreviewProvider {
         var body: some View {
             VStack {
                 NumberField(value: $value)
-                    .background(Rectangle().strokeBorder().foregroundColor(.red))
+                    .background(
+                        Rectangle().strokeBorder().foregroundColor(.red)
+                    )
                 NumberField(value: .constant(0))
             }
         }

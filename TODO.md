@@ -2,13 +2,13 @@
 - Edit Mode vs. Display Mode
 - Add above/below functionality
 - Delete functionality
-- Manage Multiple
-  - SQLite?
-- Add link to recipe or note
 - Schedule all notifications (for step times)
 - Icon/Logo
 - Make it cute
   - Dribbble for inspiration
+- Manage Multiple
+  - SQLite?
+- Add link to recipe or note
 - RevenueCat / StoreKit2
 
 ### Later

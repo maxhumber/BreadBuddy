@@ -21,7 +21,9 @@ public struct Row: View {
             description
             timeInput
             timeStack
-            ellipsis
+            if isEditing {
+                ellipsis
+            }
         }
 //        .if(unwrappedDate < Date()) {
 //            $0.opacity(0.5)
@@ -32,11 +34,15 @@ public struct Row: View {
         TextField("Description", text: $label) {
             onChange?()
         }
+        .disabled(!isEditing)
         .padding(5)
         .background(
             RoundedRectangle(cornerRadius: 5)
                 .strokeBorder()
                 .foregroundColor(.gray.opacity(0.25))
+                .if(!isEditing) {
+                    $0.opacity(0)
+                }
         )
     }
     
@@ -52,11 +58,15 @@ public struct Row: View {
             Text("999").opacity(0)
             NumberField(value: $value)
         }
+        .disabled(!isEditing)
         .padding(5)
         .background(
             RoundedRectangle(cornerRadius: 5)
                 .strokeBorder()
                 .foregroundColor(.gray.opacity(0.25))
+                .if(!isEditing) {
+                    $0.opacity(0)
+                }
         )
     }
     
@@ -78,6 +88,7 @@ public struct Row: View {
             .font(.caption2)
         }
         .contentShape(Rectangle())
+        .disabled(!isEditing)
         .onChange(of: unit) { _ in
             onChange?()
         }
@@ -89,10 +100,9 @@ public struct Row: View {
                 Text("XX:XX XX").opacity(0)
                 Text(unwrappedDate.time())
             }
-            .padding(5)
+            .padding(.vertical, 5)
             Text(unwrappedDate.weekday())
                 .font(.caption2)
-                .padding(.trailing, 5)
         }
         .if(date == nil) {
             $0.opacity(0)
