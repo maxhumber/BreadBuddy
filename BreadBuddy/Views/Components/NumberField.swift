@@ -1,11 +1,22 @@
 import SwiftUI
 
 struct NumberField: View {
+    @FocusState private var isFocused: Bool
     @Binding var value: Double
     var onCommit: (() -> ())? = nil
     
     var body: some View {
-        TextField("", value: $value, formatter: .number, onCommit: { onCommit?() })
+        TextField("", value: $value, formatter: .number, onCommit: {
+            print("ON COMMIT")
+            onCommit?()
+        })
+        .focused($isFocused)
+        .onChange(of: isFocused) { isFocused in
+            if !isFocused {
+                print("ON FOCUS LOST")
+                onCommit?()
+            }
+        }
             .multilineTextAlignment(.center)
             .fixedSize(horizontal: true, vertical: true)
             .keyboardType(.numberPad)

@@ -84,6 +84,7 @@ public struct StepRow: View {
             }
             .font(.caption2)
         }
+        .foregroundColor(isEditing ? .blue : .black)
         .contentShape(Rectangle())
         .disabled(!isEditing)
         .onChange(of: step.timeUnit) { _ in

@@ -76,12 +76,12 @@ struct TimeView: View {
                         viewModel.refresh()
                     }
                 }
-                if isEditing {
-                    StepRow(step: $viewModel.step) {
-                        viewModel.refresh()
-                    }
+                StepRow(step: $viewModel.step) {
+                    viewModel.add()
                 }
-//                addButton
+                .if(!isEditing) {
+                    $0.opacity(0)
+                }
             }
             .padding(.horizontal, 5)
         }

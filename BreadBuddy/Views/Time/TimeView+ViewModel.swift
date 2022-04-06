@@ -16,9 +16,11 @@ extension TimeView {
         }
         
         @MainActor func add() {
-            let step = Step(description: "", timeValue: 30, timeUnit: .minutes)
-            steps.append(step)
-            refresh()
+            if step.timeValue != 0 {
+                steps.append(step)
+                step = .init()
+                refresh()
+            }
         }
         
         func remove(at offsets: IndexSet) {
