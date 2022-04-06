@@ -3,7 +3,7 @@ import Foundation
 struct Step {
     var id: UUID = .init()
     var description: String = ""
-    var timeValue: TimeInterval = 30
+    var timeValue: TimeInterval = 0
     var timeUnit: TimeUnit = .minutes
     var date: Date?
 }

@@ -1,15 +1,12 @@
 import SwiftUI
 
-public struct Row: View {
+public struct StepRow: View {
     @Environment(\.editMode) private var editMode
-    @Binding var label: String
-    @Binding var value: Double
-    @Binding var unit: TimeUnit
-    @Binding var date: Date?
+    @Binding var step: Step
     var onChange: (() -> ())? = nil
     
     private var unwrappedDate: Date {
-        date ?? Date()
+        step.date ?? Date()
     }
     
     private var isEditing: Bool {
@@ -31,7 +28,7 @@ public struct Row: View {
     }
     
     private var description: some View {
-        TextField("Description", text: $label) {
+        TextField("Description", text: $step.description) {
             onChange?()
         }
         .disabled(!isEditing)
@@ -56,7 +53,7 @@ public struct Row: View {
     private var timeValueField: some View {
         ZStack {
             Text("999").opacity(0)
-            NumberField(value: $value)
+            NumberField(value: $step.timeValue)
         }
         .disabled(!isEditing)
         .padding(5)
@@ -74,7 +71,7 @@ public struct Row: View {
         Menu {
             ForEach(TimeUnit.allCases) { unit in
                 Button {
-                    self.unit = unit
+                    step.timeUnit = unit
                 } label: {
                     Text(unit.rawValue)
                 }
@@ -82,14 +79,14 @@ public struct Row: View {
         } label: {
             ZStack {
                 Text("XXXXXXX").opacity(0)
-                Text(unit.label(for: value))
+                Text(step.timeUnit.label(for: step.timeValue))
                     .animation(nil, value: UUID())
             }
             .font(.caption2)
         }
         .contentShape(Rectangle())
         .disabled(!isEditing)
-        .onChange(of: unit) { _ in
+        .onChange(of: step.timeUnit) { _ in
             onChange?()
         }
     }
@@ -104,7 +101,7 @@ public struct Row: View {
             Text(unwrappedDate.weekday())
                 .font(.caption2)
         }
-        .if(date == nil) {
+        .if(step.date == nil) {
             $0.opacity(0)
         }
     }
@@ -144,16 +141,13 @@ struct Row_Previews: PreviewProvider {
     }
     
     struct Preview: View {
-        @State var label = "Mix Ingredients"
-        @State var value = 0.5
-        @State var unit: TimeUnit = .minutes
-        @State var date: Date? = Date().withAdded(hours: 3)
+        @State var step = Step(description:  "Mix Ingredients", timeValue: 30, timeUnit: .minutes, date: Date().withAdded(hours: 3))
         
         var body: some View {
             VStack(spacing: 20) {
-                Row(label: $label, value: $value, unit: $unit, date: $date)
+                StepRow(step: $step)
                     .environment(\.editMode, .constant(.active))
-                Row(label: $label, value: $value, unit: $unit, date: $date)
+                StepRow(step: $step)
                     .environment(\.editMode, .constant(.inactive))
             }
         }

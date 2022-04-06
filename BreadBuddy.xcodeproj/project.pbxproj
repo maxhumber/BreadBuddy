@@ -24,7 +24,7 @@
 		504D3C1D27E017B300C95123 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504D3C1C27E017B300C95123 /* Assets.xcassets */; };
 		504D3C2027E017B300C95123 /* Preview.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504D3C1F27E017B300C95123 /* Preview.xcassets */; };
 		504D3C2A27E017B300C95123 /* BreadBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D3C2927E017B300C95123 /* BreadBuddyTests.swift */; };
-		50DCF1DD27F781CF00D0A369 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DCF1DC27F781CF00D0A369 /* Row.swift */; };
+		50DCF1DD27F781CF00D0A369 /* StepRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DCF1DC27F781CF00D0A369 /* StepRow.swift */; };
 		50DCF1E127FB345C00D0A369 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DCF1E027FB345C00D0A369 /* Step.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,7 +58,7 @@
 		504D3C1F27E017B300C95123 /* Preview.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Preview.xcassets; sourceTree = "<group>"; };
 		504D3C2527E017B300C95123 /* BreadBuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BreadBuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		504D3C2927E017B300C95123 /* BreadBuddyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadBuddyTests.swift; sourceTree = "<group>"; };
-		50DCF1DC27F781CF00D0A369 /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
+		50DCF1DC27F781CF00D0A369 /* StepRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepRow.swift; sourceTree = "<group>"; };
 		50DCF1E027FB345C00D0A369 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,7 +134,7 @@
 		50B6A4C927FDD63600A1F834 /* Time */ = {
 			isa = PBXGroup;
 			children = (
-				50DCF1DC27F781CF00D0A369 /* Row.swift */,
+				50DCF1DC27F781CF00D0A369 /* StepRow.swift */,
 				504D3C1A27E017B200C95123 /* TimeView.swift */,
 				5032A6B527FB47610031501D /* TimeView+ViewModel.swift */,
 			);
@@ -297,7 +297,7 @@
 			files = (
 				5032A6B627FB47610031501D /* TimeView+ViewModel.swift in Sources */,
 				5032A6B827FB57D40031501D /* DatePickerField.swift in Sources */,
-				50DCF1DD27F781CF00D0A369 /* Row.swift in Sources */,
+				50DCF1DD27F781CF00D0A369 /* StepRow.swift in Sources */,
 				504D3C1B27E017B200C95123 /* TimeView.swift in Sources */,
 				50DCF1E127FB345C00D0A369 /* Step.swift in Sources */,
 				5032A6C327FC81360031501D /* View+if.swift in Sources */,

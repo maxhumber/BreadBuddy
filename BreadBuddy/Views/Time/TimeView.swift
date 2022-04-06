@@ -72,12 +72,12 @@ struct TimeView: View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 20) {
                 ForEach($viewModel.steps) { $step in
-                    Row(label: $step.description, value: $step.timeValue, unit: $step.timeUnit, date: $step.date) {
+                    StepRow(step: $step) {
                         viewModel.refresh()
                     }
                 }
                 if isEditing {
-                    Row(label: $viewModel.step.description, value: $viewModel.step.timeValue, unit: $viewModel.step.timeUnit, date: $viewModel.step.date) {
+                    StepRow(step: $viewModel.step) {
                         viewModel.refresh()
                     }
                 }
