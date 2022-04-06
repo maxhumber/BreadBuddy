@@ -19,8 +19,9 @@
 		5032A6C927FC892F0031501D /* NotificationTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6C827FC892F0031501D /* NotificationTestView.swift */; };
 		5032A6CB27FCC85C0031501D /* NumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6CA27FCC85C0031501D /* NumberField.swift */; };
 		5032A6CD27FCCB9B0031501D /* Formatter+number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6CC27FCCB9B0031501D /* Formatter+number.swift */; };
-		5036A2C627FDE59000BEE804 /* FocusStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5036A2C527FDE59000BEE804 /* FocusStateView.swift */; };
 		5036A2C827FDF46700BEE804 /* View+editBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5036A2C727FDF46700BEE804 /* View+editBorder.swift */; };
+		5036A2CC27FDFF0300BEE804 /* RecipeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5036A2CB27FDFF0300BEE804 /* RecipeListView.swift */; };
+		5036A2CE27FDFFD200BEE804 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5036A2CD27FDFFD200BEE804 /* Recipe.swift */; };
 		504D3C1927E017B200C95123 /* BreadBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D3C1827E017B200C95123 /* BreadBuddyApp.swift */; };
 		504D3C1B27E017B200C95123 /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D3C1A27E017B200C95123 /* TimeView.swift */; };
 		504D3C1D27E017B300C95123 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504D3C1C27E017B300C95123 /* Assets.xcassets */; };
@@ -53,8 +54,9 @@
 		5032A6C827FC892F0031501D /* NotificationTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTestView.swift; sourceTree = "<group>"; };
 		5032A6CA27FCC85C0031501D /* NumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberField.swift; sourceTree = "<group>"; };
 		5032A6CC27FCCB9B0031501D /* Formatter+number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+number.swift"; sourceTree = "<group>"; };
-		5036A2C527FDE59000BEE804 /* FocusStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusStateView.swift; sourceTree = "<group>"; };
 		5036A2C727FDF46700BEE804 /* View+editBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+editBorder.swift"; sourceTree = "<group>"; };
+		5036A2CB27FDFF0300BEE804 /* RecipeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListView.swift; sourceTree = "<group>"; };
+		5036A2CD27FDFFD200BEE804 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		504D3C1527E017B200C95123 /* BreadBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreadBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		504D3C1827E017B200C95123 /* BreadBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadBuddyApp.swift; sourceTree = "<group>"; };
 		504D3C1A27E017B200C95123 /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
@@ -161,7 +163,7 @@
 				50DCF1DE27FB341000D0A369 /* Components */,
 				50B6A4C927FDD63600A1F834 /* Time */,
 				5032A6C827FC892F0031501D /* NotificationTestView.swift */,
-				5036A2C527FDE59000BEE804 /* FocusStateView.swift */,
+				5036A2CB27FDFF0300BEE804 /* RecipeListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -195,6 +197,7 @@
 		50DCF1DF27FB344C00D0A369 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5036A2CD27FDFFD200BEE804 /* Recipe.swift */,
 				50DCF1E027FB345C00D0A369 /* Step.swift */,
 				5032A6BC27FB699B0031501D /* TimeUnit.swift */,
 			);
@@ -307,8 +310,8 @@
 				504D3C1B27E017B200C95123 /* TimeView.swift in Sources */,
 				50DCF1E127FB345C00D0A369 /* Step.swift in Sources */,
 				5032A6C327FC81360031501D /* View+if.swift in Sources */,
+				5036A2CC27FDFF0300BEE804 /* RecipeListView.swift in Sources */,
 				5032A6C727FC833D0031501D /* Date+next.swift in Sources */,
-				5036A2C627FDE59000BEE804 /* FocusStateView.swift in Sources */,
 				5032A6CD27FCCB9B0031501D /* Formatter+number.swift in Sources */,
 				5032A6C527FC83280031501D /* Date+withAdded.swift in Sources */,
 				5032A6CB27FCC85C0031501D /* NumberField.swift in Sources */,
@@ -317,6 +320,7 @@
 				5032A6BD27FB699B0031501D /* TimeUnit.swift in Sources */,
 				5036A2C827FDF46700BEE804 /* View+editBorder.swift in Sources */,
 				504D3C1927E017B200C95123 /* BreadBuddyApp.swift in Sources */,
+				5036A2CE27FDFFD200BEE804 /* Recipe.swift in Sources */,
 				5032A6BB27FB69500031501D /* Date+string.swift in Sources */,
 				5032A6C927FC892F0031501D /* NotificationTestView.swift in Sources */,
 			);

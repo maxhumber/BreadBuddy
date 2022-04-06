@@ -13,6 +13,7 @@ public struct StepRow: View {
     
     @Binding var step: Step
     var onChange: (() -> ())? = nil
+    var onDelete: (() -> ())? = nil
     
     private var unwrappedDate: Date {
         step.date ?? Date()
@@ -135,6 +136,7 @@ public struct StepRow: View {
             }
             Button(role: .destructive) {
                 print("delete")
+                onDelete?()
             } label: {
                 Label("Delete", systemImage: "xmark")
             }

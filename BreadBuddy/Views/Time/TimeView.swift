@@ -74,10 +74,14 @@ struct TimeView: View {
                 ForEach($viewModel.steps) { $step in
                     StepRow(step: $step) {
                         viewModel.refresh()
+                    } onDelete: {
+                        viewModel.steps.removeAll(where: { $0 == step })
                     }
                 }
                 StepRow(step: $viewModel.step) {
                     viewModel.add()
+                } onDelete: {
+                    print("onDelete!!")
                 }
                 .if(!isEditing) {
                     $0.opacity(0)

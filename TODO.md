@@ -1,5 +1,4 @@
 ### TODO
-- Edit Mode vs. Display Mode
 - Add above/below functionality
 - Delete functionality
 - Schedule all notifications (for step times)
