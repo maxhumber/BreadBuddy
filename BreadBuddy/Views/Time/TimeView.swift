@@ -47,7 +47,7 @@ struct TimeView: View {
                 EditButton()
             }
         }
-        .padding(.horizontal)
+        .padding()
     }
     
     private var recipeNameField: some View {
