@@ -17,12 +17,12 @@ struct NumberField: View {
                 onCommit?()
             }
         }
-            .multilineTextAlignment(.center)
-            .fixedSize(horizontal: true, vertical: true)
-            .keyboardType(.numberPad)
-            .if(value == 0) {
-                $0.foregroundColor(.gray.opacity(0.5))
-            }
+        .multilineTextAlignment(.center)
+        .fixedSize(horizontal: true, vertical: true)
+        .keyboardType(.numberPad)
+        .if(value == 0) {
+            $0.foregroundColor(.gray.opacity(0.5))
+        }
     }
 }
 

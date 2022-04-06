@@ -1,7 +1,16 @@
 import SwiftUI
 
+extension StepRow {
+    enum Field {
+        case description
+        case timeValue
+    }
+}
+
 public struct StepRow: View {
     @Environment(\.editMode) private var editMode
+    @FocusState private var field: Field?
+    
     @Binding var step: Step
     var onChange: (() -> ())? = nil
     
@@ -22,25 +31,25 @@ public struct StepRow: View {
                 ellipsis
             }
         }
-//        .if(unwrappedDate < Date()) {
-//            $0.opacity(0.5)
-//        }
+        .onChange(of: field) { field in
+            if field == .none {
+                print("focus field:", field)
+                onChange?()
+            }
+        }
     }
     
     private var description: some View {
-        TextField("Description", text: $step.description) {
-            onChange?()
-        }
-        .disabled(!isEditing)
-        .padding(5)
-        .background(
-            RoundedRectangle(cornerRadius: 5)
-                .strokeBorder()
-                .foregroundColor(.gray.opacity(0.25))
-                .if(!isEditing) {
-                    $0.opacity(0)
-                }
-        )
+        TextField("Description", text: $step.description)
+            .focused($field, equals: .description)
+            .submitLabel(.next)
+            .onSubmit {
+                print("didSubmit description")
+                onChange?()
+                field = .timeValue
+            }
+            .disabled(!isEditing)
+            .editBorder()
     }
     
     private var timeInput: some View {
@@ -53,18 +62,23 @@ public struct StepRow: View {
     private var timeValueField: some View {
         ZStack {
             Text("999").opacity(0)
-            NumberField(value: $step.timeValue)
+            TextField("", value: $step.timeValue, formatter: .number)
+                .focused($field, equals: .timeValue)
+                .submitLabel(.done)
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: true, vertical: true)
+                .keyboardType(.numberPad)
+                .if(step.timeValue == 0) {
+                    $0.foregroundColor(.gray.opacity(0.5))
+                }
+                .onSubmit {
+                    print("didSubmit timeField")
+                    onChange?()
+                    field = .none
+                }
         }
         .disabled(!isEditing)
-        .padding(5)
-        .background(
-            RoundedRectangle(cornerRadius: 5)
-                .strokeBorder()
-                .foregroundColor(.gray.opacity(0.25))
-                .if(!isEditing) {
-                    $0.opacity(0)
-                }
-        )
+        .editBorder()
     }
     
     private var timeUnitMenu: some View {

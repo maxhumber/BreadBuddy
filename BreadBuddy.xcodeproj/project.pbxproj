@@ -20,6 +20,7 @@
 		5032A6CB27FCC85C0031501D /* NumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6CA27FCC85C0031501D /* NumberField.swift */; };
 		5032A6CD27FCCB9B0031501D /* Formatter+number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6CC27FCCB9B0031501D /* Formatter+number.swift */; };
 		5036A2C627FDE59000BEE804 /* FocusStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5036A2C527FDE59000BEE804 /* FocusStateView.swift */; };
+		5036A2C827FDF46700BEE804 /* View+editBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5036A2C727FDF46700BEE804 /* View+editBorder.swift */; };
 		504D3C1927E017B200C95123 /* BreadBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D3C1827E017B200C95123 /* BreadBuddyApp.swift */; };
 		504D3C1B27E017B200C95123 /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D3C1A27E017B200C95123 /* TimeView.swift */; };
 		504D3C1D27E017B300C95123 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504D3C1C27E017B300C95123 /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 		5032A6CA27FCC85C0031501D /* NumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberField.swift; sourceTree = "<group>"; };
 		5032A6CC27FCCB9B0031501D /* Formatter+number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+number.swift"; sourceTree = "<group>"; };
 		5036A2C527FDE59000BEE804 /* FocusStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusStateView.swift; sourceTree = "<group>"; };
+		5036A2C727FDF46700BEE804 /* View+editBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+editBorder.swift"; sourceTree = "<group>"; };
 		504D3C1527E017B200C95123 /* BreadBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreadBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		504D3C1827E017B200C95123 /* BreadBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadBuddyApp.swift; sourceTree = "<group>"; };
 		504D3C1A27E017B200C95123 /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				50DCF1DC27F781CF00D0A369 /* StepRow.swift */,
 				504D3C1A27E017B200C95123 /* TimeView.swift */,
 				5032A6B527FB47610031501D /* TimeView+ViewModel.swift */,
+				5036A2C727FDF46700BEE804 /* View+editBorder.swift */,
 			);
 			path = Time;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				5032A6C127FC786E0031501D /* UIApplication+sendResignAction.swift in Sources */,
 				5032A6BF27FC78520031501D /* View+dismissKeyboard.swift in Sources */,
 				5032A6BD27FB699B0031501D /* TimeUnit.swift in Sources */,
+				5036A2C827FDF46700BEE804 /* View+editBorder.swift in Sources */,
 				504D3C1927E017B200C95123 /* BreadBuddyApp.swift in Sources */,
 				5032A6BB27FB69500031501D /* Date+string.swift in Sources */,
 				5032A6C927FC892F0031501D /* NotificationTestView.swift in Sources */,

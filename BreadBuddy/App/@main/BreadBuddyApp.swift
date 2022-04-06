@@ -4,8 +4,8 @@ import SwiftUI
 struct BreadBuddyApp: App {
     var body: some Scene {
         WindowGroup {
-//            TimeView()
-            FocusStateView()
+            TimeView()
+//            FocusStateView()
 //            NotificationTestView()
         }
     }
