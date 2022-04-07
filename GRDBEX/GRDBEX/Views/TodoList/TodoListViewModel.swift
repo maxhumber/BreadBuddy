@@ -26,7 +26,8 @@ import Combine
     func save() {
         Task {
             let string = String(UUID().uuidString.prefix(6))
-            var todo = Todo(label: string)
+            let priority = Todo.Priority.allCases.randomElement()!
+            var todo = Todo(label: string, priority: priority)
             try await database.save(&todo)
         }
     }

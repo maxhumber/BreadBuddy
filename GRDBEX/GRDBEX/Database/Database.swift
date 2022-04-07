@@ -21,7 +21,6 @@ extension Database {
         #if DEBUG
         migrator.eraseDatabaseOnSchemaChange = true
         #endif
-        // initial database setup
         migrator.registerMigration("createTodo") { db in
             try db.create(table: "todo") { table in
                 table.autoIncrementedPrimaryKey("id")
@@ -29,7 +28,6 @@ extension Database {
                 table.column("completed", .boolean).notNull()
             }
         }
-        // add subtodo structure
         migrator.registerMigration("subTodo") { db in
             try db.alter(table: "todo") { table in
                 table.drop(column: "completed")
@@ -42,6 +40,11 @@ extension Database {
                     .references("todo", onDelete: .cascade)
                 table.column("label", .text).notNull()
                 table.column("completed", .boolean).notNull()
+            }
+        }
+        migrator.registerMigration("addPriority") { db in
+            try db.alter(table: "todo") { table in
+                table.add(column: "priority", .text)
             }
         }
         return migrator
