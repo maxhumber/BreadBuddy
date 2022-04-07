@@ -1,7 +1,7 @@
 import Foundation
 import Combine
 
-@MainActor final class TodoViewModel: ObservableObject {
+@MainActor final class TodoListViewModel: ObservableObject {
     private let database: Database
     private var cancellables = Set<AnyCancellable>()
     
@@ -26,7 +26,7 @@ import Combine
     func save() {
         Task {
             let string = String(UUID().uuidString.prefix(6))
-            var todo = Todo(label: string, completed: false)
+            var todo = Todo(label: string)
             try await database.save(&todo)
         }
     }

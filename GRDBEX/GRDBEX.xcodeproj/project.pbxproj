@@ -9,13 +9,16 @@
 /* Begin PBXBuildFile section */
 		5036A2DC27FE0CB200BEE804 /* GRDBEXApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5036A2DB27FE0CB200BEE804 /* GRDBEXApp.swift */; };
 		5036A2E027FE0CB300BEE804 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5036A2DF27FE0CB300BEE804 /* Assets.xcassets */; };
-		5036A2E327FE0CB300BEE804 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5036A2E227FE0CB300BEE804 /* Preview Assets.xcassets */; };
+		5036A2E327FE0CB300BEE804 /* Preview.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5036A2E227FE0CB300BEE804 /* Preview.xcassets */; };
 		5036A2ED27FE0CB300BEE804 /* GRDBEXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5036A2EC27FE0CB300BEE804 /* GRDBEXTests.swift */; };
 		5036A30727FE0D9E00BEE804 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 5036A30627FE0D9E00BEE804 /* GRDB */; };
 		5036A30927FF1A0800BEE804 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5036A30827FF1A0800BEE804 /* Todo.swift */; };
 		5036A30B27FF1A2400BEE804 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5036A30A27FF1A2400BEE804 /* Database.swift */; };
-		509984EC27FF2190005663B8 /* TodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509984EB27FF2190005663B8 /* TodoView.swift */; };
-		509984EE27FF345C005663B8 /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509984ED27FF345C005663B8 /* TodoViewModel.swift */; };
+		509952BB27FF4F44004AEEAB /* SubTodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509952BA27FF4F44004AEEAB /* SubTodo.swift */; };
+		509952C427FF612B004AEEAB /* SubTodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509952C327FF612B004AEEAB /* SubTodoListView.swift */; };
+		509952C627FF6158004AEEAB /* SubTodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509952C527FF6158004AEEAB /* SubTodoListViewModel.swift */; };
+		509984EC27FF2190005663B8 /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509984EB27FF2190005663B8 /* TodoListView.swift */; };
+		509984EE27FF345C005663B8 /* TodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509984ED27FF345C005663B8 /* TodoListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,13 +35,16 @@
 		5036A2D827FE0CB200BEE804 /* GRDBEX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GRDBEX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5036A2DB27FE0CB200BEE804 /* GRDBEXApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRDBEXApp.swift; sourceTree = "<group>"; };
 		5036A2DF27FE0CB300BEE804 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5036A2E227FE0CB300BEE804 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5036A2E227FE0CB300BEE804 /* Preview.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Preview.xcassets; sourceTree = "<group>"; };
 		5036A2E827FE0CB300BEE804 /* GRDBEXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GRDBEXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5036A2EC27FE0CB300BEE804 /* GRDBEXTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRDBEXTests.swift; sourceTree = "<group>"; };
 		5036A30827FF1A0800BEE804 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		5036A30A27FF1A2400BEE804 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
-		509984EB27FF2190005663B8 /* TodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoView.swift; sourceTree = "<group>"; };
-		509984ED27FF345C005663B8 /* TodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewModel.swift; sourceTree = "<group>"; };
+		509952BA27FF4F44004AEEAB /* SubTodo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTodo.swift; sourceTree = "<group>"; };
+		509952C327FF612B004AEEAB /* SubTodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTodoListView.swift; sourceTree = "<group>"; };
+		509952C527FF6158004AEEAB /* SubTodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTodoListViewModel.swift; sourceTree = "<group>"; };
+		509984EB27FF2190005663B8 /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
+		509984ED27FF345C005663B8 /* TodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,23 +87,12 @@
 		5036A2DA27FE0CB200BEE804 /* GRDBEX */ = {
 			isa = PBXGroup;
 			children = (
-				5036A2DB27FE0CB200BEE804 /* GRDBEXApp.swift */,
-				5036A30A27FF1A2400BEE804 /* Database.swift */,
-				5036A30827FF1A0800BEE804 /* Todo.swift */,
-				509984EB27FF2190005663B8 /* TodoView.swift */,
-				509984ED27FF345C005663B8 /* TodoViewModel.swift */,
-				5036A2DF27FE0CB300BEE804 /* Assets.xcassets */,
-				5036A2E127FE0CB300BEE804 /* Preview Content */,
+				509952BD27FF6086004AEEAB /* App */,
+				509952BE27FF608B004AEEAB /* Database */,
+				509952BC27FF6079004AEEAB /* Models */,
+				509952BF27FF6092004AEEAB /* Views */,
 			);
 			path = GRDBEX;
-			sourceTree = "<group>";
-		};
-		5036A2E127FE0CB300BEE804 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				5036A2E227FE0CB300BEE804 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		5036A2EB27FE0CB300BEE804 /* GRDBEXTests */ = {
@@ -106,6 +101,68 @@
 				5036A2EC27FE0CB300BEE804 /* GRDBEXTests.swift */,
 			);
 			path = GRDBEXTests;
+			sourceTree = "<group>";
+		};
+		509952BC27FF6079004AEEAB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5036A30827FF1A0800BEE804 /* Todo.swift */,
+				509952BA27FF4F44004AEEAB /* SubTodo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		509952BD27FF6086004AEEAB /* App */ = {
+			isa = PBXGroup;
+			children = (
+				5036A2DB27FE0CB200BEE804 /* GRDBEXApp.swift */,
+				509952C127FF60AF004AEEAB /* Assets */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		509952BE27FF608B004AEEAB /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				5036A30A27FF1A2400BEE804 /* Database.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		509952BF27FF6092004AEEAB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				509952C027FF609A004AEEAB /* TodoList */,
+				509952C227FF610C004AEEAB /* SubTodoList */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		509952C027FF609A004AEEAB /* TodoList */ = {
+			isa = PBXGroup;
+			children = (
+				509984EB27FF2190005663B8 /* TodoListView.swift */,
+				509984ED27FF345C005663B8 /* TodoListViewModel.swift */,
+			);
+			path = TodoList;
+			sourceTree = "<group>";
+		};
+		509952C127FF60AF004AEEAB /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				5036A2DF27FE0CB300BEE804 /* Assets.xcassets */,
+				5036A2E227FE0CB300BEE804 /* Preview.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		509952C227FF610C004AEEAB /* SubTodoList */ = {
+			isa = PBXGroup;
+			children = (
+				509952C327FF612B004AEEAB /* SubTodoListView.swift */,
+				509952C527FF6158004AEEAB /* SubTodoListViewModel.swift */,
+			);
+			path = SubTodoList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,7 +252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5036A2E327FE0CB300BEE804 /* Preview Assets.xcassets in Resources */,
+				5036A2E327FE0CB300BEE804 /* Preview.xcassets in Resources */,
 				5036A2E027FE0CB300BEE804 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,8 +273,11 @@
 			files = (
 				5036A30927FF1A0800BEE804 /* Todo.swift in Sources */,
 				5036A30B27FF1A2400BEE804 /* Database.swift in Sources */,
-				509984EC27FF2190005663B8 /* TodoView.swift in Sources */,
-				509984EE27FF345C005663B8 /* TodoViewModel.swift in Sources */,
+				509952C427FF612B004AEEAB /* SubTodoListView.swift in Sources */,
+				509984EC27FF2190005663B8 /* TodoListView.swift in Sources */,
+				509984EE27FF345C005663B8 /* TodoListViewModel.swift in Sources */,
+				509952C627FF6158004AEEAB /* SubTodoListViewModel.swift in Sources */,
+				509952BB27FF4F44004AEEAB /* SubTodo.swift in Sources */,
 				5036A2DC27FE0CB200BEE804 /* GRDBEXApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,7 +422,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"GRDBEX/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"GRDBEX/App/Assets\"";
 				DEVELOPMENT_TEAM = 65UTX76JJY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -392,7 +452,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"GRDBEX/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"GRDBEX/App/Assets\"";
 				DEVELOPMENT_TEAM = 65UTX76JJY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

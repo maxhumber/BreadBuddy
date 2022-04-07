@@ -4,7 +4,7 @@ import SwiftUI
 struct GRDBEXApp: App {
     var body: some Scene {
         WindowGroup {
-            TodoView()
+            TodoListView()
         }
     }
 }

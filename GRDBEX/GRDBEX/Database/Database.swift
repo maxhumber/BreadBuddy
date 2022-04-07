@@ -21,9 +21,25 @@ extension Database {
         #if DEBUG
         migrator.eraseDatabaseOnSchemaChange = true
         #endif
+        // initial database setup
         migrator.registerMigration("createTodo") { db in
             try db.create(table: "todo") { table in
                 table.autoIncrementedPrimaryKey("id")
+                table.column("label", .text).notNull()
+                table.column("completed", .boolean).notNull()
+            }
+        }
+        // add subtodo structure
+        migrator.registerMigration("subTodo") { db in
+            try db.alter(table: "todo") { table in
+                table.drop(column: "completed")
+            }
+            try db.create(table: "subTodo") { table in
+                table.autoIncrementedPrimaryKey("id")
+                table.column("todoId", .integer)
+                    .notNull()
+                    .indexed()
+                    .references("todo", onDelete: .cascade)
                 table.column("label", .text).notNull()
                 table.column("completed", .boolean).notNull()
             }
@@ -61,6 +77,13 @@ extension Database {
 }
 
 extension Database {
+    func todoPublisher() -> AnyPublisher<[Todo], Error> {
+        ValueObservation
+            .tracking(Todo.fetchAll)
+            .publisher(in: reader, scheduling: .immediate)
+            .eraseToAnyPublisher()
+    }
+    
     func save(_ todo: inout Todo) async throws {
         todo = try await writer.write { [todo] db in
             try todo.saved(db)
@@ -73,16 +96,38 @@ extension Database {
         }
     }
     
-    func todoPublisher() -> AnyPublisher<[Todo], Error> {
-        ValueObservation.tracking(Todo.fetchAll)
-            .publisher(in: reader, scheduling: .immediate)
-            .eraseToAnyPublisher()
-    }
-    
     func delete(_ todo: Todo) async throws {
         guard let id = todo.id else { return }
         try await writer.write { db in
             _ = try Todo.deleteAll(db, ids: [id])
+        }
+    }
+    
+    func subTodoPublisher(for todo: Todo) -> AnyPublisher<[SubTodo], Error> {
+        ValueObservation
+            .tracking { db in
+                try todo.subTodos.fetchAll(db)
+            }
+            .publisher(in: reader, scheduling: .immediate)
+            .eraseToAnyPublisher()
+    }
+    
+    func save(_ subTodo: inout SubTodo) async throws {
+        subTodo = try await writer.write { [subTodo] db in
+            try subTodo.saved(db)
+        }
+    }
+    
+    func update(_ subTodo: SubTodo) async throws {
+        try await writer.write { [subTodo] db in
+            _ = try subTodo.saved(db)
+        }
+    }
+    
+    func delete(_ subTodo: SubTodo) async throws {
+        guard let id = subTodo.id else { return }
+        try await writer.write { db in
+            _ = try SubTodo.deleteAll(db, ids: [id])
         }
     }
 }

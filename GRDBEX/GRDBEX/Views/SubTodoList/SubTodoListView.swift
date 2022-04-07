@@ -1,11 +1,11 @@
 import SwiftUI
 import Combine
 
-struct TodoView: View {
-    @StateObject var viewModel: TodoViewModel
+struct SubTodoListView: View {
+    @StateObject var viewModel: SubTodoListViewModel
     
-    init() {
-        _viewModel = StateObject(wrappedValue: .init())
+    init(todo: Todo, database: Database = .shared) {
+        _viewModel = StateObject(wrappedValue: .init(todo: todo, database: .shared))
     }
     
     var body: some View {
@@ -15,24 +15,24 @@ struct TodoView: View {
             } label: {
                 Text("Add")
             }
-            List($viewModel.todos) { $todo in
+            List($viewModel.subTodos) { $subTodo in
                 HStack {
                     Button {
-                        var todo = todo
-                        todo.completed.toggle()
-                        viewModel.update(todo)
+                        var subTodo = subTodo
+                        subTodo.completed.toggle()
+                        viewModel.update(subTodo)
                     } label: {
-                        Image(systemName: todo.completed ? "checkmark.circle" : "circle")
+                        Image(systemName: subTodo.completed ? "checkmark.circle" : "circle")
                     }
                     .buttonStyle(.plain)
                     .foregroundColor(.blue)
-                    TextField("", text: $todo.label)
+                    TextField("", text: $subTodo.label)
                         .onSubmit {
-                            viewModel.update(todo)
+                            viewModel.update(subTodo)
                         }
                     Spacer()
                     Button {
-                        viewModel.delete(todo)
+                        viewModel.delete(subTodo)
                     } label: {
                         Image(systemName: "xmark")
                     }
@@ -41,11 +41,5 @@ struct TodoView: View {
                 }
             }
         }
-    }
-}
-
-struct TodoView_Previews: PreviewProvider {
-    static var previews: some View {
-        TodoView()
     }
 }
