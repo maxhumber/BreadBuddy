@@ -1,6 +1,5 @@
 ### TODO
 - Add above/below functionality
-- Delete functionality
 - Schedule all notifications (for step times)
 - Icon/Logo
 - Make it cute
