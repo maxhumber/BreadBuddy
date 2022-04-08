@@ -26,10 +26,13 @@ struct SubTodoListView: View {
                     }
                     .buttonStyle(.plain)
                     .foregroundColor(.blue)
-                    TextField("", text: $subTodo.label)
-                        .onSubmit {
-                            viewModel.update(subTodo)
+                    HStack {
+                        TextField("", text: $subTodo.label)
+                            .onSubmit {
+                                viewModel.update(subTodo)
                         }
+                        Text(subTodo.steps.map({String($0)}).joined(separator: ","))
+                    }
                     Spacer()
                     Button {
                         viewModel.delete(subTodo)

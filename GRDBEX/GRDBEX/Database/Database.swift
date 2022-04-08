@@ -57,6 +57,11 @@ extension Database {
                 table.add(column: "dateModified", .datetime)
             }
         }
+        migrator.registerMigration("addSteps") { db in
+            try db.alter(table: "subTodo") { table in
+                table.add(column: "steps", .blob)
+            }
+        }
         return migrator
     }
 }
