@@ -28,13 +28,15 @@ import Combine
     func save() {
         Task {
             let string = String(UUID().uuidString.prefix(6))
-            var subTodo = SubTodo(todoId: todo.id, label: string, completed: false)
+            var subTodo = SubTodo(todoId: todo.id, label: string, completed: false, dateCreated: Date())
             try await database.save(&subTodo)
         }
     }
     
     func update(_ subTodo: SubTodo) {
         Task {
+            var subTodo = subTodo
+            subTodo.dateModified = Date()
             try? await database.update(subTodo)
         }
     }

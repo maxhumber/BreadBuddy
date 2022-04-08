@@ -54,7 +54,7 @@ struct TodoListView: View {
         }
     }
     
-    private func color(for priority: Todo.Priority?) -> Color {
+    private func color(for priority: Priority?) -> Color {
         guard let priority = priority else { return .black }
         switch priority {
         case .low: return .green

@@ -5,17 +5,9 @@ struct Todo {
     var id: Int64?
     var label: String
     var priority: Priority?
+    var dateCreated: Date?
+    var dateModified: Date?
 }
-
-extension Todo {
-    enum Priority: String, Codable, CaseIterable {
-        case low
-        case medium
-        case high
-    }
-}
-
-extension Todo.Priority: DatabaseValueConvertible {}
 
 extension Todo: Codable, Equatable, Identifiable {}
 

@@ -6,6 +6,18 @@ struct SubTodo {
     var todoId: Int64?
     var label: String
     var completed: Bool
+    var dateCreated: Date?
+    var dateModified: Date?
+}
+
+extension SubTodo {
+    init(todoId: Int64, label: String, completed: Bool, dateCreated: Date) {
+        self.todoId = todoId
+        self.label = label
+        self.completed = completed
+        self.dateCreated = dateCreated
+        self.dateModified = dateCreated
+    }
 }
 
 extension SubTodo: Identifiable, Codable, Equatable {}

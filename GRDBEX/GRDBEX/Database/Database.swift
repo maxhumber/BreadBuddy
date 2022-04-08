@@ -47,6 +47,16 @@ extension Database {
                 table.add(column: "priority", .text)
             }
         }
+        migrator.registerMigration("addDates") { db in
+            try db.alter(table: "todo") { table in
+                table.add(column: "dateCreated", .datetime)
+                table.add(column: "dateModified", .datetime)
+            }
+            try db.alter(table: "subTodo") { table in
+                table.add(column: "dateCreated", .datetime)
+                table.add(column: "dateModified", .datetime)
+            }
+        }
         return migrator
     }
 }

@@ -26,14 +26,16 @@ import Combine
     func save() {
         Task {
             let string = String(UUID().uuidString.prefix(6))
-            let priority = Todo.Priority.allCases.randomElement()!
-            var todo = Todo(label: string, priority: priority)
+            let priority = Priority.allCases.randomElement()!
+            var todo = Todo(label: string, priority: priority, dateCreated: Date(), dateModified: Date())
             try await database.save(&todo)
         }
     }
     
     func update(_ todo: Todo) {
         Task {
+            var todo = todo
+            todo.dateModified = Date()
             try? await database.update(todo)
         }
     }

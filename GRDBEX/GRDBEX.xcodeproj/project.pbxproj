@@ -17,6 +17,7 @@
 		509952BB27FF4F44004AEEAB /* SubTodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509952BA27FF4F44004AEEAB /* SubTodo.swift */; };
 		509952C427FF612B004AEEAB /* SubTodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509952C327FF612B004AEEAB /* SubTodoListView.swift */; };
 		509952C627FF6158004AEEAB /* SubTodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509952C527FF6158004AEEAB /* SubTodoListViewModel.swift */; };
+		509952C827FF7A2A004AEEAB /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509952C727FF7A2A004AEEAB /* Priority.swift */; };
 		509984EC27FF2190005663B8 /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509984EB27FF2190005663B8 /* TodoListView.swift */; };
 		509984EE27FF345C005663B8 /* TodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509984ED27FF345C005663B8 /* TodoListViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -43,6 +44,7 @@
 		509952BA27FF4F44004AEEAB /* SubTodo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTodo.swift; sourceTree = "<group>"; };
 		509952C327FF612B004AEEAB /* SubTodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTodoListView.swift; sourceTree = "<group>"; };
 		509952C527FF6158004AEEAB /* SubTodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTodoListViewModel.swift; sourceTree = "<group>"; };
+		509952C727FF7A2A004AEEAB /* Priority.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Priority.swift; sourceTree = "<group>"; };
 		509984EB27FF2190005663B8 /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
 		509984ED27FF345C005663B8 /* TodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				5036A30827FF1A0800BEE804 /* Todo.swift */,
+				509952C727FF7A2A004AEEAB /* Priority.swift */,
 				509952BA27FF4F44004AEEAB /* SubTodo.swift */,
 			);
 			path = Models;
@@ -279,6 +282,7 @@
 				509952C627FF6158004AEEAB /* SubTodoListViewModel.swift in Sources */,
 				509952BB27FF4F44004AEEAB /* SubTodo.swift in Sources */,
 				5036A2DC27FE0CB200BEE804 /* GRDBEXApp.swift in Sources */,
+				509952C827FF7A2A004AEEAB /* Priority.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
