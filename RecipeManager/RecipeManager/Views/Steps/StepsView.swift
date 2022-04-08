@@ -1,13 +1,32 @@
 import SwiftUI
 
 struct StepsView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    @StateObject var viewModel: StepsViewModel
+    
+    init(recipe: Recipe, database: Database = .shared) {
+        _viewModel = StateObject(wrappedValue: .init(recipe: recipe, database: database))
     }
-}
-
-struct StepsView_Previews: PreviewProvider {
-    static var previews: some View {
-        StepsView()
+    
+    var body: some View {
+        NavigationView {
+            content
+                .navigationBarHidden(true)
+        }
+    }
+    
+    private var content: some View {
+        VStack {
+            Button {
+                viewModel.save()
+            } label: {
+                Text("Add Step")
+            }
+            List($viewModel.recipe.steps) { $step in
+                TextField("", text: $step.description)
+                    .onSubmit {
+                        viewModel.update()
+                    }
+            }
+        }
     }
 }

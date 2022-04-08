@@ -16,10 +16,10 @@ import Combine
     func save() {
         Task {
             var updatedRecipe = self.recipe
-            if step.timeInMinutes != 0 {
-                updatedRecipe.steps.append(step)
-                step = .init()
-            }
+//            if step.timeInMinutes != 0 {
+            updatedRecipe.steps.append(step)
+            self.step = .init()
+//            }
             self.recipe = updatedRecipe
             try await database.save(&updatedRecipe)
         }

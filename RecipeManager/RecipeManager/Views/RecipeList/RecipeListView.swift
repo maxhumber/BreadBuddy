@@ -23,7 +23,7 @@ struct RecipeListView: View {
             }
             List($viewModel.recipes) { $recipe in
                 NavigationLink {
-                    EmptyView()
+                    StepsView(recipe: recipe, database: .shared)
                 } label: {
                     HStack {
                         TextField("", text: $recipe.name)
