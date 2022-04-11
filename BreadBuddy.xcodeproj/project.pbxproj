@@ -28,8 +28,8 @@
 		504D3C2A27E017B300C95123 /* BreadBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D3C2927E017B300C95123 /* BreadBuddyTests.swift */; };
 		509953192800CB09004AEEAB /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 509953182800CB09004AEEAB /* GRDB */; };
 		5099531D2800CBFA004AEEAB /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099531C2800CBFA004AEEAB /* Database.swift */; };
-		509953202800CC60004AEEAB /* RecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099531F2800CC60004AEEAB /* RecipesView.swift */; };
-		509953222800CC6F004AEEAB /* RecipesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509953212800CC6F004AEEAB /* RecipesViewModel.swift */; };
+		509953202800CC60004AEEAB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099531F2800CC60004AEEAB /* HomeView.swift */; };
+		509953222800CC6F004AEEAB /* HomeView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509953212800CC6F004AEEAB /* HomeView+ViewModel.swift */; };
 		50DCF1DD27F781CF00D0A369 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DCF1DC27F781CF00D0A369 /* Row.swift */; };
 		50DCF1E127FB345C00D0A369 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DCF1E027FB345C00D0A369 /* Step.swift */; };
 		50E020352804B1A000440979 /* Row+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E020342804B1A000440979 /* Row+ViewModel.swift */; };
@@ -69,8 +69,8 @@
 		504D3C2527E017B300C95123 /* BreadBuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BreadBuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		504D3C2927E017B300C95123 /* BreadBuddyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadBuddyTests.swift; sourceTree = "<group>"; };
 		5099531C2800CBFA004AEEAB /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
-		5099531F2800CC60004AEEAB /* RecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesView.swift; sourceTree = "<group>"; };
-		509953212800CC6F004AEEAB /* RecipesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesViewModel.swift; sourceTree = "<group>"; };
+		5099531F2800CC60004AEEAB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		509953212800CC6F004AEEAB /* HomeView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeView+ViewModel.swift"; sourceTree = "<group>"; };
 		50DCF1DC27F781CF00D0A369 /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
 		50DCF1E027FB345C00D0A369 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		50E020342804B1A000440979 /* Row+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Row+ViewModel.swift"; sourceTree = "<group>"; };
@@ -164,13 +164,13 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
-		5099531E2800CC44004AEEAB /* Recipes */ = {
+		5099531E2800CC44004AEEAB /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				5099531F2800CC60004AEEAB /* RecipesView.swift */,
-				509953212800CC6F004AEEAB /* RecipesViewModel.swift */,
+				5099531F2800CC60004AEEAB /* HomeView.swift */,
+				509953212800CC6F004AEEAB /* HomeView+ViewModel.swift */,
 			);
-			path = Recipes;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		50B6A4C927FDD63600A1F834 /* Steps */ = {
@@ -197,7 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				50DCF1DE27FB341000D0A369 /* Components */,
-				5099531E2800CC44004AEEAB /* Recipes */,
+				5099531E2800CC44004AEEAB /* Home */,
 				50B6A4C927FDD63600A1F834 /* Steps */,
 				5099531A2800CBB9004AEEAB /* Experiments */,
 			);
@@ -358,7 +358,7 @@
 			files = (
 				5032A6B627FB47610031501D /* StepsViewModel.swift in Sources */,
 				5032A6B827FB57D40031501D /* DatePickerField.swift in Sources */,
-				509953202800CC60004AEEAB /* RecipesView.swift in Sources */,
+				509953202800CC60004AEEAB /* HomeView.swift in Sources */,
 				50DCF1DD27F781CF00D0A369 /* Row.swift in Sources */,
 				504D3C1B27E017B200C95123 /* StepsView.swift in Sources */,
 				50DCF1E127FB345C00D0A369 /* Step.swift in Sources */,
@@ -370,7 +370,7 @@
 				5032A6C127FC786E0031501D /* UIApplication+sendResignAction.swift in Sources */,
 				5032A6BF27FC78520031501D /* View+dismissKeyboard.swift in Sources */,
 				5032A6BD27FB699B0031501D /* TimeUnit.swift in Sources */,
-				509953222800CC6F004AEEAB /* RecipesViewModel.swift in Sources */,
+				509953222800CC6F004AEEAB /* HomeView+ViewModel.swift in Sources */,
 				5036A2C827FDF46700BEE804 /* View+dynamicBorder.swift in Sources */,
 				504D3C1927E017B200C95123 /* BreadBuddyApp.swift in Sources */,
 				50E020372804B2FF00440979 /* Row+Field.swift in Sources */,

@@ -4,7 +4,7 @@ import SwiftUI
 struct BreadBuddyApp: App {
     var body: some Scene {
         WindowGroup {
-            RecipesView()
+            HomeView()
         }
     }
 }

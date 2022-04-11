@@ -1,10 +1,14 @@
 import SwiftUI
 
 public struct Row: View {
-    @EnvironmentObject private var stepsViewModel: StepsViewModel
     @StateObject var viewModel: ViewModel
+    @EnvironmentObject private var stepsViewModel: StepsViewModel
     @FocusState private var field: Field?
     @Environment(\.editMode) private var editMode
+    
+    init(for step: Step, in recipe: Recipe) {
+        _viewModel = StateObject(wrappedValue: .init(for: step, in: recipe))
+    }
     
     private var isEditing: Bool {
         editMode?.wrappedValue == .active
@@ -14,15 +18,11 @@ public struct Row: View {
         !isEditing
     }
     
-    init(for step: Step) {
-        _viewModel = StateObject(wrappedValue: .init(step))
-    }
-
     public var body: some View {
         content
             .onChange(of: field) { field in
                 if field == .none {
-                    print("focus field:")
+                    #warning("save")
                 }
             }
     }
@@ -166,14 +166,16 @@ struct Row_Previews: PreviewProvider {
     }
     
     struct Preview: View {
+        @State var recipe: Recipe = .preview
         @State var step: Step = .preview
         
         var body: some View {
             VStack(spacing: 20) {
-                Row(for: step)
+                Row(for: step, in: recipe)
                     .environment(\.editMode, .constant(.active))
-                Row(for: step)
+                Row(for: step, in: recipe)
                     .environment(\.editMode, .constant(.inactive))
+                Spacer()
             }
             .environmentObject(StepsViewModel(recipe: .preview))
         }

@@ -1,11 +1,15 @@
 import SwiftUI
+import Combine
 
 struct StepsView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.editMode) private var editMode
     @StateObject var viewModel: StepsViewModel
+    
+    private let database: Database = .shared
+    private var cancellables = Set<AnyCancellable>()
 
-    init(recipe: Recipe, date: Date? = nil) {
+    init(recipe: Recipe = .init(), date: Date? = nil) {
         let viewModel = StepsViewModel(recipe: recipe, date: date)
         _viewModel = StateObject(wrappedValue: viewModel)
     }
@@ -74,19 +78,9 @@ struct StepsView: View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 20) {
                 ForEach($viewModel.recipe.steps) { $step in
-                    Row(for: step)
-//                    {
-//                        viewModel.refresh()
-//                    } onDelete: {
-//                        viewModel.recipe.steps.removeAll(where: { $0 == step })
-//                    }
+                    Row(for: step, in: viewModel.recipe)
                 }
-                Row(for: viewModel.step)
-//                {
-//                    viewModel.add()
-//                } onDelete: {
-//                    print("onDelete!!")
-//                }
+                Row(for: viewModel.step, in: viewModel.recipe)
                 .if(!isEditing) {
                     $0.opacity(0)
                 }

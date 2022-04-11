@@ -4,9 +4,14 @@ import Foundation
 extension Row {
     final class ViewModel: ObservableObject {
         @Published var step: Step
+        @Published var recipe: Recipe
         
-        init(_ step: Step) {
+        private let database: Database = .shared
+        private var cancellables = Set<AnyCancellable>()
+        
+        init(for step: Step, in recipe: Recipe) {
             self.step = step
+            self.recipe = recipe
         }
         
         var timeInputFieldOpacity: Double {
@@ -39,7 +44,17 @@ extension Row {
         }
         
         func save() {
-            
+            Task {
+                
+            }
+        }
+        
+        func update(_ recipe: Recipe) {
+            Task {
+                var recipe = recipe
+                recipe.dateModified = Date()
+                try await database.save(&recipe)
+            }
         }
     }
 }
