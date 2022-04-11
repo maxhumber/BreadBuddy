@@ -18,9 +18,3 @@ extension TimeUnit: Identifiable {
         rawValue
     }
 }
-
-extension TimeUnit {
-    func label(for value: Double) -> String {
-        value == 1 ? String(rawValue.dropLast()) : rawValue
-    }
-}
