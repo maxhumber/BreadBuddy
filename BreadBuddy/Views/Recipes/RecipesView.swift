@@ -2,6 +2,7 @@ import SwiftUI
 
 struct RecipesView: View {
     @StateObject var viewModel: RecipesViewModel
+    @State var addViewIsPresented = false
     
     init(database: Database = .shared) {
         _viewModel = StateObject(wrappedValue: .init(database))
@@ -16,32 +17,34 @@ struct RecipesView: View {
     
     private var content: some View {
         VStack {
-            Button {
-                viewModel.save()
-            } label: {
-                Text("Add")
-            }
+            header
             List($viewModel.recipes) { $recipe in
                 NavigationLink {
                     StepsView(recipe: recipe)
                 } label: {
-                    HStack {
-                        TextField("", text: $recipe.name)
-                            .onSubmit {
-                                viewModel.update(recipe)
-                            }
-                        Spacer()
-                        Button {
-                            viewModel.delete(recipe)
-                        } label: {
-                            Image(systemName: "xmark")
-                        }
-                        .buttonStyle(.plain)
-                        .foregroundColor(.red)
-                    }
+                    Text(recipe.name)
                 }
             }
+            .listStyle(.plain)
         }
+        .fullScreenCover(isPresented: $addViewIsPresented) {
+            StepsView(recipe: Recipe())
+        }
+    }
+    
+    private var header: some View {
+        ZStack {
+            HStack {
+                Spacer()
+                Button {
+                    addViewIsPresented = true
+                } label: {
+                    Image(systemName: "plus")
+                }
+            }
+            Text("Recipes")
+        }
+        .padding()
     }
 }
 
