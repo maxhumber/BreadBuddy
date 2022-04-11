@@ -36,7 +36,7 @@ extension Recipe: MutablePersistableRecord {
 
 extension Recipe {
     static let preview = Recipe(
-        name: "King Arthur Recipe",
+        name: "King Arthur's Baguette",
         note: "https://www.kingarthurbaking.com/recipes/sourdough-baguettes-recipe",
         steps: [
             Step(description: "Mix ingredients", timeInMinutes: 5, timeUnitPreferrence: .minutes),

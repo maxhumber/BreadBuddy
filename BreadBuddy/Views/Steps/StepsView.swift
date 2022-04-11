@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct StepsView: View {
+    @Environment(\.dismiss) private var dismiss
     @Environment(\.editMode) private var editMode
     @StateObject var viewModel: ViewModel
 
@@ -15,6 +16,7 @@ struct StepsView: View {
 
     var body: some View {
         content
+            .navigationBarHidden(true)
             .dismissKeyboard()
             .onAppear {
                 viewModel.refresh()
@@ -38,7 +40,7 @@ struct StepsView: View {
             recipeNameField
             HStack {
                 Button {
-
+                    dismiss()
                 } label: {
                     Image(systemName: "chevron.left")
                 }

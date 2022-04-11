@@ -2,21 +2,39 @@ import Combine
 import Foundation
 
 final class ViewModel: ObservableObject {
+    private let database: Database
+    private var cancellables = Set<AnyCancellable>()
     @Published var recipe: Recipe
     @Published var date: Date
     @Published var step: Step = .init()
 
-    init(recipe: Recipe, date: Date? = nil) {
+    init(recipe: Recipe, date: Date? = nil, database: Database = .shared) {
         self.recipe = recipe
         let nextSunday = Date().next(.sunday)?.withAdded(hours: 15)
         self.date = date ?? nextSunday ?? Date()
+        self.database = database
     }
 
     @MainActor func add() {
-        if step.timeInMinutes != 0 {
-            recipe.steps.append(step)
-            step = .init()
+        Task {
+            var updatedRecipe = self.recipe
+            if step.timeInMinutes != 0 {
+                updatedRecipe.steps.append(step)
+                step = .init()
+
+                self.recipe = updatedRecipe
+            }
             refresh()
+            try await database.save(&updatedRecipe)
+        }
+    }
+    
+    func update() {
+        Task {
+            var updatedRecipe = self.recipe
+            updatedRecipe.dateModified = Date()
+            self.recipe = updatedRecipe
+            try await database.save(&updatedRecipe)
         }
     }
 
@@ -27,7 +45,7 @@ final class ViewModel: ObservableObject {
     @MainActor func refresh() {
         var currentTime = date
         for step in recipe.steps.reversed() {
-            #warning("need to fix this")
+            #warning("need to fix this??")
             switch step.timeUnitPreferrence {
             case .minutes:
                 currentTime = currentTime.withAdded(minutes: -Double(step.timeInMinutes))
@@ -42,41 +60,3 @@ final class ViewModel: ObservableObject {
         }
     }
 }
-
-
-#warning("to implement")
-@MainActor final class StepsViewModel: ObservableObject {
-    private let database: Database
-    private var cancellables = Set<AnyCancellable>()
-    @Published var recipe: Recipe
-    @Published var step: Step
-
-    init(recipe: Recipe, database: Database = .shared) {
-        self.recipe = recipe
-        self.database = database
-        self.step = .init()
-    }
-
-    func save() {
-        Task {
-            var updatedRecipe = self.recipe
-            //            if step.timeInMinutes != 0 {
-            updatedRecipe.steps.append(step)
-            self.step = .init()
-            //            }
-            self.recipe = updatedRecipe
-            try await database.save(&updatedRecipe)
-        }
-    }
-
-    func update() {
-        Task {
-            var updatedRecipe = self.recipe
-            updatedRecipe.dateModified = Date()
-            self.recipe = updatedRecipe
-            try await database.save(&updatedRecipe)
-        }
-    }
-}
-
-
