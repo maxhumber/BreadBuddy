@@ -34,3 +34,18 @@ extension Recipe: MutablePersistableRecord {
     }
 }
 
+extension Recipe {
+    static let preview = Recipe(
+        name: "King Arthur Recipe",
+        note: "https://www.kingarthurbaking.com/recipes/sourdough-baguettes-recipe",
+        steps: [
+            Step(description: "Mix ingredients", timeInMinutes: 5, timeUnitPreferrence: .minutes),
+            Step(description: "Knead the dough", timeInMinutes: 10, timeUnitPreferrence: .minutes),
+            Step(description: "Bulk rise", timeInMinutes: 90, timeUnitPreferrence: .minutes),
+            Step(description: "Divide and shape", timeInMinutes: 15, timeUnitPreferrence: .minutes),
+            Step(description: "Second rise", timeInMinutes: 2, timeUnitPreferrence: .hours),
+            Step(description: "Bake", timeInMinutes: 25, timeUnitPreferrence: .minutes),
+            Step(description: "Cool", timeInMinutes: 1, timeUnitPreferrence: .hours)
+        ]
+    )
+}
