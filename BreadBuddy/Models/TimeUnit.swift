@@ -1,17 +1,26 @@
 import Foundation
+import GRDB
 
-enum TimeUnit: String, CaseIterable {
-    case minutes = "Minutes"
-    case hours = "Hours"
-    case days = "Days"
-
-    func label(for value: Double) -> String {
-        value == 1 ? String(rawValue.dropLast()) : rawValue
-    }
+enum TimeUnit: String {
+    case minutes = "minutes"
+    case hours = "hours"
+    case days = "days"
 }
+
+extension TimeUnit: Codable {}
+
+extension TimeUnit: CaseIterable {}
+
+extension TimeUnit: DatabaseValueConvertible {}
 
 extension TimeUnit: Identifiable {
     var id: String {
         rawValue
+    }
+}
+
+extension TimeUnit {
+    func label(for value: Double) -> String {
+        value == 1 ? String(rawValue.dropLast()) : rawValue
     }
 }

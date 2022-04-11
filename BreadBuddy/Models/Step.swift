@@ -1,20 +1,31 @@
 import Foundation
 
 struct Step {
-    var id: UUID = .init()
-    var description: String = ""
-    var timeValue: TimeInterval = 0
-    var timeUnit: TimeUnit = .minutes
-    var date: Date?
+    var id: UUID
+    var description: String
+    var timeInMinutes: Int
+    var timeUnitPreferrence: TimeUnit
+    var timeStart: Date?
 }
 
 extension Step {
-    var isInPast: Bool {
-        guard let date = date else { return false }
-        return date < Date()
+    init(description: String = "", timeInMinutes: Int = 0, timeUnitPreferrence: TimeUnit = .hours) {
+        self.id = .init()
+        self.description = description
+        self.timeInMinutes = timeInMinutes
+        self.timeUnitPreferrence = timeUnitPreferrence
     }
 }
 
 extension Step: Identifiable {}
 
 extension Step: Equatable {}
+
+extension Step: Codable {}
+
+extension Step {
+    var timeStartIsPast: Bool {
+        guard let date = timeStart else { return false }
+        return date < Date()
+    }
+}

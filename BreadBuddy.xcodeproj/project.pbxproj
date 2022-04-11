@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5032A6B627FB47610031501D /* TimeView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6B527FB47610031501D /* TimeView+ViewModel.swift */; };
+		5032A6B627FB47610031501D /* StepsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6B527FB47610031501D /* StepsViewModel.swift */; };
 		5032A6B827FB57D40031501D /* DatePickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6B727FB57D40031501D /* DatePickerField.swift */; };
 		5032A6BB27FB69500031501D /* Date+string.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6BA27FB69500031501D /* Date+string.swift */; };
 		5032A6BD27FB699B0031501D /* TimeUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6BC27FB699B0031501D /* TimeUnit.swift */; };
@@ -20,13 +20,16 @@
 		5032A6CB27FCC85C0031501D /* NumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6CA27FCC85C0031501D /* NumberField.swift */; };
 		5032A6CD27FCCB9B0031501D /* Formatter+number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6CC27FCCB9B0031501D /* Formatter+number.swift */; };
 		5036A2C827FDF46700BEE804 /* View+editBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5036A2C727FDF46700BEE804 /* View+editBorder.swift */; };
-		5036A2CC27FDFF0300BEE804 /* RecipeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5036A2CB27FDFF0300BEE804 /* RecipeListView.swift */; };
 		5036A2CE27FDFFD200BEE804 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5036A2CD27FDFFD200BEE804 /* Recipe.swift */; };
 		504D3C1927E017B200C95123 /* BreadBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D3C1827E017B200C95123 /* BreadBuddyApp.swift */; };
-		504D3C1B27E017B200C95123 /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D3C1A27E017B200C95123 /* TimeView.swift */; };
+		504D3C1B27E017B200C95123 /* StepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D3C1A27E017B200C95123 /* StepsView.swift */; };
 		504D3C1D27E017B300C95123 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504D3C1C27E017B300C95123 /* Assets.xcassets */; };
 		504D3C2027E017B300C95123 /* Preview.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504D3C1F27E017B300C95123 /* Preview.xcassets */; };
 		504D3C2A27E017B300C95123 /* BreadBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D3C2927E017B300C95123 /* BreadBuddyTests.swift */; };
+		509953192800CB09004AEEAB /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 509953182800CB09004AEEAB /* GRDB */; };
+		5099531D2800CBFA004AEEAB /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099531C2800CBFA004AEEAB /* Database.swift */; };
+		509953202800CC60004AEEAB /* RecipeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099531F2800CC60004AEEAB /* RecipeListView.swift */; };
+		509953222800CC6F004AEEAB /* RecipeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509953212800CC6F004AEEAB /* RecipeListViewModel.swift */; };
 		50DCF1DD27F781CF00D0A369 /* StepRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DCF1DC27F781CF00D0A369 /* StepRow.swift */; };
 		50DCF1E127FB345C00D0A369 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DCF1E027FB345C00D0A369 /* Step.swift */; };
 /* End PBXBuildFile section */
@@ -42,7 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5032A6B527FB47610031501D /* TimeView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeView+ViewModel.swift"; sourceTree = "<group>"; };
+		5032A6B527FB47610031501D /* StepsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsViewModel.swift; sourceTree = "<group>"; };
 		5032A6B727FB57D40031501D /* DatePickerField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerField.swift; sourceTree = "<group>"; };
 		5032A6BA27FB69500031501D /* Date+string.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+string.swift"; sourceTree = "<group>"; };
 		5032A6BC27FB699B0031501D /* TimeUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeUnit.swift; sourceTree = "<group>"; };
@@ -55,15 +58,17 @@
 		5032A6CA27FCC85C0031501D /* NumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberField.swift; sourceTree = "<group>"; };
 		5032A6CC27FCCB9B0031501D /* Formatter+number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+number.swift"; sourceTree = "<group>"; };
 		5036A2C727FDF46700BEE804 /* View+editBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+editBorder.swift"; sourceTree = "<group>"; };
-		5036A2CB27FDFF0300BEE804 /* RecipeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListView.swift; sourceTree = "<group>"; };
 		5036A2CD27FDFFD200BEE804 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		504D3C1527E017B200C95123 /* BreadBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreadBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		504D3C1827E017B200C95123 /* BreadBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadBuddyApp.swift; sourceTree = "<group>"; };
-		504D3C1A27E017B200C95123 /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
+		504D3C1A27E017B200C95123 /* StepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsView.swift; sourceTree = "<group>"; };
 		504D3C1C27E017B300C95123 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		504D3C1F27E017B300C95123 /* Preview.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Preview.xcassets; sourceTree = "<group>"; };
 		504D3C2527E017B300C95123 /* BreadBuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BreadBuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		504D3C2927E017B300C95123 /* BreadBuddyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadBuddyTests.swift; sourceTree = "<group>"; };
+		5099531C2800CBFA004AEEAB /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		5099531F2800CC60004AEEAB /* RecipeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListView.swift; sourceTree = "<group>"; };
+		509953212800CC6F004AEEAB /* RecipeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListViewModel.swift; sourceTree = "<group>"; };
 		50DCF1DC27F781CF00D0A369 /* StepRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepRow.swift; sourceTree = "<group>"; };
 		50DCF1E027FB345C00D0A369 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				509953192800CB09004AEEAB /* GRDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				50DCF1D827F7774300D0A369 /* App */,
+				5099531B2800CBE6004AEEAB /* Database */,
 				50DCF1DF27FB344C00D0A369 /* Models */,
 				50DCF1D927F7774E00D0A369 /* Views */,
 				5032A6B927FB58180031501D /* Extensions */,
@@ -137,15 +144,40 @@
 			path = BreadBuddyTests;
 			sourceTree = "<group>";
 		};
-		50B6A4C927FDD63600A1F834 /* Time */ = {
+		5099531A2800CBB9004AEEAB /* Experiments */ = {
+			isa = PBXGroup;
+			children = (
+				5032A6C827FC892F0031501D /* NotificationTestView.swift */,
+			);
+			path = Experiments;
+			sourceTree = "<group>";
+		};
+		5099531B2800CBE6004AEEAB /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				5099531C2800CBFA004AEEAB /* Database.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		5099531E2800CC44004AEEAB /* RecipeList */ = {
+			isa = PBXGroup;
+			children = (
+				5099531F2800CC60004AEEAB /* RecipeListView.swift */,
+				509953212800CC6F004AEEAB /* RecipeListViewModel.swift */,
+			);
+			path = RecipeList;
+			sourceTree = "<group>";
+		};
+		50B6A4C927FDD63600A1F834 /* Steps */ = {
 			isa = PBXGroup;
 			children = (
 				50DCF1DC27F781CF00D0A369 /* StepRow.swift */,
-				504D3C1A27E017B200C95123 /* TimeView.swift */,
-				5032A6B527FB47610031501D /* TimeView+ViewModel.swift */,
+				504D3C1A27E017B200C95123 /* StepsView.swift */,
+				5032A6B527FB47610031501D /* StepsViewModel.swift */,
 				5036A2C727FDF46700BEE804 /* View+editBorder.swift */,
 			);
-			path = Time;
+			path = Steps;
 			sourceTree = "<group>";
 		};
 		50DCF1D827F7774300D0A369 /* App */ = {
@@ -161,9 +193,9 @@
 			isa = PBXGroup;
 			children = (
 				50DCF1DE27FB341000D0A369 /* Components */,
-				50B6A4C927FDD63600A1F834 /* Time */,
-				5032A6C827FC892F0031501D /* NotificationTestView.swift */,
-				5036A2CB27FDFF0300BEE804 /* RecipeListView.swift */,
+				5099531E2800CC44004AEEAB /* RecipeList */,
+				50B6A4C927FDD63600A1F834 /* Steps */,
+				5099531A2800CBB9004AEEAB /* Experiments */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -220,6 +252,9 @@
 			dependencies = (
 			);
 			name = BreadBuddy;
+			packageProductDependencies = (
+				509953182800CB09004AEEAB /* GRDB */,
+			);
 			productName = BreadBuddy;
 			productReference = 504D3C1527E017B200C95123 /* BreadBuddy.app */;
 			productType = "com.apple.product-type.application";
@@ -270,6 +305,9 @@
 				Base,
 			);
 			mainGroup = 504D3C0C27E017B200C95123;
+			packageReferences = (
+				509953172800CB09004AEEAB /* XCRemoteSwiftPackageReference "GRDB.swift" */,
+			);
 			productRefGroup = 504D3C1627E017B200C95123 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -304,13 +342,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5032A6B627FB47610031501D /* TimeView+ViewModel.swift in Sources */,
+				5032A6B627FB47610031501D /* StepsViewModel.swift in Sources */,
 				5032A6B827FB57D40031501D /* DatePickerField.swift in Sources */,
+				509953202800CC60004AEEAB /* RecipeListView.swift in Sources */,
 				50DCF1DD27F781CF00D0A369 /* StepRow.swift in Sources */,
-				504D3C1B27E017B200C95123 /* TimeView.swift in Sources */,
+				504D3C1B27E017B200C95123 /* StepsView.swift in Sources */,
 				50DCF1E127FB345C00D0A369 /* Step.swift in Sources */,
 				5032A6C327FC81360031501D /* View+if.swift in Sources */,
-				5036A2CC27FDFF0300BEE804 /* RecipeListView.swift in Sources */,
 				5032A6C727FC833D0031501D /* Date+next.swift in Sources */,
 				5032A6CD27FCCB9B0031501D /* Formatter+number.swift in Sources */,
 				5032A6C527FC83280031501D /* Date+withAdded.swift in Sources */,
@@ -318,10 +356,12 @@
 				5032A6C127FC786E0031501D /* UIApplication+sendResignAction.swift in Sources */,
 				5032A6BF27FC78520031501D /* View+dismissKeyboard.swift in Sources */,
 				5032A6BD27FB699B0031501D /* TimeUnit.swift in Sources */,
+				509953222800CC6F004AEEAB /* RecipeListViewModel.swift in Sources */,
 				5036A2C827FDF46700BEE804 /* View+editBorder.swift in Sources */,
 				504D3C1927E017B200C95123 /* BreadBuddyApp.swift in Sources */,
 				5036A2CE27FDFFD200BEE804 /* Recipe.swift in Sources */,
 				5032A6BB27FB69500031501D /* Date+string.swift in Sources */,
+				5099531D2800CBFA004AEEAB /* Database.swift in Sources */,
 				5032A6C927FC892F0031501D /* NotificationTestView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -592,6 +632,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		509953172800CB09004AEEAB /* XCRemoteSwiftPackageReference "GRDB.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/GRDB.swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		509953182800CB09004AEEAB /* GRDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 509953172800CB09004AEEAB /* XCRemoteSwiftPackageReference "GRDB.swift" */;
+			productName = GRDB;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 504D3C0D27E017B200C95123 /* Project object */;
 }
