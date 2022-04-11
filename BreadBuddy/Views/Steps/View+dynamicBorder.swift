@@ -1,12 +1,12 @@
 import SwiftUI
 
 extension View {
-    func editBorder() -> some View {
-        modifier(EditBorder())
+    func dynamicBorder() -> some View {
+        modifier(DynamicBorder())
     }
 }
 
-struct EditBorder: ViewModifier {
+struct DynamicBorder: ViewModifier {
     @Environment(\.editMode) private var editMode
     
     private var isEditing: Bool {

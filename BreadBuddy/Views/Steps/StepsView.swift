@@ -3,10 +3,10 @@ import SwiftUI
 struct StepsView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.editMode) private var editMode
-    @StateObject var viewModel: ViewModel
+    @StateObject var viewModel: StepsViewModel
 
     init(recipe: Recipe, date: Date? = nil) {
-        let viewModel = ViewModel(recipe: recipe, date: date)
+        let viewModel = StepsViewModel(recipe: recipe, date: date)
         _viewModel = StateObject(wrappedValue: viewModel)
     }
 
@@ -74,17 +74,19 @@ struct StepsView: View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 20) {
                 ForEach($viewModel.recipe.steps) { $step in
-                    StepRow(step: $step) {
-                        viewModel.refresh()
-                    } onDelete: {
-                        viewModel.recipe.steps.removeAll(where: { $0 == step })
-                    }
+                    Row(for: step)
+//                    {
+//                        viewModel.refresh()
+//                    } onDelete: {
+//                        viewModel.recipe.steps.removeAll(where: { $0 == step })
+//                    }
                 }
-                StepRow(step: $viewModel.step) {
-                    viewModel.add()
-                } onDelete: {
-                    print("onDelete!!")
-                }
+                Row(for: viewModel.step)
+//                {
+//                    viewModel.add()
+//                } onDelete: {
+//                    print("onDelete!!")
+//                }
                 .if(!isEditing) {
                     $0.opacity(0)
                 }

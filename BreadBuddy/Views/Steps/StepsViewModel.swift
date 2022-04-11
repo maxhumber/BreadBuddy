@@ -1,7 +1,7 @@
 import Combine
 import Foundation
 
-final class ViewModel: ObservableObject {
+final class StepsViewModel: ObservableObject {
     private let database: Database
     private var cancellables = Set<AnyCancellable>()
     @Published var recipe: Recipe

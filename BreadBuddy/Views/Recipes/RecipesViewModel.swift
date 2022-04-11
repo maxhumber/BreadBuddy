@@ -1,11 +1,10 @@
 import Foundation
 import Combine
 
-@MainActor final class RecipeListViewModel: ObservableObject {
+@MainActor final class RecipesViewModel: ObservableObject {
+    @Published var recipes = [Recipe]()
     private let database: Database
     private var cancellables = Set<AnyCancellable>()
-    
-    @Published var recipes = [Recipe]()
     
     init(_ database: Database = .shared) {
         self.database = database
