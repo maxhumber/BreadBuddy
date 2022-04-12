@@ -1,4 +1,3 @@
-import Combine
 import SwiftUI
 
 struct RecipeView: View {
@@ -13,12 +12,9 @@ struct RecipeView: View {
 
     var body: some View {
         content
-            .onAppear {
-                viewModel.refresh()
-            }
-            .onChange(of: viewModel.recipe.timeEnd) { _ in
-                viewModel.refresh()
-            }
+            .environmentObject(viewModel)
+            .onAppear(perform: viewModel.didAppear)
+            .onChange(of: viewModel.recipe.timeEnd, perform: viewModel.didChange(timeEnd:))
     }
 
     private var content: some View {
@@ -45,11 +41,7 @@ struct RecipeView: View {
             .multilineTextAlignment(.center)
             .fixedSize()
             .dynamicBorder()
-            .disabled(recipeNameIsDisabled)
-    }
-    
-    private var recipeNameIsDisabled: Bool {
-        editMode?.wrappedValue == .inactive
+            .disabled(editMode?.wrappedValue == .inactive)
     }
     
     private var headerButtons: some View {
@@ -62,9 +54,7 @@ struct RecipeView: View {
     
     private var backButton: some View {
         Button {
-            viewModel.backAction {
-                dismiss()
-            }
+            viewModel.back { dismiss() }
         } label: {
             Image(systemName: "chevron.left")
                 .contentShape(Rectangle())
@@ -86,7 +76,7 @@ struct RecipeView: View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 20) {
                 ForEach($viewModel.recipe.steps) { $step in
-                    StepView(for: $step, in: viewModel.recipe)
+                    StepView(for: $step)
                 }
                 newStepRow
             }
@@ -95,12 +85,8 @@ struct RecipeView: View {
     }
     
     private var newStepRow: some View {
-        StepView(for: $viewModel.newStep, in: viewModel.recipe)
-            .opacity(newStepRowOpacity)
-    }
-    
-    private var newStepRowOpacity: Double {
-        editMode?.wrappedValue == .active ? 1 : 0
+        StepView(for: $viewModel.newStep)
+            .opacity(editMode?.wrappedValue == .active ? 1 : 0)
     }
 
     private var footer: some View {

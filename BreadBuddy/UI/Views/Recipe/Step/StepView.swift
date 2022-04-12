@@ -1,24 +1,22 @@
 import SwiftUI
 
 struct StepView: View {
+    @EnvironmentObject var viewModel: RecipeViewModel
     @Environment(\.editMode) private var editMode
-    @FocusState private var field: Field?
-    
+    @FocusState private var field: StepField?
     @Binding var step: Step
-    var recipe: Recipe
-
-    init(for step: Binding<Step>, in recipe: Recipe) {
+    
+    init(for step: Binding<Step>) {
         self._step = step
-        self.recipe = recipe
+    }
+    
+    private var isEditing: Bool {
+        editMode?.wrappedValue == .active
     }
     
     public var body: some View {
         content
-            .onChange(of: field) { field in
-                if field == .none {
-                    #warning("save")
-                }
-            }
+            .onChange(of: field, perform: viewModel.didChange(field:))
     }
     
     private var content: some View {
@@ -34,7 +32,7 @@ struct StepView: View {
     
     private var description: some View {
         descriptionField
-            .disabled(isInactive)
+            .disabled(!isEditing)
             .dynamicBorder()
     }
     
@@ -42,9 +40,7 @@ struct StepView: View {
         TextField("Description", text: $step.description)
             .focused($field, equals: .description)
             .submitLabel(.next)
-            .onSubmit {
-                field = .timeInMinutes
-            }
+            .onSubmit { viewModel.didSubmit(&field) }
     }
     
     private var time: some View {
@@ -57,13 +53,13 @@ struct StepView: View {
     private var timeInMinutesStack: some View {
         ZStack {
             SkeleText("XXX")
-            timeInMinutesField
+            timeValueField
         }
-        .disabled(isInactive)
+        .disabled(!isEditing)
         .dynamicBorder()
     }
     
-    private var timeInMinutesField: some View {
+    private var timeValueField: some View {
         TextField("", value: $step.timeValue, formatter: .number)
             .opacity(timeInputFieldOpacity)
             .fixedSize(horizontal: true, vertical: true)
@@ -71,9 +67,7 @@ struct StepView: View {
             .keyboardType(.numberPad)
             .submitLabel(.done)
             .focused($field, equals: .timeInMinutes)
-            .onSubmit {
-                field = .none
-            }
+            .onSubmit { viewModel.didSubmit(&field) }
     }
     
     private var timeInputFieldOpacity: Double {
@@ -84,25 +78,12 @@ struct StepView: View {
         Menu {
             timeUnitPreferenceMenuOptions
         } label: {
-            ZStack {
-                SkeleText("XXXXXXX")
-                Text(timeUnitLabel)
-                    .animation(nil, value: UUID())
-            }
-            .contentShape(Rectangle())
-            .font(.caption2)
-            .foregroundColor(timeUnitPreferenceMenuLabelColor)
+            timeUnitPreferenceMenuLabel
         }
-        .disabled(isInactive)
-        .onChange(of: step.timeUnitPreferrence) { _ in
-            print("")
-        }
+        .disabled(!isEditing)
+        .onChange(of: step.timeUnitPreferrence, perform: viewModel.didChange(timeUnit:))
     }
-    
-    private var timeUnitPreferenceMenuLabelColor: Color {
-        isEditing ? .blue : .black
-    }
-    
+
     @ViewBuilder private var timeUnitPreferenceMenuOptions: some View {
         ForEach(TimeUnit.allCases) { unit in
             Button {
@@ -111,6 +92,21 @@ struct StepView: View {
                 Text(unit.rawValue)
             }
         }
+    }
+    
+    private var timeUnitPreferenceMenuLabel: some View {
+        ZStack {
+            SkeleText("XXXXXXX")
+            Text(timeUnitLabel)
+                .animation(nil, value: UUID())
+        }
+        .contentShape(Rectangle())
+        .font(.caption2)
+        .foregroundColor(timeUnitPreferenceMenuLabelColor)
+    }
+    
+    private var timeUnitPreferenceMenuLabelColor: Color {
+        isEditing ? .blue : .black
     }
     
     private var timeUnitLabel: String {
@@ -126,10 +122,10 @@ struct StepView: View {
         VStack(alignment: .trailing, spacing: 0) {
             ZStack(alignment: .trailing) {
                 SkeleText("XX:XX XX")
-                Text(timeString)
+                Text(timeStart.time())
             }
             .padding(.vertical, 5)
-            Text(weekdayString)
+            Text(timeStart.weekday())
                 .font(.caption2)
         }
         .opacity(startTimeOpacity)
@@ -137,14 +133,6 @@ struct StepView: View {
     
     private var timeStart: Date {
         step.timeStart ?? Date()
-    }
-    
-    private var timeString: String {
-        timeStart.time()
-    }
-    
-    private var weekdayString: String {
-        timeStart.weekday()
     }
     
     private var startTimeOpacity: Double {
@@ -185,14 +173,6 @@ struct StepView: View {
         .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
         .contentShape(Rectangle())
     }
-    
-    private var isEditing: Bool {
-        editMode?.wrappedValue == .active
-    }
-    
-    private var isInactive: Bool {
-        !isEditing
-    }
 }
 
 struct StepView_Previews: PreviewProvider {
@@ -201,18 +181,23 @@ struct StepView_Previews: PreviewProvider {
     }
     
     struct Preview: View {
-        @State var recipe: Recipe = .preview
+        @StateObject var viewModel: RecipeViewModel
         @State var step: Step = .preview
+        
+        init(recipe: Recipe = .init(), database: Database = .shared) {
+            let viewModel = RecipeViewModel(recipe: recipe, database: database)
+            _viewModel = StateObject(wrappedValue: viewModel)
+        }
         
         var body: some View {
             VStack(spacing: 20) {
-                StepView(for: $step, in: recipe)
+                StepView(for: $step)
                     .environment(\.editMode, .constant(.active))
-                StepView(for: $step, in: recipe)
+                StepView(for: $step)
                     .environment(\.editMode, .constant(.inactive))
                 Spacer()
             }
-            .environmentObject(RecipeViewModel(recipe: .preview))
+            .environmentObject(viewModel)
         }
     }
 }

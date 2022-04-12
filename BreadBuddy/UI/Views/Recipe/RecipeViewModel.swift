@@ -1,7 +1,7 @@
 import Combine
 import Foundation
 
-@MainActor final class RecipeViewModel: ObservableObject {
+final class RecipeViewModel: ObservableObject {
     @Published var recipe: Recipe
     @Published var newStep: Step = .init()
     @Published var dimissAlertIsDisplayed = false
@@ -14,7 +14,54 @@ import Foundation
         self.database = database
     }
 
-    func backAction(_ action: @escaping () -> ()) {
+    func didAppear() {
+        refresh()
+    }
+    
+    func didChange(timeEnd: Date) {
+        refresh()
+    }
+    
+    func didChange(field: StepField?) {
+        if field == .none {
+            print("Did dismiss field")
+        }
+    }
+    
+    func didChange(timeUnit: TimeUnit) {
+        print("Did change time unit preference to: \(timeUnit.rawValue)")
+    }
+    
+    func didSubmit(_ field: inout StepField?) {
+        print("Did submit field: \(field!)")
+        switch field {
+        case .description:
+            field = .timeInMinutes
+        case .timeInMinutes:
+            field = .none
+        default:
+            break
+        }
+    }
+    
+    private func refresh() {
+        var time = recipe.timeEnd
+        for step in recipe.steps.reversed() {
+            switch step.timeUnitPreferrence {
+            case .minutes:
+                time = time.withAdded(minutes: -step.timeValue)
+            case .hours:
+                time = time.withAdded(hours: -step.timeValue)
+            case .days:
+                time = time.withAdded(days: -step.timeValue)
+            }
+            if let index = recipe.steps.firstIndex(where: { $0 == step }) {
+                recipe.steps[index].timeStart = time
+            }
+        }
+    }
+    
+    func back(_ action: @escaping () -> ()) {
         switch (recipe.name.isEmpty, recipe.steps.isEmpty) {
         case (true, true):
             action()
@@ -31,45 +78,6 @@ import Foundation
             var updatedRecipe = self.recipe
             try await database.save(&updatedRecipe)
             self.recipe = updatedRecipe
-        }
-    }
-    
-    func add() {
-        Task {
-            var updatedRecipe = self.recipe
-            if newStep.timeValue != 0 {
-                updatedRecipe.steps.append(newStep)
-                newStep = .init()
-                self.recipe = updatedRecipe
-            }
-            refresh()
-            try await database.save(&updatedRecipe)
-        }
-    }
-    
-    func update() {
-        Task {
-            var updatedRecipe = self.recipe
-            updatedRecipe.dateModified = Date()
-            self.recipe = updatedRecipe
-            try await database.save(&updatedRecipe)
-        }
-    }
-
-    func refresh() {
-        var time = recipe.timeEnd
-        for step in recipe.steps.reversed() {
-            switch step.timeUnitPreferrence {
-            case .minutes:
-                time = time.withAdded(minutes: -step.timeValue)
-            case .hours:
-                time = time.withAdded(hours: -step.timeValue)
-            case .days:
-                time = time.withAdded(days: -step.timeValue)
-            }
-            if let index = recipe.steps.firstIndex(where: { $0 == step }) {
-                recipe.steps[index].timeStart = time
-            }
         }
     }
 }
