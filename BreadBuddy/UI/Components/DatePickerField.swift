@@ -2,16 +2,26 @@ import SwiftUI
 
 struct DatePickerField: View {
     @Binding var date: Date
-    var displayedComponent: DatePickerComponents = .date
-    var alignment: Alignment = .center
+    var displayedComponent: DatePickerComponents
+    var alignment: Alignment
+    
+    init(date: Binding<Date>, displayedComponent: DatePickerComponents = .date, alignment: Alignment = .center) {
+        self._date = date
+        self.displayedComponent = displayedComponent
+        self.alignment = alignment
+    }
     
     var body: some View {
         ZStack(alignment: alignment) {
             Text(label)
-            DatePicker("", selection: $date, displayedComponents: displayedComponent)
-                .labelsHidden()
-                .opacity(0.0101)
+            picker
         }
+    }
+    
+    private var picker: some View {
+        DatePicker("", selection: $date, displayedComponents: displayedComponent)
+            .labelsHidden()
+            .opacity(0.0101)
     }
     
     private var label: String {

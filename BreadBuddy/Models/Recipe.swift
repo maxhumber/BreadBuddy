@@ -4,19 +4,23 @@ import GRDB
 struct Recipe {
     var id: Int64?
     var name: String
-    var note: String
+    var date: Date
     var steps: [Step]
     var dateCreated: Date
     var dateModified: Date
 }
 
 extension Recipe {
-    init(name: String = "", note: String = "", steps: [Step] = [Step](), dateCreated: Date = Date()) {
+    init(
+        name: String = "",
+        date: Date = .next(.sunday).withAdded(hours: 15),
+        steps: [Step] = [Step]()
+    ) {
         self.name = name
-        self.note = note
+        self.date = date
         self.steps = steps
-        self.dateCreated = dateCreated
-        self.dateModified = dateCreated
+        self.dateCreated = Date()
+        self.dateModified = Date()
     }
 }
 
@@ -36,8 +40,8 @@ extension Recipe: MutablePersistableRecord {
 
 extension Recipe {
     static let preview = Recipe(
-        name: "King Arthur's Baguette",
-        note: "https://www.kingarthurbaking.com/recipes/sourdough-baguettes-recipe",
+        name: "Maggie's Baguette",
+        date: .next(.sunday).withAdded(hours: 15),
         steps: [
             Step(description: "Mix ingredients", timeInMinutes: 5, timeUnitPreferrence: .minutes),
             Step(description: "Knead the dough", timeInMinutes: 10, timeUnitPreferrence: .minutes),

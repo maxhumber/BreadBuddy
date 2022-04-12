@@ -25,7 +25,7 @@ extension Database {
             try db.create(table: "recipe") { table in
                 table.autoIncrementedPrimaryKey("id")
                 table.column("name", .text).notNull()
-                table.column("note", .text).notNull()
+                table.column("date", .datetime).notNull()
                 table.column("steps", .blob).notNull()
                 table.column("dateCreated", .datetime).notNull()
                 table.column("dateModified", .datetime).notNull()

@@ -96,11 +96,13 @@ struct HomeView: View {
             .foregroundColor(.white)
             .font(.title3)
             .padding()
-            .background(
-                Circle()
-                    .shadow(color: .black.opacity(0.2), radius: 2, x: 2, y: 1)
-            )
+            .background(addButtonBackground)
             .padding()
+    }
+    
+    private var addButtonBackground: some View {
+        Circle()
+            .shadow(color: .black.opacity(0.2), radius: 2, x: 2, y: 1)
     }
 }
 

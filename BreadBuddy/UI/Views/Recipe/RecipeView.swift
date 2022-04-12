@@ -7,7 +7,7 @@ struct RecipeView: View {
     @StateObject var viewModel: RecipeViewModel
 
     init(date: Date? = nil, recipe: Recipe = .init(), database: Database = .shared) {
-        let viewModel = RecipeViewModel(date: date, recipe: recipe)
+        let viewModel = RecipeViewModel(date: date, recipe: recipe, database: database)
         _viewModel = StateObject(wrappedValue: viewModel)
     }
 
@@ -86,7 +86,7 @@ struct RecipeView: View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 20) {
                 ForEach($viewModel.recipe.steps) { $step in
-                    StepView(for: step, in: viewModel.recipe)
+                    StepView(for: $step, in: viewModel.recipe)
                 }
                 newStepRow
             }
@@ -95,7 +95,7 @@ struct RecipeView: View {
     }
     
     private var newStepRow: some View {
-        StepView(for: viewModel.newStep, in: viewModel.recipe)
+        StepView(for: $viewModel.newStep, in: viewModel.recipe)
             .opacity(newStepRowOpacity)
     }
     

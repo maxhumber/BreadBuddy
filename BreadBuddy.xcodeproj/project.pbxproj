@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5023C0F62805EBA50000316A /* SkeleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5023C0F52805EBA50000316A /* SkeleText.swift */; };
 		5032A6B627FB47610031501D /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6B527FB47610031501D /* RecipeViewModel.swift */; };
 		5032A6B827FB57D40031501D /* DatePickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6B727FB57D40031501D /* DatePickerField.swift */; };
 		5032A6BB27FB69500031501D /* Date+string.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6BA27FB69500031501D /* Date+string.swift */; };
@@ -17,7 +18,6 @@
 		5032A6C527FC83280031501D /* Date+withAdded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6C427FC83280031501D /* Date+withAdded.swift */; };
 		5032A6C727FC833D0031501D /* Date+next.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6C627FC833D0031501D /* Date+next.swift */; };
 		5032A6C927FC892F0031501D /* NotificationTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6C827FC892F0031501D /* NotificationTestView.swift */; };
-		5032A6CB27FCC85C0031501D /* NumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6CA27FCC85C0031501D /* NumberField.swift */; };
 		5032A6CD27FCCB9B0031501D /* Formatter+number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6CC27FCCB9B0031501D /* Formatter+number.swift */; };
 		5036A2C827FDF46700BEE804 /* View+dynamicBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5036A2C727FDF46700BEE804 /* View+dynamicBorder.swift */; };
 		5036A2CE27FDFFD200BEE804 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5036A2CD27FDFFD200BEE804 /* Recipe.swift */; };
@@ -47,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5023C0F52805EBA50000316A /* SkeleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeleText.swift; sourceTree = "<group>"; };
 		5032A6B527FB47610031501D /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
 		5032A6B727FB57D40031501D /* DatePickerField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerField.swift; sourceTree = "<group>"; };
 		5032A6BA27FB69500031501D /* Date+string.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+string.swift"; sourceTree = "<group>"; };
@@ -57,7 +58,6 @@
 		5032A6C427FC83280031501D /* Date+withAdded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+withAdded.swift"; sourceTree = "<group>"; };
 		5032A6C627FC833D0031501D /* Date+next.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+next.swift"; sourceTree = "<group>"; };
 		5032A6C827FC892F0031501D /* NotificationTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTestView.swift; sourceTree = "<group>"; };
-		5032A6CA27FCC85C0031501D /* NumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberField.swift; sourceTree = "<group>"; };
 		5032A6CC27FCCB9B0031501D /* Formatter+number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+number.swift"; sourceTree = "<group>"; };
 		5036A2C727FDF46700BEE804 /* View+dynamicBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+dynamicBorder.swift"; sourceTree = "<group>"; };
 		5036A2CD27FDFFD200BEE804 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
@@ -232,7 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				5032A6B727FB57D40031501D /* DatePickerField.swift */,
-				5032A6CA27FCC85C0031501D /* NumberField.swift */,
+				5023C0F52805EBA50000316A /* SkeleText.swift */,
 				5036A2C727FDF46700BEE804 /* View+dynamicBorder.swift */,
 			);
 			path = Components;
@@ -374,7 +374,6 @@
 				5032A6C727FC833D0031501D /* Date+next.swift in Sources */,
 				5032A6CD27FCCB9B0031501D /* Formatter+number.swift in Sources */,
 				5032A6C527FC83280031501D /* Date+withAdded.swift in Sources */,
-				5032A6CB27FCC85C0031501D /* NumberField.swift in Sources */,
 				5032A6C127FC786E0031501D /* UIApplication+sendResignAction.swift in Sources */,
 				5032A6BF27FC78520031501D /* View+dismissKeyboard.swift in Sources */,
 				5032A6BD27FB699B0031501D /* TimeUnit.swift in Sources */,
@@ -383,6 +382,7 @@
 				504D3C1927E017B200C95123 /* BreadBuddyApp.swift in Sources */,
 				50E020372804B2FF00440979 /* StepView+Field.swift in Sources */,
 				50E020352804B1A000440979 /* StepView+ViewModel.swift in Sources */,
+				5023C0F62805EBA50000316A /* SkeleText.swift in Sources */,
 				5036A2CE27FDFFD200BEE804 /* Recipe.swift in Sources */,
 				5032A6BB27FB69500031501D /* Date+string.swift in Sources */,
 				5099531D2800CBFA004AEEAB /* Database.swift in Sources */,

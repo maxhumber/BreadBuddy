@@ -1,21 +1,15 @@
 import SwiftUI
 
-public struct StepView: View {
-    @EnvironmentObject private var stepsViewModel: RecipeViewModel
+struct StepView: View {
     @Environment(\.editMode) private var editMode
     @FocusState private var field: Field?
-    @StateObject var viewModel: ViewModel
+    
+    @Binding var step: Step
+    var recipe: Recipe
 
-    init(for step: Step, in recipe: Recipe) {
-        _viewModel = StateObject(wrappedValue: .init(for: step, in: recipe))
-    }
-    
-    private var isEditing: Bool {
-        editMode?.wrappedValue == .active
-    }
-    
-    private var isInactive: Bool {
-        !isEditing
+    init(for step: Binding<Step>, in recipe: Recipe) {
+        self._step = step
+        self.recipe = recipe
     }
     
     public var body: some View {
@@ -45,7 +39,7 @@ public struct StepView: View {
     }
     
     private var descriptionField: some View {
-        TextField("Description", text: $viewModel.step.description)
+        TextField("Description", text: $step.description)
             .focused($field, equals: .description)
             .submitLabel(.next)
             .onSubmit {
@@ -62,7 +56,7 @@ public struct StepView: View {
     
     private var timeInMinutesStack: some View {
         ZStack {
-            placeholder("XXX")
+            SkeleText("XXX")
             timeInMinutesField
         }
         .disabled(isInactive)
@@ -70,8 +64,8 @@ public struct StepView: View {
     }
     
     private var timeInMinutesField: some View {
-        TextField("", value: $viewModel.step.timeInMinutes, formatter: .number)
-            .opacity(viewModel.timeInputFieldOpacity)
+        TextField("", value: $step.timeInMinutes, formatter: .number)
+            .opacity(timeInputFieldOpacity)
             .fixedSize(horizontal: true, vertical: true)
             .multilineTextAlignment(.center)
             .keyboardType(.numberPad)
@@ -82,42 +76,79 @@ public struct StepView: View {
             }
     }
     
+    private var timeInputFieldOpacity: Double {
+        step.timeInMinutes == 0 ? 0.5 : 1
+    }
+    
     private var timeUnitPreferenceMenu: some View {
         Menu {
-            ForEach(TimeUnit.allCases) { unit in
-                Button {
-                    viewModel.step.timeUnitPreferrence = unit
-                } label: {
-                    Text(unit.rawValue)
-                }
-            }
+            timeUnitPreferenceMenuOptions
         } label: {
             ZStack {
-                placeholder("XXXXXXX")
-                Text(viewModel.timeUnitLabel)
+                SkeleText("XXXXXXX")
+                Text(timeUnitLabel)
                     .animation(nil, value: UUID())
             }
+            .contentShape(Rectangle())
             .font(.caption2)
+            .foregroundColor(timeUnitPreferenceMenuLabelColor)
         }
-        .foregroundColor(isEditing ? .blue : .black)
-        .contentShape(Rectangle())
         .disabled(isInactive)
-        .onChange(of: viewModel.step.timeUnitPreferrence) { _ in
+        .onChange(of: step.timeUnitPreferrence) { _ in
             print("")
+        }
+    }
+    
+    private var timeUnitPreferenceMenuLabelColor: Color {
+        isEditing ? .blue : .black
+    }
+    
+    @ViewBuilder private var timeUnitPreferenceMenuOptions: some View {
+        ForEach(TimeUnit.allCases) { unit in
+            Button {
+                step.timeUnitPreferrence = unit
+            } label: {
+                Text(unit.rawValue)
+            }
+        }
+    }
+    
+    private var timeUnitLabel: String {
+        let unitString = step.timeUnitPreferrence.rawValue.capitalized
+        if step.timeInMinutes == 1 {
+            return String(unitString.dropLast())
+        } else {
+            return unitString
         }
     }
     
     private var startTime: some View {
         VStack(alignment: .trailing, spacing: 0) {
             ZStack(alignment: .trailing) {
-                placeholder("XX:XX XX")
-                Text(viewModel.timeString)
+                SkeleText("XX:XX XX")
+                Text(timeString)
             }
             .padding(.vertical, 5)
-            Text(viewModel.weekdayString)
+            Text(weekdayString)
                 .font(.caption2)
         }
-        .opacity(viewModel.startTimeOpacity)
+        .opacity(startTimeOpacity)
+    }
+    
+    private var timeStart: Date {
+        step.timeStart ?? Date()
+    }
+    
+    private var timeString: String {
+        timeStart.time()
+    }
+    
+    private var weekdayString: String {
+        timeStart.weekday()
+    }
+    
+    private var startTimeOpacity: Double {
+        step.timeStart == nil ? 0 : 1
     }
     
     private var actionMenu: some View {
@@ -155,12 +186,16 @@ public struct StepView: View {
         .contentShape(Rectangle())
     }
     
-    private func placeholder(_ string: String) -> some View {
-        Text(string).opacity(0)
+    private var isEditing: Bool {
+        editMode?.wrappedValue == .active
+    }
+    
+    private var isInactive: Bool {
+        !isEditing
     }
 }
 
-struct Row_Previews: PreviewProvider {
+struct StepView_Previews: PreviewProvider {
     static var previews: some View {
         Preview()
     }
@@ -171,9 +206,9 @@ struct Row_Previews: PreviewProvider {
         
         var body: some View {
             VStack(spacing: 20) {
-                StepView(for: step, in: recipe)
+                StepView(for: $step, in: recipe)
                     .environment(\.editMode, .constant(.active))
-                StepView(for: step, in: recipe)
+                StepView(for: $step, in: recipe)
                     .environment(\.editMode, .constant(.inactive))
                 Spacer()
             }
