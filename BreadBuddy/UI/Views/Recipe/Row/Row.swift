@@ -2,7 +2,7 @@ import SwiftUI
 
 public struct Row: View {
     @StateObject var viewModel: ViewModel
-    @EnvironmentObject private var stepsViewModel: StepsViewModel
+    @EnvironmentObject private var stepsViewModel: RecipeViewModel
     @FocusState private var field: Field?
     @Environment(\.editMode) private var editMode
     
@@ -177,7 +177,7 @@ struct Row_Previews: PreviewProvider {
                     .environment(\.editMode, .constant(.inactive))
                 Spacer()
             }
-            .environmentObject(StepsViewModel(recipe: .preview))
+            .environmentObject(RecipeViewModel(recipe: .preview))
         }
     }
 }

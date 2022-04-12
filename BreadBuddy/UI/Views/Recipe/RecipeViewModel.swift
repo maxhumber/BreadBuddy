@@ -1,26 +1,27 @@
 import Combine
 import Foundation
 
-final class StepsViewModel: ObservableObject {
-    private let database: Database
-    private var cancellables = Set<AnyCancellable>()
+final class RecipeViewModel: ObservableObject {
     @Published var recipe: Recipe
     @Published var date: Date
-    @Published var step: Step = .init()
+    @Published var newStep: Step = .init()
+    
+    private let database: Database
+    private var cancellables = Set<AnyCancellable>()
 
     init(recipe: Recipe, date: Date? = nil, database: Database = .shared) {
         self.recipe = recipe
-        let nextSunday = Date().next(.sunday)?.withAdded(hours: 15)
-        self.date = date ?? nextSunday ?? Date()
+        let nextSunday = Date().next(.sunday)!.withAdded(hours: 15)
+        self.date = date ?? nextSunday
         self.database = database
     }
 
     @MainActor func add() {
         Task {
             var updatedRecipe = self.recipe
-            if step.timeInMinutes != 0 {
-                updatedRecipe.steps.append(step)
-                step = .init()
+            if newStep.timeInMinutes != 0 {
+                updatedRecipe.steps.append(newStep)
+                newStep = .init()
 
                 self.recipe = updatedRecipe
             }
@@ -45,7 +46,6 @@ final class StepsViewModel: ObservableObject {
     @MainActor func refresh() {
         var currentTime = date
         for step in recipe.steps.reversed() {
-            #warning("need to fix this??")
             switch step.timeUnitPreferrence {
             case .minutes:
                 currentTime = currentTime.withAdded(minutes: -Double(step.timeInMinutes))

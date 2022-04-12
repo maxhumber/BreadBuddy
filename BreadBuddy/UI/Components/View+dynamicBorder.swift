@@ -2,17 +2,13 @@ import SwiftUI
 
 extension View {
     func dynamicBorder() -> some View {
-        modifier(DynamicBorder())
+        self.modifier(DynamicBorder())
     }
 }
 
-struct DynamicBorder: ViewModifier {
+fileprivate struct DynamicBorder: ViewModifier {
     @Environment(\.editMode) private var editMode
-    
-    private var isEditing: Bool {
-        editMode?.wrappedValue.isEditing ?? false
-    }
-    
+
     func body(content: Content) -> some View {
         content
             .padding(5)
@@ -20,9 +16,15 @@ struct DynamicBorder: ViewModifier {
                 RoundedRectangle(cornerRadius: 5)
                     .strokeBorder()
                     .foregroundColor(.gray.opacity(0.25))
-                    .if(!isEditing) {
-                        $0.opacity(0)
-                    }
+                    .opacity(borderOpacity)
             )
+    }
+    
+    private var borderOpacity: Double {
+        isEditing ? 1 : 0
+    }
+    
+    private var isEditing: Bool {
+        editMode?.wrappedValue == .active
     }
 }

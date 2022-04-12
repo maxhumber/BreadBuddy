@@ -30,7 +30,7 @@ struct HomeView: View {
         .fullScreenCover(isPresented: $viewModel.addViewIsPresented) {
             viewModel.onDismissFullScreenCover()
         } content: {
-            StepsView(recipe: .init())
+            RecipeView(recipe: .init())
                 .environment(\.editMode, $viewModel.editMode)
         }
     }
@@ -51,7 +51,7 @@ struct HomeView: View {
 
     private func row(for recipe: Recipe) -> some View {
         NavigationLink {
-            StepsView(recipe: recipe)
+            RecipeView(recipe: recipe)
         } label: {
             Text(recipe.name)
         }
