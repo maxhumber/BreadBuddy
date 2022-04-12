@@ -1,11 +1,11 @@
 import SwiftUI
 
-public struct Row: View {
-    @StateObject var viewModel: ViewModel
+public struct StepView: View {
     @EnvironmentObject private var stepsViewModel: RecipeViewModel
-    @FocusState private var field: Field?
     @Environment(\.editMode) private var editMode
-    
+    @FocusState private var field: Field?
+    @StateObject var viewModel: ViewModel
+
     init(for step: Step, in recipe: Recipe) {
         _viewModel = StateObject(wrappedValue: .init(for: step, in: recipe))
     }
@@ -171,9 +171,9 @@ struct Row_Previews: PreviewProvider {
         
         var body: some View {
             VStack(spacing: 20) {
-                Row(for: step, in: recipe)
+                StepView(for: step, in: recipe)
                     .environment(\.editMode, .constant(.active))
-                Row(for: step, in: recipe)
+                StepView(for: step, in: recipe)
                     .environment(\.editMode, .constant(.inactive))
                 Spacer()
             }

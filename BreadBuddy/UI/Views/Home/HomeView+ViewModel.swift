@@ -37,7 +37,9 @@ extension HomeView {
         }
         
         func delete(_ recipe: Recipe) {
-            try? database.delete(recipe)
+            Task {
+                try? await database.delete(recipe)
+            }
         }
     }
 }

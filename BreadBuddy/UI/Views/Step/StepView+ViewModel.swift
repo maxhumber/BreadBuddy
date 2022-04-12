@@ -1,7 +1,7 @@
 import Combine
 import Foundation
 
-extension Row {
+extension StepView {
     final class ViewModel: ObservableObject {
         @Published var step: Step
         @Published var recipe: Recipe

@@ -77,12 +77,10 @@ extension Database {
         }
     }
     
-    func delete(_ recipe: Recipe) throws {
+    func delete(_ recipe: Recipe) async throws {
         guard let id = recipe.id else { return }
-        Task {
-            try await writer.write { db in
-                _ = try Recipe.deleteOne(db, id: id)
-            }
+        try await writer.write { db in
+            _ = try Recipe.deleteOne(db, id: id)
         }
     }
 }

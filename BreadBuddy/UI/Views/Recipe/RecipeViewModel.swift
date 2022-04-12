@@ -1,28 +1,36 @@
 import Combine
 import Foundation
 
-final class RecipeViewModel: ObservableObject {
-    @Published var recipe: Recipe
+@MainActor final class RecipeViewModel: ObservableObject {
     @Published var date: Date
+    @Published var recipe: Recipe
     @Published var newStep: Step = .init()
     
     private let database: Database
     private var cancellables = Set<AnyCancellable>()
 
-    init(recipe: Recipe, date: Date? = nil, database: Database = .shared) {
-        self.recipe = recipe
+    init(date: Date? = nil, recipe: Recipe, database: Database = .shared) {
         let nextSunday = Date().next(.sunday)!.withAdded(hours: 15)
         self.date = date ?? nextSunday
+        self.recipe = recipe
         self.database = database
     }
 
-    @MainActor func add() {
+    func save() {
+        guard !recipe.name.isEmpty else { return }
+        Task {
+            var updatedRecipe = self.recipe
+            try await database.save(&updatedRecipe)
+            self.recipe = updatedRecipe
+        }
+    }
+    
+    func add() {
         Task {
             var updatedRecipe = self.recipe
             if newStep.timeInMinutes != 0 {
                 updatedRecipe.steps.append(newStep)
                 newStep = .init()
-
                 self.recipe = updatedRecipe
             }
             refresh()
@@ -37,10 +45,6 @@ final class RecipeViewModel: ObservableObject {
             self.recipe = updatedRecipe
             try await database.save(&updatedRecipe)
         }
-    }
-
-    func remove(at offsets: IndexSet) {
-        recipe.steps.remove(atOffsets: offsets)
     }
 
     @MainActor func refresh() {

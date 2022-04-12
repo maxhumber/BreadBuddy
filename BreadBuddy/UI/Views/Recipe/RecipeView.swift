@@ -6,8 +6,8 @@ struct RecipeView: View {
     @Environment(\.editMode) private var editMode
     @StateObject var viewModel: RecipeViewModel
 
-    init(recipe: Recipe = .init(), date: Date? = nil, database: Database = .shared) {
-        let viewModel = RecipeViewModel(recipe: recipe, date: date)
+    init(date: Date? = nil, recipe: Recipe = .init(), database: Database = .shared) {
+        let viewModel = RecipeViewModel(date: date, recipe: recipe)
         _viewModel = StateObject(wrappedValue: viewModel)
     }
 
@@ -62,6 +62,7 @@ struct RecipeView: View {
     private var backButton: some View {
         Button {
             dismiss()
+            viewModel.save()
         } label: {
             Image(systemName: "chevron.left")
                 .contentShape(Rectangle())
@@ -72,7 +73,7 @@ struct RecipeView: View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 20) {
                 ForEach($viewModel.recipe.steps) { $step in
-                    Row(for: step, in: viewModel.recipe)
+                    StepView(for: step, in: viewModel.recipe)
                 }
                 newStepRow
             }
@@ -81,7 +82,7 @@ struct RecipeView: View {
     }
     
     private var newStepRow: some View {
-        Row(for: viewModel.newStep, in: viewModel.recipe)
+        StepView(for: viewModel.newStep, in: viewModel.recipe)
             .opacity(newStepRowOpacity)
     }
     
@@ -126,7 +127,7 @@ struct ContentView_Previews: PreviewProvider {
         var date: Date = Date().withAdded(hours: 6)
 
         var body: some View {
-            RecipeView(recipe: recipe, date: date)
+            RecipeView(date: date, recipe: recipe)
         }
     }
 }

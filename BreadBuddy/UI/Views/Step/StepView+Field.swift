@@ -1,6 +1,6 @@
 import Foundation
 
-extension Row {
+extension StepView {
     enum Field {
         case description
         case timeInMinutes
