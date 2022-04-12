@@ -67,7 +67,7 @@ struct HomeView: View {
         Button(role: .destructive) {
             viewModel.deleteButtonAction()
         } label: {
-            Label("Delete", systemImage: "xmark")
+            Label("Delete", systemImage: "trash")
         }
     }
     

@@ -5,19 +5,30 @@ import Foundation
     @Published var date: Date
     @Published var recipe: Recipe
     @Published var newStep: Step = .init()
+    @Published var dimissAlertIsDisplayed = false
     
     private let database: Database
     private var cancellables = Set<AnyCancellable>()
 
     init(date: Date? = nil, recipe: Recipe, database: Database = .shared) {
-        let nextSunday = Date().next(.sunday)!.withAdded(hours: 15)
-        self.date = date ?? nextSunday
+        self.date = date ?? Date.next(.sunday).withAdded(hours: 15)
         self.recipe = recipe
         self.database = database
     }
 
-    func save() {
-        guard !recipe.name.isEmpty else { return }
+    func backAction(_ action: @escaping () -> ()) {
+        switch (recipe.name.isEmpty, recipe.steps.isEmpty) {
+        case (true, true):
+            action()
+        case (true, false):
+            dimissAlertIsDisplayed = true
+        default:
+            save()
+            action()
+        }
+    }
+    
+    private func save() {
         Task {
             var updatedRecipe = self.recipe
             try await database.save(&updatedRecipe)

@@ -42,8 +42,9 @@ struct RecipeView: View {
     
     private var recipeName: some View {
         TextField("Recipe name", text: $viewModel.recipe.name)
-            .dynamicBorder()
+            .multilineTextAlignment(.center)
             .fixedSize()
+            .dynamicBorder()
             .disabled(recipeNameIsDisabled)
     }
     
@@ -61,12 +62,24 @@ struct RecipeView: View {
     
     private var backButton: some View {
         Button {
-            dismiss()
-            viewModel.save()
+            viewModel.backAction {
+                dismiss()
+            }
         } label: {
             Image(systemName: "chevron.left")
                 .contentShape(Rectangle())
         }
+        .alert(isPresented: $viewModel.dimissAlertIsDisplayed) {
+            dismissAlert
+        }
+    }
+    
+    private var dismissAlert: Alert {
+        Alert(
+            title: Text("Missing Name"),
+            message: Text("Recipe must have a name in order to continue"),
+            dismissButton: .default(Text("Okay"))
+        )
     }
 
     private var steps: some View {

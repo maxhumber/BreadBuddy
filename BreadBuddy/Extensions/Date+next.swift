@@ -1,10 +1,14 @@
 import Foundation
 
 extension Date {
-    func next(_ weekday: Weekday) -> Date? {
+    static func next(_ weekday: Weekday) -> Date {
+        Date().next(weekday)
+    }
+    
+    func next(_ weekday: Weekday) -> Date {
         let calendar = Calendar.current
         let component = DateComponents(calendar: Calendar.current, weekday: weekday.rawValue)
-        return calendar.nextDate(after: self, matching: component, matchingPolicy: .nextTimePreservingSmallerComponents)
+        return calendar.nextDate(after: self, matching: component, matchingPolicy: .nextTimePreservingSmallerComponents)!
     }
     
     enum Weekday: Int {
