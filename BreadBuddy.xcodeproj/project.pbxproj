@@ -96,6 +96,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		501E92FD2805C50600F120EA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5099531E2800CC44004AEEAB /* Home */,
+				50B6A4C927FDD63600A1F834 /* Steps */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		5032A6B927FB58180031501D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,7 +143,7 @@
 				50DCF1D827F7774300D0A369 /* App */,
 				5099531B2800CBE6004AEEAB /* Database */,
 				50DCF1DF27FB344C00D0A369 /* Models */,
-				50DCF1D927F7774E00D0A369 /* Views */,
+				50DCF1D927F7774E00D0A369 /* UI */,
 				5032A6B927FB58180031501D /* Extensions */,
 			);
 			path = BreadBuddy;
@@ -193,15 +202,14 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		50DCF1D927F7774E00D0A369 /* Views */ = {
+		50DCF1D927F7774E00D0A369 /* UI */ = {
 			isa = PBXGroup;
 			children = (
 				50DCF1DE27FB341000D0A369 /* Components */,
-				5099531E2800CC44004AEEAB /* Home */,
-				50B6A4C927FDD63600A1F834 /* Steps */,
+				501E92FD2805C50600F120EA /* Views */,
 				5099531A2800CBB9004AEEAB /* Experiments */,
 			);
-			path = Views;
+			path = UI;
 			sourceTree = "<group>";
 		};
 		50DCF1DA27F7777F00D0A369 /* Assets */ = {

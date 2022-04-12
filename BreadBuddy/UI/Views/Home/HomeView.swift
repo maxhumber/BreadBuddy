@@ -56,14 +56,14 @@ struct HomeView: View {
             Text(recipe.name)
         }
         .contextMenu {
-            deleteButton
+            contextMenuDeleteButton
         }
         .alert(isPresented: $viewModel.deleteAlertIsPresented) {
             deleteAlert(for: recipe)
         }
     }
     
-    private var deleteButton: some View {
+    private var contextMenuDeleteButton: some View {
         Button(role: .destructive) {
             viewModel.deleteButtonAction()
         } label: {

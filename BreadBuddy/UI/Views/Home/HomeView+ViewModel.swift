@@ -23,10 +23,6 @@ extension HomeView {
                 .store(in: &cancellables)
         }
         
-        func delete(_ recipe: Recipe) {
-            try? database.delete(recipe)
-        }
-        
         func onDismissFullScreenCover() {
             editMode = .inactive
         }
@@ -38,6 +34,10 @@ extension HomeView {
         
         func deleteButtonAction() {
             deleteAlertIsPresented = true
+        }
+        
+        func delete(_ recipe: Recipe) {
+            try? database.delete(recipe)
         }
     }
 }
