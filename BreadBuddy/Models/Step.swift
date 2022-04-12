@@ -3,15 +3,15 @@ import Foundation
 struct Step {
     var id: UUID = .init()
     var description: String
-    var timeInMinutes: Int
+    var timeValue: Double
     var timeUnitPreferrence: TimeUnit
     var timeStart: Date?
 }
 
 extension Step {
-    init(description: String = "", timeInMinutes: Int = 0, timeUnitPreferrence: TimeUnit = .hours) {
+    init(description: String = "", timeValue: Double = 0, timeUnitPreferrence: TimeUnit = .hours) {
         self.description = description
-        self.timeInMinutes = timeInMinutes
+        self.timeValue = timeValue
         self.timeUnitPreferrence = timeUnitPreferrence
     }
 }
@@ -32,7 +32,7 @@ extension Step {
 extension Step {
     static let preview = Step(
         description: "Bake",
-        timeInMinutes: 30,
+        timeValue: 30,
         timeUnitPreferrence: .minutes,
         timeStart: Date().withAdded(hours: 3)
     )

@@ -4,7 +4,7 @@ import GRDB
 struct Recipe {
     var id: Int64?
     var name: String
-    var date: Date
+    var timeEnd: Date
     var steps: [Step]
     var dateCreated: Date
     var dateModified: Date
@@ -13,11 +13,11 @@ struct Recipe {
 extension Recipe {
     init(
         name: String = "",
-        date: Date = .next(.sunday).withAdded(hours: 15),
+        timeEnd: Date = .next(.sunday).withAdded(hours: 15),
         steps: [Step] = [Step]()
     ) {
         self.name = name
-        self.date = date
+        self.timeEnd = timeEnd
         self.steps = steps
         self.dateCreated = Date()
         self.dateModified = Date()
@@ -41,15 +41,15 @@ extension Recipe: MutablePersistableRecord {
 extension Recipe {
     static let preview = Recipe(
         name: "Maggie's Baguette",
-        date: .next(.sunday).withAdded(hours: 15),
+        timeEnd: .next(.sunday).withAdded(hours: 15),
         steps: [
-            Step(description: "Mix ingredients", timeInMinutes: 5, timeUnitPreferrence: .minutes),
-            Step(description: "Knead the dough", timeInMinutes: 10, timeUnitPreferrence: .minutes),
-            Step(description: "Bulk rise", timeInMinutes: 90, timeUnitPreferrence: .minutes),
-            Step(description: "Divide and shape", timeInMinutes: 15, timeUnitPreferrence: .minutes),
-            Step(description: "Second rise", timeInMinutes: 2, timeUnitPreferrence: .hours),
-            Step(description: "Bake", timeInMinutes: 25, timeUnitPreferrence: .minutes),
-            Step(description: "Cool", timeInMinutes: 1, timeUnitPreferrence: .hours)
+            Step(description: "Mix ingredients", timeValue: 5, timeUnitPreferrence: .minutes),
+            Step(description: "Knead the dough", timeValue: 10, timeUnitPreferrence: .minutes),
+            Step(description: "Bulk rise", timeValue: 90, timeUnitPreferrence: .minutes),
+            Step(description: "Divide and shape", timeValue: 15, timeUnitPreferrence: .minutes),
+            Step(description: "Second rise", timeValue: 2, timeUnitPreferrence: .hours),
+            Step(description: "Bake", timeValue: 25, timeUnitPreferrence: .minutes),
+            Step(description: "Cool", timeValue: 1, timeUnitPreferrence: .hours)
         ]
     )
 }

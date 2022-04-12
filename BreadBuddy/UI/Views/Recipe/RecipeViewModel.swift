@@ -2,7 +2,6 @@ import Combine
 import Foundation
 
 @MainActor final class RecipeViewModel: ObservableObject {
-    @Published var date: Date
     @Published var recipe: Recipe
     @Published var newStep: Step = .init()
     @Published var dimissAlertIsDisplayed = false
@@ -10,8 +9,7 @@ import Foundation
     private let database: Database
     private var cancellables = Set<AnyCancellable>()
 
-    init(date: Date? = nil, recipe: Recipe, database: Database = .shared) {
-        self.date = date ?? Date.next(.sunday).withAdded(hours: 15)
+    init(recipe: Recipe, database: Database = .shared) {
         self.recipe = recipe
         self.database = database
     }
@@ -39,7 +37,7 @@ import Foundation
     func add() {
         Task {
             var updatedRecipe = self.recipe
-            if newStep.timeInMinutes != 0 {
+            if newStep.timeValue != 0 {
                 updatedRecipe.steps.append(newStep)
                 newStep = .init()
                 self.recipe = updatedRecipe
@@ -58,19 +56,19 @@ import Foundation
         }
     }
 
-    @MainActor func refresh() {
-        var currentTime = date
+    func refresh() {
+        var time = recipe.timeEnd
         for step in recipe.steps.reversed() {
             switch step.timeUnitPreferrence {
             case .minutes:
-                currentTime = currentTime.withAdded(minutes: -Double(step.timeInMinutes))
+                time = time.withAdded(minutes: -step.timeValue)
             case .hours:
-                currentTime = currentTime.withAdded(hours: -Double(step.timeInMinutes))
+                time = time.withAdded(hours: -step.timeValue)
             case .days:
-                currentTime = currentTime.withAdded(days: -Double(step.timeInMinutes))
+                time = time.withAdded(days: -step.timeValue)
             }
             if let index = recipe.steps.firstIndex(where: { $0 == step }) {
-                recipe.steps[index].timeStart = currentTime
+                recipe.steps[index].timeStart = time
             }
         }
     }

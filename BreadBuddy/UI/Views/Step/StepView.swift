@@ -64,7 +64,7 @@ struct StepView: View {
     }
     
     private var timeInMinutesField: some View {
-        TextField("", value: $step.timeInMinutes, formatter: .number)
+        TextField("", value: $step.timeValue, formatter: .number)
             .opacity(timeInputFieldOpacity)
             .fixedSize(horizontal: true, vertical: true)
             .multilineTextAlignment(.center)
@@ -77,7 +77,7 @@ struct StepView: View {
     }
     
     private var timeInputFieldOpacity: Double {
-        step.timeInMinutes == 0 ? 0.5 : 1
+        step.timeValue == 0 ? 0.5 : 1
     }
     
     private var timeUnitPreferenceMenu: some View {
@@ -115,7 +115,7 @@ struct StepView: View {
     
     private var timeUnitLabel: String {
         let unitString = step.timeUnitPreferrence.rawValue.capitalized
-        if step.timeInMinutes == 1 {
+        if step.timeValue == 1 {
             return String(unitString.dropLast())
         } else {
             return unitString

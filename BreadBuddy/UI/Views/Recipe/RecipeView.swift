@@ -6,8 +6,8 @@ struct RecipeView: View {
     @Environment(\.editMode) private var editMode
     @StateObject var viewModel: RecipeViewModel
 
-    init(date: Date? = nil, recipe: Recipe = .init(), database: Database = .shared) {
-        let viewModel = RecipeViewModel(date: date, recipe: recipe, database: database)
+    init(recipe: Recipe = .init(), database: Database = .shared) {
+        let viewModel = RecipeViewModel(recipe: recipe, database: database)
         _viewModel = StateObject(wrappedValue: viewModel)
     }
 
@@ -16,7 +16,7 @@ struct RecipeView: View {
             .onAppear {
                 viewModel.refresh()
             }
-            .onChange(of: viewModel.date) { _ in
+            .onChange(of: viewModel.recipe.timeEnd) { _ in
                 viewModel.refresh()
             }
     }
@@ -121,11 +121,11 @@ struct RecipeView: View {
     }
     
     private var timePicker: some View {
-        DatePickerField(date: $viewModel.date, displayedComponent: .hourAndMinute, alignment: .bottomTrailing)
+        DatePickerField(date: $viewModel.recipe.timeEnd, displayedComponent: .hourAndMinute, alignment: .bottomTrailing)
     }
     
     private var weekdayPicker: some View {
-        DatePickerField(date: $viewModel.date, displayedComponent: .date, alignment: .topTrailing)
+        DatePickerField(date: $viewModel.recipe.timeEnd, displayedComponent: .date, alignment: .topTrailing)
             .font(.caption)
     }
 }
@@ -137,10 +137,9 @@ struct ContentView_Previews: PreviewProvider {
 
     struct Preview: View {
         var recipe: Recipe = .preview
-        var date: Date = Date().withAdded(hours: 6)
 
         var body: some View {
-            RecipeView(date: date, recipe: recipe)
+            RecipeView(recipe: recipe)
         }
     }
 }

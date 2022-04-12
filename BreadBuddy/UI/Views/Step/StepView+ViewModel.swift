@@ -15,12 +15,12 @@ extension StepView {
         }
         
         var timeInputFieldOpacity: Double {
-            step.timeInMinutes == 0 ? 0.5 : 1
+            step.timeValue == 0 ? 0.5 : 1
         }
         
         var timeUnitLabel: String {
             let unitString = step.timeUnitPreferrence.rawValue.capitalized
-            if step.timeInMinutes == 1 {
+            if step.timeValue == 1 {
                 return String(unitString.dropLast())
             } else {
                 return unitString
