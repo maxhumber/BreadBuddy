@@ -5,6 +5,7 @@ extension HomeView {
     final class ViewModel: ObservableObject {
         @Published var recipes = [Recipe]()
         @Published var addViewIsPresented = false
+        @Published var deleteAlertIsPresented = false
         
         private var database: Database
         private var cancellables = Set<AnyCancellable>()

@@ -27,30 +27,59 @@ struct HomeView: View {
     }
     
     private var content: some View {
-        VStack {
-            header
-            List($viewModel.recipes) { $recipe in
-                NavigationLink {
-                    StepsView(recipe: recipe)
-                } label: {
-                    Text(recipe.name)
+        ZStack {
+            VStack {
+                header
+                List($viewModel.recipes) { $recipe in
+                    NavigationLink {
+                        StepsView(recipe: recipe)
+                    } label: {
+                        Text(recipe.name)
+                    }
+                    .contextMenu {
+                        Button(role: .destructive) {
+                            viewModel.deleteAlertIsPresented = true
+                        } label: {
+                            Label("Delete", systemImage: "xmark")
+                        }
+                    }
+                    .alert(isPresented: $viewModel.deleteAlertIsPresented) {
+                        Alert(
+                            title: Text("Delete Recipe"),
+                            message: Text("Are you sure you want to delete this recipe?"),
+                            primaryButton: .destructive(Text("confirm")) {
+                                viewModel.delete(recipe)
+                            },
+                            secondaryButton: .cancel()
+                        )
+                    }
                 }
+                .listStyle(.plain)
             }
-            .listStyle(.plain)
+            floatingAddButton
         }
+    }
+    
+    private var floatingAddButton: some View {
+        Button {
+            viewModel.addViewIsPresented = true
+            editMode = .active
+        } label: {
+            Image(systemName: "plus")
+                .foregroundColor(.white)
+                .font(.title3)
+                .padding()
+                .background(
+                    Circle()
+                        .shadow(color: .black.opacity(0.2), radius: 2, x: 2, y: 1)
+                )
+                .padding()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
     }
     
     private var header: some View {
         ZStack {
-            HStack {
-                Spacer()
-                Button {
-                    viewModel.addViewIsPresented = true
-                    editMode = .active
-                } label: {
-                    Image(systemName: "plus")
-                }
-            }
             Text("BreadBuddy")
         }
         .padding()
