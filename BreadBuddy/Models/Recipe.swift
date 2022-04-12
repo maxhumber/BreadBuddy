@@ -43,13 +43,13 @@ extension Recipe {
         name: "Maggie's Baguette",
         timeEnd: .next(.sunday).withAdded(hours: 15),
         steps: [
-            Step(description: "Mix ingredients", timeValue: 5, timeUnitPreferrence: .minutes),
-            Step(description: "Knead the dough", timeValue: 10, timeUnitPreferrence: .minutes),
-            Step(description: "Bulk rise", timeValue: 90, timeUnitPreferrence: .minutes),
-            Step(description: "Divide and shape", timeValue: 15, timeUnitPreferrence: .minutes),
-            Step(description: "Second rise", timeValue: 2, timeUnitPreferrence: .hours),
-            Step(description: "Bake", timeValue: 25, timeUnitPreferrence: .minutes),
-            Step(description: "Cool", timeValue: 1, timeUnitPreferrence: .hours)
+            Step(description: "Mix ingredients", timeValue: 5, timeUnit: .minutes),
+            Step(description: "Knead the dough", timeValue: 10, timeUnit: .minutes),
+            Step(description: "Bulk rise", timeValue: 90, timeUnit: .minutes),
+            Step(description: "Divide and shape", timeValue: 15, timeUnit: .minutes),
+            Step(description: "Second rise", timeValue: 2, timeUnit: .hours),
+            Step(description: "Bake", timeValue: 25, timeUnit: .minutes),
+            Step(description: "Cool", timeValue: 1, timeUnit: .hours)
         ]
     )
 }

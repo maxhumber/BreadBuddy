@@ -22,8 +22,8 @@ struct StepView: View {
     private var content: some View {
         HStack(alignment: .top, spacing: 0) {
             description
-            time
-            startTime
+            timeComponents
+            timeStart
             if isEditing {
                 actionMenu
             }
@@ -31,37 +31,33 @@ struct StepView: View {
     }
     
     private var description: some View {
-        descriptionField
-            .disabled(!isEditing)
-            .dynamicBorder()
-    }
-    
-    private var descriptionField: some View {
         TextField("Description", text: $step.description)
+            .dynamicBorder()
+            .disabled(!isEditing)
             .focused($field, equals: .description)
             .submitLabel(.next)
             .onSubmit { viewModel.didSubmit(&field) }
     }
     
-    private var time: some View {
+    private var timeComponents: some View {
         VStack(spacing: 0) {
-            timeInMinutesStack
-            timeUnitPreferenceMenu
+            timeStack
+            timeUnitMenu
         }
     }
     
-    private var timeInMinutesStack: some View {
+    private var timeStack: some View {
         ZStack {
             SkeleText("XXX")
-            timeValueField
+            timeValue
         }
         .disabled(!isEditing)
         .dynamicBorder()
     }
     
-    private var timeValueField: some View {
+    private var timeValue: some View {
         TextField("", value: $step.timeValue, formatter: .number)
-            .opacity(timeInputFieldOpacity)
+            .opacity(step.timeValue == 0 ? 0.5 : 1)
             .fixedSize(horizontal: true, vertical: true)
             .multilineTextAlignment(.center)
             .keyboardType(.numberPad)
@@ -70,73 +66,48 @@ struct StepView: View {
             .onSubmit { viewModel.didSubmit(&field) }
     }
     
-    private var timeInputFieldOpacity: Double {
-        step.timeValue == 0 ? 0.5 : 1
-    }
-    
-    private var timeUnitPreferenceMenu: some View {
+    private var timeUnitMenu: some View {
         Menu {
-            timeUnitPreferenceMenuOptions
+            timeUnitMenuOptions
         } label: {
-            timeUnitPreferenceMenuLabel
+            timeUnitMenuLabel
         }
         .disabled(!isEditing)
-        .onChange(of: step.timeUnitPreferrence, perform: viewModel.didChange(timeUnit:))
+        .onChange(of: step.timeUnit, perform: viewModel.didChange(timeUnit:))
     }
 
-    @ViewBuilder private var timeUnitPreferenceMenuOptions: some View {
+    @ViewBuilder private var timeUnitMenuOptions: some View {
         ForEach(TimeUnit.allCases) { unit in
             Button {
-                step.timeUnitPreferrence = unit
+                step.timeUnit = unit
             } label: {
                 Text(unit.rawValue)
             }
         }
     }
     
-    private var timeUnitPreferenceMenuLabel: some View {
+    private var timeUnitMenuLabel: some View {
         ZStack {
             SkeleText("XXXXXXX")
-            Text(timeUnitLabel)
+            Text(step.timeUnitString)
                 .animation(nil, value: UUID())
         }
         .contentShape(Rectangle())
         .font(.caption2)
-        .foregroundColor(timeUnitPreferenceMenuLabelColor)
+        .foregroundColor(isEditing ? .blue : .black)
     }
     
-    private var timeUnitPreferenceMenuLabelColor: Color {
-        isEditing ? .blue : .black
-    }
-    
-    private var timeUnitLabel: String {
-        let unitString = step.timeUnitPreferrence.rawValue.capitalized
-        if step.timeValue == 1 {
-            return String(unitString.dropLast())
-        } else {
-            return unitString
-        }
-    }
-    
-    private var startTime: some View {
+    private var timeStart: some View {
         VStack(alignment: .trailing, spacing: 0) {
             ZStack(alignment: .trailing) {
                 SkeleText("XX:XX XX")
-                Text(timeStart.time())
+                Text(step.timeStartString)
             }
             .padding(.vertical, 5)
-            Text(timeStart.weekday())
+            Text(step.timeStartWeekdayString)
                 .font(.caption2)
         }
-        .opacity(startTimeOpacity)
-    }
-    
-    private var timeStart: Date {
-        step.timeStart ?? Date()
-    }
-    
-    private var startTimeOpacity: Double {
-        step.timeStart == nil ? 0 : 1
+        .opacity(step.timeStart == nil ? 0 : 1)
     }
     
     private var actionMenu: some View {

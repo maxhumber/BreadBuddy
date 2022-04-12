@@ -24,21 +24,21 @@ final class RecipeViewModel: ObservableObject {
     
     func didChange(field: StepField?) {
         if field == .none {
-            print("Did dismiss field")
+            
         }
     }
     
     func didChange(timeUnit: TimeUnit) {
-        print("Did change time unit preference to: \(timeUnit.rawValue)")
+        refresh()
     }
     
     func didSubmit(_ field: inout StepField?) {
-        print("Did submit field: \(field!)")
         switch field {
         case .description:
             field = .timeInMinutes
         case .timeInMinutes:
             field = .none
+            refresh()
         default:
             break
         }
@@ -47,7 +47,7 @@ final class RecipeViewModel: ObservableObject {
     private func refresh() {
         var time = recipe.timeEnd
         for step in recipe.steps.reversed() {
-            switch step.timeUnitPreferrence {
+            switch step.timeUnit {
             case .minutes:
                 time = time.withAdded(minutes: -step.timeValue)
             case .hours:
