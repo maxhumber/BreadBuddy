@@ -1,9 +1,11 @@
 import Combine
 import Foundation
+import SwiftUI
 
 extension HomeView {
     final class ViewModel: ObservableObject {
         @Published var recipes = [Recipe]()
+        @Published var editMode: EditMode = .inactive
         @Published var addViewIsPresented = false
         @Published var deleteAlertIsPresented = false
         
@@ -23,6 +25,19 @@ extension HomeView {
         
         func delete(_ recipe: Recipe) {
             try? database.delete(recipe)
+        }
+        
+        func onDismissFullScreenCover() {
+            editMode = .inactive
+        }
+        
+        func addButtonAction() {
+            addViewIsPresented = true
+            editMode = .active
+        }
+        
+        func deleteButtonAction() {
+            deleteAlertIsPresented = true
         }
     }
 }

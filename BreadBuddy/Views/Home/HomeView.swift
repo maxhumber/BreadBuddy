@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var editMode: EditMode = .inactive
     @StateObject var viewModel: ViewModel
 
     init(database: Database = .shared) {
@@ -11,71 +10,29 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
-            content
+            layers
                 .navigationBarHidden(true)
-        }
-        .fullScreenCover(isPresented: $viewModel.addViewIsPresented) {
-            editMode = .inactive
-        } content: {
-            newStepsView
         }
     }
     
-    private var newStepsView: some View {
-        StepsView()
-            .environment(\.editMode, $editMode)
+    private var layers: some View {
+        ZStack {
+            content
+            addButton
+        }
     }
     
     private var content: some View {
-        ZStack {
-            VStack {
-                header
-                List($viewModel.recipes) { $recipe in
-                    NavigationLink {
-                        StepsView(recipe: recipe)
-                    } label: {
-                        Text(recipe.name)
-                    }
-                    .contextMenu {
-                        Button(role: .destructive) {
-                            viewModel.deleteAlertIsPresented = true
-                        } label: {
-                            Label("Delete", systemImage: "xmark")
-                        }
-                    }
-                    .alert(isPresented: $viewModel.deleteAlertIsPresented) {
-                        Alert(
-                            title: Text("Delete Recipe"),
-                            message: Text("Are you sure you want to delete this recipe?"),
-                            primaryButton: .destructive(Text("confirm")) {
-                                viewModel.delete(recipe)
-                            },
-                            secondaryButton: .cancel()
-                        )
-                    }
-                }
-                .listStyle(.plain)
-            }
-            floatingAddButton
+        VStack {
+            header
+            list
         }
-    }
-    
-    private var floatingAddButton: some View {
-        Button {
-            viewModel.addViewIsPresented = true
-            editMode = .active
-        } label: {
-            Image(systemName: "plus")
-                .foregroundColor(.white)
-                .font(.title3)
-                .padding()
-                .background(
-                    Circle()
-                        .shadow(color: .black.opacity(0.2), radius: 2, x: 2, y: 1)
-                )
-                .padding()
+        .fullScreenCover(isPresented: $viewModel.addViewIsPresented) {
+            viewModel.onDismissFullScreenCover()
+        } content: {
+            StepsView(recipe: .init())
+                .environment(\.editMode, $viewModel.editMode)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
     }
     
     private var header: some View {
@@ -83,6 +40,67 @@ struct HomeView: View {
             Text("BreadBuddy")
         }
         .padding()
+    }
+    
+    private var list: some View {
+        List(viewModel.recipes) { recipe in
+            row(for: recipe)
+        }
+        .listStyle(.plain)
+    }
+
+    private func row(for recipe: Recipe) -> some View {
+        NavigationLink {
+            StepsView(recipe: recipe)
+        } label: {
+            Text(recipe.name)
+        }
+        .contextMenu {
+            deleteButton
+        }
+        .alert(isPresented: $viewModel.deleteAlertIsPresented) {
+            deleteAlert(for: recipe)
+        }
+    }
+    
+    private var deleteButton: some View {
+        Button(role: .destructive) {
+            viewModel.deleteButtonAction()
+        } label: {
+            Label("Delete", systemImage: "xmark")
+        }
+    }
+    
+    func deleteAlert(for recipe: Recipe) -> Alert {
+        Alert(
+            title: Text("Delete Recipe"),
+            message: Text("Are you sure you want to delete this recipe?"),
+            primaryButton: .destructive(Text("confirm")) {
+                viewModel.delete(recipe)
+            },
+            secondaryButton: .cancel()
+        )
+    }
+    
+    private var addButton: some View {
+        Button {
+            viewModel.addButtonAction()
+        } label: {
+            addButtonContent
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+    }
+    
+    private var addButtonContent: some View {
+        Image(systemName: "plus")
+            .foregroundColor(.white)
+            .font(.title3)
+            .padding()
+            .background(
+                Circle()
+                    .shadow(color: .black.opacity(0.2), radius: 2, x: 2, y: 1)
+            )
+            .padding()
     }
 }
 
