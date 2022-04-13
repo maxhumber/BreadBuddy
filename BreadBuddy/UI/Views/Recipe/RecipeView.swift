@@ -76,17 +76,12 @@ struct RecipeView: View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 20) {
                 ForEach($viewModel.recipe.steps) { $step in
-                    StepView(for: $step)
+                    InnerStepRow(for: $step)
                 }
-                newStepRow
+                NewStepRow()
             }
             .padding(.horizontal, 5)
         }
-    }
-    
-    private var newStepRow: some View {
-        StepView(for: $viewModel.newStep)
-            .opacity(editMode?.wrappedValue == .active ? 1 : 0)
     }
 
     private var footer: some View {

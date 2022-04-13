@@ -3,7 +3,6 @@ import Foundation
 
 final class RecipeViewModel: ObservableObject {
     @Published var recipe: Recipe
-    @Published var newStep: Step = .init()
     @Published var dimissAlertIsDisplayed = false
     
     private let database: Database
