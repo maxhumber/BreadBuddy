@@ -35,7 +35,7 @@ struct Day: Identifiable {
     var steps: [Step]
 }
 
-struct DayDivider: View {
+struct Divider: View {
     var day: Day
     
     var body: some View {
@@ -87,7 +87,7 @@ struct DisplayView: View {
         VStack(spacing: 20) {
             Text("Maggie's Baguette")
             ForEach(days) { day in
-                DayDivider(day: day)
+                Divider(day: day)
                 ForEach(day.steps) { step in
                     DisplayRow(step: step)
                 }
@@ -115,50 +115,110 @@ fileprivate struct Lined: ViewModifier {
     }
 }
 
+extension View {
+    func aligned() -> some View {
+        self.modifier(Aligned())
+    }
+}
+
+fileprivate struct Aligned: ViewModifier {
+    func body(content: Content) -> some View {
+        ZStack {
+            Image(systemName: "square")
+                .opacity(0)
+            content
+        }
+        .contentShape(Rectangle())
+    }
+}
+
 struct EditRow: View {
+    @Binding var step: Step
+    
     var body: some View {
         HStack(alignment: .center, spacing: 0) {
-            ZStack {
-                Image(systemName: "square")
-                    .opacity(0)
-                Image(systemName: "ellipsis")
-                    .rotationEffect(.degrees(90))
-            }
-            .contentShape(Rectangle())
-            .font(.title3)
-            .foregroundColor(.gray)
-            .padding(.horizontal, 10)
+            actionButton
             HStack(alignment: .bottom, spacing: 10) {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Wed • 8:00pm")
-                        .foregroundColor(.gray)
-                        .font(.caption2.italic())
-                    Text("Mix Ingredients")
-                        .font(.title3)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .lined()
+                    startTime
+                    activity
                 }
-                ZStack {
-                    SkeleText("XXX")
-                    Text("10")
-                }
-                .font(.title3)
-                .lined()
-                .fixedSize()
-                ZStack {
-                    SkeleText("XXXX")
-                    Text("mins")
-                }
-                .font(.title3)
-                .lined()
-                .fixedSize()
+                duration
+                timeUnitMenu
             }
         }
         .padding(.trailing)
     }
+    
+    private var actionButton: some View {
+        Image(systemName: "ellipsis")
+            .rotationEffect(.degrees(90))
+            .aligned()
+            .font(.title3)
+            .foregroundColor(.gray)
+            .padding(.horizontal, 10)
+    }
+    
+    private var startTime: some View {
+        Text("Wed • 8:00pm")
+            .foregroundColor(.gray)
+            .font(.caption2.italic())
+    }
+    
+    private var activity: some View {
+        TextField("Description", text: $step.description)
+            .font(.title3)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .lined()
+    }
+    
+    private var duration: some View {
+        ZStack {
+            SkeleText("XXX")
+            TextField("", value: $step.timeValue, formatter: .number)
+                .multilineTextAlignment(.center)
+                .keyboardType(.decimalPad)
+                .opacity(step.timeValue == 0 ? 0.5 : 1)
+        }
+        .lined()
+        .fixedSize(horizontal: true, vertical: true)
+        .font(.title3)
+    }
+    
+    private var timeUnitMenu: some View {
+        Menu {
+            timeUnitMenuOptions
+        } label: {
+            timeUnitMenuLabel
+        }
+    }
+    
+    @ViewBuilder private var timeUnitMenuOptions: some View {
+        ForEach(TimeUnit.allCases) { unit in
+            Button {
+                step.timeUnit = unit
+            } label: {
+                Text(unit.rawValue)
+            }
+        }
+    }
+    
+    private var timeUnitMenuLabel: some View {
+        ZStack(alignment: .center) {
+            SkeleText("XXXX")
+            Text(step.timeUnitString)
+                .animation(nil, value: UUID())
+        }
+        .foregroundColor(.black)
+        .font(.title3)
+        .lined()
+        .fixedSize()
+    }
 }
 
 struct EditView: View {
+    @State var recipe: Recipe = .preview
+    
     var body: some View {
         VStack(spacing: 30) {
             ZStack {
@@ -169,12 +229,12 @@ struct EditView: View {
             .lined()
             .fixedSize()
             .padding(.top)
-            EditRow()
-            EditRow()
-            EditRow()
+            ForEach($recipe.steps) { $step in
+                EditRow(step: $step)
+            }
+            EditRow(step: .constant(.init()))
             Spacer()
         }
-        .environment(\.editMode, .constant(.active))
     }
 }
 
