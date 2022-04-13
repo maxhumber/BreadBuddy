@@ -2,7 +2,11 @@ import SwiftUI
 
 struct NewStepRow: View {
     @Environment(\.editMode) private var editMode
-    @State var step: Step = .init()
+    @Binding var step: Step
+    
+    init(for step: Binding<Step>) {
+        self._step = step
+    }
     
     var body: some View {
         InnerStepRow(for: $step, mode: .new)
@@ -29,11 +33,15 @@ struct InnerStepRow: View {
     public var body: some View {
         content
             .onChange(of: field, perform: { field in
-                // 1. Make sure it's NEW mode
+                print("DID CHANGE FIELD TO: \(field?.rawValue ?? "NOTHING")")
+                // make sure mode is NEW
                 if mode == .existing { return }
+                // make sure field is being dimissed to nothing
+                if field != .none { return }
+                // make sure step is filled out
                 if step.description.isEmpty { return }
                 if step.timeValue == 0 { return }
-                print("HERE")
+                // append, refresh, reinit for a new step
                 viewModel.recipe.steps.append(step)
                 viewModel.refresh()
                 step = .init()
@@ -57,10 +65,8 @@ struct InnerStepRow: View {
             .disabled(!isEditing)
             .focused($field, equals: .description)
             .submitLabel(.next)
-            .if(mode == .new) {
-                $0.onSubmit { viewModel.didSubmit(&field) }
-            } else: {
-                $0.onSubmit { viewModel.didSubmit(&field) }
+            .onSubmit {
+                field = .timeInMinutes
             }
     }
     
@@ -85,13 +91,11 @@ struct InnerStepRow: View {
             .opacity(step.timeValue == 0 ? 0.5 : 1)
             .fixedSize(horizontal: true, vertical: true)
             .multilineTextAlignment(.center)
-            .keyboardType(.numberPad)
+            .keyboardType(.decimalPad)
             .submitLabel(.done)
             .focused($field, equals: .timeInMinutes)
-            .if(mode == .new) {
-                $0.onSubmit { viewModel.didSubmit(&field) }
-            } else: {
-                $0.onSubmit { viewModel.didSubmit(&field) }
+            .onSubmit {
+                field = .none
             }
     }
     
@@ -102,7 +106,11 @@ struct InnerStepRow: View {
             timeUnitMenuLabel
         }
         .disabled(!isEditing)
-        .onChange(of: step.timeUnit, perform: viewModel.didChange(timeUnit:))
+        .onChange(of: step.timeUnit, perform: { timeUnit in
+            if mode == .existing {
+                viewModel.refresh()
+            }
+        })
     }
 
     @ViewBuilder private var timeUnitMenuOptions: some View {

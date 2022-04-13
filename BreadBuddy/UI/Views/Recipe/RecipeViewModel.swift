@@ -3,6 +3,7 @@ import Foundation
 
 final class RecipeViewModel: ObservableObject {
     @Published var recipe: Recipe
+    @Published var newStep: Step = .init()
     @Published var dimissAlertIsDisplayed = false
     
     private let database: Database
@@ -61,7 +62,7 @@ final class RecipeViewModel: ObservableObject {
         }
     }
     
-    func back(_ action: @escaping () -> ()) {
+    @MainActor func back(_ action: @escaping () -> ()) {
         switch (recipe.name.isEmpty, recipe.steps.isEmpty) {
         case (true, true):
             action()
@@ -73,7 +74,7 @@ final class RecipeViewModel: ObservableObject {
         }
     }
     
-    private func save() {
+    @MainActor private func save() {
         Task {
             var updatedRecipe = self.recipe
             try await database.save(&updatedRecipe)
