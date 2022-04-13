@@ -27,7 +27,8 @@
 		504D3C2027E017B300C95123 /* Preview.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504D3C1F27E017B300C95123 /* Preview.xcassets */; };
 		504D3C2A27E017B300C95123 /* BreadBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D3C2927E017B300C95123 /* BreadBuddyTests.swift */; };
 		50631BF728070F0E007985F1 /* StepMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631BF628070F0D007985F1 /* StepMode.swift */; };
-		50631BF9280739A3007985F1 /* StepRow2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631BF8280739A3007985F1 /* StepRow2.swift */; };
+		50631BF9280739A3007985F1 /* Display&EditViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631BF8280739A3007985F1 /* Display&EditViews.swift */; };
+		50631BFB28075250007985F1 /* Date+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631BFA28075250007985F1 /* Date+init.swift */; };
 		509953192800CB09004AEEAB /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 509953182800CB09004AEEAB /* GRDB */; };
 		5099531D2800CBFA004AEEAB /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099531C2800CBFA004AEEAB /* Database.swift */; };
 		509953202800CC60004AEEAB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099531F2800CC60004AEEAB /* HomeView.swift */; };
@@ -70,7 +71,8 @@
 		504D3C2527E017B300C95123 /* BreadBuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BreadBuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		504D3C2927E017B300C95123 /* BreadBuddyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadBuddyTests.swift; sourceTree = "<group>"; };
 		50631BF628070F0D007985F1 /* StepMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepMode.swift; sourceTree = "<group>"; };
-		50631BF8280739A3007985F1 /* StepRow2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepRow2.swift; sourceTree = "<group>"; };
+		50631BF8280739A3007985F1 /* Display&EditViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Display&EditViews.swift"; sourceTree = "<group>"; };
+		50631BFA28075250007985F1 /* Date+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+init.swift"; sourceTree = "<group>"; };
 		5099531C2800CBFA004AEEAB /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		5099531F2800CC60004AEEAB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		509953212800CC6F004AEEAB /* HomeView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeView+ViewModel.swift"; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 		5032A6B927FB58180031501D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				50631BFA28075250007985F1 /* Date+init.swift */,
 				5032A6C627FC833D0031501D /* Date+next.swift */,
 				5032A6BA27FB69500031501D /* Date+string.swift */,
 				5032A6C427FC83280031501D /* Date+withAdded.swift */,
@@ -162,6 +165,7 @@
 		5099531A2800CBB9004AEEAB /* Experiments */ = {
 			isa = PBXGroup;
 			children = (
+				50631BF8280739A3007985F1 /* Display&EditViews.swift */,
 				5032A6C827FC892F0031501D /* NotificationTestView.swift */,
 			);
 			path = Experiments;
@@ -256,7 +260,6 @@
 				50631BF628070F0D007985F1 /* StepMode.swift */,
 				50E020362804B2FF00440979 /* StepField.swift */,
 				50DCF1DC27F781CF00D0A369 /* StepRow.swift */,
-				50631BF8280739A3007985F1 /* StepRow2.swift */,
 			);
 			path = Step;
 			sourceTree = "<group>";
@@ -384,13 +387,14 @@
 				509953222800CC6F004AEEAB /* HomeView+ViewModel.swift in Sources */,
 				5036A2C827FDF46700BEE804 /* View+dynamicBorder.swift in Sources */,
 				504D3C1927E017B200C95123 /* BreadBuddyApp.swift in Sources */,
+				50631BFB28075250007985F1 /* Date+init.swift in Sources */,
 				50E020372804B2FF00440979 /* StepField.swift in Sources */,
 				5023C0F62805EBA50000316A /* SkeleText.swift in Sources */,
 				5036A2CE27FDFFD200BEE804 /* Recipe.swift in Sources */,
 				5032A6BB27FB69500031501D /* Date+string.swift in Sources */,
 				5099531D2800CBFA004AEEAB /* Database.swift in Sources */,
 				5032A6C927FC892F0031501D /* NotificationTestView.swift in Sources */,
-				50631BF9280739A3007985F1 /* StepRow2.swift in Sources */,
+				50631BF9280739A3007985F1 /* Display&EditViews.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

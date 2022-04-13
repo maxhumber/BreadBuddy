@@ -24,7 +24,7 @@ extension Step: Codable {}
 
 extension Step {
     var timeUnitString: String {
-        let str = timeUnit.rawValue.capitalized
+        let str = timeUnit.rawValue
         if timeValue == 1 {
             return String(str.dropLast())
         } else {
@@ -33,11 +33,15 @@ extension Step {
     }
     
     var timeStartString: String {
-        timeStart?.time() ?? ""
+        timeStart?.time().lowercased() ?? ""
     }
     
     var timeStartWeekdayString: String {
         timeStart?.weekday() ?? ""
+    }
+    
+    var durationString: String {
+        String(format: "%.0f", timeValue) + " " + timeUnitString
     }
     
     var timeStartIsPast: Bool {

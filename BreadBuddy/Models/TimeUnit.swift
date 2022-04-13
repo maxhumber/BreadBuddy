@@ -2,8 +2,8 @@ import Foundation
 import GRDB
 
 enum TimeUnit: String {
-    case minutes = "minutes"
-    case hours = "hours"
+    case minutes = "mins"
+    case hours = "hrs"
     case days = "days"
 }
 
