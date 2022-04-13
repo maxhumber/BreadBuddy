@@ -78,7 +78,7 @@ struct RecipeView: View {
                 ForEach($viewModel.recipe.steps) { $step in
                     InnerStepRow(for: $step)
                 }
-                NewStepRow()
+//                NewStepRow()
             }
             .padding(.horizontal, 5)
         }

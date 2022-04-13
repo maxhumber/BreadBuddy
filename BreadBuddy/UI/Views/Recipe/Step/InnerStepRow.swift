@@ -1,115 +1,15 @@
 import SwiftUI
 
-struct NewStepRow: View {
-    @EnvironmentObject var viewModel: RecipeViewModel
-    @Environment(\.editMode) private var editMode
-    @FocusState private var field: StepField?
-    @State var step: Step = .init()
-    
-    public var body: some View {
-        content
-            .onChange(of: field, perform: viewModel.didChange(field:)) // XXX
-    }
-    
-    private var content: some View {
-        HStack(alignment: .top, spacing: 0) {
-            description
-            timeComponents
-            timeStartPlaceholder
-            actionMenuPlaceholder
-        }
-    }
-    
-    private var timeStartPlaceholder: some View {
-        VStack(alignment: .trailing, spacing: 0) {
-            SkeleText("XX:XX XX")
-                .padding(.vertical, 5)
-            SkeleText("XX:XX XX")
-                .font(.caption2)
-        }
-    }
-    
-    private var description: some View {
-        TextField("Description", text: $step.description)
-            .dynamicBorder()
-            .focused($field, equals: .description)
-            .submitLabel(.next)
-    }
-    
-    private var timeComponents: some View {
-        VStack(spacing: 0) {
-            timeStack
-            timeUnitMenu
-        }
-    }
-    
-    private var timeStack: some View {
-        ZStack {
-            SkeleText("XXX")
-            timeValue
-        }
-        .dynamicBorder()
-    }
-    
-    private var timeValue: some View {
-        TextField("", value: $step.timeValue, formatter: .number)
-            .opacity(step.timeValue == 0 ? 0.5 : 1)
-            .fixedSize(horizontal: true, vertical: true)
-            .multilineTextAlignment(.center)
-            .keyboardType(.numberPad)
-            .submitLabel(.done)
-            .focused($field, equals: .timeInMinutes)
-    }
-    
-    private var timeUnitMenu: some View {
-        Menu {
-            timeUnitMenuOptions
-        } label: {
-            timeUnitMenuLabel
-        }
-    }
-    
-    @ViewBuilder private var timeUnitMenuOptions: some View {
-        ForEach(TimeUnit.allCases) { unit in
-            Button {
-                step.timeUnit = unit
-            } label: {
-                Text(unit.rawValue)
-            }
-        }
-    }
-    
-    private var timeUnitMenuLabel: some View {
-        ZStack {
-            SkeleText("XXXXXXX")
-            Text(step.timeUnitString)
-                .animation(nil, value: UUID())
-        }
-        .contentShape(Rectangle())
-        .font(.caption2)
-        .foregroundColor(.blue)
-    }
-    
-    private var actionMenuPlaceholder: some View {
-        Image(systemName: "circle")
-            .opacity(0)
-            .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-    }
-}
-
-enum StepMode {
-    case existing
-    case new
-}
-
 struct InnerStepRow: View {
     @EnvironmentObject var viewModel: RecipeViewModel
     @Environment(\.editMode) private var editMode
     @FocusState private var field: StepField?
     @Binding var step: Step
+    var mode: StepMode
     
-    init(for step: Binding<Step>) {
+    init(for step: Binding<Step>, mode: StepMode = .existing) {
         self._step = step
+        self.mode = mode
     }
     
     private var isEditing: Bool {
@@ -118,7 +18,9 @@ struct InnerStepRow: View {
     
     public var body: some View {
         content
-            .onChange(of: field, perform: viewModel.didChange(field:)) // XXX
+            .if(mode == .new) {
+                $0.onChange(of: field, perform: viewModel.didChange(field:))
+            }
     }
     
     private var content: some View {
@@ -138,7 +40,11 @@ struct InnerStepRow: View {
             .disabled(!isEditing)
             .focused($field, equals: .description)
             .submitLabel(.next)
-            .onSubmit { viewModel.didSubmit(&field) } // XXX
+            .if(mode == .new) {
+                $0.onSubmit { viewModel.didSubmit(&field) }
+            } else: {
+                $0.onSubmit { viewModel.didSubmit(&field) }
+            }
     }
     
     private var timeComponents: some View {
@@ -165,7 +71,11 @@ struct InnerStepRow: View {
             .keyboardType(.numberPad)
             .submitLabel(.done)
             .focused($field, equals: .timeInMinutes)
-            .onSubmit { viewModel.didSubmit(&field) } // XXX
+            .if(mode == .new) {
+                $0.onSubmit { viewModel.didSubmit(&field) }
+            } else: {
+                $0.onSubmit { viewModel.didSubmit(&field) }
+            }
     }
     
     private var timeUnitMenu: some View {
@@ -175,7 +85,7 @@ struct InnerStepRow: View {
             timeUnitMenuLabel
         }
         .disabled(!isEditing)
-        .onChange(of: step.timeUnit, perform: viewModel.didChange(timeUnit:)) // XXX
+        .onChange(of: step.timeUnit, perform: viewModel.didChange(timeUnit:))
     }
 
     @ViewBuilder private var timeUnitMenuOptions: some View {
@@ -268,8 +178,8 @@ struct StepView_Previews: PreviewProvider {
                     .environment(\.editMode, .constant(.inactive))
                 InnerStepRow(for: $step)
                     .environment(\.editMode, .constant(.active))
-                NewStepRow()
-                    .environment(\.editMode, .constant(.active))
+//                NewStepRow()
+//                    .environment(\.editMode, .constant(.active))
                 Spacer()
             }
             .environmentObject(viewModel)

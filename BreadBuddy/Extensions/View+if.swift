@@ -8,4 +8,12 @@ extension View {
             self
         }
     }
+    
+    @ViewBuilder func `if`<IfContent: View, ElseContent: View>(_ condition: Bool, if ifTransform: (Self) -> IfContent, else elseTransform: (Self) -> ElseContent) -> some View {
+        if condition {
+            ifTransform(self)
+        } else {
+            elseTransform(self)
+        }
+    }
 }
