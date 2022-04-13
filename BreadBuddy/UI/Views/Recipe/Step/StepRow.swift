@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct NewStepRow: View {
+struct StepNewRow: View {
     @Environment(\.editMode) private var editMode
     @Binding var step: Step
     
@@ -9,12 +9,12 @@ struct NewStepRow: View {
     }
     
     var body: some View {
-        InnerStepRow(for: $step, mode: .new)
+        StepRow(for: $step, mode: .new)
             .opacity(editMode?.wrappedValue == .active ? 1 : 0)
     }
 }
 
-struct InnerStepRow: View {
+struct StepRow: View {
     @EnvironmentObject var viewModel: RecipeViewModel
     @Environment(\.editMode) private var editMode
     @FocusState private var field: StepField?
@@ -32,20 +32,9 @@ struct InnerStepRow: View {
     
     public var body: some View {
         content
-            .onChange(of: field, perform: { field in
-                print("DID CHANGE FIELD TO: \(field?.rawValue ?? "NOTHING")")
-                // make sure mode is NEW
-                if mode == .existing { return }
-                // make sure field is being dimissed to nothing
-                if field != .none { return }
-                // make sure step is filled out
-                if step.description.isEmpty { return }
-                if step.timeValue == 0 { return }
-                // append, refresh, reinit for a new step
-                viewModel.recipe.steps.append(step)
-                viewModel.refresh()
-                step = .init()
-            })
+            .onChange(of: field) { field in
+                viewModel.didChange(to: field, with: mode)
+            }
     }
     
     private var content: some View {
@@ -65,9 +54,7 @@ struct InnerStepRow: View {
             .disabled(!isEditing)
             .focused($field, equals: .description)
             .submitLabel(.next)
-            .onSubmit {
-                field = .timeInMinutes
-            }
+            .onSubmit({ field = .timeInMinutes })
     }
     
     private var timeComponents: some View {
@@ -94,9 +81,7 @@ struct InnerStepRow: View {
             .keyboardType(.decimalPad)
             .submitLabel(.done)
             .focused($field, equals: .timeInMinutes)
-            .onSubmit {
-                field = .none
-            }
+            .onSubmit({ field = .none })
     }
     
     private var timeUnitMenu: some View {
@@ -106,11 +91,9 @@ struct InnerStepRow: View {
             timeUnitMenuLabel
         }
         .disabled(!isEditing)
-        .onChange(of: step.timeUnit, perform: { timeUnit in
-            if mode == .existing {
-                viewModel.refresh()
-            }
-        })
+        .onChange(of: step.timeUnit) { timeUnit in
+            viewModel.didChange(timeUnit, with: mode)
+        }
     }
 
     @ViewBuilder private var timeUnitMenuOptions: some View {
@@ -157,17 +140,17 @@ struct InnerStepRow: View {
     
     @ViewBuilder private var actionMenuButtons: some View {
         Button {
-            print("up")
+            viewModel.insertBefore(step)
         } label: {
             Label("Add step above", systemImage: "arrow.up")
         }
         Button {
-            print("down")
+            viewModel.insertAfter(step)
         } label: {
             Label("Add step below", systemImage: "arrow.down")
         }
         Button(role: .destructive) {
-            print("delete")
+            viewModel.delete(step)
         } label: {
             Label("Delete", systemImage: "xmark")
         }
@@ -180,6 +163,7 @@ struct InnerStepRow: View {
         }
         .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
         .contentShape(Rectangle())
+        .opacity(mode == .existing ? 1 : 0)
     }
 }
 
@@ -199,12 +183,12 @@ struct StepView_Previews: PreviewProvider {
         
         var body: some View {
             VStack(spacing: 20) {
-                InnerStepRow(for: $step)
+                StepRow(for: $step)
                     .environment(\.editMode, .constant(.inactive))
-                InnerStepRow(for: $step)
+                StepRow(for: $step)
                     .environment(\.editMode, .constant(.active))
-//                NewStepRow()
-//                    .environment(\.editMode, .constant(.active))
+                StepNewRow(for: $step)
+                    .environment(\.editMode, .constant(.active))
                 Spacer()
             }
             .environmentObject(viewModel)

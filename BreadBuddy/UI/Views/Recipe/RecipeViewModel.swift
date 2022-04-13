@@ -22,30 +22,24 @@ final class RecipeViewModel: ObservableObject {
         refresh()
     }
     
-    func didChange(field: StepField?) {
-        if field == .none {
-            
+    func didChange(to field: StepField?, with mode: StepMode) {
+        if field != .none { return }
+        if mode == .new {
+            if newStep.description.isEmpty { return }
+            if newStep.timeValue == 0 { return }
+            recipe.steps.append(newStep)
+            newStep = .init()
         }
-    }
-    
-    func didChange(timeUnit: TimeUnit) {
         refresh()
     }
     
-    func didSubmit(_ field: inout StepField?) {
-        switch field {
-        case .description:
-            field = .timeInMinutes
-        case .timeInMinutes:
-            field = .none
+    func didChange(_ timeUnit: TimeUnit, with mode: StepMode) {
+        if mode == .existing {
             refresh()
-        default:
-            break
         }
     }
     
-//    private
-    func refresh() {
+    private func refresh() {
         var time = recipe.timeEnd
         for step in recipe.steps.reversed() {
             switch step.timeUnit {
@@ -59,6 +53,27 @@ final class RecipeViewModel: ObservableObject {
             if let index = recipe.steps.firstIndex(where: { $0 == step }) {
                 recipe.steps[index].timeStart = time
             }
+        }
+    }
+    
+    func delete(_ step: Step) {
+        if let index = recipe.steps.firstIndex(where: { $0 == step }) {
+            recipe.steps.remove(at: index)
+        }
+    }
+    
+    func insertBefore(_ step: Step) {
+        if let index = recipe.steps.firstIndex(where: { $0 == step }) {
+            recipe.steps.insert(.init(), at: index)
+        }
+    }
+    
+    func insertAfter(_ step: Step) {
+        if let index = recipe.steps.firstIndex(where: { $0 == step }) {
+            print("Index: \(index)")
+            let newIndex = recipe.steps.index(after: index)
+            print("New Index: \(newIndex)")
+            recipe.steps.insert(.init(), at: newIndex)
         }
     }
     

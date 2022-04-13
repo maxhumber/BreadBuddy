@@ -27,11 +27,12 @@
 		504D3C2027E017B300C95123 /* Preview.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504D3C1F27E017B300C95123 /* Preview.xcassets */; };
 		504D3C2A27E017B300C95123 /* BreadBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D3C2927E017B300C95123 /* BreadBuddyTests.swift */; };
 		50631BF728070F0E007985F1 /* StepMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631BF628070F0D007985F1 /* StepMode.swift */; };
+		50631BF9280739A3007985F1 /* StepRow2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631BF8280739A3007985F1 /* StepRow2.swift */; };
 		509953192800CB09004AEEAB /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 509953182800CB09004AEEAB /* GRDB */; };
 		5099531D2800CBFA004AEEAB /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099531C2800CBFA004AEEAB /* Database.swift */; };
 		509953202800CC60004AEEAB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099531F2800CC60004AEEAB /* HomeView.swift */; };
 		509953222800CC6F004AEEAB /* HomeView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509953212800CC6F004AEEAB /* HomeView+ViewModel.swift */; };
-		50DCF1DD27F781CF00D0A369 /* InnerStepRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DCF1DC27F781CF00D0A369 /* InnerStepRow.swift */; };
+		50DCF1DD27F781CF00D0A369 /* StepRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DCF1DC27F781CF00D0A369 /* StepRow.swift */; };
 		50DCF1E127FB345C00D0A369 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DCF1E027FB345C00D0A369 /* Step.swift */; };
 		50E020372804B2FF00440979 /* StepField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E020362804B2FF00440979 /* StepField.swift */; };
 /* End PBXBuildFile section */
@@ -69,10 +70,11 @@
 		504D3C2527E017B300C95123 /* BreadBuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BreadBuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		504D3C2927E017B300C95123 /* BreadBuddyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadBuddyTests.swift; sourceTree = "<group>"; };
 		50631BF628070F0D007985F1 /* StepMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepMode.swift; sourceTree = "<group>"; };
+		50631BF8280739A3007985F1 /* StepRow2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepRow2.swift; sourceTree = "<group>"; };
 		5099531C2800CBFA004AEEAB /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		5099531F2800CC60004AEEAB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		509953212800CC6F004AEEAB /* HomeView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeView+ViewModel.swift"; sourceTree = "<group>"; };
-		50DCF1DC27F781CF00D0A369 /* InnerStepRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerStepRow.swift; sourceTree = "<group>"; };
+		50DCF1DC27F781CF00D0A369 /* StepRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepRow.swift; sourceTree = "<group>"; };
 		50DCF1E027FB345C00D0A369 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		50E020362804B2FF00440979 /* StepField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -253,7 +255,8 @@
 			children = (
 				50631BF628070F0D007985F1 /* StepMode.swift */,
 				50E020362804B2FF00440979 /* StepField.swift */,
-				50DCF1DC27F781CF00D0A369 /* InnerStepRow.swift */,
+				50DCF1DC27F781CF00D0A369 /* StepRow.swift */,
+				50631BF8280739A3007985F1 /* StepRow2.swift */,
 			);
 			path = Step;
 			sourceTree = "<group>";
@@ -368,7 +371,7 @@
 				5032A6B827FB57D40031501D /* DatePickerField.swift in Sources */,
 				50631BF728070F0E007985F1 /* StepMode.swift in Sources */,
 				509953202800CC60004AEEAB /* HomeView.swift in Sources */,
-				50DCF1DD27F781CF00D0A369 /* InnerStepRow.swift in Sources */,
+				50DCF1DD27F781CF00D0A369 /* StepRow.swift in Sources */,
 				504D3C1B27E017B200C95123 /* RecipeView.swift in Sources */,
 				50DCF1E127FB345C00D0A369 /* Step.swift in Sources */,
 				5032A6C327FC81360031501D /* View+if.swift in Sources */,
@@ -387,6 +390,7 @@
 				5032A6BB27FB69500031501D /* Date+string.swift in Sources */,
 				5099531D2800CBFA004AEEAB /* Database.swift in Sources */,
 				5032A6C927FC892F0031501D /* NotificationTestView.swift in Sources */,
+				50631BF9280739A3007985F1 /* StepRow2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

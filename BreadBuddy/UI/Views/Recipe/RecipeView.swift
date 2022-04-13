@@ -76,9 +76,9 @@ struct RecipeView: View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 20) {
                 ForEach($viewModel.recipe.steps) { $step in
-                    InnerStepRow(for: $step)
+                    StepRow(for: $step)
                 }
-                NewStepRow(for: $viewModel.newStep)
+                StepNewRow(for: $viewModel.newStep)
             }
             .padding(.horizontal, 5)
         }
