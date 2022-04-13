@@ -1,5 +1,15 @@
 import SwiftUI
 
+struct NewStepRow: View {
+    @Environment(\.editMode) private var editMode
+    @State var step: Step = .init()
+    
+    var body: some View {
+        InnerStepRow(for: $step, mode: .new)
+            .opacity(editMode?.wrappedValue == .active ? 1 : 0)
+    }
+}
+
 struct InnerStepRow: View {
     @EnvironmentObject var viewModel: RecipeViewModel
     @Environment(\.editMode) private var editMode
@@ -18,9 +28,16 @@ struct InnerStepRow: View {
     
     public var body: some View {
         content
-            .if(mode == .new) {
-                $0.onChange(of: field, perform: viewModel.didChange(field:))
-            }
+            .onChange(of: field, perform: { field in
+                // 1. Make sure it's NEW mode
+                if mode == .existing { return }
+                if step.description.isEmpty { return }
+                if step.timeValue == 0 { return }
+                print("HERE")
+                viewModel.recipe.steps.append(step)
+                viewModel.refresh()
+                step = .init()
+            })
     }
     
     private var content: some View {

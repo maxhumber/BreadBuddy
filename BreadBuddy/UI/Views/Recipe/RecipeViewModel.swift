@@ -43,7 +43,8 @@ final class RecipeViewModel: ObservableObject {
         }
     }
     
-    private func refresh() {
+//    private
+    func refresh() {
         var time = recipe.timeEnd
         for step in recipe.steps.reversed() {
             switch step.timeUnit {
