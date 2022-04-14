@@ -1,18 +1,12 @@
 import Foundation
 
-struct Step {
+struct Step: Codable, Equatable, Identifiable {
     var id: UUID = .init()
     var description: String = ""
     var timeValue: Double = 0
     var timeUnit: TimeUnit = .minutes
     var timeStart: Date?
 }
-
-extension Step: Identifiable {}
-
-extension Step: Equatable {}
-
-extension Step: Codable {}
 
 extension Step {
     var timeUnitString: String {

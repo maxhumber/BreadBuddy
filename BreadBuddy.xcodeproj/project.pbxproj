@@ -34,6 +34,8 @@
 		50631C072808685C007985F1 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631C062808685C007985F1 /* Day.swift */; };
 		50631C0928086870007985F1 /* Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631C0828086870007985F1 /* Divider.swift */; };
 		50631C0B280868A6007985F1 /* DisplayRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631C0A280868A6007985F1 /* DisplayRow.swift */; };
+		50631C102808A009007985F1 /* Recipe+preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631C0F2808A009007985F1 /* Recipe+preview.swift */; };
+		50631C122808A029007985F1 /* Recipe+GRDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631C112808A029007985F1 /* Recipe+GRDB.swift */; };
 		509953192800CB09004AEEAB /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 509953182800CB09004AEEAB /* GRDB */; };
 		5099531D2800CBFA004AEEAB /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099531C2800CBFA004AEEAB /* Database.swift */; };
 		509953202800CC60004AEEAB /* IndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099531F2800CC60004AEEAB /* IndexView.swift */; };
@@ -82,6 +84,8 @@
 		50631C062808685C007985F1 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		50631C0828086870007985F1 /* Divider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divider.swift; sourceTree = "<group>"; };
 		50631C0A280868A6007985F1 /* DisplayRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayRow.swift; sourceTree = "<group>"; };
+		50631C0F2808A009007985F1 /* Recipe+preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+preview.swift"; sourceTree = "<group>"; };
+		50631C112808A029007985F1 /* Recipe+GRDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+GRDB.swift"; sourceTree = "<group>"; };
 		5099531C2800CBFA004AEEAB /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		5099531F2800CC60004AEEAB /* IndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexView.swift; sourceTree = "<group>"; };
 		509953212800CC6F004AEEAB /* IndexViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewModel.swift; sourceTree = "<group>"; };
@@ -191,6 +195,32 @@
 			path = Edit;
 			sourceTree = "<group>";
 		};
+		50631C0C28089FEB007985F1 /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				5036A2CD27FDFFD200BEE804 /* Recipe.swift */,
+				50631C112808A029007985F1 /* Recipe+GRDB.swift */,
+				50631C0F2808A009007985F1 /* Recipe+preview.swift */,
+			);
+			path = Recipe;
+			sourceTree = "<group>";
+		};
+		50631C0D28089FF4007985F1 /* Step */ = {
+			isa = PBXGroup;
+			children = (
+				50DCF1E027FB345C00D0A369 /* Step.swift */,
+			);
+			path = Step;
+			sourceTree = "<group>";
+		};
+		50631C0E28089FF9007985F1 /* TimeUnit */ = {
+			isa = PBXGroup;
+			children = (
+				5032A6BC27FB699B0031501D /* TimeUnit.swift */,
+			);
+			path = TimeUnit;
+			sourceTree = "<group>";
+		};
 		5099531A2800CBB9004AEEAB /* Experiments */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,9 +307,9 @@
 		50DCF1DF27FB344C00D0A369 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5036A2CD27FDFFD200BEE804 /* Recipe.swift */,
-				50DCF1E027FB345C00D0A369 /* Step.swift */,
-				5032A6BC27FB699B0031501D /* TimeUnit.swift */,
+				50631C0C28089FEB007985F1 /* Recipe */,
+				50631C0D28089FF4007985F1 /* Step */,
+				50631C0E28089FF9007985F1 /* TimeUnit */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -415,10 +445,12 @@
 				50631BFE28084F60007985F1 /* DisplayContent.swift in Sources */,
 				50631C0128084FF5007985F1 /* View+lined.swift in Sources */,
 				5036A2CE27FDFFD200BEE804 /* Recipe.swift in Sources */,
+				50631C102808A009007985F1 /* Recipe+preview.swift in Sources */,
 				5032A6BB27FB69500031501D /* Date+string.swift in Sources */,
 				5099531D2800CBFA004AEEAB /* Database.swift in Sources */,
 				5032A6C927FC892F0031501D /* NotificationTestView.swift in Sources */,
 				50631BF9280739A3007985F1 /* EditContent.swift in Sources */,
+				50631C122808A029007985F1 /* Recipe+GRDB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
