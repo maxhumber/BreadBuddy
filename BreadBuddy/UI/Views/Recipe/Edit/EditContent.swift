@@ -11,6 +11,9 @@ struct EditContent: View {
                     EditRow(for: $step)
                 }
                 EditRow(for: $viewModel.newStep, mode: .new)
+                // can do better here
+                EditRow(for: $viewModel.newStep, mode: .new)
+                    .opacity(0)
             }
         }
     }
@@ -60,6 +63,7 @@ struct EditRow: View {
         } label: {
             actionMenuLabel
         }
+        .opacity(mode == .new ? 0 : 1)
     }
     
     @ViewBuilder private var actionMenuButtons: some View {
@@ -116,7 +120,7 @@ struct EditRow: View {
                 .onSubmit({ field = .none })
         }
         .lined()
-        .fixedSize(horizontal: true, vertical: true)
+        .fixedSize()
         .font(.title3)
     }
     
@@ -156,7 +160,7 @@ struct EditRow: View {
 
 struct EditContent_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeView()
+        RecipeView(recipe: .preview, database: .empty())
             .environment(\.editMode, .constant(.active))
     }
 }

@@ -14,14 +14,41 @@ struct RecipeView: View {
         VStack(spacing: 10) {
             header
             content
-            footer
+            footer2
         }
         .navigationBarHidden(true)
-        .ignoresSafeArea(.keyboard, edges: .bottom)
         .dismissKeyboard()
         .environmentObject(viewModel)
         .onAppear(perform: viewModel.didAppear)
         .onChange(of: viewModel.recipe.timeEnd, perform: viewModel.didChange(timeEnd:))
+    }
+    
+    #warning("Need to properly space this")
+    private var footer2: some View {
+        HStack {
+            VStack(spacing: 10) {
+                Text("6:00 pm")
+                    .font(.body.bold())
+                Text("Friday")
+                    .font(.caption)
+            }
+            .frame(maxWidth: .infinity)
+            VStack(spacing: 10) {
+                Image(systemName: "clock")
+                    .font(.title3)
+                Text("Start")
+                    .font(.caption)
+            }
+            .frame(maxWidth: .infinity)
+            VStack(spacing: 10) {
+                Image(systemName: "pencil")
+                    .font(.title3)
+                Text("Edit")
+                    .font(.caption)
+            }
+            .frame(maxWidth: .infinity)
+        }
+        .padding()
     }
     
     private var header: some View {

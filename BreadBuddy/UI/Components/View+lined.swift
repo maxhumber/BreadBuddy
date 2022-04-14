@@ -21,5 +21,6 @@ struct View_lined_Previews: PreviewProvider {
     static var previews: some View {
         Text("Preview")
             .lined()
+            .fixedSize()
     }
 }
