@@ -1,23 +1,16 @@
 import SwiftUI
 
 struct EditContent: View {
-    @State var recipe: Recipe = .preview
+    @Binding var recipe: Recipe
     
     var body: some View {
-        VStack(spacing: 30) {
-            ZStack {
-                SkeleText("XXXXXXXXXXXXXX")
-                Text("Maggie's Baguette")
+        ScrollView(showsIndicators: false) {
+            VStack(spacing: 30) {
+                ForEach($recipe.steps) { $step in
+                    EditRow(step: $step)
+                }
+                EditRow(step: .constant(.init()))
             }
-            .font(.body)
-            .lined()
-            .fixedSize()
-            .padding(.top)
-            ForEach($recipe.steps) { $step in
-                EditRow(step: $step)
-            }
-            EditRow(step: .constant(.init()))
-            Spacer()
         }
     }
 }
@@ -117,7 +110,7 @@ struct EditRow: View {
 
 struct EditContent_Previews: PreviewProvider {
     static var previews: some View {
-        DisplayContent()
-        EditContent()
+        RecipeView()
+            .environment(\.editMode, .constant(.active))
     }
 }

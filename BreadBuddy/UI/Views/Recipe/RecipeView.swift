@@ -4,30 +4,23 @@ struct RecipeView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.editMode) private var editMode
     @StateObject var viewModel: RecipeViewModel
-
+    
     init(recipe: Recipe = .init(), database: Database = .shared) {
         let viewModel = RecipeViewModel(recipe: recipe, database: database)
         _viewModel = StateObject(wrappedValue: viewModel)
     }
-
+    
     var body: some View {
-        content
-            .environmentObject(viewModel)
-            .onAppear(perform: viewModel.didAppear)
-            .onChange(of: viewModel.recipe.timeEnd, perform: viewModel.didChange(timeEnd:))
-    }
-
-    private var content: some View {
         VStack(spacing: 10) {
             header
-            steps
+            content
             footer
         }
-        .navigationBarHidden(true)
-        .ignoresSafeArea(.keyboard, edges: .bottom)
-        .dismissKeyboard()
+        .environmentObject(viewModel)
+        .onAppear(perform: viewModel.didAppear)
+        .onChange(of: viewModel.recipe.timeEnd, perform: viewModel.didChange(timeEnd:))
     }
-
+    
     private var header: some View {
         ZStack {
             recipeName
@@ -36,12 +29,19 @@ struct RecipeView: View {
         .padding()
     }
     
-    private var recipeName: some View {
-        TextField("Recipe name", text: $viewModel.recipe.name)
-            .multilineTextAlignment(.center)
-            .fixedSize()
-            .dynamicBorder()
-            .disabled(editMode?.wrappedValue == .inactive)
+    @ViewBuilder private var recipeName: some View {
+        ZStack {
+            SkeleText("XXXXXXXXXXX")
+            TextField("Recipe name", text: $viewModel.recipe.name)
+                .multilineTextAlignment(.center)
+        }
+        .font(.body)
+        .if(editMode?.wrappedValue == .active) {
+            $0.lined()
+        } else: {
+            $0.disabled(true)
+        }
+        .fixedSize()
     }
     
     private var headerButtons: some View {
@@ -71,16 +71,12 @@ struct RecipeView: View {
             dismissButton: .default(Text("Okay"))
         )
     }
-
-    private var steps: some View {
-        ScrollView(showsIndicators: false) {
-            VStack(spacing: 20) {
-                ForEach($viewModel.recipe.steps) { $step in
-                    StepRow(for: $step)
-                }
-                StepNewRow(for: $viewModel.newStep)
-            }
-            .padding(.horizontal, 5)
+    
+    @ViewBuilder private var content: some View {
+        if editMode?.wrappedValue == .active {
+            EditContent(recipe: $viewModel.recipe)
+        } else {
+            DisplayContent(recipe: viewModel.recipe)
         }
     }
 
@@ -92,7 +88,7 @@ struct RecipeView: View {
         }
         .padding(.horizontal)
     }
-
+    
     private var pickers: some View {
         VStack(alignment: .trailing, spacing: 5) {
             timePicker
@@ -111,16 +107,10 @@ struct RecipeView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct RecipeView_Previews: PreviewProvider {
     static var previews: some View {
-        Preview()
-    }
-
-    struct Preview: View {
-        var recipe: Recipe = .preview
-
-        var body: some View {
-            RecipeView(recipe: recipe)
-        }
+        RecipeView(recipe: .preview)
+        RecipeView(recipe: .preview)
+            .environment(\.editMode, .constant(.active))
     }
 }

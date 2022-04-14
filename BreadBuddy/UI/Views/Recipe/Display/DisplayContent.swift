@@ -7,7 +7,7 @@ struct Day: Identifiable {
 }
 
 struct DisplayContent: View {
-    var recipe: Recipe = .preview
+    var recipe: Recipe
     
     private let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -30,17 +30,18 @@ struct DisplayContent: View {
     }
     
     var body: some View {
-        VStack(spacing: 20) {
-            Text("Maggie's Baguette")
-            ForEach(days) { day in
-                Divider(day: day)
-                ForEach(day.steps) { step in
-                    DisplayRow(step: step)
+        ScrollView(showsIndicators: false) {
+            VStack(spacing: 20) {
+                ForEach(days) { day in
+                    Divider(day: day)
+                    ForEach(day.steps) { step in
+                        DisplayRow(step: step)
+                    }
                 }
+                Spacer()
             }
-            Spacer()
+            .padding(.horizontal)
         }
-        .padding()
     }
 }
 
@@ -100,6 +101,6 @@ struct Divider: View {
 
 struct DisplayContent_Previews: PreviewProvider {
     static var previews: some View {
-        DisplayContent()
+        RecipeView()
     }
 }
