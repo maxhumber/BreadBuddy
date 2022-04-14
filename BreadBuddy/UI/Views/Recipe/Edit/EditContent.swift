@@ -1,22 +1,31 @@
 import SwiftUI
 
 struct EditContent: View {
+    @EnvironmentObject var viewModel: RecipeViewModel
     @Binding var recipe: Recipe
     
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 30) {
                 ForEach($recipe.steps) { $step in
-                    EditRow(step: $step)
+                    EditRow(for: $step)
                 }
-                EditRow(step: .constant(.init()))
+                EditRow(for: $viewModel.newStep, mode: .new)
             }
         }
     }
 }
 
 struct EditRow: View {
+    @EnvironmentObject var viewModel: RecipeViewModel
+    @FocusState private var field: StepField?
     @Binding var step: Step
+    var mode: StepMode
+
+    init(for step: Binding<Step>, mode: StepMode = .existing) {
+        self._step = step
+        self.mode = mode
+    }
     
     var startTimeString: String {
         let day = step.timeStart?.weekday()
@@ -29,7 +38,7 @@ struct EditRow: View {
     
     var body: some View {
         HStack(alignment: .center, spacing: 0) {
-            actionButton
+            actionMenu
             HStack(alignment: .bottom, spacing: 10) {
                 VStack(alignment: .leading, spacing: 4) {
                     startTime
@@ -40,9 +49,38 @@ struct EditRow: View {
             }
         }
         .padding(.trailing)
+        .onChange(of: field) { field in
+            viewModel.didChange(to: field, with: mode)
+        }
     }
     
-    private var actionButton: some View {
+    private var actionMenu: some View {
+        Menu {
+            actionMenuButtons
+        } label: {
+            actionMenuLabel
+        }
+    }
+    
+    @ViewBuilder private var actionMenuButtons: some View {
+        Button {
+            viewModel.insertBefore(step)
+        } label: {
+            Label("Add step above", systemImage: "arrow.up")
+        }
+        Button {
+            viewModel.insertAfter(step)
+        } label: {
+            Label("Add step below", systemImage: "arrow.down")
+        }
+        Button(role: .destructive) {
+            viewModel.delete(step)
+        } label: {
+            Label("Delete", systemImage: "xmark")
+        }
+    }
+    
+    private var actionMenuLabel: some View {
         Image(systemName: "ellipsis")
             .rotationEffect(.degrees(90))
             .aligned()
@@ -62,6 +100,9 @@ struct EditRow: View {
             .font(.title3)
             .frame(maxWidth: .infinity, alignment: .leading)
             .lined()
+            .focused($field, equals: .description)
+            .submitLabel(.next)
+            .onSubmit({ field = .timeInMinutes })
     }
     
     private var duration: some View {
@@ -71,6 +112,8 @@ struct EditRow: View {
                 .multilineTextAlignment(.center)
                 .keyboardType(.decimalPad)
                 .opacity(step.timeValue == 0 ? 0.5 : 1)
+                .focused($field, equals: .timeInMinutes)
+                .onSubmit({ field = .none })
         }
         .lined()
         .fixedSize(horizontal: true, vertical: true)
@@ -82,6 +125,9 @@ struct EditRow: View {
             timeUnitMenuOptions
         } label: {
             timeUnitMenuLabel
+        }
+        .onChange(of: step.timeUnit) { timeUnit in
+            viewModel.didChange(timeUnit, with: mode)
         }
     }
     

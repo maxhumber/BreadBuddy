@@ -16,6 +16,9 @@ struct RecipeView: View {
             content
             footer
         }
+        .navigationBarHidden(true)
+        .ignoresSafeArea(.keyboard, edges: .bottom)
+        .dismissKeyboard()
         .environmentObject(viewModel)
         .onAppear(perform: viewModel.didAppear)
         .onChange(of: viewModel.recipe.timeEnd, perform: viewModel.didChange(timeEnd:))

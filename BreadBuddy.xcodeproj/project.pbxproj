@@ -36,7 +36,6 @@
 		5099531D2800CBFA004AEEAB /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099531C2800CBFA004AEEAB /* Database.swift */; };
 		509953202800CC60004AEEAB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099531F2800CC60004AEEAB /* HomeView.swift */; };
 		509953222800CC6F004AEEAB /* HomeView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509953212800CC6F004AEEAB /* HomeView+ViewModel.swift */; };
-		50DCF1DD27F781CF00D0A369 /* StepRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DCF1DC27F781CF00D0A369 /* StepRow.swift */; };
 		50DCF1E127FB345C00D0A369 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DCF1E027FB345C00D0A369 /* Step.swift */; };
 		50E020372804B2FF00440979 /* StepField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E020362804B2FF00440979 /* StepField.swift */; };
 /* End PBXBuildFile section */
@@ -82,7 +81,6 @@
 		5099531C2800CBFA004AEEAB /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		5099531F2800CC60004AEEAB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		509953212800CC6F004AEEAB /* HomeView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeView+ViewModel.swift"; sourceTree = "<group>"; };
-		50DCF1DC27F781CF00D0A369 /* StepRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepRow.swift; sourceTree = "<group>"; };
 		50DCF1E027FB345C00D0A369 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		50E020362804B2FF00440979 /* StepField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -284,7 +282,6 @@
 			children = (
 				50631BF628070F0D007985F1 /* StepMode.swift */,
 				50E020362804B2FF00440979 /* StepField.swift */,
-				50DCF1DC27F781CF00D0A369 /* StepRow.swift */,
 			);
 			path = Step;
 			sourceTree = "<group>";
@@ -399,7 +396,6 @@
 				5032A6B827FB57D40031501D /* DatePickerField.swift in Sources */,
 				50631BF728070F0E007985F1 /* StepMode.swift in Sources */,
 				509953202800CC60004AEEAB /* HomeView.swift in Sources */,
-				50DCF1DD27F781CF00D0A369 /* StepRow.swift in Sources */,
 				50DCF1E127FB345C00D0A369 /* Step.swift in Sources */,
 				5032A6C327FC81360031501D /* View+if.swift in Sources */,
 				5032A6C727FC833D0031501D /* Date+next.swift in Sources */,
