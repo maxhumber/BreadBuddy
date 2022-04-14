@@ -1,5 +1,7 @@
 import SwiftUI
 
+#warning("TO DELETE")
+
 extension View {
     func dynamicBorder() -> some View {
         self.modifier(DynamicBorder())
