@@ -45,14 +45,13 @@ struct DatePickerField_Previews: PreviewProvider {
         @State var date = Date()
         
         var body: some View {
-            VStack(alignment: .trailing,spacing: 0) {
-                DatePickerField(date: $date, displayedComponent: .hourAndMinute, alignment: .bottomTrailing)
+            VStack(alignment: .center, spacing: 0) {
+                DatePickerField(date: $date, displayedComponent: .hourAndMinute, alignment: .bottom)
                     .background(Rectangle().strokeBorder().foregroundColor(.red))
-                DatePickerField(date: $date, alignment: .topTrailing)
+                DatePickerField(date: $date, alignment: .top)
                     .background(Rectangle().strokeBorder().foregroundColor(.red))
                     .font(.caption)
             }
-            .frame(maxWidth: .infinity, alignment: .trailing)
         }
     }
 }

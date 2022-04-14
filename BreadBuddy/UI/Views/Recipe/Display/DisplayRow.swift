@@ -25,6 +25,7 @@ struct DisplayRow: View {
                 .font(.body)
             Text(step.durationString)
                 .font(.caption.italic())
+                .opacity(step.timeValue == 0 ? 0 : 1)
         }
     }
 }

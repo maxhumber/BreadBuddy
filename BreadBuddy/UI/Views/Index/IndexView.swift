@@ -1,10 +1,10 @@
 import SwiftUI
 
-struct HomeView: View {
-    @StateObject var viewModel: ViewModel
+struct IndexView: View {
+    @StateObject var viewModel: IndexViewModel
 
     init(database: Database = .shared) {
-        let viewModel = ViewModel(database: database)
+        let viewModel = IndexViewModel(database: database)
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     
@@ -13,6 +13,7 @@ struct HomeView: View {
             layers
                 .navigationBarHidden(true)
         }
+        .environmentObject(viewModel)
     }
     
     private var layers: some View {
@@ -106,9 +107,9 @@ struct HomeView: View {
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
+struct IndexView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        IndexView()
     }
 }
 

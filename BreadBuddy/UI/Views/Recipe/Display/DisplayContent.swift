@@ -31,6 +31,7 @@ struct DisplayContent: View {
                     ForEach(day.steps) { step in
                         DisplayRow(step: step)
                     }
+                    DisplayRow(step: Step(description: "Ready", timeValue: 0, timeUnit: .minutes, timeStart: recipe.timeEnd))
                 }
                 Spacer()
             }

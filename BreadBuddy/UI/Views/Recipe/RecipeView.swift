@@ -7,7 +7,11 @@ struct CustomEditButton: View {
         Button {
             action()
         } label: {
-            Text(editMode?.wrappedValue == .active ? "Done" : "Edit")
+            VStack(spacing: 10) {
+                Image(systemName: editMode?.wrappedValue == .active ? "square.and.arrow.down" : "pencil")
+                Text(editMode?.wrappedValue == .active ? "Save" : "Edit")
+                    .font(.caption)
+            }
         }
     }
     
@@ -49,22 +53,24 @@ struct RecipeView: View {
     #warning("Need to properly space this")
     private var footer2: some View {
         HStack {
+            button1
+                .frame(maxWidth: .infinity)
+            CustomEditButton()
+                .frame(maxWidth: .infinity)
+        }
+    }
+    
+    @ViewBuilder private var button1: some View {
+        if editMode?.wrappedValue == .active {
+            pickers
+        } else {
             VStack(spacing: 10) {
                 Image(systemName: "clock")
                     .font(.title3)
                 Text("Start")
                     .font(.caption)
             }
-            .frame(maxWidth: .infinity)
-            VStack(spacing: 10) {
-                Image(systemName: "pencil")
-                    .font(.title3)
-                Text("Edit")
-                    .font(.caption)
-            }
-            .frame(maxWidth: .infinity)
         }
-        .padding()
     }
     
     private var header: some View {
@@ -94,6 +100,13 @@ struct RecipeView: View {
         HStack {
             backButton
             Spacer()
+            Button {
+                dismiss()
+            } label: {
+                Image(systemName: "trash")
+                    .foregroundColor(.red)
+            }
+            .opacity(editMode?.wrappedValue == .active ? 1 : 0)
         }
     }
     
@@ -107,6 +120,7 @@ struct RecipeView: View {
         .alert(isPresented: $viewModel.dimissAlertIsDisplayed) {
             dismissAlert
         }
+        .opacity(editMode?.wrappedValue == .active ? 0 : 1)
     }
     
     private var dismissAlert: Alert {
@@ -124,18 +138,9 @@ struct RecipeView: View {
             DisplayContent(recipe: viewModel.recipe)
         }
     }
-
-    private var footer: some View {
-        HStack {
-            Text("Finish")
-            Spacer()
-            pickers
-        }
-        .padding(.horizontal)
-    }
     
     private var pickers: some View {
-        VStack(alignment: .trailing, spacing: 5) {
+        VStack(alignment: .center, spacing: 5) {
             timePicker
             weekdayPicker
         }
@@ -143,11 +148,12 @@ struct RecipeView: View {
     }
     
     private var timePicker: some View {
-        DatePickerField(date: $viewModel.recipe.timeEnd, displayedComponent: .hourAndMinute, alignment: .bottomTrailing)
+        DatePickerField(date: $viewModel.recipe.timeEnd, displayedComponent: .hourAndMinute, alignment: .bottom)
     }
     
+    #warning("bug on these pickers for padding")
     private var weekdayPicker: some View {
-        DatePickerField(date: $viewModel.recipe.timeEnd, displayedComponent: .date, alignment: .topTrailing)
+        DatePickerField(date: $viewModel.recipe.timeEnd, displayedComponent: .date, alignment: .top)
             .font(.caption)
     }
 }

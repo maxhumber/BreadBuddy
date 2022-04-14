@@ -1,6 +1,11 @@
 ### TODO
+- [ ] Index Page design
+- [ ] Delete from recipe view
+- [ ] Recipe Is active
+- [ ] Assume start time is now from index
+- [ ] Show how long
+- [ ] Display red if thing is in the past on edit mode
 - [ ] Clear 0 on number input field active/focus
-- [ ] Footer design
 - [ ] Save on edit toggle
 - [ ] EditButton in MVVM
   - [ ] See focusState MVVM on SO?
@@ -16,3 +21,9 @@
 - [ ] Change time for individual step/row
 - [ ] AWS
 - [ ] Analytics
+
+
+**Names**
+BreadBuddy
+Sourdeux
+Sourdo
