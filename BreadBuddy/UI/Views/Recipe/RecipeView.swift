@@ -1,5 +1,28 @@
 import SwiftUI
 
+struct CustomEditButton: View {
+    @Environment(\.editMode) private var editMode
+    
+    var body: some View {
+        Button {
+            action()
+        } label: {
+            Text(editMode?.wrappedValue == .active ? "Done" : "Edit")
+        }
+    }
+    
+    private func action() {
+        switch editMode?.wrappedValue {
+        case .active:
+            editMode?.wrappedValue = .inactive
+        case .inactive:
+            editMode?.wrappedValue = .active
+        default:
+            break
+        }
+    }
+}
+
 struct RecipeView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.editMode) private var editMode
@@ -26,13 +49,6 @@ struct RecipeView: View {
     #warning("Need to properly space this")
     private var footer2: some View {
         HStack {
-            VStack(spacing: 10) {
-                Text("6:00 pm")
-                    .font(.body.bold())
-                Text("Friday")
-                    .font(.caption)
-            }
-            .frame(maxWidth: .infinity)
             VStack(spacing: 10) {
                 Image(systemName: "clock")
                     .font(.title3)
@@ -78,7 +94,6 @@ struct RecipeView: View {
         HStack {
             backButton
             Spacer()
-            EditButton()
         }
     }
     

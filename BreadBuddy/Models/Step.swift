@@ -9,7 +9,7 @@ struct Step {
 }
 
 extension Step {
-    init(description: String = "", timeValue: Double = 0, timeUnit: TimeUnit = .hours) {
+    init(description: String = "", timeValue: Double = 0, timeUnit: TimeUnit = .minutes) {
         self.description = description
         self.timeValue = timeValue
         self.timeUnit = timeUnit
