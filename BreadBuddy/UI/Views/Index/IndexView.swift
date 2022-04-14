@@ -64,6 +64,7 @@ struct IndexView: View {
         }
     }
     
+    #warning("Get rid of this")
     private var contextMenuDeleteButton: some View {
         Button(role: .destructive) {
             viewModel.deleteButtonAction()

@@ -13,6 +13,7 @@ struct Divider: View {
         .padding(.horizontal)
     }
     
+    #warning("make this better")
     private var label: some View {
         Text(day.date.weekday())
             .font(.caption)

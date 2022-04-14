@@ -3,25 +3,10 @@ import GRDB
 
 struct Recipe {
     var id: Int64?
-    var name: String
-    var timeEnd: Date
-    var steps: [Step]
-    var dateCreated: Date
-    var dateModified: Date
-}
-
-extension Recipe {
-    init(
-        name: String = "",
-        timeEnd: Date = .next(.sunday).withAdded(hours: 15),
-        steps: [Step] = [Step]()
-    ) {
-        self.name = name
-        self.timeEnd = timeEnd
-        self.steps = steps
-        self.dateCreated = Date()
-        self.dateModified = Date()
-    }
+    var name: String = ""
+    var timeEnd: Date = .next(.sunday).withAdded(hours: 15)
+    var steps: [Step] = [Step]()
+    var isActive: Bool = false
 }
 
 extension Recipe: Identifiable {}

@@ -27,8 +27,7 @@ extension Database {
                 table.column("name", .text).notNull()
                 table.column("timeEnd", .datetime).notNull()
                 table.column("steps", .blob).notNull()
-                table.column("dateCreated", .datetime).notNull()
-                table.column("dateModified", .datetime).notNull()
+                table.column("isActive", .boolean).notNull()
             }
         }
         return migrator

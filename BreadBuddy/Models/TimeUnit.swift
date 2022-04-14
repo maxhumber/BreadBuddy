@@ -1,17 +1,29 @@
 import Foundation
-import GRDB
 
 enum TimeUnit: String {
-    case minutes = "mins"
-    case hours = "hrs"
-    case days = "days"
+    case minutes = "Minutes"
+    case hours = "Hours"
+    case days = "Days"
+    
+    var label: String {
+        rawValue
+    }
+    
+    var shortHand: String {
+        switch self {
+        case .minutes:
+            return "mins"
+        case .hours:
+            return "hrs"
+        case .days:
+            return "days"
+        }
+    }
 }
 
 extension TimeUnit: Codable {}
 
 extension TimeUnit: CaseIterable {}
-
-extension TimeUnit: DatabaseValueConvertible {}
 
 extension TimeUnit: Identifiable {
     var id: String {

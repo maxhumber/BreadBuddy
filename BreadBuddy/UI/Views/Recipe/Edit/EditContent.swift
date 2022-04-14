@@ -140,7 +140,7 @@ struct EditRow: View {
             Button {
                 step.timeUnit = unit
             } label: {
-                Text(unit.rawValue)
+                Text(unit.label)
             }
         }
     }

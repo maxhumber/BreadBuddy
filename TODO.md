@@ -1,9 +1,10 @@
 ### TODO
 - [ ] Index Page design
 - [ ] Delete from recipe view
-- [ ] Recipe Is active
+- [ ] Recipe Is Active
+  - [ ] with option to cancel
 - [ ] Assume start time is now from index
-- [ ] Show how long
+  - [ ] Show how long a recipe will take
 - [ ] Display red if thing is in the past on edit mode
 - [ ] Clear 0 on number input field active/focus
 - [ ] Save on edit toggle
@@ -14,6 +15,7 @@
 - [ ] Logo + Icon
 - [ ] UI -> Make it cute
 - [ ] Add link to recipe (or note)
+  - [ ] And open inside app
 - [ ] RevenueCat Donate (or StoreKit2)
 
 ### Later
@@ -23,7 +25,7 @@
 - [ ] Analytics
 
 
-**Names**
-BreadBuddy
-Sourdeux
-Sourdo
+### Names
+- BreadBuddy
+- Sourdeux
+- Sourdo

@@ -48,7 +48,7 @@ struct DatePickerField_Previews: PreviewProvider {
             VStack(alignment: .center, spacing: 0) {
                 DatePickerField(date: $date, displayedComponent: .hourAndMinute, alignment: .bottom)
                     .background(Rectangle().strokeBorder().foregroundColor(.red))
-                DatePickerField(date: $date, alignment: .top)
+                DatePickerField(date: $date, alignment: .center)
                     .background(Rectangle().strokeBorder().foregroundColor(.red))
                     .font(.caption)
             }

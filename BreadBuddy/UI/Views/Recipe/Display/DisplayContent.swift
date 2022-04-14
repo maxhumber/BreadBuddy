@@ -1,5 +1,6 @@
 import SwiftUI
 
+#warning("extract view model from here")
 struct DisplayContent: View {
     var recipe: Recipe
     
@@ -10,6 +11,7 @@ struct DisplayContent: View {
         return dateFormatter
     }()
     
+    #warning("get rid of all the force unwraps!!")
     var days: [Day] {
         let grouped = Dictionary(grouping: recipe.steps) { (step: Step) -> String in
             dateFormatter.string(from: step.timeStart!)
