@@ -31,8 +31,8 @@ struct RecipeView: View {
 
 struct RecipeView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeView(.preview, mode: .display, database: .empty())
-        RecipeView(.preview, mode: .edit, database: .empty())
-        RecipeView(.preview, mode: .active, database: .empty())
+        RecipeView(.preview, mode: .display, database: .empty)
+        RecipeView(.preview, mode: .edit, database: .empty)
+        RecipeView(.preview, mode: .active, database: .empty)
     }
 }

@@ -32,6 +32,6 @@ struct Divider: View {
 
 struct Divider_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeView(.preview, mode: .display, database: .empty())
+        RecipeView(.preview, mode: .display, database: .empty)
     }
 }

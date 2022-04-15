@@ -1,7 +1,6 @@
 import Foundation
 
 extension Date {
-    #warning("need the short hand from this")
     public func weekday() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE"

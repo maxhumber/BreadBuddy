@@ -21,7 +21,7 @@ fileprivate struct Underscore: ViewModifier {
     }
 }
 
-struct View_Underline_Previews: PreviewProvider {
+struct View_Underscore_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             Text("Preview")

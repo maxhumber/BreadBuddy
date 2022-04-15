@@ -15,6 +15,7 @@
 - [ ] Add link to recipe (or note)
   - [ ] And open inside app
 - [ ] RevenueCat Donate (or StoreKit2)
+- [ ] Tests
 
 ### Eventually
 - [ ] Share link to recipe & import

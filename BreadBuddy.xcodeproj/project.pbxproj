@@ -40,6 +40,9 @@
 		50E7F3772809EF41008CF185 /* BBKit in Frameworks */ = {isa = PBXBuildFile; productRef = 50E7F3762809EF41008CF185 /* BBKit */; };
 		50E7F3792809EFA9008CF185 /* Database+Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7F3782809EFA9008CF185 /* Database+Recipe.swift */; };
 		50E7F37B2809EFAF008CF185 /* Recipe+preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7F37A2809EFAF008CF185 /* Recipe+preview.swift */; };
+		50E7F3812809F665008CF185 /* Database+shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7F3802809F665008CF185 /* Database+shared.swift */; };
+		50E7F3832809F698008CF185 /* Database+empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7F3822809F698008CF185 /* Database+empty.swift */; };
+		50E7F3852809F6F2008CF185 /* Database+migrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7F3842809F6F2008CF185 /* Database+migrator.swift */; };
 		50E9AE532808BBAF0078C969 /* StealthDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E9AE522808BBAF0078C969 /* StealthDatePicker.swift */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +91,9 @@
 		50E7F3742809EF32008CF185 /* BBKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = BBKit; sourceTree = "<group>"; };
 		50E7F3782809EFA9008CF185 /* Database+Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+Recipe.swift"; sourceTree = "<group>"; };
 		50E7F37A2809EFAF008CF185 /* Recipe+preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+preview.swift"; sourceTree = "<group>"; };
+		50E7F3802809F665008CF185 /* Database+shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+shared.swift"; sourceTree = "<group>"; };
+		50E7F3822809F698008CF185 /* Database+empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+empty.swift"; sourceTree = "<group>"; };
+		50E7F3842809F6F2008CF185 /* Database+migrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+migrator.swift"; sourceTree = "<group>"; };
 		50E9AE522808BBAF0078C969 /* StealthDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StealthDatePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -218,6 +224,8 @@
 			isa = PBXGroup;
 			children = (
 				5099531C2800CBFA004AEEAB /* Database.swift */,
+				50E7F3842809F6F2008CF185 /* Database+migrator.swift */,
+				50E7F3802809F665008CF185 /* Database+shared.swift */,
 				50E7F3782809EFA9008CF185 /* Database+Recipe.swift */,
 			);
 			path = Database;
@@ -246,7 +254,8 @@
 		50DCF1D827F7774300D0A369 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				504D3C1827E017B200C95123 /* BreadBuddyApp.swift */,
+				50E7F3862809F79E008CF185 /* @main */,
+				50DCF1DA27F7777F00D0A369 /* Assets */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -254,9 +263,8 @@
 		50DCF1D927F7774E00D0A369 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				50DCF1DA27F7777F00D0A369 /* Assets */,
-				50DCF1DE27FB341000D0A369 /* Components */,
 				501E92FD2805C50600F120EA /* Views */,
+				50DCF1DE27FB341000D0A369 /* Components */,
 				50E7F37F2809F148008CF185 /* Previews */,
 				5099531A2800CBB9004AEEAB /* Experiments */,
 			);
@@ -331,9 +339,18 @@
 		50E7F37F2809F148008CF185 /* Previews */ = {
 			isa = PBXGroup;
 			children = (
+				50E7F3822809F698008CF185 /* Database+empty.swift */,
 				50E7F37A2809EFAF008CF185 /* Recipe+preview.swift */,
 			);
 			path = Previews;
+			sourceTree = "<group>";
+		};
+		50E7F3862809F79E008CF185 /* @main */ = {
+			isa = PBXGroup;
+			children = (
+				504D3C1827E017B200C95123 /* BreadBuddyApp.swift */,
+			);
+			path = "@main";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -450,6 +467,7 @@
 				50631BF728070F0E007985F1 /* StepEditMode.swift in Sources */,
 				502BF6732809A87200C6AA91 /* RecipeView+header.swift in Sources */,
 				50631C0928086870007985F1 /* Divider.swift in Sources */,
+				50E7F3812809F665008CF185 /* Database+shared.swift in Sources */,
 				50E7F3702809E1D8008CF185 /* RecipeViewModel+content.swift in Sources */,
 				509953202800CC60004AEEAB /* IndexView.swift in Sources */,
 				50631C072808685C007985F1 /* RecipeDay.swift in Sources */,
@@ -460,10 +478,12 @@
 				502BF6752809A87B00C6AA91 /* RecipeView+content.swift in Sources */,
 				5032A6BF27FC78520031501D /* View+dismissKeyboard.swift in Sources */,
 				509953222800CC6F004AEEAB /* IndexViewModel.swift in Sources */,
+				50E7F3832809F698008CF185 /* Database+empty.swift in Sources */,
 				504D3C1927E017B200C95123 /* BreadBuddyApp.swift in Sources */,
 				50631C05280851DF007985F1 /* RecipeView.swift in Sources */,
 				50E7F3792809EFA9008CF185 /* Database+Recipe.swift in Sources */,
 				502BF6772809A88600C6AA91 /* RecipeView+footer.swift in Sources */,
+				50E7F3852809F6F2008CF185 /* Database+migrator.swift in Sources */,
 				50E020372804B2FF00440979 /* StepEditField.swift in Sources */,
 				5023C0F62805EBA50000316A /* Text+scaffold.swift in Sources */,
 				50631C0128084FF5007985F1 /* View+underscore.swift in Sources */,
@@ -617,7 +637,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BreadBuddy/UI/Assets\"";
+				DEVELOPMENT_ASSET_PATHS = "\"BreadBuddy/App/Assets\"";
 				DEVELOPMENT_TEAM = 65UTX76JJY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -647,7 +667,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BreadBuddy/UI/Assets\"";
+				DEVELOPMENT_ASSET_PATHS = "\"BreadBuddy/App/Assets\"";
 				DEVELOPMENT_TEAM = 65UTX76JJY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
