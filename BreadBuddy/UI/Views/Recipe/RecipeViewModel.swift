@@ -1,3 +1,4 @@
+import BBKit
 import Combine
 import Foundation
 
@@ -10,7 +11,7 @@ import Foundation
 
     init(_ recipe: Recipe, mode: RecipeMode, database: Database = .shared) {
         self.recipe = recipe
-        self.mode = mode
+        self.mode = recipe.isActive ? .active : mode
         self.database = database
     }
     
@@ -29,7 +30,9 @@ import Foundation
     }
     
     func didAppear() {
-        
+        if !recipe.isActive {
+            reforward()
+        }
     }
     
     func refresh() {
@@ -47,5 +50,23 @@ import Foundation
                 recipe.steps[index].timeStart = time
             }
         }
+    }
+    
+    func reforward() {
+        var time = Date()
+        for step in recipe.steps {
+            if let index = recipe.steps.firstIndex(where: { $0 == step }) {
+                recipe.steps[index].timeStart = time
+            }
+            switch step.timeUnit {
+            case .minutes:
+                time = time.withAdded(minutes: step.timeValue)
+            case .hours:
+                time = time.withAdded(hours: step.timeValue)
+            case .days:
+                time = time.withAdded(days: step.timeValue)
+            }
+        }
+        recipe.timeEnd = time
     }
 }

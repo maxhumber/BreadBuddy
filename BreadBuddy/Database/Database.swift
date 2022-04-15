@@ -1,4 +1,3 @@
-import Combine
 import Foundation
 import GRDB
 
@@ -59,27 +58,5 @@ extension Database {
     static func empty() -> Database {
         let writer = DatabaseQueue()
         return try! Database(writer)
-    }
-}
-
-extension Database {
-    func publisher() -> AnyPublisher<[Recipe], Error> {
-        ValueObservation
-            .tracking(Recipe.fetchAll)
-            .publisher(in: reader, scheduling: .immediate)
-            .eraseToAnyPublisher()
-    }
-    
-    func save(_ recipe: inout Recipe) async throws {
-        recipe = try await writer.write { [recipe] db in
-            try recipe.saved(db)
-        }
-    }
-    
-    func delete(_ recipe: Recipe) async throws {
-        guard let id = recipe.id else { return }
-        try await writer.write { db in
-            _ = try Recipe.deleteOne(db, id: id)
-        }
     }
 }

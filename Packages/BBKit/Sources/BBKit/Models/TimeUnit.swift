@@ -1,17 +1,17 @@
 import Foundation
 
-enum TimeUnit: Codable, Identifiable, CaseIterable {
+public enum TimeUnit: Codable, Identifiable, CaseIterable {
     case minutes
     case hours
     case days
 }
 
 extension TimeUnit {
-    var id: String {
+    public var id: String {
         label
     }
     
-    var label: String {
+    public var label: String {
         switch self {
         case .minutes: return "Minutes"
         case .hours: return "Hours"
@@ -19,7 +19,7 @@ extension TimeUnit {
         }
     }
     
-    var shortHand: String {
+    public var shortHand: String {
         switch self {
         case .minutes: return "mins"
         case .hours: return "hrs"
