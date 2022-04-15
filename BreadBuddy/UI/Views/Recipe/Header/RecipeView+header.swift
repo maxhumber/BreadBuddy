@@ -2,61 +2,39 @@ import SwiftUI
 
 extension RecipeView {
     var header: some View {
-        ZStack {
-            recipeName
-            headerButtons
+        HStack(spacing: 0) {
+            backButton
+            nameField
+            deleteButton
         }
         .padding()
     }
     
-    @ViewBuilder private var recipeName: some View {
-        ZStack {
-            SkeleText("XXXXXXXXXXX")
-            TextField("Recipe name", text: $viewModel.recipe.name)
-                .multilineTextAlignment(.center)
-        }
-        .font(.body)
-        .if(viewModel.mode == .edit) {
-            $0.lined()
-        } else: {
-            $0.disabled(true)
-        }
-        .fixedSize()
-    }
-    
-    private var headerButtons: some View {
-        HStack {
-            backButton
-            Spacer()
-            Button {
-                //                dismiss()
-            } label: {
-                Image(systemName: "trash")
-                    .foregroundColor(.red)
-            }
-            .opacity(viewModel.mode == .edit ? 1 : 0)
-        }
-    }
-    
     private var backButton: some View {
         Button {
-            //            viewModel.back { dismiss() }
+            viewModel.headerBackButtonAction()
         } label: {
             Image(systemName: "chevron.left")
-                .contentShape(Rectangle())
         }
-        .alert(isPresented: $viewModel.dimissAlertIsDisplayed) {
-            dismissAlert
-        }
-        .opacity(viewModel.mode == .edit ? 0 : 1)
+        .opacity(viewModel.headerBackButtonIsDisplayed ? 1 : 0)
     }
     
-    private var dismissAlert: Alert {
-        Alert(
-            title: Text("Missing Name"),
-            message: Text("Recipe must have a name in order to continue"),
-            dismissButton: .default(Text("Okay"))
-        )
+    private var nameField: some View {
+        TextField("Recipe name", text: $viewModel.recipe.name)
+            .multilineTextAlignment(.center)
+            .disabled(viewModel.headerNameFieldIsDisabled)
+            .underscore(hidden: viewModel.headerNameFieldUnderscoreIsHidden)
+            .frame(maxWidth: .infinity)
+    }
+    
+    private var deleteButton: some View {
+        Button {
+            viewModel.headerBackButtonAction()
+        } label: {
+            Image(systemName: "trash")
+                .foregroundColor(.red)
+        }
+        .opacity(viewModel.headerDeleteButtonIsDisplayed ? 1 : 0)
     }
 }
 

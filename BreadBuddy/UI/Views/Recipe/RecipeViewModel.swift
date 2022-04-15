@@ -21,7 +21,7 @@ final class RecipeViewModel: ObservableObject {
         self.mode = mode
         self.database = database
     }
-
+    
     func didAppear() {
         refresh()
     }

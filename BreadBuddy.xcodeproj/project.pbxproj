@@ -11,6 +11,7 @@
 		502BF6732809A87200C6AA91 /* RecipeView+header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502BF6722809A87200C6AA91 /* RecipeView+header.swift */; };
 		502BF6752809A87B00C6AA91 /* RecipeView+content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502BF6742809A87B00C6AA91 /* RecipeView+content.swift */; };
 		502BF6772809A88600C6AA91 /* RecipeView+footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502BF6762809A88600C6AA91 /* RecipeView+footer.swift */; };
+		502BF67C2809AF9700C6AA91 /* RecipeViewModel+header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502BF67B2809AF9700C6AA91 /* RecipeViewModel+header.swift */; };
 		5032A6B627FB47610031501D /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6B527FB47610031501D /* RecipeViewModel.swift */; };
 		5032A6B827FB57D40031501D /* DatePickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6B727FB57D40031501D /* DatePickerField.swift */; };
 		5032A6BB27FB69500031501D /* Date+string.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6BA27FB69500031501D /* Date+string.swift */; };
@@ -31,7 +32,7 @@
 		50631BF9280739A3007985F1 /* EditContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631BF8280739A3007985F1 /* EditContent.swift */; };
 		50631BFB28075250007985F1 /* Date+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631BFA28075250007985F1 /* Date+init.swift */; };
 		50631BFE28084F60007985F1 /* DisplayContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631BFD28084F60007985F1 /* DisplayContent.swift */; };
-		50631C0128084FF5007985F1 /* View+lined.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631C0028084FF5007985F1 /* View+lined.swift */; };
+		50631C0128084FF5007985F1 /* View+underscore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631C0028084FF5007985F1 /* View+underscore.swift */; };
 		50631C032808501F007985F1 /* View+aligned.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631C022808501F007985F1 /* View+aligned.swift */; };
 		50631C05280851DF007985F1 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631C04280851DF007985F1 /* RecipeView.swift */; };
 		50631C072808685C007985F1 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631C062808685C007985F1 /* Day.swift */; };
@@ -63,6 +64,7 @@
 		502BF6722809A87200C6AA91 /* RecipeView+header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeView+header.swift"; sourceTree = "<group>"; };
 		502BF6742809A87B00C6AA91 /* RecipeView+content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeView+content.swift"; sourceTree = "<group>"; };
 		502BF6762809A88600C6AA91 /* RecipeView+footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeView+footer.swift"; sourceTree = "<group>"; };
+		502BF67B2809AF9700C6AA91 /* RecipeViewModel+header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeViewModel+header.swift"; sourceTree = "<group>"; };
 		5032A6B527FB47610031501D /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
 		5032A6B727FB57D40031501D /* DatePickerField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerField.swift; sourceTree = "<group>"; };
 		5032A6BA27FB69500031501D /* Date+string.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+string.swift"; sourceTree = "<group>"; };
@@ -85,7 +87,7 @@
 		50631BF8280739A3007985F1 /* EditContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContent.swift; sourceTree = "<group>"; };
 		50631BFA28075250007985F1 /* Date+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+init.swift"; sourceTree = "<group>"; };
 		50631BFD28084F60007985F1 /* DisplayContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayContent.swift; sourceTree = "<group>"; };
-		50631C0028084FF5007985F1 /* View+lined.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+lined.swift"; sourceTree = "<group>"; };
+		50631C0028084FF5007985F1 /* View+underscore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+underscore.swift"; sourceTree = "<group>"; };
 		50631C022808501F007985F1 /* View+aligned.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+aligned.swift"; sourceTree = "<group>"; };
 		50631C04280851DF007985F1 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		50631C062808685C007985F1 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				502BF6722809A87200C6AA91 /* RecipeView+header.swift */,
+				502BF67B2809AF9700C6AA91 /* RecipeViewModel+header.swift */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -334,7 +337,7 @@
 			children = (
 				5032A6B727FB57D40031501D /* DatePickerField.swift */,
 				5023C0F52805EBA50000316A /* SkeleText.swift */,
-				50631C0028084FF5007985F1 /* View+lined.swift */,
+				50631C0028084FF5007985F1 /* View+underscore.swift */,
 				50631C022808501F007985F1 /* View+aligned.swift */,
 			);
 			path = Components;
@@ -471,6 +474,7 @@
 				5032A6CD27FCCB9B0031501D /* Formatter+number.swift in Sources */,
 				5032A6C527FC83280031501D /* Date+withAdded.swift in Sources */,
 				50631C032808501F007985F1 /* View+aligned.swift in Sources */,
+				502BF67C2809AF9700C6AA91 /* RecipeViewModel+header.swift in Sources */,
 				502BF6752809A87B00C6AA91 /* RecipeView+content.swift in Sources */,
 				5032A6C127FC786E0031501D /* UIApplication+sendResignAction.swift in Sources */,
 				5032A6BF27FC78520031501D /* View+dismissKeyboard.swift in Sources */,
@@ -483,7 +487,7 @@
 				50E020372804B2FF00440979 /* StepField.swift in Sources */,
 				5023C0F62805EBA50000316A /* SkeleText.swift in Sources */,
 				50631BFE28084F60007985F1 /* DisplayContent.swift in Sources */,
-				50631C0128084FF5007985F1 /* View+lined.swift in Sources */,
+				50631C0128084FF5007985F1 /* View+underscore.swift in Sources */,
 				5036A2CE27FDFFD200BEE804 /* Recipe.swift in Sources */,
 				50631C102808A009007985F1 /* Recipe+preview.swift in Sources */,
 				5032A6BB27FB69500031501D /* Date+string.swift in Sources */,

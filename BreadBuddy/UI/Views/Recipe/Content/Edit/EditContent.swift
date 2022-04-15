@@ -102,8 +102,7 @@ struct EditRow: View {
     private var activity: some View {
         TextField("Description", text: $step.description)
             .font(.title3)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .lined()
+            .underscore(infinity: true)
             .focused($field, equals: .description)
             .submitLabel(.next)
             .onSubmit({ field = .timeInMinutes })
@@ -119,7 +118,7 @@ struct EditRow: View {
                 .focused($field, equals: .timeInMinutes)
                 .onSubmit({ field = .none })
         }
-        .lined()
+        .underscore()
         .fixedSize()
         .font(.title3)
     }
@@ -153,14 +152,13 @@ struct EditRow: View {
         }
         .foregroundColor(.black)
         .font(.title3)
-        .lined()
+        .underscore()
         .fixedSize()
     }
 }
 
 struct EditContent_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeView(recipe: .preview, database: .empty())
-            .environment(\.editMode, .constant(.active))
+        RecipeView(recipe: .preview, mode: .edit, database: .empty())
     }
 }
