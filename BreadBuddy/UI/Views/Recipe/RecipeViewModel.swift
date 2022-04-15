@@ -48,44 +48,4 @@ import Foundation
             }
         }
     }
-    
-    func didChange(to field: StepField?, with mode: StepMode) {
-        if field != .none { return }
-        if mode == .new {
-            if newStep.description.isEmpty { return }
-            if newStep.timeValue == 0 { return }
-            recipe.steps.append(newStep)
-            newStep = .init()
-        }
-        refresh()
-    }
-    
-    func didChange(_ timeUnit: TimeUnit, with mode: StepMode) {
-        if mode == .existing {
-            refresh()
-        }
-    }
-    
-
-    
-    func delete(_ step: Step) {
-        if let index = recipe.steps.firstIndex(where: { $0 == step }) {
-            recipe.steps.remove(at: index)
-        }
-    }
-    
-    func insertBefore(_ step: Step) {
-        if let index = recipe.steps.firstIndex(where: { $0 == step }) {
-            recipe.steps.insert(.init(), at: index)
-        }
-    }
-    
-    func insertAfter(_ step: Step) {
-        if let index = recipe.steps.firstIndex(where: { $0 == step }) {
-            print("Index: \(index)")
-            let newIndex = recipe.steps.index(after: index)
-            print("New Index: \(newIndex)")
-            recipe.steps.insert(.init(), at: newIndex)
-        }
-    }
 }

@@ -1,6 +1,6 @@
 import Foundation
 
-enum StepMode {
+enum StepEditMode {
     case existing
     case new
 }

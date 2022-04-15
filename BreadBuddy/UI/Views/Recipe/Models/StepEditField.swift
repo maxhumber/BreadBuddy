@@ -1,6 +1,6 @@
 import Foundation
 
-enum StepField {
+enum StepEditField {
     case description
     case timeInMinutes
 }

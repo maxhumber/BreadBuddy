@@ -31,7 +31,7 @@
 		504D3C1D27E017B300C95123 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504D3C1C27E017B300C95123 /* Assets.xcassets */; };
 		504D3C2027E017B300C95123 /* Preview.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504D3C1F27E017B300C95123 /* Preview.xcassets */; };
 		504D3C2A27E017B300C95123 /* BreadBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D3C2927E017B300C95123 /* BreadBuddyTests.swift */; };
-		50631BF728070F0E007985F1 /* StepMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631BF628070F0D007985F1 /* StepMode.swift */; };
+		50631BF728070F0E007985F1 /* StepEditMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631BF628070F0D007985F1 /* StepEditMode.swift */; };
 		50631BF9280739A3007985F1 /* Edit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631BF8280739A3007985F1 /* Edit.swift */; };
 		50631BFB28075250007985F1 /* Date+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631BFA28075250007985F1 /* Date+init.swift */; };
 		50631C0128084FF5007985F1 /* View+underscore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631C0028084FF5007985F1 /* View+underscore.swift */; };
@@ -47,7 +47,7 @@
 		509953202800CC60004AEEAB /* IndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099531F2800CC60004AEEAB /* IndexView.swift */; };
 		509953222800CC6F004AEEAB /* IndexViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509953212800CC6F004AEEAB /* IndexViewModel.swift */; };
 		50DCF1E127FB345C00D0A369 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DCF1E027FB345C00D0A369 /* Step.swift */; };
-		50E020372804B2FF00440979 /* StepField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E020362804B2FF00440979 /* StepField.swift */; };
+		50E020372804B2FF00440979 /* StepEditField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E020362804B2FF00440979 /* StepEditField.swift */; };
 		50E7F3702809E1D8008CF185 /* RecipeViewModel+content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7F36F2809E1D8008CF185 /* RecipeViewModel+content.swift */; };
 		50E9AE532808BBAF0078C969 /* StealthDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E9AE522808BBAF0078C969 /* StealthDatePicker.swift */; };
 /* End PBXBuildFile section */
@@ -89,7 +89,7 @@
 		504D3C1F27E017B300C95123 /* Preview.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Preview.xcassets; sourceTree = "<group>"; };
 		504D3C2527E017B300C95123 /* BreadBuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BreadBuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		504D3C2927E017B300C95123 /* BreadBuddyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadBuddyTests.swift; sourceTree = "<group>"; };
-		50631BF628070F0D007985F1 /* StepMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepMode.swift; sourceTree = "<group>"; };
+		50631BF628070F0D007985F1 /* StepEditMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepEditMode.swift; sourceTree = "<group>"; };
 		50631BF8280739A3007985F1 /* Edit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edit.swift; sourceTree = "<group>"; };
 		50631BFA28075250007985F1 /* Date+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+init.swift"; sourceTree = "<group>"; };
 		50631C0028084FF5007985F1 /* View+underscore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+underscore.swift"; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 		5099531F2800CC60004AEEAB /* IndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexView.swift; sourceTree = "<group>"; };
 		509953212800CC6F004AEEAB /* IndexViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewModel.swift; sourceTree = "<group>"; };
 		50DCF1E027FB345C00D0A369 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
-		50E020362804B2FF00440979 /* StepField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepField.swift; sourceTree = "<group>"; };
+		50E020362804B2FF00440979 /* StepEditField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepEditField.swift; sourceTree = "<group>"; };
 		50E7F36F2809E1D8008CF185 /* RecipeViewModel+content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeViewModel+content.swift"; sourceTree = "<group>"; };
 		50E9AE522808BBAF0078C969 /* StealthDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StealthDatePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -358,8 +358,8 @@
 			children = (
 				50631C062808685C007985F1 /* RecipeDay.swift */,
 				502BF67F2809CA1C00C6AA91 /* RecipeMode.swift */,
-				50E020362804B2FF00440979 /* StepField.swift */,
-				50631BF628070F0D007985F1 /* StepMode.swift */,
+				50E020362804B2FF00440979 /* StepEditField.swift */,
+				50631BF628070F0D007985F1 /* StepEditMode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -504,7 +504,7 @@
 				50631C0B280868A6007985F1 /* Display.swift in Sources */,
 				5032A6B827FB57D40031501D /* DatePickerField.swift in Sources */,
 				50E9AE532808BBAF0078C969 /* StealthDatePicker.swift in Sources */,
-				50631BF728070F0E007985F1 /* StepMode.swift in Sources */,
+				50631BF728070F0E007985F1 /* StepEditMode.swift in Sources */,
 				502BF6732809A87200C6AA91 /* RecipeView+header.swift in Sources */,
 				50631C0928086870007985F1 /* Divider.swift in Sources */,
 				50E7F3702809E1D8008CF185 /* RecipeViewModel+content.swift in Sources */,
@@ -525,7 +525,7 @@
 				50631C05280851DF007985F1 /* RecipeView.swift in Sources */,
 				502BF6772809A88600C6AA91 /* RecipeView+footer.swift in Sources */,
 				50631BFB28075250007985F1 /* Date+init.swift in Sources */,
-				50E020372804B2FF00440979 /* StepField.swift in Sources */,
+				50E020372804B2FF00440979 /* StepEditField.swift in Sources */,
 				5023C0F62805EBA50000316A /* Text+scaffold.swift in Sources */,
 				50631C0128084FF5007985F1 /* View+underscore.swift in Sources */,
 				5036A2CE27FDFFD200BEE804 /* Recipe.swift in Sources */,

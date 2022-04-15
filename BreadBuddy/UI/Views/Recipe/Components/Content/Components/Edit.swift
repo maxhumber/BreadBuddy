@@ -2,18 +2,18 @@ import SwiftUI
 
 struct Edit: View {
     @EnvironmentObject var viewModel: RecipeViewModel
-    @FocusState private var field: StepField?
+    @FocusState private var field: StepEditField?
     @Binding var step: Step
-    var mode: StepMode
+    var mode: StepEditMode
 
-    init(_ step: Binding<Step>, mode: StepMode = .existing) {
+    init(_ step: Binding<Step>, mode: StepEditMode = .existing) {
         self._step = step
         self.mode = mode
     }
     
     var body: some View {
         HStack(alignment: .center, spacing: 0) {
-            actionMenu
+            actionButton
             HStack(alignment: .bottom, spacing: 10) {
                 VStack(alignment: .leading, spacing: 4) {
                     startTime
@@ -28,23 +28,23 @@ struct Edit: View {
         }
     }
     
-    private var actionMenu: some View {
+    private var actionButton: some View {
         Menu {
-            actionMenuButtons
+            actionMenuOptions
         } label: {
             actionMenuLabel
         }
         .opacity(mode == .new ? 0 : 1)
     }
     
-    @ViewBuilder private var actionMenuButtons: some View {
+    @ViewBuilder private var actionMenuOptions: some View {
         Button {
-            viewModel.insertBefore(step)
+            viewModel.insert(step)
         } label: {
             Label("Add step above", systemImage: "arrow.up")
         }
         Button {
-            viewModel.insertAfter(step)
+            viewModel.insert(step, after: true)
         } label: {
             Label("Add step below", systemImage: "arrow.down")
         }
@@ -58,27 +58,26 @@ struct Edit: View {
     private var actionMenuLabel: some View {
         Image(systemName: "ellipsis")
             .rotationEffect(.degrees(90))
-            .font(.body)
-            .foregroundColor(.gray)
+            .foregroundColor(.secondary)
             .aligned()
-            .contentShape(Rectangle())
             .padding(.trailing, 10)
             .padding(.leading, -5)
     }
     
     private var startTime: some View {
         Text(step.startTimeString)
-            .foregroundColor(.gray)
+            .foregroundColor(.secondary)
             .font(.caption2.italic())
     }
     
     private var activity: some View {
         TextField("Description", text: $step.description)
-            .font(.body)
             .underscore(infinity: true)
             .focused($field, equals: .description)
             .submitLabel(.next)
-            .onSubmit({ field = .timeInMinutes })
+            .onSubmit {
+                field = .timeInMinutes
+            }
     }
     
     private var duration: some View {
@@ -89,10 +88,11 @@ struct Edit: View {
                 .keyboardType(.decimalPad)
                 .opacity(step.timeValue == 0 ? 0.5 : 1)
                 .focused($field, equals: .timeInMinutes)
-                .onSubmit({ field = .none })
+                .onSubmit {
+                    field = .none
+                }
         }
         .underscore()
-        .font(.body)
     }
     
     private var timeUnitMenu: some View {
@@ -122,10 +122,8 @@ struct Edit: View {
             Text(step.timeUnitString)
                 .animation(nil, value: UUID())
         }
-        .foregroundColor(.black)
-        .font(.body)
+        .foregroundColor(.primary)
         .underscore()
-        .fixedSize()
     }
 }
 
