@@ -1,28 +1,32 @@
 import Foundation
 
 extension RecipeViewModel {
-    @MainActor func footerStartAction() {
+    func didChange(_ timeEnd: Date) {
+        refresh()
+    }
+    
+    func footerStartAction() {
+        mode = .active
         recipe.isActive = true
         save()
-        mode = .active
     }
     
     func footerEditAction() {
         mode = .edit
     }
     
-    @MainActor func footerSaveAction() {
-        save()
+    func footerSaveAction() {
         mode = .display
+        save()
     }
     
-    @MainActor func footerCancelAction() {
+    func footerCancelAction() {
+        mode = .display
         recipe.isActive = false
         save()
-        mode = .display
     }
     
     func footerRestartAction() {
-        
+        print("NOT IMPLEMENTED")
     }
 }

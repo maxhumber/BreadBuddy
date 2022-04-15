@@ -21,9 +21,7 @@ extension RecipeViewModel {
         deleteAlertIsPresented = true
     }
     
-    func deleteRecipe() {
-        Task(priority: .userInitiated) {
-            try? await database.delete(recipe)
-        }
+    func alertDeleteAction() {
+        delete()
     }
 }

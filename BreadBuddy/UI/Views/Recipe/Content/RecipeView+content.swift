@@ -6,15 +6,15 @@ extension RecipeView {
         case .active, .display:
             DisplayContent(recipe: viewModel.recipe)
         case .edit:
-            EditContent(recipe: $viewModel.recipe)
+            EditContent()
         }
     }
 }
 
 struct RecipeView_Content_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeView(recipe: .preview, mode: .display)
-        RecipeView(recipe: .preview, mode: .edit)
-        RecipeView(recipe: .preview, mode: .active)
+        RecipeView(.preview, mode: .display, database: .empty())
+        RecipeView(.preview, mode: .edit, database: .empty())
+        RecipeView(.preview, mode: .active, database: .empty())
     }
 }

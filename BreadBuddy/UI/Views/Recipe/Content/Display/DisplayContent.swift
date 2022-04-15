@@ -8,6 +8,10 @@ extension DisplayContent {
             self.recipe = recipe
         }
         
+        var lastStep: Step {
+            Step(description: "Ready", timeValue: 0, timeStart: recipe.timeEnd)
+        }
+        
         var days: [Day] {
             let grouped = Dictionary(grouping: recipe.steps) { (step: Step) -> String in
                 if let date = step.timeStart {
@@ -45,7 +49,7 @@ struct DisplayContent: View {
                     ForEach(day.steps) { step in
                         DisplayRow(step: step)
                     }
-                    DisplayRow(step: Step(description: "Ready", timeValue: 0, timeUnit: .minutes, timeStart: viewModel.recipe.timeEnd))
+                    DisplayRow(step: viewModel.lastStep)
                 }
                 Spacer()
             }
@@ -56,6 +60,6 @@ struct DisplayContent: View {
 
 struct DisplayContent_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeView(recipe: .preview, database: .empty())
+        RecipeView(.preview, mode: .display, database: .empty())
     }
 }

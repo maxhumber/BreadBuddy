@@ -2,12 +2,11 @@ import SwiftUI
 
 struct EditContent: View {
     @EnvironmentObject var viewModel: RecipeViewModel
-    @Binding var recipe: Recipe
     
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 30) {
-                ForEach($recipe.steps) { $step in
+                ForEach($viewModel.recipe.steps) { $step in
                     EditRow(for: $step)
                 }
                 EditRow(for: $viewModel.newStep, mode: .new)
@@ -119,7 +118,6 @@ struct EditRow: View {
                 .onSubmit({ field = .none })
         }
         .underscore()
-        .fixedSize()
         .font(.title3)
     }
     
@@ -159,6 +157,6 @@ struct EditRow: View {
 
 struct EditContent_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeView(recipe: .preview, mode: .edit, database: .empty())
+        RecipeView(.preview, mode: .edit, database: .empty())
     }
 }

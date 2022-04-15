@@ -32,6 +32,6 @@ struct DisplayRow: View {
 
 struct DisplayRow_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeView(recipe: .preview, database: .empty())
+        RecipeView(.preview, mode: .display, database: .empty())
     }
 }

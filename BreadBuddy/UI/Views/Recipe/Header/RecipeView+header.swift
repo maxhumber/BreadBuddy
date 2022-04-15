@@ -45,7 +45,7 @@ extension RecipeView {
             title: Text("Delete Recipe"),
             message: Text("Are you sure you want to delete this recipe?"),
             primaryButton: .destructive(Text("Confirm")) {
-                viewModel.deleteRecipe()
+                viewModel.alertDeleteAction()
                 dismiss()
             },
             secondaryButton: .cancel()
@@ -55,8 +55,8 @@ extension RecipeView {
 
 struct RecipeView_Header_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeView(recipe: .preview, mode: .display)
-        RecipeView(recipe: .preview, mode: .edit)
-        RecipeView(recipe: .preview, mode: .active)
+        RecipeView(.preview, mode: .display, database: .empty())
+        RecipeView(.preview, mode: .edit, database: .empty())
+        RecipeView(.preview, mode: .active, database: .empty())
     }
 }

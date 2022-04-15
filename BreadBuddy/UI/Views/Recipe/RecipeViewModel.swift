@@ -1,34 +1,54 @@
 import Combine
 import Foundation
 
-enum RecipeMode {
-    case display
-    case active
-    case edit
-}
-
-final class RecipeViewModel: ObservableObject {
+@MainActor final class RecipeViewModel: ObservableObject {
     @Published var recipe: Recipe
     @Published var mode: RecipeMode
-    @Published var dimissAlertIsDisplayed = false
     @Published var deleteAlertIsPresented = false
     @Published var newStep: Step = .init()
-    var database: Database
-    
-    private var cancellables = Set<AnyCancellable>()
+    private var database: Database
 
-    init(recipe: Recipe, mode: RecipeMode = .display, database: Database = .shared) {
+    init(_ recipe: Recipe, mode: RecipeMode, database: Database = .shared) {
         self.recipe = recipe
         self.mode = mode
         self.database = database
     }
     
-    func didAppear() {
-        refresh()
+
+    
+    func save() {
+        Task(priority: .userInitiated) {
+            var updatedRecipe = self.recipe
+            try await database.save(&updatedRecipe)
+            self.recipe = updatedRecipe
+        }
     }
     
-    func didChange(timeEnd: Date) {
-        refresh()
+    func delete() {
+        Task(priority: .userInitiated) {
+            try? await database.delete(recipe)
+        }
+    }
+    
+    func didAppear() {
+        
+    }
+    
+    func refresh() {
+        var time = recipe.timeEnd
+        for step in recipe.steps.reversed() {
+            switch step.timeUnit {
+            case .minutes:
+                time = time.withAdded(minutes: -step.timeValue)
+            case .hours:
+                time = time.withAdded(hours: -step.timeValue)
+            case .days:
+                time = time.withAdded(days: -step.timeValue)
+            }
+            if let index = recipe.steps.firstIndex(where: { $0 == step }) {
+                recipe.steps[index].timeStart = time
+            }
+        }
     }
     
     func didChange(to field: StepField?, with mode: StepMode) {
@@ -48,22 +68,7 @@ final class RecipeViewModel: ObservableObject {
         }
     }
     
-    private func refresh() {
-        var time = recipe.timeEnd
-        for step in recipe.steps.reversed() {
-            switch step.timeUnit {
-            case .minutes:
-                time = time.withAdded(minutes: -step.timeValue)
-            case .hours:
-                time = time.withAdded(hours: -step.timeValue)
-            case .days:
-                time = time.withAdded(days: -step.timeValue)
-            }
-            if let index = recipe.steps.firstIndex(where: { $0 == step }) {
-                recipe.steps[index].timeStart = time
-            }
-        }
-    }
+
     
     func delete(_ step: Step) {
         if let index = recipe.steps.firstIndex(where: { $0 == step }) {
@@ -83,26 +88,6 @@ final class RecipeViewModel: ObservableObject {
             let newIndex = recipe.steps.index(after: index)
             print("New Index: \(newIndex)")
             recipe.steps.insert(.init(), at: newIndex)
-        }
-    }
-    
-    @MainActor func back(_ action: @escaping () -> ()) {
-        switch (recipe.name.isEmpty, recipe.steps.isEmpty) {
-        case (true, true):
-            action()
-        case (true, false):
-            dimissAlertIsDisplayed = true
-        default:
-            save()
-            action()
-        }
-    }
-    
-    @MainActor func save() {
-        Task {
-            var updatedRecipe = self.recipe
-            try await database.save(&updatedRecipe)
-            self.recipe = updatedRecipe
         }
     }
 }

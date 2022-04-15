@@ -29,7 +29,7 @@ struct IndexView: View {
             list
         }
         .fullScreenCover(isPresented: $viewModel.addViewIsPresented) {
-            RecipeView(recipe: .init(), mode: .edit)
+            RecipeView()
         }
     }
     
@@ -49,7 +49,7 @@ struct IndexView: View {
 
     private func row(for recipe: Recipe) -> some View {
         NavigationLink {
-            RecipeView(recipe: recipe)
+            RecipeView(recipe, mode: .display)
         } label: {
             Text(recipe.name)
         }

@@ -1,13 +1,9 @@
 ### TODO
-  - [ ] Save on edit toggle
-- [ ] EditButton in MVVM
-  - [ ] See focusState MVVM on SO?
-
 
 - [ ] Index Page design
-- [ ] Delete from recipe view
 - [ ] Assume start time is now from index
   - [ ] Show how long a recipe will take
+
 - [ ] Display red if thing is in the past on edit mode
 - [ ] Clear 0 on number input field active/focus
 - [ ] Refresh after away from weeks on recipe

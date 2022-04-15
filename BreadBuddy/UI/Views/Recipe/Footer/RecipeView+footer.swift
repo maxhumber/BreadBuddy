@@ -12,8 +12,7 @@ extension RecipeView {
                 trailingButton
             }
         }
-        .padding()
-        .background(.green.opacity(0.2)) // debug
+        .background(.green.opacity(0.2)) // DEBUG
     }
     
     @ViewBuilder private var leadingButton: some View {
@@ -23,20 +22,28 @@ extension RecipeView {
                 viewModel.footerStartAction()
             }
         case .edit:
-            EmptyView() // XXX
+            pickers
         case .active:
-            makeButton("Cancel", systemImage: "xmark.circle", action: viewModel.footerCancelAction)
+            makeButton("Cancel", systemImage: "xmark.circle") {
+                viewModel.footerCancelAction()
+            }
         }
     }
     
     @ViewBuilder private var trailingButton: some View {
         switch viewModel.mode {
         case .display:
-            makeButton("Edit", systemImage: "pencil", action: viewModel.footerEditAction)
+            makeButton("Edit", systemImage: "pencil") {
+                viewModel.footerEditAction()
+            }
         case .edit:
-            makeButton("Save", systemImage: "square.and.arrow.down", action: viewModel.footerSaveAction)
+            makeButton("Save", systemImage: "square.and.arrow.down") {
+                viewModel.footerSaveAction()
+            }
         case .active:
-            makeButton("Restart", systemImage: "clock.arrow.circlepath", action: viewModel.footerRestartAction)
+            makeButton("Restart", systemImage: "clock.arrow.circlepath") {
+                viewModel.footerRestartAction()
+            }
         }
     }
     
@@ -46,31 +53,32 @@ extension RecipeView {
         } label: {
             VStack(spacing: 10) {
                 Image(systemName: systemImage)
-                    .font(.title2)
-                Text(label)
-                    .font(.body)
+                    .font(.title3)
+                ZStack {
+                    Text(label)
+                        .font(.caption)
+                }
             }
         }
     }
 
-    private var editLeadingButton: some View {
-        Button {
-            
-        } label: {
-            VStack(spacing: 10) {
-                Text("6:00 pm")
-                    .font(.title2)
-                Text("Friday")
-                    .font(.body)
-            }
+    #warning("Need to fix this UI")
+    private var pickers: some View {
+        VStack(spacing: 0) {
+            DatePickerField(date: $viewModel.recipe.timeEnd, displayedComponent: .hourAndMinute, alignment: .bottom)
+            DatePickerField(date: $viewModel.recipe.timeEnd, displayedComponent: .date, alignment: .top)
+        }
+        .foregroundColor(.blue)
+        .onChange(of: viewModel.recipe.timeEnd) { timeEnd in
+            viewModel.didChange(timeEnd)
         }
     }
 }
 
 struct RecipeView_Footer_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeView(recipe: .preview, mode: .display)
-        RecipeView(recipe: .preview, mode: .edit)
-        RecipeView(recipe: .preview, mode: .active)
+        RecipeView(.preview, mode: .display, database: .empty())
+        RecipeView(.preview, mode: .edit, database: .empty())
+        RecipeView(.preview, mode: .active, database: .empty())
     }
 }
