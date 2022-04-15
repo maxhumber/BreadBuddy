@@ -1,16 +1,24 @@
 import Combine
 import Foundation
 
+enum RecipeMode {
+    case display
+    case active
+    case edit
+}
+
 final class RecipeViewModel: ObservableObject {
     @Published var recipe: Recipe
-    @Published var newStep: Step = .init()
+    @Published var mode: RecipeMode
     @Published var dimissAlertIsDisplayed = false
+    @Published var newStep: Step = .init()
     
     private let database: Database
     private var cancellables = Set<AnyCancellable>()
 
-    init(recipe: Recipe, database: Database = .shared) {
+    init(recipe: Recipe, mode: RecipeMode = .display, database: Database = .shared) {
         self.recipe = recipe
+        self.mode = mode
         self.database = database
     }
 
