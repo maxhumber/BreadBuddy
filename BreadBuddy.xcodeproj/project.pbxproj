@@ -42,6 +42,7 @@
 		509953222800CC6F004AEEAB /* IndexViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509953212800CC6F004AEEAB /* IndexViewModel.swift */; };
 		50DCF1E127FB345C00D0A369 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DCF1E027FB345C00D0A369 /* Step.swift */; };
 		50E020372804B2FF00440979 /* StepField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E020362804B2FF00440979 /* StepField.swift */; };
+		50E9AE532808BBAF0078C969 /* StealthDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E9AE522808BBAF0078C969 /* StealthDatePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		509953212800CC6F004AEEAB /* IndexViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewModel.swift; sourceTree = "<group>"; };
 		50DCF1E027FB345C00D0A369 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		50E020362804B2FF00440979 /* StepField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepField.swift; sourceTree = "<group>"; };
+		50E9AE522808BBAF0078C969 /* StealthDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StealthDatePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				5032A6C827FC892F0031501D /* NotificationTestView.swift */,
+				50E9AE522808BBAF0078C969 /* StealthDatePicker.swift */,
 			);
 			path = Experiments;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				5032A6B627FB47610031501D /* RecipeViewModel.swift in Sources */,
 				50631C0B280868A6007985F1 /* DisplayRow.swift in Sources */,
 				5032A6B827FB57D40031501D /* DatePickerField.swift in Sources */,
+				50E9AE532808BBAF0078C969 /* StealthDatePicker.swift in Sources */,
 				50631BF728070F0E007985F1 /* StepMode.swift in Sources */,
 				50631C0928086870007985F1 /* Divider.swift in Sources */,
 				509953202800CC60004AEEAB /* IndexView.swift in Sources */,

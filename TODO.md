@@ -1,7 +1,4 @@
 ### TODO
-- [ ] **Footer**
-  - [ ] Recipe Is Active
-    - [ ] With option to cancel
   - [ ] Save on edit toggle
 - [ ] EditButton in MVVM
   - [ ] See focusState MVVM on SO?

@@ -1,32 +1,5 @@
 import SwiftUI
 
-struct CustomEditButton: View {
-    @Environment(\.editMode) private var editMode
-    
-    var body: some View {
-        Button {
-            action()
-        } label: {
-            VStack(spacing: 10) {
-                Image(systemName: editMode?.wrappedValue == .active ? "square.and.arrow.down" : "pencil")
-                Text(editMode?.wrappedValue == .active ? "Save" : "Edit")
-                    .font(.caption)
-            }
-        }
-    }
-    
-    private func action() {
-        switch editMode?.wrappedValue {
-        case .active:
-            editMode?.wrappedValue = .inactive
-        case .inactive:
-            editMode?.wrappedValue = .active
-        default:
-            break
-        }
-    }
-}
-
 struct Footer: View {
     @EnvironmentObject var viewModel: RecipeViewModel
     @Environment(\.editMode) private var editMode
@@ -180,16 +153,6 @@ struct RecipeView: View {
         .environmentObject(viewModel)
         .onAppear(perform: viewModel.didAppear)
         .onChange(of: viewModel.recipe.timeEnd, perform: viewModel.didChange(timeEnd:))
-    }
-    
-    #warning("Need to properly space this")
-    private var footer2: some View {
-        HStack {
-            button1
-                .frame(maxWidth: .infinity)
-            CustomEditButton()
-                .frame(maxWidth: .infinity)
-        }
     }
     
     @ViewBuilder private var button1: some View {
