@@ -1,3 +1,3 @@
 # BBKit
 
-A description of this package.
+Core BreadBuddy Models and Business Logic

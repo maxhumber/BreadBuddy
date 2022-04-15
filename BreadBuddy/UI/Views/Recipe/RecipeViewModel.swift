@@ -5,9 +5,11 @@ import Foundation
 @MainActor final class RecipeViewModel: ObservableObject {
     @Published var deleteAlertIsPresented = false
     @Published var newStep: Step = .init()
+    @Published var stepGroups = [StepGroup]()
     @Published var recipe: Recipe
     @Published var mode: RecipeMode
     private var database: Database
+    private var service = RecipeService()
 
     init(_ recipe: Recipe, mode: RecipeMode, database: Database = .shared) {
         self.recipe = recipe
@@ -31,42 +33,20 @@ import Foundation
     
     func didAppear() {
         if !recipe.isActive {
-            reforward()
+            fastforward()
         }
+        regroup()
+    }
+    
+    func regroup() {
+        stepGroups = service.group(recipe.steps)
     }
     
     func refresh() {
-        var time = recipe.timeEnd
-        for step in recipe.steps.reversed() {
-            switch step.timeUnit {
-            case .minutes:
-                time = time.withAdded(minutes: -step.timeValue)
-            case .hours:
-                time = time.withAdded(hours: -step.timeValue)
-            case .days:
-                time = time.withAdded(days: -step.timeValue)
-            }
-            if let index = recipe.steps.firstIndex(where: { $0 == step }) {
-                recipe.steps[index].timeStart = time
-            }
-        }
+        recipe = service.rewind(recipe)
     }
     
-    func reforward() {
-        var time = Date()
-        for step in recipe.steps {
-            if let index = recipe.steps.firstIndex(where: { $0 == step }) {
-                recipe.steps[index].timeStart = time
-            }
-            switch step.timeUnit {
-            case .minutes:
-                time = time.withAdded(minutes: step.timeValue)
-            case .hours:
-                time = time.withAdded(hours: step.timeValue)
-            case .days:
-                time = time.withAdded(days: step.timeValue)
-            }
-        }
-        recipe.timeEnd = time
+    func fastforward() {
+        recipe = service.fastforward(recipe)
     }
 }

@@ -19,6 +19,7 @@ extension RecipeViewModel {
         recipe.steps = recipe.steps.filter { $0.timeValue != 0 }
         mode = .display
         save()
+        regroup()
     }
     
     func footerCancelAction() {

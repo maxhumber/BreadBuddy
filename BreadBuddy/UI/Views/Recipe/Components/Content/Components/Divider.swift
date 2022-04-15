@@ -1,9 +1,10 @@
+import BBKit
 import SwiftUI
 
 struct Divider: View {
-    var day: RecipeDay
+    var day: StepGroup
     
-    init(_ day: RecipeDay) {
+    init(_ day: StepGroup) {
         self.day = day
     }
     

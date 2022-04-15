@@ -19,9 +19,9 @@ extension RecipeView {
     }
     
     @ViewBuilder var displayContent: some View {
-        ForEach(viewModel.days) { day in
-            Divider(day)
-            ForEach(day.steps) { step in
+        ForEach(viewModel.stepGroups) { group in
+            Divider(group)
+            ForEach(group.steps) { step in
                 Display(step)
             }
         }
