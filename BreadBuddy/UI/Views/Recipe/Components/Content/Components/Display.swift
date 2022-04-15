@@ -1,19 +1,23 @@
 import SwiftUI
 
-struct DisplayRow: View {
+struct Display: View {
     var step: Step
+    
+    init(_ step: Step) {
+        self.step = step
+    }
     
     var body: some View {
         HStack(alignment: .top, spacing: 20) {
-            time
+            timeStart
             activity
             Spacer()
         }
     }
     
-    private var time: some View {
+    private var timeStart: some View {
         ZStack(alignment: .trailing) {
-            SkeleText("12:59 am")
+            Text.scaffold("12:59 am")
             Text(step.timeStartString)
         }
         .font(.body.bold())

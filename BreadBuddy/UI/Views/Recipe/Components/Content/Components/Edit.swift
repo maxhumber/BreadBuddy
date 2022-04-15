@@ -1,41 +1,14 @@
 import SwiftUI
 
-struct EditContent: View {
-    @EnvironmentObject var viewModel: RecipeViewModel
-    
-    var body: some View {
-        ScrollView(showsIndicators: false) {
-            VStack(spacing: 30) {
-                ForEach($viewModel.recipe.steps) { $step in
-                    EditRow(for: $step)
-                }
-                EditRow(for: $viewModel.newStep, mode: .new)
-                // can do better here
-                EditRow(for: $viewModel.newStep, mode: .new)
-                    .opacity(0)
-            }
-        }
-    }
-}
-
-struct EditRow: View {
+struct Edit: View {
     @EnvironmentObject var viewModel: RecipeViewModel
     @FocusState private var field: StepField?
     @Binding var step: Step
     var mode: StepMode
 
-    init(for step: Binding<Step>, mode: StepMode = .existing) {
+    init(_ step: Binding<Step>, mode: StepMode = .existing) {
         self._step = step
         self.mode = mode
-    }
-    
-    var startTimeString: String {
-        let day = step.timeStart?.weekday()
-        let time = step.timeStart?.time().lowercased()
-        if let day = day, let time = time {
-            return "\(day) • \(time)"
-        }
-        return ""
     }
     
     var body: some View {
@@ -50,7 +23,6 @@ struct EditRow: View {
                 timeUnitMenu
             }
         }
-        .padding(.trailing)
         .onChange(of: field) { field in
             viewModel.didChange(to: field, with: mode)
         }
@@ -86,21 +58,23 @@ struct EditRow: View {
     private var actionMenuLabel: some View {
         Image(systemName: "ellipsis")
             .rotationEffect(.degrees(90))
-            .aligned()
-            .font(.title3)
+            .font(.body)
             .foregroundColor(.gray)
-            .padding(.horizontal, 10)
+            .aligned()
+            .contentShape(Rectangle())
+            .padding(.trailing, 10)
+            .padding(.leading, -5)
     }
     
     private var startTime: some View {
-        Text(startTimeString)
+        Text(step.startTimeString)
             .foregroundColor(.gray)
             .font(.caption2.italic())
     }
     
     private var activity: some View {
         TextField("Description", text: $step.description)
-            .font(.title3)
+            .font(.body)
             .underscore(infinity: true)
             .focused($field, equals: .description)
             .submitLabel(.next)
@@ -109,7 +83,7 @@ struct EditRow: View {
     
     private var duration: some View {
         ZStack {
-            SkeleText("XXX")
+            Text.scaffold("XXX")
             TextField("", value: $step.timeValue, formatter: .number)
                 .multilineTextAlignment(.center)
                 .keyboardType(.decimalPad)
@@ -118,7 +92,7 @@ struct EditRow: View {
                 .onSubmit({ field = .none })
         }
         .underscore()
-        .font(.title3)
+        .font(.body)
     }
     
     private var timeUnitMenu: some View {
@@ -144,12 +118,12 @@ struct EditRow: View {
     
     private var timeUnitMenuLabel: some View {
         ZStack(alignment: .center) {
-            SkeleText("XXXX")
+            Text.scaffold("XXXX")
             Text(step.timeUnitString)
                 .animation(nil, value: UUID())
         }
         .foregroundColor(.black)
-        .font(.title3)
+        .font(.body)
         .underscore()
         .fixedSize()
     }

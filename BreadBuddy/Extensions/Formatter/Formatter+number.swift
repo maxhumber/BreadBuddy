@@ -1,9 +1,9 @@
 import Foundation
 
 extension Formatter {
-    static var number: NumberFormatter {
+    static let number: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         return formatter
-    }
+    }()
 }

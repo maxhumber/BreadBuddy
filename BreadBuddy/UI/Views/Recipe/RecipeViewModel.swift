@@ -2,10 +2,10 @@ import Combine
 import Foundation
 
 @MainActor final class RecipeViewModel: ObservableObject {
-    @Published var recipe: Recipe
-    @Published var mode: RecipeMode
     @Published var deleteAlertIsPresented = false
     @Published var newStep: Step = .init()
+    @Published var recipe: Recipe
+    @Published var mode: RecipeMode
     private var database: Database
 
     init(_ recipe: Recipe, mode: RecipeMode, database: Database = .shared) {
@@ -13,8 +13,6 @@ import Foundation
         self.mode = mode
         self.database = database
     }
-    
-
     
     func save() {
         Task(priority: .userInitiated) {

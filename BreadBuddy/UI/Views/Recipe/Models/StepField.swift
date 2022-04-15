@@ -1,6 +1,6 @@
 import Foundation
 
-enum StepField: String {
+enum StepField {
     case description
     case timeInMinutes
 }

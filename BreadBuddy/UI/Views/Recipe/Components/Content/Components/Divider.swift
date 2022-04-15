@@ -1,7 +1,11 @@
 import SwiftUI
 
 struct Divider: View {
-    var day: Day
+    var day: RecipeDay
+    
+    init(_ day: RecipeDay) {
+        self.day = day
+    }
     
     var body: some View {
         HStack(spacing: 10) {

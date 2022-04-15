@@ -1,6 +1,6 @@
 import Foundation
 
-struct Day: Identifiable {
+struct RecipeDay: Identifiable {
     var id: UUID = .init()
     var date: Date
     var steps: [Step]

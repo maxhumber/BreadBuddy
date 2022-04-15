@@ -9,13 +9,13 @@ struct Step: Codable, Equatable, Identifiable {
 }
 
 extension Step {
+    var group: String {
+        timeStart?.iso8601 ?? "Unknown"
+    }
+    
     var timeUnitString: String {
         let str = timeUnit.shortHand
-        if timeValue == 1 {
-            return String(str.dropLast())
-        } else {
-            return str
-        }
+        return timeValue == 1 ? String(str.dropLast()) : str
     }
     
     var timeStartString: String {
@@ -28,5 +28,14 @@ extension Step {
     
     var durationString: String {
         String(format: "%.0f", timeValue) + " " + timeUnitString
+    }
+}
+
+extension Step {
+    var startTimeString: String {
+        let day = timeStart?.weekday()
+        let time = timeStart?.time().lowercased()
+        guard let day = day, let time = time else { return "" }
+        return "\(day) • \(time)"
     }
 }
