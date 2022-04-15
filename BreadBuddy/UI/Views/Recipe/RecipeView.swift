@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct RecipeView: View {
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: RecipeViewModel
     
     init(recipe: Recipe = .init(), mode: RecipeMode = .display, database: Database = .shared) {

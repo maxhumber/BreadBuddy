@@ -11,7 +11,6 @@ struct IndexView: View {
     var body: some View {
         NavigationView {
             layers
-                .navigationBarHidden(true)
         }
         .environmentObject(viewModel)
     }
@@ -21,6 +20,7 @@ struct IndexView: View {
             content
             addButton
         }
+        .navigationBarHidden(true)
     }
     
     private var content: some View {
@@ -29,10 +29,7 @@ struct IndexView: View {
             list
         }
         .fullScreenCover(isPresented: $viewModel.addViewIsPresented) {
-            viewModel.onDismissFullScreenCover()
-        } content: {
-            RecipeView(recipe: .init())
-                .environment(\.editMode, $viewModel.editMode)
+            RecipeView(recipe: .init(), mode: .edit)
         }
     }
     
@@ -56,33 +53,7 @@ struct IndexView: View {
         } label: {
             Text(recipe.name)
         }
-//        .contextMenu {
-//            contextMenuDeleteButton
-//        }
-//        .alert(isPresented: $viewModel.deleteAlertIsPresented) {
-//            deleteAlert(for: recipe)
-//        }
     }
-    
-    #warning("Get rid of this")
-//    private var contextMenuDeleteButton: some View {
-//        Button(role: .destructive) {
-//            viewModel.deleteButtonAction()
-//        } label: {
-//            Label("Delete", systemImage: "trash")
-//        }
-//    }
-//
-//    func deleteAlert(for recipe: Recipe) -> Alert {
-//        Alert(
-//            title: Text("Delete Recipe"),
-//            message: Text("Are you sure you want to delete this recipe?"),
-//            primaryButton: .destructive(Text("confirm")) {
-//                viewModel.delete(recipe)
-//            },
-//            secondaryButton: .cancel()
-//        )
-//    }
     
     private var addButton: some View {
         Button {

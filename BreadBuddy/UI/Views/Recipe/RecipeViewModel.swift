@@ -11,9 +11,10 @@ final class RecipeViewModel: ObservableObject {
     @Published var recipe: Recipe
     @Published var mode: RecipeMode
     @Published var dimissAlertIsDisplayed = false
+    @Published var deleteAlertIsPresented = false
     @Published var newStep: Step = .init()
+    var database: Database
     
-    private let database: Database
     private var cancellables = Set<AnyCancellable>()
 
     init(recipe: Recipe, mode: RecipeMode = .display, database: Database = .shared) {
@@ -97,7 +98,7 @@ final class RecipeViewModel: ObservableObject {
         }
     }
     
-    @MainActor private func save() {
+    @MainActor func save() {
         Task {
             var updatedRecipe = self.recipe
             try await database.save(&updatedRecipe)

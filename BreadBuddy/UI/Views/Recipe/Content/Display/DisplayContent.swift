@@ -17,12 +17,8 @@ extension DisplayContent {
                 }
             }
             return grouped
-                .map {
-                    Day(date: $0.value[0].timeStart!, steps: $0.value)
-                }
-                .sorted {
-                    $0.date < $1.date
-                }
+                .map { Day(date: $0.value[0].timeStart!, steps: $0.value) }
+                .sorted { $0.date < $1.date }
         }
         
         private let dateFormatter: DateFormatter = {

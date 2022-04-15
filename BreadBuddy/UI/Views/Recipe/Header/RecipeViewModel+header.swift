@@ -17,11 +17,13 @@ extension RecipeViewModel {
         mode == .edit
     }
     
-    func headerBackButtonAction() {
-        
+    func headerDeleteButtonAction() {
+        deleteAlertIsPresented = true
     }
     
-    func headerDeleteButtonAction() {
-        
+    func deleteRecipe() {
+        Task(priority: .userInitiated) {
+            try? await database.delete(recipe)
+        }
     }
 }

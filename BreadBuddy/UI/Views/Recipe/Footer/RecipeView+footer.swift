@@ -12,32 +12,47 @@ extension RecipeView {
                 trailingButton
             }
         }
-        .foregroundColor(.black)
         .padding()
         .background(.green.opacity(0.2)) // debug
     }
     
     @ViewBuilder private var leadingButton: some View {
         switch viewModel.mode {
-        case .display: displayLeadingButton
-        case .edit: editLeadingButton
-        case .active: activeLeadingButton
+        case .display:
+            makeButton("Start", systemImage: "clock") {
+                viewModel.footerStartAction()
+            }
+        case .edit:
+            EmptyView() // XXX
+        case .active:
+            makeButton("Cancel", systemImage: "xmark.circle", action: viewModel.footerCancelAction)
         }
     }
     
-    private var displayLeadingButton: some View {
+    @ViewBuilder private var trailingButton: some View {
+        switch viewModel.mode {
+        case .display:
+            makeButton("Edit", systemImage: "pencil", action: viewModel.footerEditAction)
+        case .edit:
+            makeButton("Save", systemImage: "square.and.arrow.down", action: viewModel.footerSaveAction)
+        case .active:
+            makeButton("Restart", systemImage: "clock.arrow.circlepath", action: viewModel.footerRestartAction)
+        }
+    }
+    
+    private func makeButton(_ label: String, systemImage: String, action: @escaping () -> ()) -> some View {
         Button {
-            viewModel.recipe.isActive = true
+            action()
         } label: {
             VStack(spacing: 10) {
-                Image(systemName: "clock")
+                Image(systemName: systemImage)
                     .font(.title2)
-                Text("Start")
+                Text(label)
                     .font(.body)
             }
         }
     }
-    
+
     private var editLeadingButton: some View {
         Button {
             
@@ -46,66 +61,6 @@ extension RecipeView {
                 Text("6:00 pm")
                     .font(.title2)
                 Text("Friday")
-                    .font(.body)
-            }
-        }
-    }
-    
-    private var activeLeadingButton: some View {
-        Button {
-            viewModel.recipe.isActive = false
-        } label: {
-            VStack(spacing: 10) {
-                Image(systemName: "xmark.circle")
-                    .font(.title2)
-                Text("Cancel")
-                    .font(.body)
-            }
-        }
-    }
-    
-    @ViewBuilder private var trailingButton: some View {
-        switch viewModel.mode {
-        case .display: displayTrailingButton
-        case .edit: editTrailingButton
-        case .active: activeTrailingButton
-        }
-    }
-    
-    private var displayTrailingButton: some View {
-        Button {
-            viewModel.mode = .edit
-        } label: {
-            VStack(spacing: 10) {
-                Image(systemName: "pencil")
-                    .font(.title2)
-                Text("Edit")
-                    .font(.body)
-            }
-        }
-    }
-    
-    private var editTrailingButton: some View {
-        Button {
-            viewModel.mode = .display
-        } label: {
-            VStack(spacing: 10) {
-                Image(systemName: "square.and.arrow.down")
-                    .font(.title2)
-                Text("Save")
-                    .font(.body)
-            }
-        }
-    }
-    
-    private var activeTrailingButton: some View {
-        Button {
-            viewModel.recipe.isActive = false
-        } label: {
-            VStack(spacing: 10) {
-                Image(systemName: "clock.arrow.circlepath")
-                    .font(.title2)
-                Text("Restart")
                     .font(.body)
             }
         }

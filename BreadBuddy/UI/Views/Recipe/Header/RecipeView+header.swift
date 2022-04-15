@@ -12,7 +12,7 @@ extension RecipeView {
     
     private var backButton: some View {
         Button {
-            viewModel.headerBackButtonAction()
+            dismiss()
         } label: {
             Image(systemName: "chevron.left")
         }
@@ -29,12 +29,27 @@ extension RecipeView {
     
     private var deleteButton: some View {
         Button {
-            viewModel.headerBackButtonAction()
+            viewModel.headerDeleteButtonAction()
         } label: {
             Image(systemName: "trash")
                 .foregroundColor(.red)
         }
         .opacity(viewModel.headerDeleteButtonIsDisplayed ? 1 : 0)
+        .alert(isPresented: $viewModel.deleteAlertIsPresented) {
+            deleteAlert
+        }
+    }
+
+    private var deleteAlert: Alert {
+        Alert(
+            title: Text("Delete Recipe"),
+            message: Text("Are you sure you want to delete this recipe?"),
+            primaryButton: .destructive(Text("Confirm")) {
+                viewModel.deleteRecipe()
+                dismiss()
+            },
+            secondaryButton: .cancel()
+        )
     }
 }
 
