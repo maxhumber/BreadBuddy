@@ -194,7 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				50DCF1D827F7774300D0A369 /* App */,
-				5099531B2800CBE6004AEEAB /* Database */,
+				50CD03E0280D8A380001C3CB /* Repositories */,
 				50DCF1D927F7774E00D0A369 /* UI */,
 				5032A6B927FB58180031501D /* Extensions */,
 			);
@@ -224,7 +224,6 @@
 				5099531C2800CBFA004AEEAB /* Database.swift */,
 				50E7F3842809F6F2008CF185 /* Database+migrator.swift */,
 				50E7F3802809F665008CF185 /* Database+shared.swift */,
-				50E7F3782809EFA9008CF185 /* Database+Recipe.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -249,10 +248,19 @@
 			path = Recipe;
 			sourceTree = "<group>";
 		};
+		50CD03E0280D8A380001C3CB /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				50E7F3782809EFA9008CF185 /* Database+Recipe.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		50DCF1D827F7774300D0A369 /* App */ = {
 			isa = PBXGroup;
 			children = (
 				50E7F3862809F79E008CF185 /* @main */,
+				5099531B2800CBE6004AEEAB /* Database */,
 				50DCF1DA27F7777F00D0A369 /* Assets */,
 			);
 			path = App;

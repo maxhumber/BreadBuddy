@@ -5,18 +5,15 @@ import Foundation
 final class IndexViewModel: ObservableObject {
     @Published var recipes = [Recipe]()
     @Published var addViewIsPresented = false
-    private var database: Database
-    private var cancellables = Set<AnyCancellable>()
+    private var repository: RecipeRepository
     
-    init(database: Database = .shared) {
-        self.database = database
-        self.database.publisher()
-            .sink { completion in
-                print(completion)
-            } receiveValue: { recipes in
-                self.recipes = recipes
-            }
-            .store(in: &cancellables)
+    init(repository: RecipeRepository = GRDBRecipeRepository()) {
+        self.repository = repository
+        self.repository.observe { recipes in
+            self.recipes = recipes
+        } onError: { _ in
+            self.recipes = []
+        }
     }
     
     func addButtonAction() {
