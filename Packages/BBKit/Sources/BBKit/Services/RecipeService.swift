@@ -10,27 +10,29 @@ public class RecipeService {
     }
     
     public func rewind(_ recipe: Recipe) -> Recipe {
-        var updatedRecipe = recipe
+        var recipe = recipe
         var time = recipe.timeEnd
-        for (index, step) in updatedRecipe.steps.reversed().enumerated() {
+        for step in recipe.steps.reversed() {
             time = next(time, using: step, subtracting: true)
-            updatedRecipe.steps[index].timeStart = time
+            if let index = recipe.steps.firstIndex(of: step) {
+                recipe.steps[index].timeStart = time
+            }
         }
-        return updatedRecipe
+        return recipe
     }
     
-    public func fastforward(_ recipe: Recipe) -> Recipe {
-        var updatedRecipe = recipe
+    public func reforward(_ recipe: Recipe) -> Recipe {
+        var recipe = recipe
         var time = Date()
-        for (index, step) in updatedRecipe.steps.enumerated() {
-            updatedRecipe.steps[index].timeStart = time
+        for (index, step) in recipe.steps.enumerated() {
+            recipe.steps[index].timeStart = time
             time = next(time, using: step)
         }
-        updatedRecipe.timeEnd = time
-        return updatedRecipe
+        recipe.timeEnd = time
+        return recipe
     }
     
-    private func next(_ time: Date, using step: Step, subtracting: Bool = false) -> Date {
+    internal func next(_ time: Date, using step: Step, subtracting: Bool = false) -> Date {
         let value = step.timeValue * (subtracting ? -1 : 1)
         switch step.timeUnit {
         case .minutes:

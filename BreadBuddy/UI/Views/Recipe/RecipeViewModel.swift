@@ -45,6 +45,6 @@ import Foundation
     }
     
     func fastforward() {
-        recipe = service.fastforward(recipe)
+        recipe = service.reforward(recipe)
     }
 }

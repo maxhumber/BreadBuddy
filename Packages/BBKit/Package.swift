@@ -3,6 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "BBKit",
+    platforms: [.iOS(.v14)],
     products: [
         .library(name: "BBKit", targets: ["BBKit"]),
     ],
