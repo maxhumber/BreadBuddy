@@ -19,7 +19,7 @@ struct Display: View {
     private var timeStart: some View {
         ZStack(alignment: .trailing) {
             Text.scaffold("12:59 am")
-            Text(step.timeStartString)
+            Text(step.clocktimeStart)
         }
         .font(.body.bold())
     }
@@ -28,7 +28,7 @@ struct Display: View {
         VStack(alignment: .leading, spacing: 0) {
             Text(step.description)
                 .font(.body)
-            Text(step.durationString)
+            Text(step.duration)
                 .font(.caption.italic())
                 .opacity(step.timeValue == 0 ? 0 : 1)
         }

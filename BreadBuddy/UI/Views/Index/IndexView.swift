@@ -52,7 +52,11 @@ struct IndexView: View {
         NavigationLink {
             RecipeView(recipe, mode: .display)
         } label: {
-            Text(recipe.name)
+            VStack(alignment: .leading, spacing: 0) {
+                Text(recipe.name)
+                Text(recipe.totalTime)
+                    .font(.caption)
+            }
         }
     }
     

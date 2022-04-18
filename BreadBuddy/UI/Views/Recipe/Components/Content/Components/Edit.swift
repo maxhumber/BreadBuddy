@@ -66,7 +66,7 @@ struct Edit: View {
     }
     
     private var startTime: some View {
-        Text(step.startTimeString)
+        Text(step.startLabel)
             .foregroundColor(.secondary)
             .font(.caption2.italic())
     }
@@ -120,7 +120,7 @@ struct Edit: View {
     private var timeUnitMenuLabel: some View {
         ZStack(alignment: .center) {
             Text.scaffold("XXXX")
-            Text(step.timeUnitString)
+            Text(step.unitLabel)
                 .animation(nil, value: UUID())
         }
         .foregroundColor(.primary)

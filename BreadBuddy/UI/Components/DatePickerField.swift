@@ -27,9 +27,9 @@ struct DatePickerField: View {
     private var label: String {
         switch displayedComponent {
         case .date:
-            return date.weekday()
+            return date.dayOfWeek(casual: true)
         case .hourAndMinute:
-            return date.time()
+            return date.clocktime
         default:
             return ""
         }

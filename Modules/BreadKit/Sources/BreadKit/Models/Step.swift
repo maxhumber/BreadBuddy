@@ -14,7 +14,9 @@ public struct Step: Codable, Equatable, Identifiable {
         self.timeUnit = timeUnit
         self.timeStart = timeStart
     }
-    
+}
+
+extension Step {
     public var isValid: Bool {
         timeValue != 0 && !description.isEmpty
     }
@@ -23,27 +25,23 @@ public struct Step: Codable, Equatable, Identifiable {
         timeStart?.iso8601 ?? "Unknown"
     }
 
-    public var timeUnitString: String {
+    public var unitLabel: String {
         let str = timeUnit.shortHand
         return timeValue == 1 ? String(str.dropLast()) : str
     }
     
-    public var timeStartString: String {
-        timeStart?.time().lowercased() ?? ""
+    public var clocktimeStart: String {
+        timeStart?.clocktime ?? ""
     }
     
-    public var timeStartWeekdayString: String {
-        timeStart?.weekday() ?? ""
+    public var duration: String {
+        String(format: "%.0f", timeValue) + " " + unitLabel
     }
     
-    public var durationString: String {
-        String(format: "%.0f", timeValue) + " " + timeUnitString
-    }
-    
-    public var startTimeString: String {
-        let day = timeStart?.weekday()
-        let time = timeStart?.time().lowercased()
-        guard let day = day, let time = time else { return "" }
-        return "\(day) • \(time)"
+    public var startLabel: String {
+        if let day = timeStart?.dayOfWeek(), let time = timeStart?.clocktime {
+            return "\(day) • \(time)"
+        }
+        return ""
     }
 }

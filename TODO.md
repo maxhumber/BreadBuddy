@@ -1,8 +1,11 @@
 ### TODO
+- [ ] Settings page
+
+- [ ] Add link to recipe (or note)
+  - [ ] And open inside app
 
 - [ ] Clear 0 on number input field active/focus
 - [ ] Index Page design
-- [ ] Show how long a recipe will take
 - [ ] Schedule all notifications (for step times)
 
 - [ ] Dequeue active notifications
@@ -11,18 +14,12 @@
 ### Later
 - [ ] Logo + Icon
 - [ ] UI -> Make it cute
-- [ ] Add link to recipe (or note)
-  - [ ] And open inside app
+  - [ ] Fonts
 - [ ] RevenueCat Donate (or StoreKit2)
-- [ ] Settings page
 
 ### Eventually
 - [ ] Share link to recipe & import
 - [ ] Change time for individual step/row
 - [ ] AWS
 - [ ] Analytics
-
-### Names
-- BreadBuddy
-- Sourdeux
-- Sourdo
+- [ ] Write up + Readme + Post

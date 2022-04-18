@@ -43,8 +43,8 @@
 		50E7F3812809F665008CF185 /* Database+shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7F3802809F665008CF185 /* Database+shared.swift */; };
 		50E7F3832809F698008CF185 /* Database+preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7F3822809F698008CF185 /* Database+preview.swift */; };
 		50E7F3852809F6F2008CF185 /* Database+migrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7F3842809F6F2008CF185 /* Database+migrator.swift */; };
-		50E9AE532808BBAF0078C969 /* StealthDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E9AE522808BBAF0078C969 /* StealthDatePicker.swift */; };
 		50FBB1FA280DB38B006E3B66 /* BreadKit in Frameworks */ = {isa = PBXBuildFile; productRef = 50FBB1F9280DB38B006E3B66 /* BreadKit */; };
+		50FBB1FD280DD4EA006E3B66 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FBB1FC280DD4EA006E3B66 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,8 +95,8 @@
 		50E7F3802809F665008CF185 /* Database+shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+shared.swift"; sourceTree = "<group>"; };
 		50E7F3822809F698008CF185 /* Database+preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+preview.swift"; sourceTree = "<group>"; };
 		50E7F3842809F6F2008CF185 /* Database+migrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+migrator.swift"; sourceTree = "<group>"; };
-		50E9AE522808BBAF0078C969 /* StealthDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StealthDatePicker.swift; sourceTree = "<group>"; };
 		50FBB1F8280DB380006E3B66 /* BreadKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = BreadKit; sourceTree = "<group>"; };
+		50FBB1FC280DD4EA006E3B66 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +124,7 @@
 			children = (
 				5099531E2800CC44004AEEAB /* Index */,
 				50B6A4C927FDD63600A1F834 /* Recipe */,
+				50FBB1FB280DD4CE006E3B66 /* Settings */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -213,15 +214,6 @@
 			path = BreadBuddyTests;
 			sourceTree = "<group>";
 		};
-		5099531A2800CBB9004AEEAB /* Experiments */ = {
-			isa = PBXGroup;
-			children = (
-				5032A6C827FC892F0031501D /* NotificationTestView.swift */,
-				50E9AE522808BBAF0078C969 /* StealthDatePicker.swift */,
-			);
-			path = Experiments;
-			sourceTree = "<group>";
-		};
 		5099531B2800CBE6004AEEAB /* Database */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,10 +276,10 @@
 			isa = PBXGroup;
 			children = (
 				501E92FD2805C50600F120EA /* Views */,
+				5032A6C827FC892F0031501D /* NotificationTestView.swift */,
 				50DCF1DE27FB341000D0A369 /* Components */,
 				50E7F37F2809F148008CF185 /* Previews */,
 				5032A6B927FB58180031501D /* Extensions */,
-				5099531A2800CBB9004AEEAB /* Experiments */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -362,6 +354,14 @@
 				504D3C1827E017B200C95123 /* BreadBuddyApp.swift */,
 			);
 			path = "@main";
+			sourceTree = "<group>";
+		};
+		50FBB1FB280DD4CE006E3B66 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				50FBB1FC280DD4EA006E3B66 /* SettingsView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -474,8 +474,8 @@
 				5032A6B627FB47610031501D /* RecipeViewModel.swift in Sources */,
 				50631C0B280868A6007985F1 /* Display.swift in Sources */,
 				5032A6B827FB57D40031501D /* DatePickerField.swift in Sources */,
-				50E9AE532808BBAF0078C969 /* StealthDatePicker.swift in Sources */,
 				50631BF728070F0E007985F1 /* StepEditMode.swift in Sources */,
+				50FBB1FD280DD4EA006E3B66 /* SettingsView.swift in Sources */,
 				502BF6732809A87200C6AA91 /* RecipeView+header.swift in Sources */,
 				50631C0928086870007985F1 /* Divider.swift in Sources */,
 				50E7F3812809F665008CF185 /* Database+shared.swift in Sources */,

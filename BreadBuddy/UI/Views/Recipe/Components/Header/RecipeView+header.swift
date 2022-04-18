@@ -3,14 +3,14 @@ import SwiftUI
 extension RecipeView {
     var header: some View {
         HStack(spacing: 0) {
-            backButton
+            leadingButton
             nameField
-            deleteButton
+            trailingButton
         }
         .padding()
     }
     
-    private var backButton: some View {
+    private var leadingButton: some View {
         Button {
             dismiss()
         } label: {
@@ -27,7 +27,7 @@ extension RecipeView {
             .frame(maxWidth: .infinity)
     }
     
-    private var deleteButton: some View {
+    private var trailingButton: some View {
         Button {
             viewModel.headerDeleteButtonAction()
         } label: {

@@ -15,3 +15,12 @@ public struct Recipe: Codable, Equatable, Identifiable {
         self.isActive = isActive
     }
 }
+
+extension Recipe {
+    public var totalTime: String {
+        let end = timeEnd
+        guard let start = steps.first?.timeStart else { return "Unknown" }
+        guard let delta = Calendar.current.dateComponents([.hour], from: start, to: end).hour else { return "Unknown" }
+        return "~\(delta) hours"
+    }
+}
