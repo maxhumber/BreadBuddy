@@ -130,6 +130,6 @@ struct Edit: View {
 
 struct EditContent_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeView(.preview, mode: .edit, database: .empty)
+        RecipeView(.preview, mode: .edit, database: .preview)
     }
 }

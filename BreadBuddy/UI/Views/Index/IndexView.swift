@@ -4,8 +4,8 @@ import SwiftUI
 struct IndexView: View {
     @StateObject var viewModel: IndexViewModel
 
-    init(database: Database = .shared) {
-        let viewModel = IndexViewModel(database: database)
+    init(repository: RecipeRepository = GRDBRecipeRepository()) {
+        let viewModel = IndexViewModel(repository: repository)
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     

@@ -1,33 +1,31 @@
 import BBKit
-import Combine
 import Foundation
 
 @MainActor final class RecipeViewModel: ObservableObject {
-    @Published var deleteAlertIsPresented = false
-    @Published var newStep: Step = .init()
-    @Published var stepGroups = [StepGroup]()
     @Published var recipe: Recipe
     @Published var mode: RecipeMode
-    private var database: Database
-    private var service = RecipeService()
+    private var repository: RecipeRepository
+    
+    @Published var groups = [StepGroup]()
+    @Published var newStep: Step = .init()
+    @Published var deleteAlertIsPresented = false
+    private var service: RecipeService = .init()
 
-    init(_ recipe: Recipe, mode: RecipeMode, database: Database = .shared) {
+    init(_ recipe: Recipe, mode: RecipeMode, repository: RecipeRepository = GRDBRecipeRepository()) {
         self.recipe = recipe
         self.mode = recipe.isActive ? .active : mode
-        self.database = database
+        self.repository = repository
     }
     
     func save() {
         Task(priority: .userInitiated) {
-            var updatedRecipe = self.recipe
-            try await database.save(&updatedRecipe)
-            self.recipe = updatedRecipe
+            recipe = try await repository.save(recipe)
         }
     }
     
     func delete() {
         Task(priority: .userInitiated) {
-            try? await database.delete(recipe)
+            try await repository.delete(recipe)
         }
     }
     
@@ -39,7 +37,7 @@ import Foundation
     }
     
     func regroup() {
-        stepGroups = service.group(recipe.steps)
+        groups = service.group(recipe.steps)
     }
     
     func refresh() {

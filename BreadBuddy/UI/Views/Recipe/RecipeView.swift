@@ -6,7 +6,8 @@ struct RecipeView: View {
     @Environment(\.dismiss) var dismiss
     
     init(_ recipe: Recipe = .init(), mode: RecipeMode = .edit, database: Database = .shared) {
-        let viewModel = RecipeViewModel(recipe, mode: mode, database: database)
+        let repository = GRDBRecipeRepository(database)
+        let viewModel = RecipeViewModel(recipe, mode: mode, repository: repository)
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     
@@ -31,8 +32,8 @@ struct RecipeView: View {
 
 struct RecipeView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeView(.preview, mode: .display, database: .empty)
-        RecipeView(.preview, mode: .edit, database: .empty)
-        RecipeView(.preview, mode: .active, database: .empty)
+        RecipeView(.preview, mode: .display, database: .preview)
+        RecipeView(.preview, mode: .edit, database: .preview)
+        RecipeView(.preview, mode: .active, database: .preview)
     }
 }

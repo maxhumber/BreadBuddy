@@ -19,7 +19,7 @@ extension RecipeView {
     }
     
     @ViewBuilder var displayContent: some View {
-        ForEach(viewModel.stepGroups) { group in
+        ForEach(viewModel.groups) { group in
             Divider(group)
             ForEach(group.steps) { step in
                 Display(step)
@@ -39,8 +39,8 @@ extension RecipeView {
 
 struct RecipeView_Content_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeView(.preview, mode: .display, database: .empty)
-        RecipeView(.preview, mode: .edit, database: .empty)
-        RecipeView(.preview, mode: .active, database: .empty)
+        RecipeView(.preview, mode: .display, database: .preview)
+        RecipeView(.preview, mode: .edit, database: .preview)
+        RecipeView(.preview, mode: .active, database: .preview)
     }
 }
