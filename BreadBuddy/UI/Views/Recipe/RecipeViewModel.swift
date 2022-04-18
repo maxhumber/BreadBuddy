@@ -37,7 +37,7 @@ import Foundation
     }
     
     func regroup() {
-        groups = service.group(recipe.steps)
+        groups = service.group(recipe)
     }
     
     func refresh() {

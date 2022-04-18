@@ -1,9 +1,8 @@
 ### TODO
-- [ ] day divider (yesterday, today, tomorrow)
-- [ ] Index Page design
-- [ ] Assume start time is now from index
-  - [ ] Show how long a recipe will take
+
 - [ ] Clear 0 on number input field active/focus
+- [ ] Index Page design
+- [ ] Show how long a recipe will take
 - [ ] Schedule all notifications (for step times)
 
 - [ ] Dequeue active notifications

@@ -2,10 +2,10 @@ import BreadKit
 import SwiftUI
 
 struct Divider: View {
-    var day: StepGroup
+    var group: StepGroup
     
-    init(_ day: StepGroup) {
-        self.day = day
+    init(_ group: StepGroup) {
+        self.group = group
     }
     
     var body: some View {
@@ -18,9 +18,8 @@ struct Divider: View {
         .padding(.horizontal)
     }
     
-    #warning("make this better")
     private var label: some View {
-        Text(day.date.weekday())
+        Text(group.label)
             .font(.caption)
     }
     

@@ -42,4 +42,20 @@ final class RecipeServiceTests: XCTestCase {
         let same = Calendar.current.isDate(now, equalTo: start, toGranularity: .minute)
         XCTAssert(same)
     }
+    
+    func testGroup() {
+        let service = RecipeService()
+        let steps = [
+            Step(description: "Step 1", timeValue: 2, timeUnit: .hours),
+            Step(description: "Step 2", timeValue: 2, timeUnit: .hours),
+            Step(description: "Step 3", timeValue: 1, timeUnit: .days),
+            Step(description: "Step 4", timeValue: 2, timeUnit: .hours),
+        ]
+        var recipe = Recipe(name: "Test", steps: steps)
+        recipe = service.reforward(recipe)
+        let groups = service.group(recipe)
+        let labels = [groups[0].label, groups[1].label]
+        let expected = ["Today", "Tomorrow"]
+        XCTAssertEqual(labels, expected)
+    }
 }

@@ -3,10 +3,10 @@ import Foundation
 public class RecipeService {
     public init() {}
     
-    public func group(_ steps: [Step]) -> [StepGroup] {
-        Dictionary(grouping: steps) { $0.group }
-            .map { StepGroup(date: $0.value[0].timeStart, steps: $0.value) }
-            .sorted { $0.date < $1.date }
+    public func group(_ recipe: Recipe) -> [StepGroup] {
+        Dictionary(grouping: recipe.steps) { $0.group }
+            .map { StepGroup($0.value) }
+            .sorted { $0.sortableDate < $1.sortableDate }
     }
     
     public func rewind(_ recipe: Recipe) -> Recipe {
@@ -21,9 +21,9 @@ public class RecipeService {
         return recipe
     }
     
-    public func reforward(_ recipe: Recipe) -> Recipe {
+    public func reforward(_ recipe: Recipe, starting: Date = .now) -> Recipe {
         var recipe = recipe
-        var time = Date()
+        var time = starting
         for (index, step) in recipe.steps.enumerated() {
             recipe.steps[index].timeStart = time
             time = next(time, using: step)
