@@ -67,7 +67,7 @@ struct Edit: View {
     
     private var startTime: some View {
         Text(step.startLabel)
-            .foregroundColor(.secondary)
+            .foregroundColor(step.isPast ? .red : .secondary)
             .font(.caption2.italic())
     }
     

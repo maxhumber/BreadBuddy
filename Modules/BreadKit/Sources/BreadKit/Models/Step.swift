@@ -21,6 +21,11 @@ extension Step {
         timeValue != 0 && !description.isEmpty
     }
     
+    public var isPast: Bool {
+        guard let timeStart = timeStart else { return false }
+        return timeStart < .now
+    }
+    
     public var group: String {
         timeStart?.iso8601 ?? "Unknown"
     }
