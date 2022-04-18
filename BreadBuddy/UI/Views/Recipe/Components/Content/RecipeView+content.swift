@@ -20,10 +20,13 @@ extension RecipeView {
     
     @ViewBuilder var displayContent: some View {
         ForEach(viewModel.groups) { group in
-            Divider(group)
+            Divider(group.label)
             ForEach(group.steps) { step in
                 Display(step)
             }
+        }
+        if viewModel.shouldDisplayLastStepDivider {
+            Divider(viewModel.lastStepDividerLabel)
         }
         Display(viewModel.lastStep)
     }

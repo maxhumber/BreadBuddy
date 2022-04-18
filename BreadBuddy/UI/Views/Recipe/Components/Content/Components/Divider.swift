@@ -1,25 +1,24 @@
-import BreadKit
 import SwiftUI
 
 struct Divider: View {
-    var group: StepGroup
+    var label: String
     
-    init(_ group: StepGroup) {
-        self.group = group
+    init(_ label: String) {
+        self.label = label
     }
     
     var body: some View {
         HStack(spacing: 10) {
             line
-            label
+            textLabel
             line
         }
         .foregroundColor(.gray)
         .padding(.horizontal)
     }
     
-    private var label: some View {
-        Text(group.label)
+    private var textLabel: some View {
+        Text(label)
             .font(.caption)
     }
     

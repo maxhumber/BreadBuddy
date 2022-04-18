@@ -52,7 +52,7 @@ struct Edit: View {
         Button(role: .destructive) {
             viewModel.delete(step)
         } label: {
-            Label("Delete", systemImage: "xmark")
+            Label("Delete", systemImage: "trash")
         }
     }
     
@@ -77,7 +77,7 @@ struct Edit: View {
             .focused($field, equals: .description)
             .submitLabel(.next)
             .onSubmit {
-                field = .timeInMinutes
+                field = .timeValue
             }
     }
     
@@ -87,8 +87,8 @@ struct Edit: View {
             TextField("", value: $step.timeValue, formatter: .number)
                 .multilineTextAlignment(.center)
                 .keyboardType(.decimalPad)
-                .opacity(step.timeValue == 0 ? 0.5 : 1)
-                .focused($field, equals: .timeInMinutes)
+                .opacity(step.timeValue == 0 ? 0.25 : 1)
+                .focused($field, equals: .timeValue)
                 .onSubmit {
                     field = .none
                 }

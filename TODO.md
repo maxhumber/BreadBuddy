@@ -1,7 +1,6 @@
 ### TODO
 - [ ] Add link to recipe (or note)
   - [ ] And open inside app
-- [ ] Clear 0 on number input field active/focus
 - [ ] Index Page design
 - [ ] Schedule all notifications (for step times)
 
@@ -13,6 +12,7 @@
   - [ ] Fonts
 - [ ] RevenueCat Donate (or StoreKit2)
 - [ ] Settings page
+- [ ] Clear 0 on number input field active/focus
 
 ### Eventually
 - [ ] Share link to recipe & import
