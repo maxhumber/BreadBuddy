@@ -7,10 +7,7 @@ extension RecipeViewModel {
     }
     
     func didChange(to field: StepEditField?, with mode: StepEditMode) {
-        if field != .none { return }
-        if mode == .new {
-            if newStep.description.isEmpty { return }
-            if newStep.timeValue == 0 { return }
+        if field == .none && mode == .new && newStep.isValid {
             recipe.steps.append(newStep)
             newStep = .init()
         }
@@ -30,7 +27,7 @@ extension RecipeViewModel {
     }
     
     func insert(_ step: Step, after: Bool = false) {
-        if var index = recipe.steps.firstIndex(where: { $0 == step }) {
+        if var index = recipe.steps.firstIndex(of: step) {
             if after {
                 index = recipe.steps.index(after: index)
             }

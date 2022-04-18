@@ -6,8 +6,8 @@ extension RecipeViewModel {
     }
     
     func footerStartAction() {
-        mode = .active
         recipe.isActive = true
+        mode = .active
         save()
     }
     
@@ -23,8 +23,8 @@ extension RecipeViewModel {
     }
     
     func footerCancelAction() {
-        mode = .display
         recipe.isActive = false
+        mode = .display
         save()
     }
     

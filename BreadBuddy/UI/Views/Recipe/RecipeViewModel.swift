@@ -7,9 +7,9 @@ import Foundation
     private var repository: RecipeRepository
     
     @Published var groups = [StepGroup]()
-    @Published var newStep: Step = .init()
+    @Published var newStep = Step()
     @Published var deleteAlertIsPresented = false
-    private var service: RecipeService = .init()
+    private var service = RecipeService()
 
     init(_ recipe: Recipe, mode: RecipeMode, repository: RecipeRepository = GRDBRecipeRepository()) {
         self.recipe = recipe
@@ -31,7 +31,7 @@ import Foundation
     
     func didAppear() {
         if !recipe.isActive {
-            fastforward()
+            reforward()
         }
         regroup()
     }
@@ -44,7 +44,7 @@ import Foundation
         recipe = service.rewind(recipe)
     }
     
-    func fastforward() {
+    func reforward() {
         recipe = service.reforward(recipe)
     }
 }

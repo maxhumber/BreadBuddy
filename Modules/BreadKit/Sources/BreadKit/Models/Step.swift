@@ -15,10 +15,14 @@ public struct Step: Codable, Equatable, Identifiable {
         self.timeStart = timeStart
     }
     
+    public var isValid: Bool {
+        timeValue != 0 && !description.isEmpty
+    }
+    
     public var group: String {
         timeStart?.iso8601 ?? "Unknown"
     }
-    
+
     public var timeUnitString: String {
         let str = timeUnit.shortHand
         return timeValue == 1 ? String(str.dropLast()) : str

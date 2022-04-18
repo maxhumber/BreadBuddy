@@ -169,7 +169,8 @@
 		5032A6B927FB58180031501D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				50E7F36E2809DA86008CF185 /* View */,
+				5032A6BE27FC78520031501D /* View+dismissKeyboard.swift */,
+				5032A6C227FC81360031501D /* View+if.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -177,7 +178,7 @@
 		504D3C0C27E017B200C95123 = {
 			isa = PBXGroup;
 			children = (
-				50E7F3732809EF0E008CF185 /* Packages */,
+				50E7F3732809EF0E008CF185 /* Modules */,
 				504D3C1727E017B200C95123 /* BreadBuddy */,
 				504D3C2827E017B300C95123 /* BreadBuddyTests */,
 				504D3C1627E017B200C95123 /* Products */,
@@ -200,7 +201,6 @@
 				50DCF1D827F7774300D0A369 /* App */,
 				50CD03E0280D8A380001C3CB /* Repositories */,
 				50DCF1D927F7774E00D0A369 /* UI */,
-				5032A6B927FB58180031501D /* Extensions */,
 			);
 			path = BreadBuddy;
 			sourceTree = "<group>";
@@ -286,6 +286,7 @@
 				501E92FD2805C50600F120EA /* Views */,
 				50DCF1DE27FB341000D0A369 /* Components */,
 				50E7F37F2809F148008CF185 /* Previews */,
+				5032A6B927FB58180031501D /* Extensions */,
 				5099531A2800CBB9004AEEAB /* Experiments */,
 			);
 			path = UI;
@@ -331,21 +332,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		50E7F36E2809DA86008CF185 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				5032A6BE27FC78520031501D /* View+dismissKeyboard.swift */,
-				5032A6C227FC81360031501D /* View+if.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		50E7F3732809EF0E008CF185 /* Packages */ = {
+		50E7F3732809EF0E008CF185 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
 				50FBB1F8280DB380006E3B66 /* BreadKit */,
 			);
-			path = Packages;
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		50E7F3752809EF41008CF185 /* Frameworks */ = {

@@ -3,11 +3,11 @@
 - [ ] Index Page design
 - [ ] Assume start time is now from index
   - [ ] Show how long a recipe will take
-
-- [ ] Display red if thing is in the past on edit mode
 - [ ] Clear 0 on number input field active/focus
 - [ ] Schedule all notifications (for step times)
-  - [ ] Kill notifications
+
+- [ ] Dequeue active notifications
+- [ ] Display red if thing is in the past on edit mode
 
 ### Later
 - [ ] Logo + Icon
@@ -15,7 +15,7 @@
 - [ ] Add link to recipe (or note)
   - [ ] And open inside app
 - [ ] RevenueCat Donate (or StoreKit2)
-- [ ] Tests
+- [ ] Settings page
 
 ### Eventually
 - [ ] Share link to recipe & import
