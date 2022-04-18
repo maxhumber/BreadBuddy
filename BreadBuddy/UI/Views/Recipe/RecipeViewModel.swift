@@ -1,4 +1,4 @@
-import BBKit
+import BreadKit
 import Foundation
 
 @MainActor final class RecipeViewModel: ObservableObject {

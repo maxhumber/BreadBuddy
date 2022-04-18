@@ -1,5 +1,5 @@
 import XCTest
-@testable import BBKit
+@testable import BreadKit
 
 final class RecipeServiceTests: XCTestCase {
     func testNext() {
