@@ -2,17 +2,18 @@ import SwiftUI
 
 extension RecipeView {
     var footer: some View {
-        HStack(spacing: 0) {
+        HStack(alignment: .bottom, spacing: 0) {
             ZStack {
                 Color.clear.fixedSize(horizontal: false, vertical: true)
                 leadingButton
             }
+            pickers
             ZStack {
                 Color.clear.fixedSize(horizontal: false, vertical: true)
                 trailingButton
             }
         }
-        .background(.green.opacity(0.2)) // DEBUG
+        .foregroundColor(.primary)
     }
     
     @ViewBuilder private var leadingButton: some View {
@@ -22,10 +23,16 @@ extension RecipeView {
                 viewModel.footerStartAction()
             }
         case .edit:
-            pickers
+            makeButton("Delete", systemImage: "trash") {
+                viewModel.footerDeleteButtonAction()
+            }
+            .foregroundColor(.red)
+            .alert(isPresented: $viewModel.deleteAlertIsPresented) {
+                deleteAlert
+            }
         case .active:
-            makeButton("Cancel", systemImage: "xmark.circle") {
-                viewModel.footerCancelAction()
+            makeButton("Restart", systemImage: "clock.arrow.circlepath") {
+                viewModel.footerRestartAction()
             }
         }
     }
@@ -41,8 +48,8 @@ extension RecipeView {
                 viewModel.footerSaveAction()
             }
         case .active:
-            makeButton("Restart", systemImage: "clock.arrow.circlepath") {
-                viewModel.footerRestartAction()
+            makeButton("Cancel", systemImage: "xmark.circle") {
+                viewModel.footerCancelAction()
             }
         }
     }
@@ -51,27 +58,41 @@ extension RecipeView {
         Button {
             action()
         } label: {
-            VStack(spacing: 10) {
+            VStack(spacing: 15) {
                 Image(systemName: systemImage)
                     .font(.title3)
-                ZStack {
-                    Text(label)
-                        .font(.caption)
-                }
+                Text(label)
+                    .font(.caption)
             }
         }
     }
 
-    #warning("Need to fix this UI")
     private var pickers: some View {
         VStack(spacing: 0) {
-            DatePickerField(date: $viewModel.recipe.timeEnd, displayedComponent: .hourAndMinute, alignment: .bottom)
-            DatePickerField(date: $viewModel.recipe.timeEnd, displayedComponent: .date, alignment: .top)
+            DatePickerField(date: $viewModel.recipe.timeEnd, displayedComponent: .date, alignment: .bottom, underline: viewModel.footerUnderlinePickers)
+                .font(.caption)
+            DatePickerField(date: $viewModel.recipe.timeEnd, displayedComponent: .hourAndMinute, alignment: .center, underline: viewModel.footerUnderlinePickers)
+                .font(.title3)
+                .padding(.bottom, 10)
+            Text("Finish")
+                .font(.caption)
         }
-        .foregroundColor(.blue)
+        .disabled(viewModel.footerPickersAreDisabled)
         .onChange(of: viewModel.recipe.timeEnd) { timeEnd in
             viewModel.didChange(timeEnd)
         }
+    }
+
+    private var deleteAlert: Alert {
+        Alert(
+            title: Text("Delete Recipe"),
+            message: Text("Are you sure you want to delete this recipe?"),
+            primaryButton: .destructive(Text("Confirm")) {
+                viewModel.alertDeleteAction()
+                dismiss()
+            },
+            secondaryButton: .cancel()
+        )
     }
 }
 

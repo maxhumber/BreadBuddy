@@ -5,6 +5,14 @@ extension RecipeViewModel {
         refresh()
     }
     
+    var footerUnderlinePickers: Bool {
+        mode == .edit
+    }
+    
+    var footerPickersAreDisabled: Bool {
+        mode != .edit
+    }
+    
     func footerStartAction() {
         recipe.isActive = true
         mode = .active
@@ -13,6 +21,14 @@ extension RecipeViewModel {
     
     func footerEditAction() {
         mode = .edit
+    }
+    
+    func footerDeleteButtonAction() {
+        deleteAlertIsPresented = true
+    }
+    
+    func alertDeleteAction() {
+        delete()
     }
     
     func footerSaveAction() {
@@ -29,6 +45,6 @@ extension RecipeViewModel {
     }
     
     func footerRestartAction() {
-        print("NOT IMPLEMENTED")
+        reforward()
     }
 }

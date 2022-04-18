@@ -29,15 +29,10 @@ extension RecipeView {
     
     private var trailingButton: some View {
         Button {
-            viewModel.headerDeleteButtonAction()
         } label: {
             Image(systemName: "trash")
-                .foregroundColor(.red)
         }
-        .opacity(viewModel.headerDeleteButtonIsDisplayed ? 1 : 0)
-        .alert(isPresented: $viewModel.deleteAlertIsPresented) {
-            deleteAlert
-        }
+        .opacity(0)
     }
 
     private var deleteAlert: Alert {

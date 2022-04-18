@@ -25,10 +25,10 @@ extension RecipeView {
                 Display(step)
             }
         }
-        if viewModel.shouldDisplayLastStepDivider {
-            Divider(viewModel.lastStepDividerLabel)
-        }
-        Display(viewModel.lastStep)
+//        if viewModel.shouldDisplayLastStepDivider {
+//            Divider(viewModel.lastStepDividerLabel)
+//        }
+//        Display(viewModel.lastStep)
     }
     
     @ViewBuilder var editContent: some View {

@@ -4,16 +4,19 @@ struct DatePickerField: View {
     @Binding var date: Date
     var displayedComponent: DatePickerComponents
     var alignment: Alignment
+    var underline: Bool
     
-    init(date: Binding<Date>, displayedComponent: DatePickerComponents = .date, alignment: Alignment = .center) {
+    init(date: Binding<Date>, displayedComponent: DatePickerComponents = .date, alignment: Alignment = .center, underline: Bool = false) {
         self._date = date
         self.displayedComponent = displayedComponent
         self.alignment = alignment
+        self.underline = underline
     }
     
     var body: some View {
         ZStack(alignment: alignment) {
             Text(label)
+                .if(underline) { $0.underline() }
             picker
         }
     }
