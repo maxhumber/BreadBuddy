@@ -2,60 +2,26 @@ import Core
 import CustomUI
 import SwiftUI
 
-struct XList<Content: View>: View {
-    @ViewBuilder var content: () -> Content
-    
-    init() {
-        
-    }
-    
-    var body: some View {
-        Text("I hate List")
-    }
-}
-
 struct IndexView: View {
     @StateObject var viewModel: IndexViewModel
 
     init(repository: RecipeRepository = GRDBRecipeRepository()) {
         let viewModel = IndexViewModel(repository: repository)
         _viewModel = StateObject(wrappedValue: viewModel)
-        // UIKit BS
-        UITableView.appearance().backgroundColor = UIColor(.clear)
-        UITableViewCell.appearance().selectionStyle = .none
     }
     
     var body: some View {
         NavigationView {
-            newStatic
+            layout
                 .environmentObject(viewModel)
         }
     }
     
-    private var newStatic: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            logo
-            List {
-                Group {
-                    if viewModel.inProgressSectionIsDisplayed {
-                        Divider("In Progress".uppercased())
-                            .padding(.horizontal)
-                        ForEach(viewModel.recipesInProgress) { recipe in
-                            makeInProgressRow(for: recipe)
-                        }
-                    }
-                    Divider("Recipes".uppercased())
-                        .padding(.horizontal)
-                    ForEach(viewModel.recipes) { recipe in
-                        makeRecipeRow(for: recipe)
-                    }
-                    newButton
-                }
-                .listRowSeparator(.hidden)
-                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                .listRowBackground(Color.clear)
-            }
-            .listStyle(InsetListStyle())
+    private var layout: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            header
+            xlist
+            newButton
         }
         .navigationBarHidden(true)
         .fullScreenCover(isPresented: $viewModel.addViewIsPresented) {
@@ -63,13 +29,55 @@ struct IndexView: View {
         }
     }
     
-    func makeInProgressRow(for recipe: Recipe) -> some View {
-        ZStack {
-            //Create a NavigationLink without the disclosure indicator
-            NavigationLink(destination: Text("Hello, World!")) {
-                EmptyView()
+    private var header: some View {
+        Image(systemName: "timelapse")
+            .font(.title)
+            .frame(maxWidth: .infinity)
+            .foregroundColor(.secondary)
+            .padding()
+    }
+    
+    private var xlist: some View {
+        XList(spacing: 20) {
+            content
+                .padding(.horizontal)
+        }
+    }
+    
+    @ViewBuilder private var content: some View {
+        if viewModel.inProgressSectionIsDisplayed {
+            Divider("In Progress".uppercased())
+                .padding(.horizontal)
+            ForEach(viewModel.recipesInProgress) { recipe in
+                makeInProgressRow(for: recipe)
             }
-            
+        }
+        Divider("Recipes".uppercased())
+            .padding(.horizontal)
+        ForEach(viewModel.recipes) { recipe in
+            makeRecipeRow(for: recipe)
+        }
+    }
+    
+    private var newButton: some View {
+        Button {
+            viewModel.addButtonAction()
+        } label: {
+            VStack(spacing: 10) {
+                Image(systemName: "plus")
+                    .font(.body)
+                Text("New")
+                    .font(.caption)
+            }
+            .foregroundColor(.primary)
+        }
+        .frame(maxWidth: .infinity)
+    }
+    
+    private func makeInProgressRow(for recipe: Recipe) -> some View {
+        XListLink {
+            RecipeView(recipe, mode: .display)
+        } label: {
             HStack(alignment: .center, spacing: 20) {
                 VStack(alignment: .leading, spacing: 5)  {
                     Text(recipe.name)
@@ -86,18 +94,13 @@ struct IndexView: View {
                         .foregroundColor(.secondary)
                 }
             }
-            .contentShape(Rectangle())
         }
-        .buttonStyle(.plain)
     }
     
-    func makeRecipeRow(for recipe: Recipe) -> some View {
-        ZStack {
-            //Create a NavigationLink without the disclosure indicator
-            NavigationLink(destination: RecipeView(recipe, mode: .display)) {
-                EmptyView()
-            }
-            
+    private func makeRecipeRow(for recipe: Recipe) -> some View {
+        XListLink {
+            RecipeView(recipe, mode: .display)
+        } label: {
             HStack {
                 VStack(alignment: .leading, spacing: 5) {
                     Text(recipe.name)
@@ -107,31 +110,6 @@ struct IndexView: View {
                 }
                 Spacer()
             }
-            .contentShape(Rectangle())
-        }
-    }
-    
-    private var logo: some View {
-        Image(systemName: "timelapse")
-            .font(.title)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(.secondary)
-    }
-    
-    private var newButton: some View {
-        Button {
-            viewModel.addButtonAction()
-        } label: {
-            Text("New".uppercased())
-                .font(.caption)
-                .frame(maxWidth: .infinity)
-                .padding(10)
-                .background(
-                    RoundedRectangle(cornerRadius: 5)
-                        .stroke(.secondary, style: StrokeStyle(lineWidth: 1, lineCap: .round, dash: [3]))
-                )
-                .padding(.horizontal)
-                .foregroundColor(.secondary)
         }
     }
 }

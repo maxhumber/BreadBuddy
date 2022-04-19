@@ -1,24 +1,24 @@
 ### TODO
-- [ ] Index Page design
-
+- [ ] Finish Index Row Components
+- [ ] Empty Views (Index + Recipe) 
+- [ ] Fix Navigation Update Bug
+- [ ] TimeLineView
+- [ ] Swipe Right on Left Side to quit Nav View
+- [ ] Logo + Icon
+- [ ] Color palette
+- [ ] Fonts
 - [ ] Schedule all notifications (for step times)
 - [ ] Dequeue active notifications
-
-### Later
-- [ ] Empty View 
-- [ ] Logo + Icon
-- [ ] UI -> Make it cute
-  - [ ] Fonts
+- [ ] Update README
+- [ ] Add more tests
 
 ### Eventually
-- [ ] TimeLineView
 - [ ] Clear 0 on number input field active/focus
 - [ ] Settings page
 - [ ] RevenueCat Donate (or StoreKit2)
 - [ ] Analytics
-- [ ] Write up + Readme + Post
 - [ ] AWS
 - [ ] Share link to recipe & import
-- [ ] Change time for individual step/row
 - [ ] Rotation (difference in view)
+- [ ] Write up 
 
