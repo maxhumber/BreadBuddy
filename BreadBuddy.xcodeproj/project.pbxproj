@@ -32,6 +32,7 @@
 		50631C0B280868A6007985F1 /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631C0A280868A6007985F1 /* Display.swift */; };
 		50961E8B280EF5B2008EDF46 /* TextFieldAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50961E8A280EF5B2008EDF46 /* TextFieldAlert.swift */; };
 		50961E8D280F0064008EDF46 /* TextFieldAlert2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50961E8C280F0064008EDF46 /* TextFieldAlert2.swift */; };
+		50961E8F280F063C008EDF46 /* TextFieldAlert3Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50961E8E280F063C008EDF46 /* TextFieldAlert3Wrapper.swift */; };
 		509953192800CB09004AEEAB /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 509953182800CB09004AEEAB /* GRDB */; };
 		5099531D2800CBFA004AEEAB /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099531C2800CBFA004AEEAB /* Database.swift */; };
 		509953202800CC60004AEEAB /* IndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099531F2800CC60004AEEAB /* IndexView.swift */; };
@@ -87,6 +88,7 @@
 		50631C0A280868A6007985F1 /* Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
 		50961E8A280EF5B2008EDF46 /* TextFieldAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAlert.swift; sourceTree = "<group>"; };
 		50961E8C280F0064008EDF46 /* TextFieldAlert2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAlert2.swift; sourceTree = "<group>"; };
+		50961E8E280F063C008EDF46 /* TextFieldAlert3Wrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAlert3Wrapper.swift; sourceTree = "<group>"; };
 		5099531C2800CBFA004AEEAB /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		5099531F2800CC60004AEEAB /* IndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexView.swift; sourceTree = "<group>"; };
 		509953212800CC6F004AEEAB /* IndexViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewModel.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				5032A6B727FB57D40031501D /* DatePickerField.swift */,
 				50961E8A280EF5B2008EDF46 /* TextFieldAlert.swift */,
 				50961E8C280F0064008EDF46 /* TextFieldAlert2.swift */,
+				50961E8E280F063C008EDF46 /* TextFieldAlert3Wrapper.swift */,
 				5023C0F52805EBA50000316A /* Text+scaffold.swift */,
 				50631C0028084FF5007985F1 /* View+underscore.swift */,
 				50631C022808501F007985F1 /* View+aligned.swift */,
@@ -497,6 +500,7 @@
 				502BF6752809A87B00C6AA91 /* RecipeView+content.swift in Sources */,
 				5032A6BF27FC78520031501D /* View+dismissKeyboard.swift in Sources */,
 				509953222800CC6F004AEEAB /* IndexViewModel.swift in Sources */,
+				50961E8F280F063C008EDF46 /* TextFieldAlert3Wrapper.swift in Sources */,
 				50E7F3832809F698008CF185 /* Database+preview.swift in Sources */,
 				504D3C1927E017B200C95123 /* BreadBuddyApp.swift in Sources */,
 				50631C05280851DF007985F1 /* RecipeView.swift in Sources */,
