@@ -19,11 +19,14 @@ extension TimeUnit {
         }
     }
     
-    public var shortHand: String {
-        switch self {
-        case .minutes: return "mins"
-        case .hours: return "hrs"
-        case .days: return "days"
+    public func shortHand(plural: Bool = true) -> String {
+        switch (self, plural) {
+        case (.minutes, true): return "mins"
+        case (.minutes, false): return "min"
+        case (.hours, true): return "hrs"
+        case (.hours, false): return "hr"
+        case (.days, true): return "day"
+        case (.days, false): return "days"
         }
     }
 }

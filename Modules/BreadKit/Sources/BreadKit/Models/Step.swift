@@ -21,18 +21,12 @@ extension Step {
         timeValue != 0 && !description.isEmpty
     }
     
-    public var isPast: Bool {
-        guard let timeStart = timeStart else { return false }
-        return timeStart < .now
-    }
-    
     public var group: String {
         timeStart?.iso8601 ?? "Unknown"
     }
 
     public var unitLabel: String {
-        let str = timeUnit.shortHand
-        return timeValue == 1 ? String(str.dropLast()) : str
+        timeUnit.shortHand(plural: timeValue == 1)
     }
     
     public var clocktimeStart: String {
@@ -41,12 +35,5 @@ extension Step {
     
     public var duration: String {
         String(format: "%.0f", timeValue) + " " + unitLabel
-    }
-    
-    public var startLabel: String {
-        if let day = timeStart?.dayOfWeek(), let time = timeStart?.clocktime {
-            return "\(day) • \(time)"
-        }
-        return ""
     }
 }

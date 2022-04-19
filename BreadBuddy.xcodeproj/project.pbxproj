@@ -30,9 +30,7 @@
 		50631C05280851DF007985F1 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631C04280851DF007985F1 /* RecipeView.swift */; };
 		50631C0928086870007985F1 /* Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631C0828086870007985F1 /* Divider.swift */; };
 		50631C0B280868A6007985F1 /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50631C0A280868A6007985F1 /* Display.swift */; };
-		50961E8B280EF5B2008EDF46 /* TextFieldAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50961E8A280EF5B2008EDF46 /* TextFieldAlert.swift */; };
-		50961E8D280F0064008EDF46 /* TextFieldAlert2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50961E8C280F0064008EDF46 /* TextFieldAlert2.swift */; };
-		50961E8F280F063C008EDF46 /* TextFieldAlert3Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50961E8E280F063C008EDF46 /* TextFieldAlert3Wrapper.swift */; };
+		50961E8F280F063C008EDF46 /* AlertInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50961E8E280F063C008EDF46 /* AlertInput.swift */; };
 		509953192800CB09004AEEAB /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 509953182800CB09004AEEAB /* GRDB */; };
 		5099531D2800CBFA004AEEAB /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099531C2800CBFA004AEEAB /* Database.swift */; };
 		509953202800CC60004AEEAB /* IndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099531F2800CC60004AEEAB /* IndexView.swift */; };
@@ -86,9 +84,7 @@
 		50631C04280851DF007985F1 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		50631C0828086870007985F1 /* Divider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divider.swift; sourceTree = "<group>"; };
 		50631C0A280868A6007985F1 /* Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
-		50961E8A280EF5B2008EDF46 /* TextFieldAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAlert.swift; sourceTree = "<group>"; };
-		50961E8C280F0064008EDF46 /* TextFieldAlert2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAlert2.swift; sourceTree = "<group>"; };
-		50961E8E280F063C008EDF46 /* TextFieldAlert3Wrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAlert3Wrapper.swift; sourceTree = "<group>"; };
+		50961E8E280F063C008EDF46 /* AlertInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertInput.swift; sourceTree = "<group>"; };
 		5099531C2800CBFA004AEEAB /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		5099531F2800CC60004AEEAB /* IndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexView.swift; sourceTree = "<group>"; };
 		509953212800CC6F004AEEAB /* IndexViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewModel.swift; sourceTree = "<group>"; };
@@ -303,9 +299,7 @@
 			children = (
 				50631C0828086870007985F1 /* Divider.swift */,
 				5032A6B727FB57D40031501D /* DatePickerField.swift */,
-				50961E8A280EF5B2008EDF46 /* TextFieldAlert.swift */,
-				50961E8C280F0064008EDF46 /* TextFieldAlert2.swift */,
-				50961E8E280F063C008EDF46 /* TextFieldAlert3Wrapper.swift */,
+				50961E8E280F063C008EDF46 /* AlertInput.swift */,
 				5023C0F52805EBA50000316A /* Text+scaffold.swift */,
 				50631C0028084FF5007985F1 /* View+underscore.swift */,
 				50631C022808501F007985F1 /* View+aligned.swift */,
@@ -486,8 +480,6 @@
 				50631BF728070F0E007985F1 /* StepEditMode.swift in Sources */,
 				50FBB1FD280DD4EA006E3B66 /* SettingsView.swift in Sources */,
 				502BF6732809A87200C6AA91 /* RecipeView+header.swift in Sources */,
-				50961E8D280F0064008EDF46 /* TextFieldAlert2.swift in Sources */,
-				50961E8B280EF5B2008EDF46 /* TextFieldAlert.swift in Sources */,
 				50631C0928086870007985F1 /* Divider.swift in Sources */,
 				50E7F3812809F665008CF185 /* Database+shared.swift in Sources */,
 				50E7F3702809E1D8008CF185 /* RecipeViewModel+content.swift in Sources */,
@@ -500,7 +492,7 @@
 				502BF6752809A87B00C6AA91 /* RecipeView+content.swift in Sources */,
 				5032A6BF27FC78520031501D /* View+dismissKeyboard.swift in Sources */,
 				509953222800CC6F004AEEAB /* IndexViewModel.swift in Sources */,
-				50961E8F280F063C008EDF46 /* TextFieldAlert3Wrapper.swift in Sources */,
+				50961E8F280F063C008EDF46 /* AlertInput.swift in Sources */,
 				50E7F3832809F698008CF185 /* Database+preview.swift in Sources */,
 				504D3C1927E017B200C95123 /* BreadBuddyApp.swift in Sources */,
 				50631C05280851DF007985F1 /* RecipeView.swift in Sources */,

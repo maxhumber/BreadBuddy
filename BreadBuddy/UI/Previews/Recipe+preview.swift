@@ -4,6 +4,7 @@ import Foundation
 extension Recipe {
     static let preview = Recipe(
         name: "Maggie's Baguette",
+        link: "https://www.kingarthurbaking.com/recipes/sourdough-baguettes-recipe",
         timeEnd: Date(from: "2022-04-17 3:00pm"),
         steps: [
             Step(description: "Mix ingredients", timeValue: 5, timeUnit: .minutes, timeStart: Date(from: "2022-04-17 9:35am")),
