@@ -26,7 +26,9 @@ extension RecipeViewModel {
     func footerSaveAction() {
         recipe.steps = recipe.steps.filter { $0.timeValue != 0 }
         mode = .display
-        save()
+        if !recipe.name.isEmpty {
+            save()
+        }
         refresh()
     }
     

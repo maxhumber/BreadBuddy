@@ -18,6 +18,6 @@ extension StepGroup {
     }
     
     public var label: String {
-        date?.dayOfWeek() ?? "Unknown"
+        date?.simple ?? "Unknown"
     }
 }

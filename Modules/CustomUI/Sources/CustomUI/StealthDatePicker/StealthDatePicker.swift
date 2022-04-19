@@ -6,9 +6,9 @@ public struct StealthDatePicker<Label: View>: View {
     var alignment: Alignment
     var label: Label
     
-    public init(date: Binding<Date>, displayedComponent: DatePickerComponents = .date, alignment: Alignment = .center, @ViewBuilder label: () -> Label) {
-        self._date = date
+    public init(_ displayedComponent: DatePickerComponents = .date, date: Binding<Date>, alignment: Alignment = .center, @ViewBuilder label: () -> Label) {
         self.displayedComponent = displayedComponent
+        self._date = date
         self.alignment = alignment
         self.label = label()
     }
@@ -26,23 +26,3 @@ public struct StealthDatePicker<Label: View>: View {
             .opacity(0.0101)
     }
 }
-
-//struct DatePickerField_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Preview()
-//    }
-//
-//    struct Preview: View {
-//        @State var date = Date()
-//
-//        var body: some View {
-//            VStack(alignment: .center, spacing: 0) {
-//                StealthDatePicker(date: $date, displayedComponent: .hourAndMinute, alignment: .bottom)
-//                    .background(Rectangle().strokeBorder().foregroundColor(.red))
-//                StealthDatePicker(date: $date, alignment: .center)
-//                    .background(Rectangle().strokeBorder().foregroundColor(.red))
-//                    .font(.caption)
-//            }
-//        }
-//    }
-//}

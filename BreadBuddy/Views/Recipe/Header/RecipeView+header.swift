@@ -39,10 +39,7 @@ extension RecipeView {
     }
     
     private var viewLinkButton: some View {
-        SafariButton {
-            URL(string: "https://google.com")!
-//            URL(string: viewModel.recipe.link!)!
-        } label: {
+        SafariButton(url: viewModel.headerRecipeURL) {
             Image(systemName: "link")
         }
         .disabled(viewModel.headerLinkButtonIsDisabled)

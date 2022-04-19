@@ -1,15 +1,14 @@
 import Core
-import Foundation
 
 extension RecipeViewModel {
-    func didChange(to field: StepEditField?, with mode: StepEditMode) {
+    func didChange(to field: EditStepField?, with mode: EditStepMode) {
         if field == .none && mode == .new && newStep.isValid {
             recipe.steps.append(newStep)
             newStep = .init()
         }
     }
     
-    func didChange(_ timeUnit: TimeUnit, with mode: StepEditMode) {
+    func didChange(_ timeUnit: TimeUnit, with mode: EditStepMode) {
         if mode == .existing {
             refresh()
         }

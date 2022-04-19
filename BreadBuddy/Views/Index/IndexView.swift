@@ -2,136 +2,137 @@ import Core
 import CustomUI
 import SwiftUI
 
+struct XList<Content: View>: View {
+    @ViewBuilder var content: () -> Content
+    
+    init() {
+        
+    }
+    
+    var body: some View {
+        Text("I hate List")
+    }
+}
+
 struct IndexView: View {
     @StateObject var viewModel: IndexViewModel
 
     init(repository: RecipeRepository = GRDBRecipeRepository()) {
         let viewModel = IndexViewModel(repository: repository)
         _viewModel = StateObject(wrappedValue: viewModel)
+        // UIKit BS
+        UITableView.appearance().backgroundColor = UIColor(.clear)
+        UITableViewCell.appearance().selectionStyle = .none
     }
     
     var body: some View {
         NavigationView {
-            layersOld
+            newStatic
+                .environmentObject(viewModel)
         }
-        .environmentObject(viewModel)
     }
     
     private var newStatic: some View {
         VStack(alignment: .leading, spacing: 20) {
-            Image(systemName: "circle")
-                .font(.title)
-                .frame(maxWidth: .infinity)
-            Divider("In Progress".uppercased())
-            HStack(alignment: .center, spacing: 20) {
-                VStack(alignment: .leading, spacing: 5) {
-                    Text("Next step")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                    Text("1.5 hrs")
-
+            logo
+            List {
+                Group {
+                    if viewModel.inProgressSectionIsDisplayed {
+                        Divider("In Progress".uppercased())
+                            .padding(.horizontal)
+                        ForEach(viewModel.recipesInProgress) { recipe in
+                            makeInProgressRow(for: recipe)
+                        }
+                    }
+                    Divider("Recipes".uppercased())
+                        .padding(.horizontal)
+                    ForEach(viewModel.recipes) { recipe in
+                        makeRecipeRow(for: recipe)
+                    }
+                    newButton
                 }
-                VStack(alignment: .leading, spacing: 5)  {
-                    Text("Wednesday • 3:30 pm")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                    Text("No-Knead Sourdough")
-
-                }
-                Spacer()
+                .listRowSeparator(.hidden)
+                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                .listRowBackground(Color.clear)
             }
-            Divider("Recipes".uppercased())
-            VStack(alignment: .leading, spacing: 5) {
-                Text("No-Knead Sourdough")
-                Text("15 hours")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-            }
-            VStack(alignment: .leading, spacing: 5) {
-                Text("No-Knead Sourdough")
-                Text("15 hours")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-            }
-            Text("New Recipe")
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(
-                    RoundedRectangle(cornerRadius: 5)
-                        .stroke(.secondary, style: StrokeStyle(lineWidth: 1, lineCap: .round, dash: [3]))
-                )
-                .padding()
-            Spacer()
-        }
-        .padding(20)
-        .navigationBarHidden(true)
-    }
-    
-    private var layersOld: some View {
-        ZStack {
-            content
-            addButton
+            .listStyle(InsetListStyle())
         }
         .navigationBarHidden(true)
-    }
-    
-    private var content: some View {
-        VStack {
-            header
-            list
-        }
         .fullScreenCover(isPresented: $viewModel.addViewIsPresented) {
             RecipeView()
         }
     }
     
-    private var header: some View {
+    func makeInProgressRow(for recipe: Recipe) -> some View {
         ZStack {
-            Text("BreadBuddy")
-        }
-        .padding()
-    }
-    
-    private var list: some View {
-        List(viewModel.recipes) { recipe in
-            row(for: recipe)
-        }
-        .listStyle(.plain)
-    }
-
-    private func row(for recipe: Recipe) -> some View {
-        NavigationLink {
-            RecipeView(recipe, mode: .display)
-        } label: {
-            VStack(alignment: .leading, spacing: 0) {
-                Text(recipe.name)
-                Text(recipe.totalTime)
-                    .font(.caption)
+            //Create a NavigationLink without the disclosure indicator
+            NavigationLink(destination: Text("Hello, World!")) {
+                EmptyView()
             }
+            
+            HStack(alignment: .center, spacing: 20) {
+                VStack(alignment: .leading, spacing: 5)  {
+                    Text(recipe.name)
+                    Text("Wednesday • 3:30 pm")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+                Spacer()
+                VStack(alignment: .trailing, spacing: 5) {
+                    Text("1.5 hrs")
+                        .font(.body.bold())
+                    Text("till next step")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+            }
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+    }
+    
+    func makeRecipeRow(for recipe: Recipe) -> some View {
+        ZStack {
+            //Create a NavigationLink without the disclosure indicator
+            NavigationLink(destination: RecipeView(recipe, mode: .display)) {
+                EmptyView()
+            }
+            
+            HStack {
+                VStack(alignment: .leading, spacing: 5) {
+                    Text(recipe.name)
+                    Text("15 hours")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+                Spacer()
+            }
+            .contentShape(Rectangle())
         }
     }
     
-    private var addButton: some View {
+    private var logo: some View {
+        Image(systemName: "timelapse")
+            .font(.title)
+            .frame(maxWidth: .infinity)
+            .foregroundColor(.secondary)
+    }
+    
+    private var newButton: some View {
         Button {
             viewModel.addButtonAction()
         } label: {
-            addButtonContent
+            Text("New".uppercased())
+                .font(.caption)
+                .frame(maxWidth: .infinity)
+                .padding(10)
+                .background(
+                    RoundedRectangle(cornerRadius: 5)
+                        .stroke(.secondary, style: StrokeStyle(lineWidth: 1, lineCap: .round, dash: [3]))
+                )
+                .padding(.horizontal)
+                .foregroundColor(.secondary)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-    }
-    
-    private var addButtonContent: some View {
-        Image(systemName: "plus")
-            .foregroundColor(.white)
-            .font(.title3)
-            .padding()
-            .background(addButtonBackground)
-            .padding()
-    }
-    
-    private var addButtonBackground: some View {
-        Circle()
-            .shadow(color: .black.opacity(0.2), radius: 2, x: 2, y: 1)
     }
 }
 

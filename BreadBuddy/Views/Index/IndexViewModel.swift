@@ -1,20 +1,30 @@
 import Core
 import Combine
-import Foundation
 
 final class IndexViewModel: ObservableObject {
-    private var repository: RecipeRepository
-    
-    @Published var recipes = [Recipe]()
-    @Published var error: Error? = nil
     @Published var addViewIsPresented = false
+    @Published var error: Error? = nil
+    @Published var recipesInProgress = [Recipe]()
+    @Published var recipes = [Recipe]()
+    
+    private var repository: RecipeRepository
     
     init(repository: RecipeRepository = GRDBRecipeRepository()) {
         self.repository = repository
-        self.repository.observe(onError: { self.error = $0 }, onChange: { self.recipes = $0 })
+        self.repository.observe(
+            onError: { self.error = $0 },
+            onChange: { recipes in
+                self.recipesInProgress = recipes.filter { $0.isActive }
+                self.recipes = recipes.filter { !$0.isActive }
+            }
+        )
     }
     
     func addButtonAction() {
         addViewIsPresented = true
+    }
+    
+    var inProgressSectionIsDisplayed: Bool {
+        !recipesInProgress.isEmpty
     }
 }

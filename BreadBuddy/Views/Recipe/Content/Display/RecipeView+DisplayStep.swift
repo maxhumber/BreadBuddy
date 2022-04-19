@@ -3,7 +3,7 @@ import CustomUI
 import SwiftUI
 
 extension RecipeView {
-    struct StepDisplayRow: View {
+    struct DisplayStep: View {
         var step: Step
         
         init(_ step: Step) {

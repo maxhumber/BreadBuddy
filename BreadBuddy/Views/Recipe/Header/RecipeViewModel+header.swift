@@ -24,4 +24,9 @@ extension RecipeViewModel {
             return recipe.link == nil
         }
     }
+    
+    var headerRecipeURL: URL? {
+        guard let link = recipe.link else { return nil }
+        return URL(string: link)
+    }
 }

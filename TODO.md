@@ -1,20 +1,17 @@
 ### TODO
-- [ ] open link in app (properly)
-
 - [ ] Index Page design
-
-- [ ] If date is outside 7 days, use iso string on labels
-- [ ] Time View (has elapsed, should update?)
 
 - [ ] Schedule all notifications (for step times)
 - [ ] Dequeue active notifications
 
 ### Later
+- [ ] Empty View 
 - [ ] Logo + Icon
 - [ ] UI -> Make it cute
   - [ ] Fonts
 
 ### Eventually
+- [ ] TimeLineView
 - [ ] Clear 0 on number input field active/focus
 - [ ] Settings page
 - [ ] RevenueCat Donate (or StoreKit2)

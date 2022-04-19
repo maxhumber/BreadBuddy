@@ -3,13 +3,13 @@ import CustomUI
 import SwiftUI
 
 extension RecipeView {
-    struct StepEditRow: View {
+    struct EditStep: View {
         @EnvironmentObject var viewModel: RecipeViewModel
-        @FocusState private var field: RecipeViewModel.StepEditField?
+        @FocusState private var field: EditStepField?
         @Binding var step: Step
-        var mode: RecipeViewModel.StepEditMode
+        var mode: EditStepMode
         
-        init(_ step: Binding<Step>, mode: RecipeViewModel.StepEditMode = .existing) {
+        init(_ step: Binding<Step>, mode: EditStepMode = .existing) {
             self._step = step
             self.mode = mode
         }

@@ -3,16 +3,12 @@ import SwiftUI
 
 extension RecipeView {
     var footer: some View {
-        HStack(alignment: .bottom, spacing: 0) {
-            ZStack {
-                Color.clear.fixedSize(horizontal: false, vertical: true)
-                leadingButton
-            }
+        HStack(alignment: .bottom) {
+            leadingButton
+                .frame(maxWidth: .infinity)
             pickers
-            ZStack {
-                Color.clear.fixedSize(horizontal: false, vertical: true)
-                trailingButton
-            }
+            trailingButton
+                .frame(maxWidth: .infinity)
         }
         .foregroundColor(.primary)
     }
@@ -53,33 +49,32 @@ extension RecipeView {
             }
         }
     }
-    
-    private func makeButton(_ label: String, systemImage: String, action: @escaping () -> ()) -> some View {
-        Button {
-            action()
-        } label: {
-            VStack(spacing: 15) {
-                Image(systemName: systemImage)
-                    .font(.body)
-                Text(label)
-                    .font(.caption)
-            }
-        }
-    }
 
     private var pickers: some View {
         VStack(spacing: 0) {
-//            StealthDatePicker(date: $viewModel.recipe.timeEnd, displayedComponent: .date, alignment: .bottom)
-//                .font(.caption)
-//            StealthDatePicker(date: $viewModel.recipe.timeEnd, displayedComponent: .hourAndMinute, alignment: .center)
-//                .font(.title3.bold())
-//                .padding(.bottom, 5)
+            dayPicker
+            timePicker
             Text("Finish")
                 .font(.caption)
         }
         .opacity(viewModel.mode == .display ? 1 : 0)
         .onChange(of: viewModel.recipe.timeEnd) { timeEnd in
             viewModel.didChange(timeEnd)
+        }
+    }
+    
+    private var dayPicker: some View {
+        StealthDatePicker(.date, date: $viewModel.recipe.timeEnd, alignment: .bottom) {
+            Text(viewModel.recipe.timeEnd.simple)
+                .font(.caption)
+        }
+    }
+    
+    private var timePicker: some View {
+        StealthDatePicker(.hourAndMinute, date: $viewModel.recipe.timeEnd) {
+            Text(viewModel.recipe.timeEnd.clocktime)
+                .font(.title3.bold())
+                .padding(.bottom, 5)
         }
     }
 
@@ -93,6 +88,19 @@ extension RecipeView {
             },
             secondaryButton: .cancel()
         )
+    }
+    
+    private func makeButton(_ label: String, systemImage: String, action: @escaping () -> ()) -> some View {
+        Button {
+            action()
+        } label: {
+            VStack(spacing: 15) {
+                Image(systemName: systemImage)
+                    .font(.body)
+                Text(label)
+                    .font(.caption)
+            }
+        }
     }
 }
 
