@@ -5,14 +5,6 @@ extension RecipeViewModel {
         refresh()
     }
     
-    var footerUnderlinePickers: Bool {
-        mode == .edit
-    }
-    
-    var footerPickersAreDisabled: Bool {
-        mode != .edit
-    }
-    
     func footerStartAction() {
         recipe.isActive = true
         mode = .active
@@ -35,7 +27,7 @@ extension RecipeViewModel {
         recipe.steps = recipe.steps.filter { $0.timeValue != 0 }
         mode = .display
         save()
-        regroup()
+        refresh()
     }
     
     func footerCancelAction() {

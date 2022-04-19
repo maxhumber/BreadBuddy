@@ -6,14 +6,6 @@ extension RecipeViewModel {
         Step(description: "Ready", timeValue: 0, timeStart: recipe.timeEnd)
     }
     
-//    var shouldDisplayLastStepDivider: Bool {
-//        lastStep.group != groups.last?.steps.last?.group
-//    }
-//
-//    var lastStepDividerLabel: String {
-//        lastStep.timeStart?.dayOfWeek() ?? "Unknown"
-//    }
-    
     func didChange(to field: StepEditField?, with mode: StepEditMode) {
         if field == .none && mode == .new && newStep.isValid {
             recipe.steps.append(newStep)

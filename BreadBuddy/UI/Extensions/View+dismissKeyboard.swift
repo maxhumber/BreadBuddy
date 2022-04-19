@@ -2,9 +2,10 @@ import SwiftUI
 
 extension View {
     func dismissKeyboard() -> some View {
-        self.onTapGesture {
-            UIApplication.shared.sendResignAction()
-        }
+        self.contentShape(Rectangle())
+            .onTapGesture {
+                UIApplication.shared.sendResignAction()
+            }
     }
 }
 

@@ -33,18 +33,19 @@ import Foundation
         if !recipe.isActive {
             reforward()
         }
-        regroup()
-    }
-    
-    func regroup() {
-        groups = service.group(recipe)
     }
     
     func refresh() {
         recipe = service.rewind(recipe)
+        regroup()
     }
     
     func reforward() {
         recipe = service.reforward(recipe)
+        regroup()
+    }
+    
+    private func regroup() {
+        groups = service.group(recipe)
     }
 }

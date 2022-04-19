@@ -69,15 +69,15 @@ extension RecipeView {
 
     private var pickers: some View {
         VStack(spacing: 0) {
-            DatePickerField(date: $viewModel.recipe.timeEnd, displayedComponent: .date, alignment: .bottom, underline: viewModel.footerUnderlinePickers)
+            DatePickerField(date: $viewModel.recipe.timeEnd, displayedComponent: .date, alignment: .bottom)
                 .font(.caption)
-            DatePickerField(date: $viewModel.recipe.timeEnd, displayedComponent: .hourAndMinute, alignment: .center, underline: viewModel.footerUnderlinePickers)
+            DatePickerField(date: $viewModel.recipe.timeEnd, displayedComponent: .hourAndMinute, alignment: .center)
                 .font(.title3)
                 .padding(.bottom, 10)
             Text("Finish")
                 .font(.caption)
         }
-        .disabled(viewModel.footerPickersAreDisabled)
+        .opacity(viewModel.mode == .display ? 1 : 0)
         .onChange(of: viewModel.recipe.timeEnd) { timeEnd in
             viewModel.didChange(timeEnd)
         }

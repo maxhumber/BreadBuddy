@@ -13,16 +13,11 @@ struct Edit: View {
     }
     
     var body: some View {
-        HStack(alignment: .center, spacing: 0) {
+        HStack(alignment: .bottom, spacing: 5) {
             actionButton
-            HStack(alignment: .bottom, spacing: 10) {
-                VStack(alignment: .leading, spacing: 4) {
-                    startTime
-                    activity
-                }
-                duration
-                timeUnitMenu
-            }
+            activity
+            duration
+            timeUnitMenu
         }
         .onChange(of: field) { field in
             viewModel.didChange(to: field, with: mode)
@@ -61,14 +56,8 @@ struct Edit: View {
             .rotationEffect(.degrees(90))
             .foregroundColor(.secondary)
             .aligned()
-            .padding(.trailing, 10)
+            .padding(.trailing, 5)
             .padding(.leading, -5)
-    }
-    
-    private var startTime: some View {
-        Text(step.startLabel)
-            .foregroundColor(step.isPast ? .red : .secondary)
-            .font(.caption2.italic())
     }
     
     private var activity: some View {
@@ -123,8 +112,8 @@ struct Edit: View {
             Text(step.unitLabel)
                 .animation(nil, value: UUID())
         }
-        .foregroundColor(.primary)
         .underscore()
+        .foregroundColor(.primary)
     }
 }
 

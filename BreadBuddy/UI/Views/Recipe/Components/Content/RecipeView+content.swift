@@ -25,10 +25,6 @@ extension RecipeView {
                 Display(step)
             }
         }
-//        if viewModel.shouldDisplayLastStepDivider {
-//            Divider(viewModel.lastStepDividerLabel)
-//        }
-//        Display(viewModel.lastStep)
     }
     
     @ViewBuilder var editContent: some View {
@@ -36,7 +32,6 @@ extension RecipeView {
             Edit($step)
         }
         Edit($viewModel.newStep, mode: .new)
-        Edit($viewModel.newStep, mode: .new).opacity(0)
     }
 }
 
