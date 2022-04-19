@@ -1,4 +1,4 @@
-import BreadKit
+import Core
 import GRDB
 
 extension Recipe: FetchableRecord, MutablePersistableRecord {

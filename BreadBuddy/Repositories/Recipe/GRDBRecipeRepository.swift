@@ -1,4 +1,4 @@
-import BreadKit
+import Core
 import GRDB
 
 class GRDBRecipeRepository: RecipeRepository {

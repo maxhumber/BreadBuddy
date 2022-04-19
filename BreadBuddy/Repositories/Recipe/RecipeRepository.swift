@@ -1,4 +1,4 @@
-import BreadKit
+import Core
 
 protocol RecipeRepository {
     func save(_ recipe: Recipe) async throws -> Recipe
