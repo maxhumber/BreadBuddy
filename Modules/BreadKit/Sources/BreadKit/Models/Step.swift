@@ -26,7 +26,7 @@ extension Step {
     }
 
     public var unitLabel: String {
-        timeUnit.shortHand(plural: timeValue == 1)
+        timeUnit.shortHand(plural: timeValue != 1)
     }
     
     public var clocktimeStart: String {

@@ -7,10 +7,11 @@ extension RecipeView {
             nameField
             trailingButton
         }
+        .foregroundColor(.primary)
         .padding()
     }
     
-    private var leadingButton: some View {
+    @ViewBuilder private var leadingButton: some View {
         Button {
             dismiss()
         } label: {
@@ -27,27 +28,33 @@ extension RecipeView {
             .frame(maxWidth: .infinity)
     }
     
-    private var trailingButton: some View {
+    @ViewBuilder private var trailingButton: some View {
+        switch viewModel.mode {
+        case .display, .active:
+            viewLinkButton
+        case .edit:
+            addLinkButton
+        }
+    }
+    
+    private var viewLinkButton: some View {
+        SafariButton {
+            URL(string: viewModel.recipe.link!)!
+        } label: {
+            Image(systemName: "link")
+        }
+        .disabled(viewModel.headerLinkButtonIsDisabled)
+    }
+    
+    private var addLinkButton: some View {
         Button {
             viewModel.headerLinkButtonAction()
         } label: {
-            Image(systemName: "link")
+            Image(systemName: "link.badge.plus")
         }
         .alert(isPresented: $viewModel.urlTextAlertIsPresented) {
             AlertInput(title: "Recipe URL", placeholder: "URL", text: $viewModel.recipe.link)
         }
-    }
-
-    private var deleteAlert: Alert {
-        Alert(
-            title: Text("Delete Recipe"),
-            message: Text("Are you sure you want to delete this recipe?"),
-            primaryButton: .destructive(Text("Confirm")) {
-                viewModel.alertDeleteAction()
-                dismiss()
-            },
-            secondaryButton: .cancel()
-        )
     }
 }
 

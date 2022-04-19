@@ -11,7 +11,7 @@ struct IndexView: View {
     
     var body: some View {
         NavigationView {
-            newStatic
+            layersOld
         }
         .environmentObject(viewModel)
     }

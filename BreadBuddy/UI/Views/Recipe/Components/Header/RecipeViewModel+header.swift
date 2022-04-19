@@ -16,4 +16,12 @@ extension RecipeViewModel {
     func headerLinkButtonAction() {
         urlTextAlertIsPresented = true
     }
+    
+    var headerLinkButtonIsDisabled: Bool {
+        if mode == .edit {
+            return false
+        } else {
+            return recipe.link == nil
+        }
+    }
 }

@@ -33,6 +33,8 @@ extension RecipeView {
             Edit($step)
         }
         Edit($viewModel.newStep, mode: .new)
+        Spacer()
+            .padding(.bottom, 200)
     }
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		502042B8280F1DF5009074BC /* SafariButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502042B7280F1DF5009074BC /* SafariButton.swift */; };
 		5023C0F62805EBA50000316A /* Text+scaffold.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5023C0F52805EBA50000316A /* Text+scaffold.swift */; };
 		502BF6732809A87200C6AA91 /* RecipeView+header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502BF6722809A87200C6AA91 /* RecipeView+header.swift */; };
 		502BF6752809A87B00C6AA91 /* RecipeView+content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502BF6742809A87B00C6AA91 /* RecipeView+content.swift */; };
@@ -59,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		502042B7280F1DF5009074BC /* SafariButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariButton.swift; sourceTree = "<group>"; };
 		5023C0F52805EBA50000316A /* Text+scaffold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+scaffold.swift"; sourceTree = "<group>"; };
 		502BF6722809A87200C6AA91 /* RecipeView+header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeView+header.swift"; sourceTree = "<group>"; };
 		502BF6742809A87B00C6AA91 /* RecipeView+content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeView+content.swift"; sourceTree = "<group>"; };
@@ -297,9 +299,10 @@
 		50DCF1DE27FB341000D0A369 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				50961E8E280F063C008EDF46 /* AlertInput.swift */,
 				50631C0828086870007985F1 /* Divider.swift */,
 				5032A6B727FB57D40031501D /* DatePickerField.swift */,
-				50961E8E280F063C008EDF46 /* AlertInput.swift */,
+				502042B7280F1DF5009074BC /* SafariButton.swift */,
 				5023C0F52805EBA50000316A /* Text+scaffold.swift */,
 				50631C0028084FF5007985F1 /* View+underscore.swift */,
 				50631C022808501F007985F1 /* View+aligned.swift */,
@@ -505,6 +508,7 @@
 				50631C0128084FF5007985F1 /* View+underscore.swift in Sources */,
 				5099531D2800CBFA004AEEAB /* Database.swift in Sources */,
 				5032A6C927FC892F0031501D /* NotificationTestView.swift in Sources */,
+				502042B8280F1DF5009074BC /* SafariButton.swift in Sources */,
 				502BF6802809CA1C00C6AA91 /* RecipeMode.swift in Sources */,
 				502BF67E2809B4D000C6AA91 /* RecipeViewModel+footer.swift in Sources */,
 				50631BF9280739A3007985F1 /* Edit.swift in Sources */,

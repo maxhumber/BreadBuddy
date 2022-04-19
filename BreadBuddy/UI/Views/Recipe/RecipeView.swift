@@ -26,6 +26,7 @@ struct RecipeView: View {
             footer
         }
         .navigationBarHidden(true)
+        .ignoresSafeArea(.keyboard)
         .dismissKeyboard()
     }
 }
