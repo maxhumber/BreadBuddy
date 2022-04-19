@@ -11,12 +11,62 @@ struct IndexView: View {
     
     var body: some View {
         NavigationView {
-            layers
+            newStatic
         }
         .environmentObject(viewModel)
     }
     
-    private var layers: some View {
+    private var newStatic: some View {
+        VStack(alignment: .leading, spacing: 20) {
+            Image(systemName: "circle")
+                .font(.title)
+                .frame(maxWidth: .infinity)
+            Divider("In Progress".uppercased())
+            HStack(alignment: .center, spacing: 20) {
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("Next step")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    Text("1.5 hrs")
+
+                }
+                VStack(alignment: .leading, spacing: 5)  {
+                    Text("Wednesday • 3:30 pm")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    Text("No-Knead Sourdough")
+
+                }
+                Spacer()
+            }
+            Divider("Recipes".uppercased())
+            VStack(alignment: .leading, spacing: 5) {
+                Text("No-Knead Sourdough")
+                Text("15 hours")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            VStack(alignment: .leading, spacing: 5) {
+                Text("No-Knead Sourdough")
+                Text("15 hours")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            Text("New Recipe")
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 5)
+                        .stroke(.secondary, style: StrokeStyle(lineWidth: 1, lineCap: .round, dash: [3]))
+                )
+                .padding()
+            Spacer()
+        }
+        .padding(20)
+        .navigationBarHidden(true)
+    }
+    
+    private var layersOld: some View {
         ZStack {
             content
             addButton

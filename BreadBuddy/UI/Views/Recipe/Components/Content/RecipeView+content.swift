@@ -20,7 +20,8 @@ extension RecipeView {
     
     @ViewBuilder var displayContent: some View {
         ForEach(viewModel.groups) { group in
-            Divider(group.label)
+            Divider(group.label.uppercased())
+                .padding(.horizontal)
             ForEach(group.steps) { step in
                 Display(step)
             }

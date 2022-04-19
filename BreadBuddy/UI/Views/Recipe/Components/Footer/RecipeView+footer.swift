@@ -26,7 +26,6 @@ extension RecipeView {
             makeButton("Delete", systemImage: "trash") {
                 viewModel.footerDeleteButtonAction()
             }
-            .foregroundColor(.red)
             .alert(isPresented: $viewModel.deleteAlertIsPresented) {
                 deleteAlert
             }
@@ -60,7 +59,7 @@ extension RecipeView {
         } label: {
             VStack(spacing: 15) {
                 Image(systemName: systemImage)
-                    .font(.title3)
+                    .font(.body)
                 Text(label)
                     .font(.caption)
             }
@@ -72,8 +71,8 @@ extension RecipeView {
             DatePickerField(date: $viewModel.recipe.timeEnd, displayedComponent: .date, alignment: .bottom)
                 .font(.caption)
             DatePickerField(date: $viewModel.recipe.timeEnd, displayedComponent: .hourAndMinute, alignment: .center)
-                .font(.title3)
-                .padding(.bottom, 10)
+                .font(.title3.bold())
+                .padding(.bottom, 5)
             Text("Finish")
                 .font(.caption)
         }

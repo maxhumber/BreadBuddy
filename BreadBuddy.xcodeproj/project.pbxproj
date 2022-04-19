@@ -160,7 +160,6 @@
 		502BF6822809D88C00C6AA91 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				50631C0828086870007985F1 /* Divider.swift */,
 				50631C0A280868A6007985F1 /* Display.swift */,
 				50631BF8280739A3007985F1 /* Edit.swift */,
 			);
@@ -296,6 +295,7 @@
 		50DCF1DE27FB341000D0A369 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				50631C0828086870007985F1 /* Divider.swift */,
 				5032A6B727FB57D40031501D /* DatePickerField.swift */,
 				5023C0F52805EBA50000316A /* Text+scaffold.swift */,
 				50631C0028084FF5007985F1 /* View+underscore.swift */,

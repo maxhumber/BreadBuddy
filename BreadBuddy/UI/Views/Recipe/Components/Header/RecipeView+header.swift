@@ -29,10 +29,10 @@ extension RecipeView {
     
     private var trailingButton: some View {
         Button {
+            
         } label: {
-            Image(systemName: "trash")
+            Image(systemName: "link")
         }
-        .opacity(0)
     }
 
     private var deleteAlert: Alert {

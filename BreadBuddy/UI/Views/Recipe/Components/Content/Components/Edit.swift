@@ -13,11 +13,13 @@ struct Edit: View {
     }
     
     var body: some View {
-        HStack(alignment: .bottom, spacing: 5) {
+        HStack(alignment: .center, spacing: 5) {
             actionButton
-            activity
-            duration
-            timeUnitMenu
+            HStack(alignment: .bottom, spacing: 5) {
+                activity
+                duration
+                timeUnitMenu
+            }
         }
         .onChange(of: field) { field in
             viewModel.didChange(to: field, with: mode)

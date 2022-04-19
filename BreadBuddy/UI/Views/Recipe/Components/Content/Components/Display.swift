@@ -25,12 +25,12 @@ struct Display: View {
     }
     
     private var activity: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        VStack(alignment: .leading, spacing: 4) {
             Text(step.description)
                 .font(.body)
             Text(step.duration)
                 .font(.caption.italic())
-                .opacity(step.timeValue == 0 ? 0 : 1)
+                .foregroundColor(.secondary)
         }
     }
 }

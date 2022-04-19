@@ -14,7 +14,6 @@ struct Divider: View {
             line
         }
         .foregroundColor(.gray)
-        .padding(.horizontal)
     }
     
     private var textLabel: some View {
