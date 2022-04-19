@@ -2,12 +2,25 @@ import SwiftUI
 
 extension RecipeView {
     var header: some View {
-        HStack(spacing: 0) {
-            leadingButton
-            nameField
-            trailingButton
+        ZStack {
+            HStack(spacing: 0) {
+                leadingButton
+                nameField
+                trailingButton
+            }
+            .padding()
+            alertLayer
         }
-        .padding()
+    }
+    
+    private var alertLayer: some View {
+        EmptyView()
+            .alert(isPresented: $viewModel.urlTextAlertIsPresented) {
+                TextAlert(title: "Recipe URL", placeholder: "URL", accept: "Save") { newURL in
+                    print("Callback \(newURL ?? "<cancel>")")
+                }
+            }
+            .fixedSize()
     }
     
     private var leadingButton: some View {
@@ -29,7 +42,7 @@ extension RecipeView {
     
     private var trailingButton: some View {
         Button {
-            
+            viewModel.headerLinkButtonAction()
         } label: {
             Image(systemName: "link")
         }

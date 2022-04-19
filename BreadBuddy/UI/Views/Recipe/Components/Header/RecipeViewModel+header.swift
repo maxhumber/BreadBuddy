@@ -12,4 +12,8 @@ extension RecipeViewModel {
     var headerNameFieldUnderscoreIsHidden: Bool {
         mode != .edit
     }
+    
+    func headerLinkButtonAction() {
+        urlTextAlertIsPresented = true
+    }
 }

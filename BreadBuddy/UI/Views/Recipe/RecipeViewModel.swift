@@ -2,19 +2,22 @@ import BreadKit
 import Foundation
 
 @MainActor final class RecipeViewModel: ObservableObject {
+    @Published var deleteAlertIsPresented = false
+    @Published var urlTextAlertIsPresented = false
+    @Published var newStep = Step()
+    @Published var groups = [StepGroup]()
+
     @Published var recipe: Recipe
     @Published var mode: RecipeMode
-    private var repository: RecipeRepository
     
-    @Published var groups = [StepGroup]()
-    @Published var newStep = Step()
-    @Published var deleteAlertIsPresented = false
-    private var service = RecipeService()
+    private var repository: RecipeRepository
+    private var service: RecipeService
 
-    init(_ recipe: Recipe, mode: RecipeMode, repository: RecipeRepository = GRDBRecipeRepository()) {
+    init(_ recipe: Recipe, mode: RecipeMode, repository: RecipeRepository = GRDBRecipeRepository(), service: RecipeService = .init()) {
         self.recipe = recipe
         self.mode = recipe.isActive ? .active : mode
         self.repository = repository
+        self.service = service
     }
     
     func save() {
@@ -37,15 +40,11 @@ import Foundation
     
     func refresh() {
         recipe = service.rewind(recipe)
-        regroup()
+        groups = service.group(recipe)
     }
     
     func reforward() {
         recipe = service.reforward(recipe)
-        regroup()
-    }
-    
-    private func regroup() {
         groups = service.group(recipe)
     }
 }
