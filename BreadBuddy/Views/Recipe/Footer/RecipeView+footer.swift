@@ -10,7 +10,7 @@ extension RecipeView {
             trailingButton
                 .frame(maxWidth: .infinity)
         }
-        .foregroundColor(.primary)
+        .foregroundColor(.accent1)
     }
     
     @ViewBuilder private var leadingButton: some View {
@@ -55,7 +55,7 @@ extension RecipeView {
             dayPicker
             timePicker
             Text("Finish")
-                .font(.caption)
+                .font(.caption2Matter)
         }
         .opacity(viewModel.mode == .display ? 1 : 0)
         .onChange(of: viewModel.recipe.timeEnd) { timeEnd in
@@ -66,15 +66,17 @@ extension RecipeView {
     private var dayPicker: some View {
         StealthDatePicker(.date, date: $viewModel.recipe.timeEnd, alignment: .bottom) {
             Text(viewModel.recipe.timeEnd.simple)
-                .font(.caption)
+                .font(.captionMatter)
+                .padding(.bottom, 6)
         }
     }
     
     private var timePicker: some View {
         StealthDatePicker(.hourAndMinute, date: $viewModel.recipe.timeEnd) {
             Text(viewModel.recipe.timeEnd.clocktime)
-                .font(.title3.bold())
-                .padding(.bottom, 5)
+                .font(.title3Matter)
+                .foregroundColor(.text1)
+                .padding(.bottom, 6)
         }
     }
 
@@ -98,7 +100,7 @@ extension RecipeView {
                 Image(systemName: systemImage)
                     .font(.body)
                 Text(label)
-                    .font(.caption)
+                    .font(.caption2Matter)
             }
         }
     }

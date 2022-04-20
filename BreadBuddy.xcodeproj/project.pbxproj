@@ -21,22 +21,6 @@
 		504D3C2027E017B300C95123 /* Preview.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504D3C1F27E017B300C95123 /* Preview.xcassets */; };
 		504D3C2A27E017B300C95123 /* BreadBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D3C2927E017B300C95123 /* BreadBuddyTests.swift */; };
 		504E6E93280F300E00B5EE21 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 504E6E92280F300E00B5EE21 /* Core */; };
-		505EAFD5280F717C009F596A /* RecklessNeue-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFB8280F717C009F596A /* RecklessNeue-SemiBoldItalic.ttf */; };
-		505EAFD6280F717C009F596A /* RecklessNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFB9280F717C009F596A /* RecklessNeue-Regular.ttf */; };
-		505EAFD7280F717C009F596A /* RecklessNeue-HeavyItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFBA280F717C009F596A /* RecklessNeue-HeavyItalic.ttf */; };
-		505EAFD8280F717C009F596A /* RecklessNeue-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFBB280F717C009F596A /* RecklessNeue-MediumItalic.ttf */; };
-		505EAFD9280F717C009F596A /* RecklessNeue-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFBC280F717C009F596A /* RecklessNeue-LightItalic.ttf */; };
-		505EAFDA280F717C009F596A /* RecklessNeue-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFBD280F717C009F596A /* RecklessNeue-Thin.ttf */; };
-		505EAFDB280F717C009F596A /* RecklessNeue-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFBE280F717C009F596A /* RecklessNeue-Bold.ttf */; };
-		505EAFDC280F717C009F596A /* RecklessNeue-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFBF280F717C009F596A /* RecklessNeue-Book.ttf */; };
-		505EAFDD280F717C009F596A /* RecklessNeue-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFC0280F717C009F596A /* RecklessNeue-RegularItalic.ttf */; };
-		505EAFDE280F717C009F596A /* RecklessNeue-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFC1280F717C009F596A /* RecklessNeue-SemiBold.ttf */; };
-		505EAFDF280F717C009F596A /* RecklessNeue-BookItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFC2280F717C009F596A /* RecklessNeue-BookItalic.ttf */; };
-		505EAFE0280F717C009F596A /* RecklessNeue-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFC3280F717C009F596A /* RecklessNeue-Light.ttf */; };
-		505EAFE1280F717C009F596A /* RecklessNeue-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFC4280F717C009F596A /* RecklessNeue-Medium.ttf */; };
-		505EAFE2280F717C009F596A /* RecklessNeue-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFC5280F717C009F596A /* RecklessNeue-Heavy.ttf */; };
-		505EAFE3280F717C009F596A /* RecklessNeue-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFC6280F717C009F596A /* RecklessNeue-BoldItalic.ttf */; };
-		505EAFE4280F717C009F596A /* RecklessNeue-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFC7280F717C009F596A /* RecklessNeue-ThinItalic.ttf */; };
 		505EAFE5280F717C009F596A /* Matter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFC9280F717C009F596A /* Matter-Bold.ttf */; };
 		505EAFE6280F717C009F596A /* Matter-HeavyItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFCA280F717C009F596A /* Matter-HeavyItalic.ttf */; };
 		505EAFE7280F717C009F596A /* Matter-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFCB280F717C009F596A /* Matter-LightItalic.ttf */; };
@@ -100,22 +84,6 @@
 		504D3C2527E017B300C95123 /* BreadBuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BreadBuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		504D3C2927E017B300C95123 /* BreadBuddyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadBuddyTests.swift; sourceTree = "<group>"; };
 		504E6E91280F300400B5EE21 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = "<group>"; };
-		505EAFB8280F717C009F596A /* RecklessNeue-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RecklessNeue-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
-		505EAFB9280F717C009F596A /* RecklessNeue-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RecklessNeue-Regular.ttf"; sourceTree = "<group>"; };
-		505EAFBA280F717C009F596A /* RecklessNeue-HeavyItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RecklessNeue-HeavyItalic.ttf"; sourceTree = "<group>"; };
-		505EAFBB280F717C009F596A /* RecklessNeue-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RecklessNeue-MediumItalic.ttf"; sourceTree = "<group>"; };
-		505EAFBC280F717C009F596A /* RecklessNeue-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RecklessNeue-LightItalic.ttf"; sourceTree = "<group>"; };
-		505EAFBD280F717C009F596A /* RecklessNeue-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RecklessNeue-Thin.ttf"; sourceTree = "<group>"; };
-		505EAFBE280F717C009F596A /* RecklessNeue-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RecklessNeue-Bold.ttf"; sourceTree = "<group>"; };
-		505EAFBF280F717C009F596A /* RecklessNeue-Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RecklessNeue-Book.ttf"; sourceTree = "<group>"; };
-		505EAFC0280F717C009F596A /* RecklessNeue-RegularItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RecklessNeue-RegularItalic.ttf"; sourceTree = "<group>"; };
-		505EAFC1280F717C009F596A /* RecklessNeue-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RecklessNeue-SemiBold.ttf"; sourceTree = "<group>"; };
-		505EAFC2280F717C009F596A /* RecklessNeue-BookItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RecklessNeue-BookItalic.ttf"; sourceTree = "<group>"; };
-		505EAFC3280F717C009F596A /* RecklessNeue-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RecklessNeue-Light.ttf"; sourceTree = "<group>"; };
-		505EAFC4280F717C009F596A /* RecklessNeue-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RecklessNeue-Medium.ttf"; sourceTree = "<group>"; };
-		505EAFC5280F717C009F596A /* RecklessNeue-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RecklessNeue-Heavy.ttf"; sourceTree = "<group>"; };
-		505EAFC6280F717C009F596A /* RecklessNeue-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RecklessNeue-BoldItalic.ttf"; sourceTree = "<group>"; };
-		505EAFC7280F717C009F596A /* RecklessNeue-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RecklessNeue-ThinItalic.ttf"; sourceTree = "<group>"; };
 		505EAFC9280F717C009F596A /* Matter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Matter-Bold.ttf"; sourceTree = "<group>"; };
 		505EAFCA280F717C009F596A /* Matter-HeavyItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Matter-HeavyItalic.ttf"; sourceTree = "<group>"; };
 		505EAFCB280F717C009F596A /* Matter-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Matter-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -275,32 +243,8 @@
 			children = (
 				505EAFF3280F7299009F596A /* Font+.swift */,
 				505EAFC8280F717C009F596A /* Matter */,
-				505EAFB7280F717C009F596A /* RecklessNeue */,
 			);
 			path = Fonts;
-			sourceTree = "<group>";
-		};
-		505EAFB7280F717C009F596A /* RecklessNeue */ = {
-			isa = PBXGroup;
-			children = (
-				505EAFB8280F717C009F596A /* RecklessNeue-SemiBoldItalic.ttf */,
-				505EAFB9280F717C009F596A /* RecklessNeue-Regular.ttf */,
-				505EAFBA280F717C009F596A /* RecklessNeue-HeavyItalic.ttf */,
-				505EAFBB280F717C009F596A /* RecklessNeue-MediumItalic.ttf */,
-				505EAFBC280F717C009F596A /* RecklessNeue-LightItalic.ttf */,
-				505EAFBD280F717C009F596A /* RecklessNeue-Thin.ttf */,
-				505EAFBE280F717C009F596A /* RecklessNeue-Bold.ttf */,
-				505EAFBF280F717C009F596A /* RecklessNeue-Book.ttf */,
-				505EAFC0280F717C009F596A /* RecklessNeue-RegularItalic.ttf */,
-				505EAFC1280F717C009F596A /* RecklessNeue-SemiBold.ttf */,
-				505EAFC2280F717C009F596A /* RecklessNeue-BookItalic.ttf */,
-				505EAFC3280F717C009F596A /* RecklessNeue-Light.ttf */,
-				505EAFC4280F717C009F596A /* RecklessNeue-Medium.ttf */,
-				505EAFC5280F717C009F596A /* RecklessNeue-Heavy.ttf */,
-				505EAFC6280F717C009F596A /* RecklessNeue-BoldItalic.ttf */,
-				505EAFC7280F717C009F596A /* RecklessNeue-ThinItalic.ttf */,
-			);
-			path = RecklessNeue;
 			sourceTree = "<group>";
 		};
 		505EAFC8280F717C009F596A /* Matter */ = {
@@ -535,35 +479,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				505EAFEA280F717C009F596A /* Matter-Medium.ttf in Resources */,
-				505EAFD6280F717C009F596A /* RecklessNeue-Regular.ttf in Resources */,
 				505EAFEF280F717C009F596A /* Matter-MediumItalic.ttf in Resources */,
 				505EAFE5280F717C009F596A /* Matter-Bold.ttf in Resources */,
 				505EAFE9280F717C009F596A /* Matter-SemiBold.ttf in Resources */,
 				504D3C2027E017B300C95123 /* Preview.xcassets in Resources */,
-				505EAFE0280F717C009F596A /* RecklessNeue-Light.ttf in Resources */,
-				505EAFDE280F717C009F596A /* RecklessNeue-SemiBold.ttf in Resources */,
-				505EAFDA280F717C009F596A /* RecklessNeue-Thin.ttf in Resources */,
 				505EAFEE280F717C009F596A /* Matter-SemiBoldItalic.ttf in Resources */,
-				505EAFE3280F717C009F596A /* RecklessNeue-BoldItalic.ttf in Resources */,
 				505EAFE8280F717C009F596A /* Matter-Heavy.ttf in Resources */,
 				505EAFE6280F717C009F596A /* Matter-HeavyItalic.ttf in Resources */,
 				505EAFE7280F717C009F596A /* Matter-LightItalic.ttf in Resources */,
-				505EAFE2280F717C009F596A /* RecklessNeue-Heavy.ttf in Resources */,
-				505EAFD9280F717C009F596A /* RecklessNeue-LightItalic.ttf in Resources */,
 				505EAFF9280F9B12009F596A /* Colors.xcassets in Resources */,
 				505EAFF0280F717C009F596A /* Matter-Regular.ttf in Resources */,
-				505EAFD5280F717C009F596A /* RecklessNeue-SemiBoldItalic.ttf in Resources */,
-				505EAFDD280F717C009F596A /* RecklessNeue-RegularItalic.ttf in Resources */,
-				505EAFE1280F717C009F596A /* RecklessNeue-Medium.ttf in Resources */,
 				505EAFEB280F717C009F596A /* Matter-Light.ttf in Resources */,
 				504D3C1D27E017B300C95123 /* Assets.xcassets in Resources */,
-				505EAFDB280F717C009F596A /* RecklessNeue-Bold.ttf in Resources */,
 				505EAFEC280F717C009F596A /* Matter-BoldItalic.ttf in Resources */,
-				505EAFD8280F717C009F596A /* RecklessNeue-MediumItalic.ttf in Resources */,
-				505EAFE4280F717C009F596A /* RecklessNeue-ThinItalic.ttf in Resources */,
-				505EAFDC280F717C009F596A /* RecklessNeue-Book.ttf in Resources */,
-				505EAFD7280F717C009F596A /* RecklessNeue-HeavyItalic.ttf in Resources */,
-				505EAFDF280F717C009F596A /* RecklessNeue-BookItalic.ttf in Resources */,
 				505EAFED280F717C009F596A /* Matter-RegularItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

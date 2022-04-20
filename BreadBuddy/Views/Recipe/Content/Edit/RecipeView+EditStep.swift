@@ -15,6 +15,13 @@ extension RecipeView {
         }
         
         var body: some View {
+            content
+                .onChange(of: field) { field in
+                    viewModel.didChange(to: field, with: mode)
+                }
+        }
+        
+        private var content: some View {
             HStack(alignment: .center, spacing: 5) {
                 actionButton
                 HStack(alignment: .bottom, spacing: 5) {
@@ -24,9 +31,6 @@ extension RecipeView {
                 }
             }
             .font(.bodyMatter)
-            .onChange(of: field) { field in
-                viewModel.didChange(to: field, with: mode)
-            }
         }
         
         private var actionButton: some View {
@@ -59,9 +63,9 @@ extension RecipeView {
         private var actionMenuLabel: some View {
             Image(systemName: "ellipsis")
                 .rotationEffect(.degrees(90))
-                .foregroundColor(.secondary)
                 .padding(.trailing, 5)
                 .padding(.leading, -5)
+                .foregroundColor(.accent1)
         }
         
         private var activity: some View {
@@ -81,9 +85,9 @@ extension RecipeView {
                 TextScaffold("XXX")
                 TextField("", value: $step.timeValue, formatter: .number)
                     .foregroundColor(.text1)
+                    .opacity(step.timeValue == 0 ? 0.25 : 1)
                     .multilineTextAlignment(.center)
                     .keyboardType(.decimalPad)
-                    .opacity(step.timeValue == 0 ? 0.25 : 1)
                     .focused($field, equals: .timeValue)
                     .onSubmit {
                         field = .none

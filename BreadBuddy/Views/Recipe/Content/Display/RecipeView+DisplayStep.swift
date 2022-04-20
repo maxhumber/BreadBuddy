@@ -16,10 +16,11 @@ extension RecipeView {
                 activity
                 Spacer()
             }
+            .foregroundColor(.text1)
         }
         
         private var timeStart: some View {
-            ZStack(alignment: .trailing) {
+            ZStack(alignment: .topTrailing) {
                 TextScaffold("XXXXXXX")
                 Text(step.clocktimeStart)
             }
@@ -27,12 +28,12 @@ extension RecipeView {
         }
         
         private var activity: some View {
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: 5) {
                 Text(step.description)
                     .font(.bodyMatter)
                 Text(step.duration)
-                    .font(.captionMatter)
-                    .foregroundColor(.secondary)
+                    .font(.caption2Matter)
+                    .foregroundColor(.text2)
             }
         }
     }

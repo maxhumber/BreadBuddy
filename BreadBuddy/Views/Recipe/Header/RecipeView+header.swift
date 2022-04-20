@@ -8,7 +8,6 @@ extension RecipeView {
             nameField
             trailingButton
         }
-        .foregroundColor(.primary)
         .padding()
     }
     
@@ -16,21 +15,24 @@ extension RecipeView {
         Button {
             dismiss()
         } label: {
-            Image(systemName: "chevron.left")
+            ZStack {
+                Image(systemName: "link.badge.plus").opacity(0)
+                Image(systemName: "chevron.left")
+            }
         }
         .opacity(viewModel.headerBackButtonIsDisplayed ? 1 : 0)
-        .font(.body)
         .foregroundColor(.accent1)
     }
     
     private var nameField: some View {
         TextField("Recipe name", text: $viewModel.recipe.name)
-            .multilineTextAlignment(.center)
-            .disabled(viewModel.headerNameFieldIsDisabled)
-            .underscore(hidden: viewModel.headerNameFieldUnderscoreIsHidden)
-            .frame(maxWidth: .infinity)
             .font(.body)
             .foregroundColor(.text1)
+            .underscore(hidden: viewModel.headerNameFieldUnderscoreIsHidden)
+            .foregroundColor(.accent2)
+            .multilineTextAlignment(.center)
+            .disabled(viewModel.headerNameFieldIsDisabled)
+            .frame(maxWidth: .infinity)
     }
     
     @ViewBuilder private var trailingButton: some View {
@@ -44,7 +46,10 @@ extension RecipeView {
     
     private var viewLinkButton: some View {
         SafariButton(url: viewModel.headerRecipeURL) {
-            Image(systemName: "link")
+            ZStack {
+                Image(systemName: "link.badge.plus").opacity(0)
+                Image(systemName: "link")
+            }
         }
         .disabled(viewModel.headerLinkButtonIsDisabled)
         .foregroundColor(viewModel.headerLinkButtonIsDisabled ? .accent2 : .accent1)
@@ -56,6 +61,7 @@ extension RecipeView {
         } label: {
             Image(systemName: "link.badge.plus")
         }
+        .foregroundColor(.accent1)
         .alert(isPresented: $viewModel.urlTextAlertIsPresented) {
             AlertInput(title: "Recipe URL", placeholder: "URL", text: $viewModel.recipe.link)
         }
