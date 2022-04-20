@@ -11,12 +11,13 @@ extension RecipeView {
         .foregroundColor(.accent1)
     }
     
-    private var footerTopRow: some View {
-        pickers
-            .opacity(viewModel.mode == .display ? 1 : 0)
-            .onChange(of: viewModel.recipe.timeEnd) { timeEnd in
-                viewModel.didChange(timeEnd)
-            }
+    @ViewBuilder private var footerTopRow: some View {
+        if viewModel.mode == .display {
+            pickers
+                .onChange(of: viewModel.recipe.timeEnd) { timeEnd in
+                    viewModel.didChange(timeEnd)
+                }
+        }
     }
     
     private var pickers: some View {
@@ -51,67 +52,81 @@ extension RecipeView {
     
     private var footerBottomRow: some View {
         HStack(alignment: .bottom, spacing: 10) {
-            footerMainLeadingButton
-            footerMainTrailingButton
+            bottomRowLeadingButton
+            bottomRowTrailingButton
         }
     }
     
-    private var footerMainLeadingButton: some View {
-        leadingButton
-            .buttonStyle(StrokedButtonStyle())
+    private var bottomRowLeadingButton: some View {
+        Group {
+            switch viewModel.mode {
+            case .display: startButton
+            case .edit: deleteButton
+            case .active: restartButton
+            }
+        }
+        .buttonStyle(StrokedButtonStyle())
     }
     
-    private var footerMainTrailingButton: some View {
-        trailingButton
-            .buttonStyle(StrokedButtonStyle())
+    private var bottomRowTrailingButton: some View {
+        Group {
+            switch viewModel.mode {
+            case .display: editButton
+            case .edit: saveButton
+            case .active: cancelButton
+            }
+        }
+        .buttonStyle(StrokedButtonStyle())
     }
-
-    @ViewBuilder private var leadingButton: some View {
-        switch viewModel.mode {
-        case .display:
-            Button {
-                viewModel.footerStartAction()
-            } label: {
-                makeButtonLabel("Start", systemImage: "clock")
-            }
-        case .edit:
-            Button {
-                viewModel.footerDeleteButtonAction()
-            } label: {
-                makeButtonLabel("Delete", systemImage: "trash")
-            }
-            .alert(isPresented: $viewModel.deleteAlertIsPresented) {
-                deleteAlert
-            }
-        case .active:
-            Button {
-                viewModel.footerRestartAction()
-            } label: {
-                makeButtonLabel("Restart", systemImage: "clock.arrow.circlepath")
-            }
+    
+    private var startButton: some View {
+        Button {
+            viewModel.footerStartAction()
+        } label: {
+            makeButtonLabel("Start", systemImage: "clock")
         }
     }
     
-    @ViewBuilder private var trailingButton: some View {
-        switch viewModel.mode {
-        case .display:
-            Button {
-                viewModel.footerEditAction()
-            } label: {
-                makeButtonLabel("Edit", systemImage: "pencil")
-            }
-        case .edit:
-            Button {
-                viewModel.footerSaveAction()
-            } label: {
-                makeButtonLabel("Save", systemImage: "square.and.arrow.down")
-            }
-        case .active:
-            Button {
-                viewModel.footerCancelAction()
-            } label: {
-                makeButtonLabel("Cancel", systemImage: "xmark.circle")
-            }
+    private var deleteButton: some View {
+        Button {
+            viewModel.footerDeleteButtonAction()
+        } label: {
+            makeButtonLabel("Delete", systemImage: "trash")
+        }
+        .alert(isPresented: $viewModel.deleteAlertIsPresented) {
+            deleteAlert
+        }
+    }
+    
+    private var restartButton: some View {
+        Button {
+            viewModel.footerRestartAction()
+        } label: {
+            makeButtonLabel("Restart", systemImage: "clock.arrow.circlepath")
+        }
+    }
+    
+    private var editButton: some View {
+        Button {
+            viewModel.footerEditAction()
+        } label: {
+            makeButtonLabel("Edit", systemImage: "pencil")
+        }
+    }
+    
+    private var saveButton: some View {
+        Button {
+            viewModel.footerSaveAction()
+        } label: {
+            makeButtonLabel("Save", systemImage: "square.and.arrow.down")
+        }
+    }
+    
+    private var cancelButton: some View {
+        Button {
+            viewModel.footerCancelAction()
+        } label: {
+            makeButtonLabel("Cancel", systemImage: "xmark.circle")
         }
     }
     
