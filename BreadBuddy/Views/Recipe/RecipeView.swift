@@ -14,6 +14,7 @@ struct RecipeView: View {
     
     var body: some View {
         layout
+            .background(Color.background)
             .environmentObject(viewModel)
             .onAppear {
                 viewModel.didAppear()

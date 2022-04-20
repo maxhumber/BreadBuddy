@@ -13,18 +13,15 @@ public struct Divider: View {
             textLabel
             line
         }
-        .foregroundColor(.gray)
     }
     
     private var textLabel: some View {
         Text(label)
-            .font(.caption)
     }
     
     private var line: some View {
         Rectangle()
             .frame(height: 1)
-            .opacity(0.5)
     }
 }
 

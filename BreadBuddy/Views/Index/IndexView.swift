@@ -13,6 +13,7 @@ struct IndexView: View {
     var body: some View {
         NavigationView {
             layout
+                .background(Color.background)
                 .environmentObject(viewModel)
         }
     }
@@ -33,7 +34,7 @@ struct IndexView: View {
         Image(systemName: "timelapse")
             .font(.title)
             .frame(maxWidth: .infinity)
-            .foregroundColor(.secondary)
+            .foregroundColor(.accent2)
             .padding()
     }
     
@@ -46,14 +47,18 @@ struct IndexView: View {
     
     @ViewBuilder private var content: some View {
         if viewModel.inProgressSectionIsDisplayed {
-            Divider("In Progress".uppercased())
+            Divider("In Progress")
                 .padding(.horizontal)
+                .font(.body)
+                .foregroundColor(.accent1)
             ForEach(viewModel.recipesInProgress) { recipe in
                 makeInProgressRow(for: recipe)
             }
         }
-        Divider("Recipes".uppercased())
+        Divider("Recipes")
             .padding(.horizontal)
+            .font(.body)
+            .foregroundColor(.accent1)
         ForEach(viewModel.recipes) { recipe in
             makeRecipeRow(for: recipe)
         }
@@ -69,7 +74,7 @@ struct IndexView: View {
                 Text("New")
                     .font(.caption)
             }
-            .foregroundColor(.primary)
+            .foregroundColor(.accent1)
         }
         .frame(maxWidth: .infinity)
     }
@@ -104,9 +109,11 @@ struct IndexView: View {
             HStack {
                 VStack(alignment: .leading, spacing: 5) {
                     Text(recipe.name)
+                        .font(.body)
+                        .foregroundColor(.text1)
                     Text("15 hours")
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.text2)
                 }
                 Spacer()
             }

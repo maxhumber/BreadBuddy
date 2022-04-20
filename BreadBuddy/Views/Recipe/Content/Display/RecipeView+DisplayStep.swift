@@ -20,18 +20,18 @@ extension RecipeView {
         
         private var timeStart: some View {
             ZStack(alignment: .trailing) {
-                TextScaffold("12:59 am")
+                TextScaffold("XXXXXXX")
                 Text(step.clocktimeStart)
             }
-            .font(.body.bold())
+            .font(.bodyMatter)
         }
         
         private var activity: some View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(step.description)
-                    .font(.body)
+                    .font(.bodyMatter)
                 Text(step.duration)
-                    .font(.caption.italic())
+                    .font(.captionMatter)
                     .foregroundColor(.secondary)
             }
         }

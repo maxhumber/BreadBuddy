@@ -15,7 +15,7 @@ fileprivate struct Underscore: ViewModifier {
             content
             Rectangle()
                 .frame(height: 1)
-                .opacity(hidden ? 0 : 0.25)
+                .opacity(hidden ? 0 : 1)
         }
         .fixedSize(horizontal: !infinity, vertical: true)
     }

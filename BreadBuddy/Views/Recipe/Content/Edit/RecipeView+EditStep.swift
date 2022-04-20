@@ -23,6 +23,7 @@ extension RecipeView {
                     timeUnitMenu
                 }
             }
+            .font(.bodyMatter)
             .onChange(of: field) { field in
                 viewModel.didChange(to: field, with: mode)
             }
@@ -65,7 +66,9 @@ extension RecipeView {
         
         private var activity: some View {
             TextField("Description", text: $step.description)
+                .foregroundColor(.text1)
                 .underscore(infinity: true)
+                .foregroundColor(.accent2)
                 .focused($field, equals: .description)
                 .submitLabel(.next)
                 .onSubmit {
@@ -77,6 +80,7 @@ extension RecipeView {
             ZStack {
                 TextScaffold("XXX")
                 TextField("", value: $step.timeValue, formatter: .number)
+                    .foregroundColor(.text1)
                     .multilineTextAlignment(.center)
                     .keyboardType(.decimalPad)
                     .opacity(step.timeValue == 0 ? 0.25 : 1)
@@ -86,6 +90,7 @@ extension RecipeView {
                     }
             }
             .underscore()
+            .foregroundColor(.accent2)
         }
         
         private var timeUnitMenu: some View {
@@ -94,9 +99,6 @@ extension RecipeView {
             } label: {
                 timeUnitMenuLabel
             }
-//            .onChange(of: step.timeUnit) { timeUnit in
-//                viewModel.didChange(timeUnit, with: mode)
-//            }
         }
         
         @ViewBuilder private var timeUnitMenuOptions: some View {
@@ -114,9 +116,10 @@ extension RecipeView {
                 TextScaffold("XXXX")
                 Text(step.unitLabel)
                     .animation(nil, value: UUID())
+                    .foregroundColor(.text1)
             }
             .underscore()
-            .foregroundColor(.primary)
+            .foregroundColor(.accent2)
         }
     }
 }

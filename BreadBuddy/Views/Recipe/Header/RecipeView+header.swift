@@ -19,6 +19,8 @@ extension RecipeView {
             Image(systemName: "chevron.left")
         }
         .opacity(viewModel.headerBackButtonIsDisplayed ? 1 : 0)
+        .font(.body)
+        .foregroundColor(.accent1)
     }
     
     private var nameField: some View {
@@ -27,6 +29,8 @@ extension RecipeView {
             .disabled(viewModel.headerNameFieldIsDisabled)
             .underscore(hidden: viewModel.headerNameFieldUnderscoreIsHidden)
             .frame(maxWidth: .infinity)
+            .font(.body)
+            .foregroundColor(.text1)
     }
     
     @ViewBuilder private var trailingButton: some View {
@@ -43,6 +47,7 @@ extension RecipeView {
             Image(systemName: "link")
         }
         .disabled(viewModel.headerLinkButtonIsDisabled)
+        .foregroundColor(viewModel.headerLinkButtonIsDisabled ? .accent2 : .accent1)
     }
     
     private var addLinkButton: some View {
