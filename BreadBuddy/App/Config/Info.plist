@@ -4,10 +4,15 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-        <string>Matter-Regular.ttf</string>
-        <string>Matter-RegularItalic.ttf</string>
-        <string>Matter-SemiBold.ttf</string>
-        <string>Matter-SemiBoldItalic.ttf</string>
+		<string>Matter-Regular.ttf</string>
+		<string>Matter-RegularItalic.ttf</string>
+		<string>Matter-SemiBold.ttf</string>
+		<string>Matter-SemiBoldItalic.ttf</string>
 	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>background</string>
+	</dict>
 </dict>
 </plist>

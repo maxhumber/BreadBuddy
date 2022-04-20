@@ -65,7 +65,8 @@ extension RecipeView {
     
     private var dayPicker: some View {
         StealthDatePicker(.date, date: $viewModel.recipe.timeEnd, alignment: .bottom) {
-            Text(viewModel.recipe.timeEnd.simple)
+            Text(viewModel.recipe.timeEnd.simple.uppercased())
+                .tracking(2)
                 .font(.matter(.caption))
                 .padding(.bottom, 6)
         }

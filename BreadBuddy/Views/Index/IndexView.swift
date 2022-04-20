@@ -33,8 +33,8 @@ struct IndexView: View {
     private var header: some View {
         Image("Logo")
             .resizable()
-            .aspectRatio(1, contentMode: .fit)
-            .frame(height: 50)
+            .aspectRatio(contentMode: .fit)
+            .frame(height: 40)
             .frame(maxWidth: .infinity)
             .font(.title)
             .foregroundColor(.accent1)

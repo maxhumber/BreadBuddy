@@ -5,7 +5,6 @@
 - [ ] TimeLineView
 - [ ] Schedule all notifications (for step times)
 - [ ] Dequeue active notifications
-- [ ] Logo + Icon
 - [ ] Pre-populate some recipes into GRDB
 - [ ] Update README
 - [ ] Screens for Store

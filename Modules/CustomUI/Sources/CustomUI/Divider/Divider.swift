@@ -11,9 +11,9 @@ public struct Divider<Label: View>: View {
     
     public var body: some View {
         HStack(spacing: spacing) {
-            line
-            label
-            line
+            line.layoutPriority(-1)
+            label.layoutPriority(100)
+            line.layoutPriority(-1)
         }
     }
     
