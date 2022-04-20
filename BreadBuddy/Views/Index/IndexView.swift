@@ -76,15 +76,18 @@ struct IndexView: View {
         Button {
             viewModel.addButtonAction()
         } label: {
-            VStack(spacing: 10) {
+            HStack(spacing: 10) {
                 Image(systemName: "plus")
                     .font(.body)
                 Text("New")
-                    .font(.matter(.caption2))
+                    .font(.matter(.caption))
             }
+            .padding()
         }
+        .buttonStyle(StrokedButtonStyle())
+        .padding()
+        .padding(.horizontal)
         .foregroundColor(.accent1)
-        .frame(maxWidth: .infinity)
     }
     
     private func makeInProgressRow(for recipe: Recipe) -> some View {

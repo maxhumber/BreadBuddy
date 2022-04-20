@@ -25,6 +25,7 @@ extension RecipeView {
                 Text(step.clocktimeStart)
             }
             .font(.matter(emphasis: .bold))
+            .if(isPast) { $0.foregroundColor(.text2) }
         }
         
         private var activity: some View {
@@ -35,6 +36,11 @@ extension RecipeView {
                     .font(.matter(.caption2, emphasis: .italic))
                     .foregroundColor(.text2)
             }
+        }
+        
+        private var isPast: Bool {
+            guard let timeStart = step.timeStart else { return false }
+            return timeStart < Date().withAdded(minutes: -1)
         }
     }
 }

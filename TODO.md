@@ -1,5 +1,6 @@
 ### TODO
-- [ ] Add Screen needs to be slightly different
+- [ ] Date Bug (still)
+- [ ] Add Screen needs to be slightly different (cancel or discard?)
 - [ ] TimeLineView
 - [ ] Fix Navigation Update Bug
 - [ ] Finish Index Row Components
