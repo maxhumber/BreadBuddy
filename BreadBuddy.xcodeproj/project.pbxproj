@@ -21,17 +21,8 @@
 		504D3C2027E017B300C95123 /* Preview.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504D3C1F27E017B300C95123 /* Preview.xcassets */; };
 		504D3C2A27E017B300C95123 /* BreadBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D3C2927E017B300C95123 /* BreadBuddyTests.swift */; };
 		504E6E93280F300E00B5EE21 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 504E6E92280F300E00B5EE21 /* Core */; };
-		505EAFE5280F717C009F596A /* Matter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFC9280F717C009F596A /* Matter-Bold.ttf */; };
-		505EAFE6280F717C009F596A /* Matter-HeavyItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFCA280F717C009F596A /* Matter-HeavyItalic.ttf */; };
-		505EAFE7280F717C009F596A /* Matter-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFCB280F717C009F596A /* Matter-LightItalic.ttf */; };
-		505EAFE8280F717C009F596A /* Matter-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFCC280F717C009F596A /* Matter-Heavy.ttf */; };
 		505EAFE9280F717C009F596A /* Matter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFCD280F717C009F596A /* Matter-SemiBold.ttf */; };
-		505EAFEA280F717C009F596A /* Matter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFCE280F717C009F596A /* Matter-Medium.ttf */; };
-		505EAFEB280F717C009F596A /* Matter-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFCF280F717C009F596A /* Matter-Light.ttf */; };
-		505EAFEC280F717C009F596A /* Matter-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFD0280F717C009F596A /* Matter-BoldItalic.ttf */; };
 		505EAFED280F717C009F596A /* Matter-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFD1280F717C009F596A /* Matter-RegularItalic.ttf */; };
-		505EAFEE280F717C009F596A /* Matter-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFD2280F717C009F596A /* Matter-SemiBoldItalic.ttf */; };
-		505EAFEF280F717C009F596A /* Matter-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFD3280F717C009F596A /* Matter-MediumItalic.ttf */; };
 		505EAFF0280F717C009F596A /* Matter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFD4280F717C009F596A /* Matter-Regular.ttf */; };
 		505EAFF4280F7299009F596A /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505EAFF3280F7299009F596A /* Font+.swift */; };
 		505EAFF6280F977B009F596A /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505EAFF5280F977B009F596A /* Color+.swift */; };
@@ -84,17 +75,9 @@
 		504D3C2527E017B300C95123 /* BreadBuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BreadBuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		504D3C2927E017B300C95123 /* BreadBuddyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadBuddyTests.swift; sourceTree = "<group>"; };
 		504E6E91280F300400B5EE21 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = "<group>"; };
-		505EAFC9280F717C009F596A /* Matter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Matter-Bold.ttf"; sourceTree = "<group>"; };
-		505EAFCA280F717C009F596A /* Matter-HeavyItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Matter-HeavyItalic.ttf"; sourceTree = "<group>"; };
-		505EAFCB280F717C009F596A /* Matter-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Matter-LightItalic.ttf"; sourceTree = "<group>"; };
-		505EAFCC280F717C009F596A /* Matter-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Matter-Heavy.ttf"; sourceTree = "<group>"; };
+		5056E20C28105FF6008592DB /* Matter-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Matter-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		505EAFCD280F717C009F596A /* Matter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Matter-SemiBold.ttf"; sourceTree = "<group>"; };
-		505EAFCE280F717C009F596A /* Matter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Matter-Medium.ttf"; sourceTree = "<group>"; };
-		505EAFCF280F717C009F596A /* Matter-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Matter-Light.ttf"; sourceTree = "<group>"; };
-		505EAFD0280F717C009F596A /* Matter-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Matter-BoldItalic.ttf"; sourceTree = "<group>"; };
 		505EAFD1280F717C009F596A /* Matter-RegularItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Matter-RegularItalic.ttf"; sourceTree = "<group>"; };
-		505EAFD2280F717C009F596A /* Matter-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Matter-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
-		505EAFD3280F717C009F596A /* Matter-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Matter-MediumItalic.ttf"; sourceTree = "<group>"; };
 		505EAFD4280F717C009F596A /* Matter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Matter-Regular.ttf"; sourceTree = "<group>"; };
 		505EAFF1280F71C1009F596A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		505EAFF3280F7299009F596A /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
@@ -250,18 +233,10 @@
 		505EAFC8280F717C009F596A /* Matter */ = {
 			isa = PBXGroup;
 			children = (
-				505EAFC9280F717C009F596A /* Matter-Bold.ttf */,
-				505EAFCA280F717C009F596A /* Matter-HeavyItalic.ttf */,
-				505EAFCB280F717C009F596A /* Matter-LightItalic.ttf */,
-				505EAFCC280F717C009F596A /* Matter-Heavy.ttf */,
-				505EAFCD280F717C009F596A /* Matter-SemiBold.ttf */,
-				505EAFCE280F717C009F596A /* Matter-Medium.ttf */,
-				505EAFCF280F717C009F596A /* Matter-Light.ttf */,
-				505EAFD0280F717C009F596A /* Matter-BoldItalic.ttf */,
-				505EAFD1280F717C009F596A /* Matter-RegularItalic.ttf */,
-				505EAFD2280F717C009F596A /* Matter-SemiBoldItalic.ttf */,
-				505EAFD3280F717C009F596A /* Matter-MediumItalic.ttf */,
 				505EAFD4280F717C009F596A /* Matter-Regular.ttf */,
+				505EAFD1280F717C009F596A /* Matter-RegularItalic.ttf */,
+				505EAFCD280F717C009F596A /* Matter-SemiBold.ttf */,
+				5056E20C28105FF6008592DB /* Matter-SemiBoldItalic.ttf */,
 			);
 			path = Matter;
 			sourceTree = "<group>";
@@ -348,10 +323,10 @@
 		50DCF1DA27F7777F00D0A369 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				504D3C1C27E017B300C95123 /* Assets.xcassets */,
-				504D3C1F27E017B300C95123 /* Preview.xcassets */,
 				505EAFF7280F9AF2009F596A /* Colors */,
 				505EAFB2280F6CA9009F596A /* Fonts */,
+				504D3C1C27E017B300C95123 /* Assets.xcassets */,
+				504D3C1F27E017B300C95123 /* Preview.xcassets */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -478,20 +453,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				505EAFEA280F717C009F596A /* Matter-Medium.ttf in Resources */,
-				505EAFEF280F717C009F596A /* Matter-MediumItalic.ttf in Resources */,
-				505EAFE5280F717C009F596A /* Matter-Bold.ttf in Resources */,
 				505EAFE9280F717C009F596A /* Matter-SemiBold.ttf in Resources */,
 				504D3C2027E017B300C95123 /* Preview.xcassets in Resources */,
-				505EAFEE280F717C009F596A /* Matter-SemiBoldItalic.ttf in Resources */,
-				505EAFE8280F717C009F596A /* Matter-Heavy.ttf in Resources */,
-				505EAFE6280F717C009F596A /* Matter-HeavyItalic.ttf in Resources */,
-				505EAFE7280F717C009F596A /* Matter-LightItalic.ttf in Resources */,
 				505EAFF9280F9B12009F596A /* Colors.xcassets in Resources */,
 				505EAFF0280F717C009F596A /* Matter-Regular.ttf in Resources */,
-				505EAFEB280F717C009F596A /* Matter-Light.ttf in Resources */,
 				504D3C1D27E017B300C95123 /* Assets.xcassets in Resources */,
-				505EAFEC280F717C009F596A /* Matter-BoldItalic.ttf in Resources */,
 				505EAFED280F717C009F596A /* Matter-RegularItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

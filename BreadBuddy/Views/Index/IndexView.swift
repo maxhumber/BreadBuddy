@@ -63,10 +63,13 @@ struct IndexView: View {
     }
     
     private func divider(label: String) -> some View {
-        Divider(label)
-            .padding(.horizontal)
-            .font(.bodyMatter)
-            .foregroundColor(.accent1)
+        Divider {
+            Text(label.uppercased())
+                .tracking(2)
+                .font(.matter(.caption))
+        }
+        .padding(.horizontal)
+        .foregroundColor(.accent1)
     }
     
     private var newButton: some View {
@@ -77,7 +80,7 @@ struct IndexView: View {
                 Image(systemName: "plus")
                     .font(.body)
                 Text("New")
-                    .font(.caption2Matter)
+                    .font(.matter(.caption2))
             }
         }
         .foregroundColor(.accent1)
@@ -89,21 +92,21 @@ struct IndexView: View {
             RecipeView(recipe, mode: .display)
         } label: {
             HStack(alignment: .center, spacing: 20) {
-                VStack(alignment: .leading, spacing: 5)  {
+                VStack(alignment: .leading, spacing: 6)  {
                     Text(recipe.name)
-                        .font(.bodyMatter)
+                        .font(.matter())
                         .foregroundColor(.text1)
                     Text("Wednesday - 3:30 pm")
-                        .font(.captionMatter)
+                        .font(.matter(.caption, emphasis: .italic))
                         .foregroundColor(.text2)
                 }
                 Spacer()
                 VStack(alignment: .trailing, spacing: 5) {
                     Text("1.5 hrs")
-                        .font(.bodyMatter)
+                        .font(.matter(emphasis: .bold))
                         .foregroundColor(.text1)
                     Text("till next step")
-                        .font(.captionMatter)
+                        .font(.matter(.caption, emphasis: .italic))
                         .foregroundColor(.text2)
                 }
             }
@@ -115,12 +118,12 @@ struct IndexView: View {
             RecipeView(recipe, mode: .display)
         } label: {
             HStack {
-                VStack(alignment: .leading, spacing: 5) {
+                VStack(alignment: .leading, spacing: 6) {
                     Text(recipe.name)
-                        .font(.bodyMatter)
+                        .font(.matter())
                         .foregroundColor(.text1)
                     Text("15 hours")
-                        .font(.captionMatter)
+                        .font(.matter(.caption, emphasis: .italic))
                         .foregroundColor(.text2)
                 }
                 Spacer()

@@ -24,15 +24,15 @@ extension RecipeView {
                 TextScaffold("XXXXXXX")
                 Text(step.clocktimeStart)
             }
-            .font(.bodyMatter)
+            .font(.matter(emphasis: .bold))
         }
         
         private var activity: some View {
-            VStack(alignment: .leading, spacing: 5) {
+            VStack(alignment: .leading, spacing: 6) {
                 Text(step.description)
-                    .font(.bodyMatter)
+                    .font(.matter())
                 Text(step.duration)
-                    .font(.caption2Matter)
+                    .font(.matter(.caption2, emphasis: .italic))
                     .foregroundColor(.text2)
             }
         }

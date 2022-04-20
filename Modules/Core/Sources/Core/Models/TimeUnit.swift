@@ -25,8 +25,8 @@ extension TimeUnit {
         case (.minutes, false): return "min"
         case (.hours, true): return "hrs"
         case (.hours, false): return "hr"
-        case (.days, true): return "day"
-        case (.days, false): return "days"
+        case (.days, true): return "days"
+        case (.days, false): return "day"
         }
     }
 }

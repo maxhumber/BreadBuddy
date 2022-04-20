@@ -1,22 +1,20 @@
 import SwiftUI
 
-public struct Divider: View {
-    var label: String
+public struct Divider<Label: View>: View {
+    var spacing: Double
+    var label: Label
     
-    public init(_ label: String) {
-        self.label = label
+    public init(spacing: Double = 10, @ViewBuilder label: () -> Label) {
+        self.spacing = spacing
+        self.label = label()
     }
     
     public var body: some View {
-        HStack(spacing: 10) {
+        HStack(spacing: spacing) {
             line
-            textLabel
+            label
             line
         }
-    }
-    
-    private var textLabel: some View {
-        Text(label)
     }
     
     private var line: some View {
@@ -29,7 +27,9 @@ struct Divider_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             Text("Foo")
-            Divider("Bar")
+            Divider {
+                Text("Bar")
+            }
             Text("Baz")
             Spacer()
         }

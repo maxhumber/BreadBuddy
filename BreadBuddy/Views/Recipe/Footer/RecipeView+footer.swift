@@ -55,7 +55,7 @@ extension RecipeView {
             dayPicker
             timePicker
             Text("Finish")
-                .font(.caption2Matter)
+                .font(.matter(.caption2))
         }
         .opacity(viewModel.mode == .display ? 1 : 0)
         .onChange(of: viewModel.recipe.timeEnd) { timeEnd in
@@ -66,7 +66,7 @@ extension RecipeView {
     private var dayPicker: some View {
         StealthDatePicker(.date, date: $viewModel.recipe.timeEnd, alignment: .bottom) {
             Text(viewModel.recipe.timeEnd.simple)
-                .font(.captionMatter)
+                .font(.matter(.caption))
                 .padding(.bottom, 6)
         }
     }
@@ -74,7 +74,7 @@ extension RecipeView {
     private var timePicker: some View {
         StealthDatePicker(.hourAndMinute, date: $viewModel.recipe.timeEnd) {
             Text(viewModel.recipe.timeEnd.clocktime)
-                .font(.title3Matter)
+                .font(.matter(.title, emphasis: .bold))
                 .foregroundColor(.text1)
                 .padding(.bottom, 6)
         }
@@ -100,7 +100,7 @@ extension RecipeView {
                 Image(systemName: systemImage)
                     .font(.body)
                 Text(label)
-                    .font(.caption2Matter)
+                    .font(.matter(.caption2))
             }
         }
     }

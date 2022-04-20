@@ -30,7 +30,7 @@ extension RecipeView {
                     timeUnitMenu
                 }
             }
-            .font(.bodyMatter)
+            .font(.matter())
         }
         
         private var actionButton: some View {
@@ -84,6 +84,7 @@ extension RecipeView {
             ZStack {
                 TextScaffold("XXX")
                 TextField("", value: $step.timeValue, formatter: .number)
+                    .font(.matter(emphasis: .bold))
                     .foregroundColor(.text1)
                     .opacity(step.timeValue == 0 ? 0.25 : 1)
                     .multilineTextAlignment(.center)
@@ -122,6 +123,7 @@ extension RecipeView {
                     .animation(nil, value: UUID())
                     .foregroundColor(.text1)
             }
+            .font(.matter(emphasis: .bold))
             .underscore()
             .foregroundColor(.accent2)
         }

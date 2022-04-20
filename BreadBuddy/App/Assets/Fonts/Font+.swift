@@ -1,28 +1,31 @@
 import SwiftUI
 
 extension Font {
-    static var titleMatter: Font {
-        .custom("Matter-Regular", size: 28, relativeTo: .title)
+    static func matter(_ size: MatterSize = .body, emphasis: MatterEmphasis = .regular) -> Font {
+        switch size {
+        case .title:
+            return .custom("Matter-\(emphasis.rawValue)", size: 21, relativeTo: .title3)
+        case .body:
+            return .custom("Matter-\(emphasis.rawValue)", size: 18, relativeTo: .body)
+        case .caption:
+            return .custom("Matter-\(emphasis.rawValue)", size: 15, relativeTo: .caption)
+        case .caption2:
+            return .custom("Matter-\(emphasis.rawValue)", size: 13, relativeTo: .caption2)
+        }
     }
     
-    static var title2Matter: Font {
-        .custom("Matter-Regular", size: 22, relativeTo: .title2)
+    enum MatterSize {
+        case title
+        case body
+        case caption
+        case caption2
     }
     
-    static var title3Matter: Font {
-        .custom("Matter-Regular", size: 20, relativeTo: .title3)
-    }
-    
-    static var bodyMatter: Font {
-        .custom("Matter-Regular", size: 17, relativeTo: .body)
-    }
-    
-    static var captionMatter: Font {
-        .custom("Matter-Regular", size: 14, relativeTo: .caption)
-    }
-    
-    static var caption2Matter: Font {
-        .custom("Matter-Regular", size: 12, relativeTo: .caption2)
+    enum MatterEmphasis: String {
+        case regular = "Regular"
+        case italic = "RegularItalic"
+        case bold = "SemiBold"
+        case boldItalic = "SemiBoldItalic"
     }
 }
 
@@ -33,37 +36,22 @@ struct Matter_Previews: PreviewProvider {
     
     struct Preview: View {
         var body: some View {
-            VStack {
-                HStack(alignment: .bottom, spacing: 20) {
-                    Text("Friday")
-                        .font(.title)
-                    Text("Friday")
-                        .font(.titleMatter)
-                }
-                HStack(alignment: .bottom, spacing: 20) {
-                    Text("Sunday")
-                        .font(.title2)
-                    Text("Sunday")
-                        .font(.title2Matter)
-                }
-                HStack(alignment: .bottom, spacing: 20) {
-                    Text("Saturday")
-                        .font(.title3)
-                    Text("Saturday")
-                        .font(.custom("Matter-Regular", size: 20, relativeTo: .title3))
-                }
-                HStack(alignment: .bottom, spacing: 20) {
-                    Text("Wednesday")
-                        .font(.body)
-                    Text("Wednesday")
-                        .font(.custom("Matter-Regular", size: 17, relativeTo: .body))
-                }
-                HStack(alignment: .bottom, spacing: 20) {
-                    Text("Thursday")
-                        .font(.caption)
-                    Text("Thursday")
-                        .font(.custom("Matter-Regular", size: 14, relativeTo: .caption))
-                }
+            VStack(spacing: 20) {
+                Text("This is a title")
+                    .font(.matter(.title))
+                Text("4:30 pm")
+                    .font(.custom("Matter-SemiBold", size: 18, relativeTo: .body))
+                    .font(.matter(.body, emphasis: .bold))
+                Text("This is some body")
+                    .font(.matter(.body))
+                Text("This is a caption")
+                    .font(.matter(.caption))
+                Text("This is an italic caption")
+                    .font(.matter(.caption, emphasis: .italic))
+                Text("This is a small caption")
+                    .font(.matter(.caption2))
+                Text("This is an italic small caption")
+                    .font(.matter(.caption2, emphasis: .italic))
             }
         }
     }

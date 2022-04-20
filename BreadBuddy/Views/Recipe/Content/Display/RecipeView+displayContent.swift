@@ -4,14 +4,19 @@ import SwiftUI
 extension RecipeView {
     @ViewBuilder var displayContent: some View {
         ForEach(viewModel.groups) { group in
-            Divider(group.label)
-                .padding(.horizontal)
-                .font(.captionMatter)
-                .foregroundColor(.accent1)
+            Divider {
+                Text(group.label.uppercased())
+                    .tracking(2)
+                    .font(.matter(.caption))
+            }
+            .padding(.horizontal)
+            .foregroundColor(.accent1)
             ForEach(group.steps) { step in
                 DisplayStep(step)
             }
         }
+        Spacer()
+            .frame(height: 50)
     }
 }
 

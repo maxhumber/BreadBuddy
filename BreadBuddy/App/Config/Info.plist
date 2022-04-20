@@ -4,14 +4,6 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-        <string>Matter-Bold.ttf</string>
-        <string>Matter-BoldItalic.ttf</string>
-        <string>Matter-Heavy.ttf</string>
-        <string>Matter-HeavyItalic.ttf</string>
-        <string>Matter-Light.ttf</string>
-        <string>Matter-LightItalic.ttf</string>
-        <string>Matter-Medium.ttf</string>
-        <string>Matter-MediumItalic.ttf</string>
         <string>Matter-Regular.ttf</string>
         <string>Matter-RegularItalic.ttf</string>
         <string>Matter-SemiBold.ttf</string>
