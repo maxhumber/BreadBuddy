@@ -1,11 +1,10 @@
 ### TODO
+- [ ] TimeLineView
+- [ ] Fix Navigation Update Bug
 - [ ] Finish Index Row Components
 - [ ] Empty Views (Index + Recipe) 
-- [ ] Fix Navigation Update Bug
-- [ ] TimeLineView
 - [ ] Schedule all notifications (for step times)
 - [ ] Dequeue active notifications
-- [ ] Pre-populate some recipes into GRDB
 - [ ] Update README
 - [ ] Screens for Store
 

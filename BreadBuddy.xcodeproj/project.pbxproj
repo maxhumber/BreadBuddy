@@ -224,8 +224,8 @@
 		505EAFB2280F6CA9009F596A /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				505EAFF3280F7299009F596A /* Font+.swift */,
 				505EAFC8280F717C009F596A /* Matter */,
+				505EAFF3280F7299009F596A /* Font+.swift */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";

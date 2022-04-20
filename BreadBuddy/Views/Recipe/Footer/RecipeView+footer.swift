@@ -3,32 +3,91 @@ import SwiftUI
 
 extension RecipeView {
     var footer: some View {
-        HStack(alignment: .bottom) {
-            leadingButton
-                .frame(maxWidth: .infinity)
-            pickers
-            trailingButton
-                .frame(maxWidth: .infinity)
+        VStack(spacing: 10) {
+            footerTopRow
+            footerBottomRow
         }
+        .padding()
         .foregroundColor(.accent1)
     }
     
+    private var footerTopRow: some View {
+        pickers
+            .opacity(viewModel.mode == .display ? 1 : 0)
+            .onChange(of: viewModel.recipe.timeEnd) { timeEnd in
+                viewModel.didChange(timeEnd)
+            }
+    }
+    
+    private var pickers: some View {
+        HStack(alignment: .bottom, spacing: 10) {
+            timePicker
+            dayPicker
+        }
+        .font(.matter(.caption))
+    }
+    
+    private var timePicker: some View {
+        StealthDatePicker(.hourAndMinute, date: $viewModel.recipe.timeEnd) {
+            Text(viewModel.recipe.timeEnd.clocktime)
+        }
+        .frame(maxWidth: .infinity)
+        .background(
+            RoundedRectangle(cornerRadius: 5)
+                .strokeBorder()
+        )
+    }
+    
+    private var dayPicker: some View {
+        StealthDatePicker(.date, date: $viewModel.recipe.timeEnd) {
+            Text(viewModel.recipe.timeEnd.simple)
+        }
+        .frame(maxWidth: .infinity)
+        .background(
+            RoundedRectangle(cornerRadius: 5)
+                .strokeBorder()
+        )
+    }
+    
+    private var footerBottomRow: some View {
+        HStack(alignment: .bottom, spacing: 10) {
+            footerMainLeadingButton
+            footerMainTrailingButton
+        }
+    }
+    
+    private var footerMainLeadingButton: some View {
+        leadingButton
+            .buttonStyle(StrokedButtonStyle())
+    }
+    
+    private var footerMainTrailingButton: some View {
+        trailingButton
+            .buttonStyle(StrokedButtonStyle())
+    }
+
     @ViewBuilder private var leadingButton: some View {
         switch viewModel.mode {
         case .display:
-            makeButton("Start", systemImage: "clock") {
+            Button {
                 viewModel.footerStartAction()
+            } label: {
+                makeButtonLabel("Start", systemImage: "clock")
             }
         case .edit:
-            makeButton("Delete", systemImage: "trash") {
+            Button {
                 viewModel.footerDeleteButtonAction()
+            } label: {
+                makeButtonLabel("Delete", systemImage: "trash")
             }
             .alert(isPresented: $viewModel.deleteAlertIsPresented) {
                 deleteAlert
             }
         case .active:
-            makeButton("Restart", systemImage: "clock.arrow.circlepath") {
+            Button {
                 viewModel.footerRestartAction()
+            } label: {
+                makeButtonLabel("Restart", systemImage: "clock.arrow.circlepath")
             }
         }
     }
@@ -36,51 +95,39 @@ extension RecipeView {
     @ViewBuilder private var trailingButton: some View {
         switch viewModel.mode {
         case .display:
-            makeButton("Edit", systemImage: "pencil") {
+            Button {
                 viewModel.footerEditAction()
+            } label: {
+                makeButtonLabel("Edit", systemImage: "pencil")
             }
         case .edit:
-            makeButton("Save", systemImage: "square.and.arrow.down") {
+            Button {
                 viewModel.footerSaveAction()
+            } label: {
+                makeButtonLabel("Save", systemImage: "square.and.arrow.down")
             }
         case .active:
-            makeButton("Cancel", systemImage: "xmark.circle") {
+            Button {
                 viewModel.footerCancelAction()
+            } label: {
+                makeButtonLabel("Cancel", systemImage: "xmark.circle")
             }
         }
     }
-
-    private var pickers: some View {
-        VStack(spacing: 0) {
-            dayPicker
-            timePicker
-            Text("Finish")
+    
+    private func makeButtonLabel(_ label: String, systemImage: String) -> some View {
+        HStack {
+            ZStack {
+                Image(systemName: "trash").opacity(0)
+                Image(systemName: systemImage)
+            }
+            .font(.body)
+            Text(label)
                 .font(.matter(.caption2))
         }
-        .opacity(viewModel.mode == .display ? 1 : 0)
-        .onChange(of: viewModel.recipe.timeEnd) { timeEnd in
-            viewModel.didChange(timeEnd)
-        }
+        .padding()
     }
     
-    private var dayPicker: some View {
-        StealthDatePicker(.date, date: $viewModel.recipe.timeEnd, alignment: .bottom) {
-            Text(viewModel.recipe.timeEnd.simple.uppercased())
-                .tracking(2)
-                .font(.matter(.caption))
-                .padding(.bottom, 6)
-        }
-    }
-    
-    private var timePicker: some View {
-        StealthDatePicker(.hourAndMinute, date: $viewModel.recipe.timeEnd) {
-            Text(viewModel.recipe.timeEnd.clocktime)
-                .font(.matter(.title, emphasis: .bold))
-                .foregroundColor(.text1)
-                .padding(.bottom, 6)
-        }
-    }
-
     private var deleteAlert: Alert {
         Alert(
             title: Text("Delete"),
@@ -91,19 +138,6 @@ extension RecipeView {
             },
             secondaryButton: .cancel()
         )
-    }
-    
-    private func makeButton(_ label: String, systemImage: String, action: @escaping () -> ()) -> some View {
-        Button {
-            action()
-        } label: {
-            VStack(spacing: 15) {
-                Image(systemName: systemImage)
-                    .font(.body)
-                Text(label)
-                    .font(.matter(.caption2))
-            }
-        }
     }
 }
 
