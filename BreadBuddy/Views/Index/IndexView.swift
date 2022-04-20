@@ -31,7 +31,10 @@ struct IndexView: View {
     }
     
     private var header: some View {
-        Image(systemName: "timelapse")
+        Image("Logo")
+            .resizable()
+            .aspectRatio(1, contentMode: .fit)
+            .frame(height: 50)
             .frame(maxWidth: .infinity)
             .font(.title)
             .foregroundColor(.accent1)

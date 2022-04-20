@@ -1,5 +1,5 @@
-import XCTest
 @testable import Core
+import XCTest
 
 final class RecipeServiceTests: XCTestCase {
     func testNext() {
