@@ -1,5 +1,6 @@
 ### TODO
-- [ ] URL sheet if bad...
+- [ ] delete bug??
+- [ ] string to url
 - [ ] Fancy buttons
 
 - [ ] Update README

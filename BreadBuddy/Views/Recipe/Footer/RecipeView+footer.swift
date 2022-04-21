@@ -62,7 +62,7 @@ extension RecipeView {
             switch viewModel.mode {
             case .display: startButton
             case .edit: editBottomRowLeadingButton
-            case .active: quitButton
+            case .active: stopButton
             }
         }
         .buttonStyle(StrokedButtonStyle())
@@ -73,7 +73,7 @@ extension RecipeView {
             switch viewModel.mode {
             case .display: editButton
             case .edit: saveButton
-            case .active: restartButton
+            case .active: resetButton
             }
         }
         .buttonStyle(StrokedButtonStyle())
@@ -89,7 +89,7 @@ extension RecipeView {
     
     @ViewBuilder private var editBottomRowLeadingButton: some View {
         if viewModel.cancelEditButtonIsDisplayed {
-            cancelEditButton
+            editCancel
         } else {
             deleteButton
         }
@@ -103,7 +103,7 @@ extension RecipeView {
         }
     }
     
-    private var cancelEditButton: some View {
+    private var editCancel: some View {
         Button {
             dismiss()
         } label: {
@@ -111,11 +111,11 @@ extension RecipeView {
         }
     }
     
-    private var restartButton: some View {
+    private var resetButton: some View {
         AlertingButton {
-            restartAlert
+            resetAlert
         } label: {
-            makeButtonLabel("Restart", systemImage: "clock.arrow.circlepath")
+            makeButtonLabel("Reset", systemImage: "clock.arrow.circlepath")
         }
     }
     
@@ -131,17 +131,17 @@ extension RecipeView {
         Button {
             viewModel.footerSaveAction()
         } label: {
-            makeButtonLabel("Save", systemImage: "square.and.arrow.down")
+            makeButtonLabel(viewModel.footerSaveLabel, systemImage: viewModel.footerSaveSystemImage)
         }
         .foregroundColor(viewModel.saveButtonIsDisabled ? .accent2 : .accent1)
         .disabled(viewModel.saveButtonIsDisabled)
     }
     
-    private var quitButton: some View {
+    private var stopButton: some View {
         AlertingButton {
-            quitAlert
+            stopAlert
         } label: {
-            makeButtonLabel("Quit", systemImage: "xmark.circle")
+            makeButtonLabel("Stop", systemImage: "xmark.circle")
         }
     }
     
@@ -170,23 +170,23 @@ extension RecipeView {
         )
     }
     
-    private var quitAlert: Alert {
+    private var stopAlert: Alert {
         Alert(
-            title: Text("Quit"),
-            message: Text("Are you sure you want to quit this recipe?"),
+            title: Text("Stop"),
+            message: Text("Are you sure you want to stop making this recipe?"),
             primaryButton: .destructive(Text("Confirm")) {
-                viewModel.footerQuitAction()
+                viewModel.footerStopAction()
             },
             secondaryButton: .cancel()
         )
     }
     
-    private var restartAlert: Alert {
+    private var resetAlert: Alert {
         Alert(
-            title: Text("Restart"),
-            message: Text("Are you sure you want to restart the start time for this recipe?"),
+            title: Text("Reset"),
+            message: Text("Are you sure you want to reset the start time for this recipe?"),
             primaryButton: .destructive(Text("Confirm")) {
-                viewModel.footerRestartAction()
+                viewModel.footerResetAction()
             },
             secondaryButton: .cancel()
         )

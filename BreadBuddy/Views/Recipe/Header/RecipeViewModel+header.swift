@@ -13,17 +13,10 @@ extension RecipeViewModel {
         mode != .edit
     }
     
-    func headerLinkButtonAction() {
-        urlTextAlertIsPresented = true
-    }
-    
-    var headerRecipeURL: URL? {
-        guard let link = recipe.link else { return nil }
-        return URL(string: link)
-    }
-    
-    var headerLinkButtonIsDisplayed: Bool {
-        return !(recipe.link?.isValidURL == true)
+    var headerViewLinkButtonIsDisplayed: Bool {
+        let isNotNil = !(recipe.link == nil)
+        let isNotEmpty = !(recipe.link != "")
+        return isNotEmpty && isNotNil
     }
     
     var headerLinkButtonIsDisabled: Bool {
@@ -32,5 +25,14 @@ extension RecipeViewModel {
         } else {
             return !(recipe.link?.isValidURL == true)
         }
+    }
+    
+    var headerRecipeURL: URL? {
+        guard let link = recipe.link else { return nil }
+        return URL(string: link)
+    }
+    
+    func headerLinkButtonAction() {
+        urlTextAlertIsPresented = true
     }
 }

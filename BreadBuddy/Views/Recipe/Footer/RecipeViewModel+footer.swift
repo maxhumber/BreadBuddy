@@ -27,6 +27,14 @@ extension RecipeViewModel {
         delete()
     }
     
+    var footerSaveSystemImage: String {
+        recipe.id == nil ? "checkmark" : "square.and.arrow.down"
+    }
+    
+    var footerSaveLabel: String {
+        recipe.id == nil ? "Done" : "Save"
+    }
+    
     func footerSaveAction() {
         recipe.steps = recipe.steps.filter { $0.timeValue != 0 }
         mode = .display
@@ -34,13 +42,13 @@ extension RecipeViewModel {
         reforward()
     }
     
-    func footerQuitAction() {
+    func footerStopAction() {
         recipe.isActive = false
         mode = .display
         save()
     }
     
-    func footerRestartAction() {
+    func footerResetAction() {
         reforward()
     }
 }
