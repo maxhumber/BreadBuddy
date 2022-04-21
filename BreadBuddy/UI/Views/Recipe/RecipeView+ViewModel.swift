@@ -9,24 +9,24 @@ extension RecipeView {
         @Published var recipe: Recipe
         @Published var mode: Mode
         private var service: RecipeService
-        private var repository: RecipeStoring
+        private var store: RecipeStoring
         
-        init(_ recipe: Recipe, mode: Mode, service: RecipeService = .init(), repository: RecipeStoring = RecipeStore()) {
+        init(_ recipe: Recipe, mode: Mode, service: RecipeService, store: RecipeStoring) {
             self.recipe = recipe
             self.mode = recipe.isActive ? .make : mode
             self.service = service
-            self.repository = repository
+            self.store = store
         }
         
         func save() {
             Task(priority: .userInitiated) {
-                recipe = try await repository.save(recipe)
+                recipe = try await store.save(recipe)
             }
         }
         
         func delete() {
             Task(priority: .userInitiated) {
-                try await repository.delete(recipe)
+                try await store.delete(recipe)
             }
         }
         

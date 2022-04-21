@@ -18,7 +18,6 @@
 		5032A6C927FC892F0031501D /* NotificationTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6C827FC892F0031501D /* NotificationTestView.swift */; };
 		504D3C1927E017B200C95123 /* BreadBuddy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D3C1827E017B200C95123 /* BreadBuddy.swift */; };
 		504D3C1D27E017B300C95123 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504D3C1C27E017B300C95123 /* Assets.xcassets */; };
-		504D3C2027E017B300C95123 /* Preview.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504D3C1F27E017B300C95123 /* Preview.xcassets */; };
 		504D3C2A27E017B300C95123 /* BreadBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D3C2927E017B300C95123 /* BreadBuddyTests.swift */; };
 		504E6E93280F300E00B5EE21 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 504E6E92280F300E00B5EE21 /* Core */; };
 		505EAFE9280F717C009F596A /* Matter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505EAFCD280F717C009F596A /* Matter-SemiBold.ttf */; };
@@ -44,8 +43,7 @@
 		50E020372804B2FF00440979 /* EditStepField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E020362804B2FF00440979 /* EditStepField.swift */; };
 		50E7F3702809E1D8008CF185 /* RecipeView.ViewModel+content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7F36F2809E1D8008CF185 /* RecipeView.ViewModel+content.swift */; };
 		50E7F3792809EFA9008CF185 /* RecipeStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7F3782809EFA9008CF185 /* RecipeStorable.swift */; };
-		50E7F37B2809EFAF008CF185 /* Recipe+preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7F37A2809EFAF008CF185 /* Recipe+preview.swift */; };
-		50E7F3812809F665008CF185 /* Database+shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7F3802809F665008CF185 /* Database+shared.swift */; };
+		50E7F3812809F665008CF185 /* Database+persistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7F3802809F665008CF185 /* Database+persistent.swift */; };
 		50E7F3832809F698008CF185 /* Database+preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7F3822809F698008CF185 /* Database+preview.swift */; };
 		50E7F3852809F6F2008CF185 /* Database+migrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7F3842809F6F2008CF185 /* Database+migrator.swift */; };
 /* End PBXBuildFile section */
@@ -73,7 +71,6 @@
 		504D3C1527E017B200C95123 /* BreadBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreadBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		504D3C1827E017B200C95123 /* BreadBuddy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadBuddy.swift; sourceTree = "<group>"; };
 		504D3C1C27E017B300C95123 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		504D3C1F27E017B300C95123 /* Preview.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Preview.xcassets; sourceTree = "<group>"; };
 		504D3C2527E017B300C95123 /* BreadBuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BreadBuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		504D3C2927E017B300C95123 /* BreadBuddyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadBuddyTests.swift; sourceTree = "<group>"; };
 		5056E20C28105FF6008592DB /* Matter-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Matter-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
@@ -100,8 +97,7 @@
 		50E020362804B2FF00440979 /* EditStepField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStepField.swift; sourceTree = "<group>"; };
 		50E7F36F2809E1D8008CF185 /* RecipeView.ViewModel+content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeView.ViewModel+content.swift"; sourceTree = "<group>"; };
 		50E7F3782809EFA9008CF185 /* RecipeStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStorable.swift; sourceTree = "<group>"; };
-		50E7F37A2809EFAF008CF185 /* Recipe+preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+preview.swift"; sourceTree = "<group>"; };
-		50E7F3802809F665008CF185 /* Database+shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+shared.swift"; sourceTree = "<group>"; };
+		50E7F3802809F665008CF185 /* Database+persistent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+persistent.swift"; sourceTree = "<group>"; };
 		50E7F3822809F698008CF185 /* Database+preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+preview.swift"; sourceTree = "<group>"; };
 		50E7F3842809F6F2008CF185 /* Database+migrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+migrator.swift"; sourceTree = "<group>"; };
 		50FA5E7A2812060D00A6725B /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = "<group>"; };
@@ -249,8 +245,8 @@
 		505EAFF7280F9AF2009F596A /* Colors */ = {
 			isa = PBXGroup;
 			children = (
-				505EAFF5280F977B009F596A /* Color+.swift */,
 				505EAFF8280F9B12009F596A /* Colors.xcassets */,
+				505EAFF5280F977B009F596A /* Color+.swift */,
 			);
 			path = Colors;
 			sourceTree = "<group>";
@@ -260,7 +256,8 @@
 			children = (
 				5099531C2800CBFA004AEEAB /* Database.swift */,
 				50E7F3842809F6F2008CF185 /* Database+migrator.swift */,
-				50E7F3802809F665008CF185 /* Database+shared.swift */,
+				50E7F3802809F665008CF185 /* Database+persistent.swift */,
+				50E7F3822809F698008CF185 /* Database+preview.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -306,15 +303,6 @@
 			path = Recipe;
 			sourceTree = "<group>";
 		};
-		50DCF1DA27F7777F00D0A369 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				504D3C1C27E017B300C95123 /* Assets.xcassets */,
-				504D3C1F27E017B300C95123 /* Preview.xcassets */,
-			);
-			path = Assets;
-			sourceTree = "<group>";
-		};
 		50E7F3752809EF41008CF185 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,19 +310,11 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		50E7F37F2809F148008CF185 /* Previews */ = {
-			isa = PBXGroup;
-			children = (
-				50E7F3822809F698008CF185 /* Database+preview.swift */,
-				50E7F37A2809EFAF008CF185 /* Recipe+preview.swift */,
-			);
-			path = Previews;
-			sourceTree = "<group>";
-		};
 		50E7F3862809F79E008CF185 /* App */ = {
 			isa = PBXGroup;
 			children = (
 				504D3C1827E017B200C95123 /* BreadBuddy.swift */,
+				504D3C1C27E017B300C95123 /* Assets.xcassets */,
 				505EAFF1280F71C1009F596A /* Info.plist */,
 			);
 			path = App;
@@ -344,10 +324,8 @@
 			isa = PBXGroup;
 			children = (
 				501E92FD2805C50600F120EA /* Views */,
-				50DCF1DA27F7777F00D0A369 /* Assets */,
 				505EAFF7280F9AF2009F596A /* Colors */,
 				505EAFB2280F6CA9009F596A /* Fonts */,
-				50E7F37F2809F148008CF185 /* Previews */,
 				502042B9280F25CA009074BC /* CustomUI */,
 			);
 			path = UI;
@@ -452,7 +430,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				505EAFE9280F717C009F596A /* Matter-SemiBold.ttf in Resources */,
-				504D3C2027E017B300C95123 /* Preview.xcassets in Resources */,
 				505EAFF9280F9B12009F596A /* Colors.xcassets in Resources */,
 				505EAFF0280F717C009F596A /* Matter-Regular.ttf in Resources */,
 				504D3C1D27E017B300C95123 /* Assets.xcassets in Resources */,
@@ -479,10 +456,9 @@
 				50631C0B280868A6007985F1 /* RecipeView+PlanStep.swift in Sources */,
 				50631BF728070F0E007985F1 /* EditStepMode.swift in Sources */,
 				502BF6732809A87200C6AA91 /* RecipeView+header.swift in Sources */,
-				50E7F3812809F665008CF185 /* Database+shared.swift in Sources */,
+				50E7F3812809F665008CF185 /* Database+persistent.swift in Sources */,
 				50E7F3702809E1D8008CF185 /* RecipeView.ViewModel+content.swift in Sources */,
 				509953202800CC60004AEEAB /* IndexView.swift in Sources */,
-				50E7F37B2809EFAF008CF185 /* Recipe+preview.swift in Sources */,
 				50CD03E3280D9ECD0001C3CB /* RecipeStore.swift in Sources */,
 				505EAFF6280F977B009F596A /* Color+.swift in Sources */,
 				502BF67C2809AF9700C6AA91 /* RecipeView.ViewModel+header.swift in Sources */,
@@ -650,7 +626,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BreadBuddy/UI/Assets\"";
+				DEVELOPMENT_ASSET_PATHS = "\"BreadBuddy/App\"";
 				DEVELOPMENT_TEAM = 65UTX76JJY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -682,7 +658,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BreadBuddy/UI/Assets\"";
+				DEVELOPMENT_ASSET_PATHS = "\"BreadBuddy/App\"";
 				DEVELOPMENT_TEAM = 65UTX76JJY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

@@ -4,7 +4,7 @@ import GRDB
 final class RecipeStore: RecipeStoring {
     private let database: Database
     
-    init(_ database: Database = .shared) {
+    init(_ database: Database = .persistent) {
         self.database = database
     }
     

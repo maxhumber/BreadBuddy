@@ -3,25 +3,20 @@ import Combine
 
 extension IndexView {
     @MainActor final class ViewModel: ObservableObject {
-        @Published var addViewIsPresented = false
         @Published var recipesInProgress = [Recipe]()
         @Published var recipes = [Recipe]()
-        private var repository: RecipeStoring
+        private let store: RecipeStoring
         
-        init(repository: RecipeStoring = RecipeStore()) {
-            self.repository = repository
+        init(store: RecipeStoring) {
+            self.store = store
         }
         
-        func didAppear() {
+        func refresh() {
             Task {
-                let recipes = try await repository.fetch()
+                let recipes = try await store.fetch()
                 self.recipesInProgress = recipes.filter { $0.isActive }
                 self.recipes = recipes.filter { !$0.isActive }
             }
-        }
-        
-        func addButtonAction() {
-            addViewIsPresented = true
         }
         
         var emptyContentIsDisplayed: Bool {

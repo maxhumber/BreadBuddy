@@ -2,7 +2,7 @@ import Foundation
 import GRDB
 
 extension Database {
-    static let shared: Database = {
+    static let persistent: Database = {
         do {
             let fileManager = FileManager()
             let folder = try fileManager

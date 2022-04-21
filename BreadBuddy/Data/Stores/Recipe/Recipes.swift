@@ -2,6 +2,10 @@ import Foundation
 import Core
 
 extension Recipe {
+    static var preview: Recipe {
+        sourdoughBaguettes
+    }
+    
     static let sourdoughBaguettes = Recipe(
         name: "Sourdough Baguettes",
         link: "https://www.kingarthurbaking.com/recipes/sourdough-baguettes-recipe",

@@ -5,34 +5,23 @@ import SwiftUI
 struct IndexView: View {
     @StateObject var viewModel: ViewModel
 
-    init(database: Database = .shared) {
-        let repository = RecipeStore(database)
-        let viewModel = ViewModel(repository: repository)
-        _viewModel = StateObject(wrappedValue: viewModel)
+    init(_ database: Database = .persistent) {
+        let viewModel = ViewModel(store: RecipeStore(database))
+        _viewModel = .init(wrappedValue: viewModel)
     }
     
     var body: some View {
         NavigationView {
-            layout
-                .background(Color.background)
-                .environmentObject(viewModel)
-                .onAppear {
-                    viewModel.didAppear()
-                }
+            VStack(alignment: .leading, spacing: 0) {
+                header
+                xlist
+                newButton
+            }
+            .background(Color.background)
+            .navigationBarHidden(true)
         }
-    }
-    
-    private var layout: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            header
-            xlist
-            newButton
-        }
-        .navigationBarHidden(true)
-        .fullScreenCover(isPresented: $viewModel.addViewIsPresented) {
-            viewModel.didAppear()
-        } content: {
-            RecipeView()
+        .onAppear {
+            viewModel.refresh()
         }
     }
     
@@ -58,7 +47,7 @@ struct IndexView: View {
     }
     
     private var emptyContent: some View {
-        VStack(spacing: 0) {
+        VStack {
             Text("No saved recipes...")
                 .padding()
             Spacer()
@@ -72,20 +61,20 @@ struct IndexView: View {
     
     @ViewBuilder private var xlistContent: some View {
         if viewModel.inProgressSectionIsDisplayed {
-            divider(label: "In Progress")
+            divider("In Progress")
             ForEach(viewModel.recipesInProgress) { recipe in
-                makeRecipeRow(for: recipe)
+                recipeRow(recipe)
             }
         }
         if viewModel.recipeDividerIsDisplayed {
-            divider(label: "Recipes")
+            divider("Recipes")
         }
         ForEach(viewModel.recipes) { recipe in
-            makeRecipeRow(for: recipe)
+            recipeRow(recipe)
         }
     }
     
-    private func divider(label: String) -> some View {
+    private func divider(_ label: String) -> some View {
         Divider {
             Text(label.uppercased())
                 .tracking(2)
@@ -95,25 +84,7 @@ struct IndexView: View {
         .foregroundColor(.accent1)
     }
     
-    private var newButton: some View {
-        Button {
-            viewModel.addButtonAction()
-        } label: {
-            HStack(spacing: 10) {
-                Image(systemName: "plus")
-                    .font(.body)
-                Text("New")
-                    .font(.matter(.caption))
-            }
-            .padding()
-        }
-        .buttonStyle(StrokedButtonStyle())
-        .padding()
-        .padding(.horizontal)
-        .foregroundColor(.accent1)
-    }
-    
-    private func makeRecipeRow(for recipe: Recipe) -> some View {
+    private func recipeRow(_ recipe: Recipe) -> some View {
         XListLink {
             RecipeView(recipe, mode: .plan)
         } label: {
@@ -130,12 +101,32 @@ struct IndexView: View {
             }
         }
     }
+    
+    private var newButton: some View {
+        FullScreenCoveringButton {
+            RecipeView()
+        } onDismiss: {
+            viewModel.refresh()
+        } label: {
+            HStack(spacing: 10) {
+                Image(systemName: "plus")
+                    .font(.body)
+                Text("New")
+                    .font(.matter(.caption))
+            }
+            .padding()
+        }
+        .buttonStyle(StrokedButtonStyle())
+        .padding()
+        .padding(.horizontal)
+        .foregroundColor(.accent1)
+    }
 }
 
 struct IndexView_Previews: PreviewProvider {
     static var previews: some View {
-        IndexView(database: .shared)
-        IndexView(database: .preview)
+        IndexView(.persistent)
+        IndexView(.preview)
     }
 }
 
