@@ -12,7 +12,7 @@ extension RecipeView {
     }
     
     @ViewBuilder private var footerTopRow: some View {
-        if viewModel.mode == .display {
+        if viewModel.mode == .plan {
             pickers
                 .onChange(of: viewModel.recipe.timeEnd) { timeEnd in
                     viewModel.didChange(timeEnd)
@@ -60,9 +60,9 @@ extension RecipeView {
     private var bottomRowLeadingButton: some View {
         Group {
             switch viewModel.mode {
-            case .display: startButton
+            case .plan: startButton
             case .edit: editBottomRowLeadingButton
-            case .active: stopButton
+            case .make: stopButton
             }
         }
         .buttonStyle(StrokedButtonStyle())
@@ -71,9 +71,9 @@ extension RecipeView {
     private var bottomRowTrailingButton: some View {
         Group {
             switch viewModel.mode {
-            case .display: editButton
+            case .plan: editButton
             case .edit: saveButton
-            case .active: resetButton
+            case .make: resetButton
             }
         }
         .buttonStyle(StrokedButtonStyle())
@@ -197,7 +197,7 @@ struct RecipeView_Footer_Previews: PreviewProvider {
     static var previews: some View {
         RecipeView(.init(), mode: .edit, database: .preview)
         RecipeView(.preview, mode: .edit, database: .preview)
-        RecipeView(.preview, mode: .display, database: .preview)
-        RecipeView(.preview, mode: .active, database: .preview)
+        RecipeView(.preview, mode: .plan, database: .preview)
+        RecipeView(.preview, mode: .make, database: .preview)
     }
 }

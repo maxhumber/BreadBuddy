@@ -1,6 +1,6 @@
 import Foundation
 
-extension RecipeViewModel {
+extension RecipeView.ViewModel {
     var saveButtonIsDisabled: Bool {
         recipe.steps.isEmpty || recipe.name.isEmpty
     }
@@ -15,7 +15,7 @@ extension RecipeViewModel {
     
     func footerStartAction() {
         recipe.isActive = true
-        mode = .active
+        mode = .make
         save()
     }
     
@@ -37,14 +37,14 @@ extension RecipeViewModel {
     
     func footerSaveAction() {
         recipe.steps = recipe.steps.filter { $0.timeValue != 0 }
-        mode = .display
+        mode = .plan
         save()
         reforward()
     }
     
     func footerStopAction() {
         recipe.isActive = false
-        mode = .display
+        mode = .plan
         save()
     }
     

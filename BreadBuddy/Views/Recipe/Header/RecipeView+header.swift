@@ -37,7 +37,7 @@ extension RecipeView {
     
     @ViewBuilder private var trailingButton: some View {
         switch viewModel.mode {
-        case .display, .active:
+        case .plan, .make:
             viewLinkButton
         case .edit:
             addLinkButton
@@ -71,8 +71,8 @@ extension RecipeView {
 
 struct RecipeView_Header_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeView(.preview, mode: .display, database: .preview)
+        RecipeView(.preview, mode: .plan, database: .preview)
         RecipeView(.preview, mode: .edit, database: .preview)
-        RecipeView(.preview, mode: .active, database: .preview)
+        RecipeView(.preview, mode: .make, database: .preview)
     }
 }

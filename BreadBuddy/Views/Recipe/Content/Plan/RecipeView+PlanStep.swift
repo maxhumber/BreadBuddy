@@ -3,7 +3,7 @@ import CustomUI
 import SwiftUI
 
 extension RecipeView {
-    struct DisplayStep: View {
+    struct PlanStep: View {
         var step: Step
         
         init(_ step: Step) {
@@ -48,6 +48,6 @@ extension RecipeView {
 
 struct DisplayRow_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeView(.preview, mode: .display, database: .preview)
+        RecipeView(.preview, mode: .plan, database: .preview)
     }
 }

@@ -4,7 +4,7 @@ import SwiftUI
 
 extension RecipeView {
     struct EditStep: View {
-        @EnvironmentObject var viewModel: RecipeViewModel
+        @EnvironmentObject var viewModel: ViewModel
         @FocusState private var field: EditStepField?
         @Binding var step: Step
         var mode: EditStepMode

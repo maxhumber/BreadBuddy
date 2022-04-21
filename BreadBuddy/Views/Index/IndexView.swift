@@ -3,11 +3,11 @@ import CustomUI
 import SwiftUI
 
 struct IndexView: View {
-    @StateObject var viewModel: IndexViewModel
+    @StateObject var viewModel: ViewModel
 
     init(database: Database = .shared) {
         let repository = GRDBRecipeRepository(database)
-        let viewModel = IndexViewModel(repository: repository)
+        let viewModel = ViewModel(repository: repository)
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     
@@ -115,7 +115,7 @@ struct IndexView: View {
     
     private func makeRecipeRow(for recipe: Recipe) -> some View {
         XListLink {
-            RecipeView(recipe, mode: .display)
+            RecipeView(recipe, mode: .plan)
         } label: {
             HStack {
                 VStack(alignment: .leading, spacing: 8) {

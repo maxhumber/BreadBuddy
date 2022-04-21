@@ -10,6 +10,5 @@ let package = Package(
     dependencies: [],
     targets: [
         .target(name: "CustomUI", dependencies: []),
-        .testTarget(name: "CustomUITests", dependencies: ["CustomUI"])
     ]
 )

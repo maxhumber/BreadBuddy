@@ -1,6 +1,6 @@
 import Foundation
 
-extension RecipeViewModel {
+extension RecipeView.ViewModel {
     var headerBackButtonIsDisplayed: Bool {
         mode != .edit
     }

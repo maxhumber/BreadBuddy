@@ -1,6 +1,6 @@
 import Core
 
-extension RecipeViewModel {
+extension RecipeView.ViewModel {
     func doubleTapAction() {
         mode = .edit
     }

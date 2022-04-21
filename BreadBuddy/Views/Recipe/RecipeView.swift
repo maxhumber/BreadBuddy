@@ -3,12 +3,12 @@ import CustomUI
 import SwiftUI
 
 struct RecipeView: View {
-    @StateObject var viewModel: RecipeViewModel
+    @StateObject var viewModel: ViewModel
     @Environment(\.dismiss) var dismiss
     
-    init(_ recipe: Recipe = .init(), mode: RecipeViewModel.Mode = .edit, database: Database = .shared) {
+    init(_ recipe: Recipe = .init(), mode: Mode = .edit, database: Database = .shared) {
         let repository = GRDBRecipeRepository(database)
-        let viewModel = RecipeViewModel(recipe, mode: mode, repository: repository)
+        let viewModel = ViewModel(recipe, mode: mode, repository: repository)
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     
@@ -35,9 +35,9 @@ struct RecipeView: View {
 
 struct RecipeView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeView(.preview, mode: .display, database: .preview)
+        RecipeView(.preview, mode: .plan, database: .preview)
         RecipeView(.preview, mode: .edit, database: .preview)
         RecipeView(.init(), mode: .edit, database: .preview)
-        RecipeView(.preview, mode: .active, database: .preview)
+        RecipeView(.preview, mode: .make, database: .preview)
     }
 }

@@ -2,16 +2,16 @@ import CustomUI
 import SwiftUI
 
 extension RecipeView {
-    @ViewBuilder var displayContent: some View {
+    @ViewBuilder var planContent: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 20) {
-                innerDisplayContent
+                innerPlanContent
             }
             .padding(.horizontal, 10)
         }
     }
     
-    @ViewBuilder private var innerDisplayContent: some View {
+    @ViewBuilder private var innerPlanContent: some View {
         ForEach(viewModel.groups) { group in
             Divider {
                 Text(group.label.uppercased())
@@ -21,7 +21,7 @@ extension RecipeView {
             .padding(.horizontal)
             .foregroundColor(.accent1)
             ForEach(group.steps) { step in
-                DisplayStep(step)
+                PlanStep(step)
                     .onTapGesture(count: 2) {
                         viewModel.doubleTapAction()
                     }
@@ -32,8 +32,8 @@ extension RecipeView {
     }
 }
 
-struct RecipeView_displayContent_Previews: PreviewProvider {
+struct RecipeView_planContent_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeView(.preview, mode: .display, database: .preview)
+        RecipeView(.preview, mode: .plan, database: .preview)
     }
 }
