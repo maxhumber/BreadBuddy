@@ -5,7 +5,8 @@ import SwiftUI
 struct IndexView: View {
     @StateObject var viewModel: IndexViewModel
 
-    init(repository: RecipeRepository = GRDBRecipeRepository()) {
+    init(database: Database = .shared) {
+        let repository = GRDBRecipeRepository(database)
         let viewModel = IndexViewModel(repository: repository)
         _viewModel = StateObject(wrappedValue: viewModel)
     }
@@ -36,8 +37,6 @@ struct IndexView: View {
             .aspectRatio(contentMode: .fit)
             .frame(height: 40)
             .frame(maxWidth: .infinity)
-            .font(.title)
-            .foregroundColor(.accent1)
             .padding()
             .padding(.top, 5)
     }
@@ -53,7 +52,7 @@ struct IndexView: View {
         if viewModel.inProgressSectionIsDisplayed {
             divider(label: "In Progress")
             ForEach(viewModel.recipesInProgress) { recipe in
-                makeInProgressRow(for: recipe)
+                makeRecipeRow(for: recipe)
             }
         }
         divider(label: "Recipes")
@@ -90,43 +89,17 @@ struct IndexView: View {
         .foregroundColor(.accent1)
     }
     
-    private func makeInProgressRow(for recipe: Recipe) -> some View {
-        XListLink {
-            RecipeView(recipe, mode: .display)
-        } label: {
-            HStack(alignment: .center, spacing: 20) {
-                VStack(alignment: .leading, spacing: 6)  {
-                    Text(recipe.name)
-                        .font(.matter())
-                        .foregroundColor(.text1)
-                    Text("Wednesday - 3:30 pm")
-                        .font(.matter(.caption, emphasis: .italic))
-                        .foregroundColor(.text2)
-                }
-                Spacer()
-                VStack(alignment: .trailing, spacing: 5) {
-                    Text("1.5 hrs")
-                        .font(.matter(emphasis: .bold))
-                        .foregroundColor(.text1)
-                    Text("till next step")
-                        .font(.matter(.caption, emphasis: .italic))
-                        .foregroundColor(.text2)
-                }
-            }
-        }
-    }
-    
     private func makeRecipeRow(for recipe: Recipe) -> some View {
         XListLink {
             RecipeView(recipe, mode: .display)
         } label: {
             HStack {
-                VStack(alignment: .leading, spacing: 6) {
+                VStack(alignment: .leading, spacing: 8) {
                     Text(recipe.name)
                         .font(.matter())
                         .foregroundColor(.text1)
-                    Text("15 hours")
-                        .font(.matter(.caption, emphasis: .italic))
+                    Text(viewModel.subtitle(for: recipe))
+                        .font(.matter(.caption2, emphasis: .italic))
                         .foregroundColor(.text2)
                 }
                 Spacer()
@@ -137,7 +110,8 @@ struct IndexView: View {
 
 struct IndexView_Previews: PreviewProvider {
     static var previews: some View {
-        IndexView()
+        IndexView(database: .shared)
+        IndexView(database: .preview)
     }
 }
 

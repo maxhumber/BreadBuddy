@@ -62,7 +62,7 @@ extension RecipeView {
             switch viewModel.mode {
             case .display: startButton
             case .edit: editBottomRowLeadingButton
-            case .active: restartButton
+            case .active: cancelInProgressButton
             }
         }
         .buttonStyle(StrokedButtonStyle())
@@ -73,7 +73,7 @@ extension RecipeView {
             switch viewModel.mode {
             case .display: editButton
             case .edit: saveButton
-            case .active: cancelInProgressButton
+            case .active: restartButton
             }
         }
         .buttonStyle(StrokedButtonStyle())

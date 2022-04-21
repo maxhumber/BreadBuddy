@@ -27,4 +27,15 @@ final class IndexViewModel: ObservableObject {
     var inProgressSectionIsDisplayed: Bool {
         !recipesInProgress.isEmpty
     }
+    
+    func subtitle(for recipe: Recipe) -> String {
+        let end = recipe.timeEnd
+        if recipe.isActive {
+            return end.simple + " at " + end.clocktime
+        }
+        if let start = recipe.steps.first?.timeStart {
+            return start.delta(to: end)
+        }
+        return "Unknown"
+    }
 }

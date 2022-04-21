@@ -1,7 +1,7 @@
 @testable import Core
 import XCTest
 
-final class DateTests: XCTestCase {
+final class DateSimpleTests: XCTestCase {
     func testSimpleToday() {
         XCTAssertEqual(Date.now.simple, "Today")
     }
