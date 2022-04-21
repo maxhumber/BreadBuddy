@@ -26,4 +26,10 @@ class GRDBRecipeRepository: RecipeRepository {
         let observation = ValueObservation.tracking(Recipe.fetchAll)
         cancellable = observation.start(in: database.reader, onError: onError, onChange: onChange)
     }
+    
+    func fetch() async throws -> [Recipe] {
+        try await database.writer.write { db in
+            return try Recipe.fetchAll(db)
+        }
+    }
 }
