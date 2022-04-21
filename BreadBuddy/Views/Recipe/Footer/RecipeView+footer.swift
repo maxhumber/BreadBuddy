@@ -112,8 +112,8 @@ extension RecipeView {
     }
     
     private var restartButton: some View {
-        Button {
-            viewModel.footerRestartAction()
+        AlertingButton {
+            restartAlert
         } label: {
             makeButtonLabel("Restart", systemImage: "clock.arrow.circlepath")
         }
@@ -138,8 +138,8 @@ extension RecipeView {
     }
     
     private var quitButton: some View {
-        Button {
-            viewModel.footerQuitAction()
+        AlertingButton {
+            quitAlert
         } label: {
             makeButtonLabel("Quit", systemImage: "xmark.circle")
         }
@@ -165,6 +165,28 @@ extension RecipeView {
             primaryButton: .destructive(Text("Confirm")) {
                 viewModel.alertDeleteAction()
                 dismiss()
+            },
+            secondaryButton: .cancel()
+        )
+    }
+    
+    private var quitAlert: Alert {
+        Alert(
+            title: Text("Quit"),
+            message: Text("Are you sure you want to quit this recipe?"),
+            primaryButton: .destructive(Text("Confirm")) {
+                viewModel.footerQuitAction()
+            },
+            secondaryButton: .cancel()
+        )
+    }
+    
+    private var restartAlert: Alert {
+        Alert(
+            title: Text("Restart"),
+            message: Text("Are you sure you want to restart the start time for this recipe?"),
+            primaryButton: .destructive(Text("Confirm")) {
+                viewModel.footerRestartAction()
             },
             secondaryButton: .cancel()
         )

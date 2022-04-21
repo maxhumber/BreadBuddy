@@ -1,6 +1,4 @@
 ### TODO
-- [ ] Quit warning
-- [ ] Restart warning
 - [ ] URL sheet if bad...
 - [ ] Fancy buttons
 
