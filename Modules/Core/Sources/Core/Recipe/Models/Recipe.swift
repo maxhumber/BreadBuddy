@@ -8,7 +8,7 @@ public struct Recipe: Codable, Equatable, Identifiable {
     public var steps: [Step]
     public var isActive: Bool
     
-    public init(id: Int64? = nil, name: String = "", link: String? = nil, timeEnd: Date = Date().withAdded(hours: 6), steps: [Step] = [Step](), isActive: Bool = false) {
+    public init(id: Int64? = nil, name: String = "", link: String? = nil, timeEnd: Date = .tomorrow, steps: [Step] = .init(), isActive: Bool = false) {
         self.id = id
         self.name = name
         self.link = link
