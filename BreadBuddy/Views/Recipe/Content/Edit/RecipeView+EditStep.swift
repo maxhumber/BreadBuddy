@@ -84,7 +84,7 @@ extension RecipeView {
             ZStack {
                 TextScaffold("XXX")
                 TextField("", value: $step.timeValue, formatter: .number)
-                    .font(.matter(emphasis: .bold))
+                    .font(.matter())
                     .foregroundColor(.text1)
                     .opacity(step.timeValue == 0 ? 0.25 : 1)
                     .multilineTextAlignment(.center)
@@ -104,6 +104,7 @@ extension RecipeView {
             } label: {
                 timeUnitMenuLabel
             }
+            .disabled(mode == .new)
         }
         
         @ViewBuilder private var timeUnitMenuOptions: some View {
@@ -122,8 +123,9 @@ extension RecipeView {
                 Text(step.unitLabel)
                     .animation(nil, value: UUID())
                     .foregroundColor(.text1)
+                    .opacity(mode == .existing ? 1 : 0.25)
             }
-            .font(.matter(emphasis: .bold))
+            .font(.matter())
             .underscore()
             .foregroundColor(.accent2)
         }
@@ -133,5 +135,6 @@ extension RecipeView {
 struct EditContent_Previews: PreviewProvider {
     static var previews: some View {
         RecipeView(.preview, mode: .edit, database: .preview)
+        RecipeView(.init(), mode: .edit, database: .preview)
     }
 }

@@ -1,6 +1,14 @@
 import Foundation
 
 extension RecipeViewModel {
+    var saveButtonIsDisabled: Bool {
+        recipe.steps.isEmpty || recipe.name.isEmpty
+    }
+    
+    var cancelEditButtonIsDisplayed: Bool {
+        recipe.steps.isEmpty || recipe.name.isEmpty
+    }
+    
     func didChange(_ timeEnd: Date) {
         refresh()
     }
@@ -32,7 +40,7 @@ extension RecipeViewModel {
         refresh()
     }
     
-    func footerCancelAction() {
+    func footerCancelInProgressAction() {
         recipe.isActive = false
         mode = .display
         save()

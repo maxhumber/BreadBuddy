@@ -18,7 +18,7 @@ public struct Recipe: Codable, Equatable, Identifiable {
     }
 }
 
-extension Recipe {
+extension Recipe {    
     public var totalTime: String {
         let end = timeEnd
         guard let start = steps.first?.timeStart else { return "Unknown" }

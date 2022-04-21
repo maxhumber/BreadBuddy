@@ -1,7 +1,16 @@
 import SwiftUI
 
 extension RecipeView {
-    @ViewBuilder var editContent: some View {
+    var editContent: some View {
+        ScrollView(showsIndicators: false) {
+            VStack(spacing: 20) {
+                innerEditContent
+            }
+            .padding(.horizontal, 10)
+        }
+    }
+    
+    @ViewBuilder var innerEditContent: some View {
         ForEach($viewModel.recipe.steps) { $step in
             EditStep($step)
                 .padding(.top, 5)
@@ -15,6 +24,7 @@ extension RecipeView {
 
 struct RecipeView_editContent_Previews: PreviewProvider {
     static var previews: some View {
+        RecipeView(.init(), mode: .edit, database: .preview)
         RecipeView(.preview, mode: .edit, database: .preview)
     }
 }

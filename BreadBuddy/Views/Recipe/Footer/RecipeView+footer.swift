@@ -61,7 +61,7 @@ extension RecipeView {
         Group {
             switch viewModel.mode {
             case .display: startButton
-            case .edit: deleteButton
+            case .edit: editBottomRowLeadingButton
             case .active: restartButton
             }
         }
@@ -73,7 +73,7 @@ extension RecipeView {
             switch viewModel.mode {
             case .display: editButton
             case .edit: saveButton
-            case .active: cancelButton
+            case .active: cancelInProgressButton
             }
         }
         .buttonStyle(StrokedButtonStyle())
@@ -87,6 +87,14 @@ extension RecipeView {
         }
     }
     
+    @ViewBuilder private var editBottomRowLeadingButton: some View {
+        if viewModel.cancelEditButtonIsDisplayed {
+            cancelEditButton
+        } else {
+            deleteButton
+        }
+    }
+    
     private var deleteButton: some View {
         Button {
             viewModel.footerDeleteButtonAction()
@@ -95,6 +103,14 @@ extension RecipeView {
         }
         .alert(isPresented: $viewModel.deleteAlertIsPresented) {
             deleteAlert
+        }
+    }
+    
+    private var cancelEditButton: some View {
+        Button {
+            dismiss()
+        } label: {
+            makeButtonLabel("Cancel", systemImage: "xmark")
         }
     }
     
@@ -120,11 +136,13 @@ extension RecipeView {
         } label: {
             makeButtonLabel("Save", systemImage: "square.and.arrow.down")
         }
+        .foregroundColor(viewModel.saveButtonIsDisabled ? .accent2 : .accent1)
+        .disabled(viewModel.saveButtonIsDisabled)
     }
     
-    private var cancelButton: some View {
+    private var cancelInProgressButton: some View {
         Button {
-            viewModel.footerCancelAction()
+            viewModel.footerCancelInProgressAction()
         } label: {
             makeButtonLabel("Cancel", systemImage: "xmark.circle")
         }
@@ -158,8 +176,9 @@ extension RecipeView {
 
 struct RecipeView_Footer_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeView(.preview, mode: .display, database: .preview)
+        RecipeView(.init(), mode: .edit, database: .preview)
         RecipeView(.preview, mode: .edit, database: .preview)
+        RecipeView(.preview, mode: .display, database: .preview)
         RecipeView(.preview, mode: .active, database: .preview)
     }
 }

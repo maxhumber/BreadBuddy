@@ -4,8 +4,8 @@ import SwiftUI
 struct BreadBuddyApp: App {
     var body: some Scene {
         WindowGroup {
-            NotificationTestView()
-//            IndexView()
+//            NotificationTestView()
+            IndexView()
         }
     }
 }

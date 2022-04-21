@@ -3,19 +3,14 @@ import CustomUI
 import SwiftUI
 
 extension RecipeView {
-    var content: some View {
-        ScrollView(showsIndicators: false) {
-            VStack(spacing: 20) {
-                switch viewModel.mode {
-                case .display:
-                    displayContent
-                case .active:
-                    displayContent
-                case .edit:
-                    editContent
-                }
-            }
-            .padding(.horizontal)
+    @ViewBuilder var content: some View {
+        switch viewModel.mode {
+        case .display:
+            displayContent
+        case .active:
+            displayContent
+        case .edit:
+            editContent
         }
     }
 }

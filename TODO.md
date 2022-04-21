@@ -1,4 +1,5 @@
 ### TODO
+- [ ] EMPTY STATES
 - [ ] Add Screen needs to be slightly different (cancel or discard?)
 - [ ] TimeLineView
 - [ ] Fix Navigation Update Bug
