@@ -22,11 +22,15 @@ extension RecipeViewModel {
         return URL(string: link)
     }
     
+    var headerLinkButtonIsDisplayed: Bool {
+        return !(recipe.link?.isValidURL == true)
+    }
+    
     var headerLinkButtonIsDisabled: Bool {
         if mode == .edit {
             return false
         } else {
-            return recipe.link?.isValidURL != true
+            return !(recipe.link?.isValidURL == true)
         }
     }
 }

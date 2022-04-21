@@ -3,10 +3,8 @@ import Combine
 
 @MainActor final class IndexViewModel: ObservableObject {
     @Published var addViewIsPresented = false
-    @Published var error: Error? = nil
     @Published var recipesInProgress = [Recipe]()
     @Published var recipes = [Recipe]()
-    
     private var repository: RecipeRepository
     
     init(repository: RecipeRepository = GRDBRecipeRepository()) {

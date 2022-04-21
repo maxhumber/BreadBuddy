@@ -51,6 +51,7 @@ extension RecipeView {
                 Image(systemName: "link")
             }
         }
+        .opacity(viewModel.headerLinkButtonIsDisplayed ? 1 : 0)
         .disabled(viewModel.headerLinkButtonIsDisabled)
         .foregroundColor(viewModel.headerLinkButtonIsDisabled ? .accent2 : .accent1)
     }

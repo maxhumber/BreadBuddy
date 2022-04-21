@@ -14,9 +14,11 @@ struct IndexView: View {
     var body: some View {
         NavigationView {
             layout
-                .onAppear { viewModel.didAppear() }
                 .background(Color.background)
                 .environmentObject(viewModel)
+                .onAppear {
+                    viewModel.didAppear()
+                }
         }
     }
     
