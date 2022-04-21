@@ -1,7 +1,8 @@
 ### TODO
 - [ ] Quit warning
 - [ ] Restart warning
-- [ ] Empty State IndexView
+- [ ] URL sheet if bad...
+
 - [ ] Fix Navigation Update Bug
 - [ ] Update README
 - [ ] Screens for Store

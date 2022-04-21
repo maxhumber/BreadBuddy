@@ -25,7 +25,9 @@ extension Database {
         }
     }
     
-    @discardableResult private func seedRecipeTable(_ db: GRDB.Database) throws -> Recipe {
-        try Recipe.preview.saved(db)
+    private func seedRecipeTable(_ db: GRDB.Database) throws {
+        _ = try Recipe.sourdoughBaguettes.saved(db)
+        _ = try Recipe.overnightPizzaDough.saved(db)
+        _ = try Recipe.sourdoughHamburgerBuns.saved(db)
     }
 }

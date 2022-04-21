@@ -41,14 +41,31 @@ struct IndexView: View {
             .padding(.top, 5)
     }
     
-    private var xlist: some View {
-        XList(spacing: 20) {
-            content
-                .padding(.horizontal)
+    @ViewBuilder private var xlist: some View {
+        if viewModel.emptyContentIsDisplayed {
+            emptyContent
+        } else {
+            XList(spacing: 20) {
+                xlistContent
+                    .padding(.horizontal)
+            }
         }
     }
     
-    @ViewBuilder private var content: some View {
+    private var emptyContent: some View {
+        VStack(spacing: 0) {
+            Text("No saved recipes...")
+                .padding()
+            Spacer()
+            Text("...tap to add a new one!")
+                .padding()
+        }
+        .frame(maxWidth: .infinity)
+        .foregroundColor(.accent2)
+        .font(.matter(.body))
+    }
+    
+    @ViewBuilder private var xlistContent: some View {
         if viewModel.inProgressSectionIsDisplayed {
             divider(label: "In Progress")
             ForEach(viewModel.recipesInProgress) { recipe in

@@ -24,6 +24,10 @@ final class IndexViewModel: ObservableObject {
         addViewIsPresented = true
     }
     
+    var emptyContentIsDisplayed: Bool {
+        recipes.isEmpty && recipesInProgress.isEmpty
+    }
+    
     var inProgressSectionIsDisplayed: Bool {
         !recipesInProgress.isEmpty
     }
