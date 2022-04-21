@@ -72,7 +72,9 @@ struct IndexView: View {
                 makeRecipeRow(for: recipe)
             }
         }
-        divider(label: "Recipes")
+        if viewModel.recipeDividerIsDisplayed {
+            divider(label: "Recipes")
+        }
         ForEach(viewModel.recipes) { recipe in
             makeRecipeRow(for: recipe)
         }

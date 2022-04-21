@@ -32,6 +32,10 @@ final class IndexViewModel: ObservableObject {
         !recipesInProgress.isEmpty
     }
     
+    var recipeDividerIsDisplayed: Bool {
+        !recipes.isEmpty
+    }
+    
     func subtitle(for recipe: Recipe) -> String {
         let end = recipe.timeEnd
         if recipe.isActive {

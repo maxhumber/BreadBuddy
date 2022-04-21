@@ -2,6 +2,7 @@
 - [ ] Quit warning
 - [ ] Restart warning
 - [ ] URL sheet if bad...
+- [ ] Fancy buttons
 
 - [ ] Fix Navigation Update Bug
 - [ ] Update README
