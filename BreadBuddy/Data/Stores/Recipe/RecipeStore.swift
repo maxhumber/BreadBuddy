@@ -1,9 +1,8 @@
 import Core
 import GRDB
 
-class GRDBRecipeRepository: RecipeRepository {
+final class RecipeStore: RecipeStoring {
     private let database: Database
-    private var cancellable: DatabaseCancellable?
     
     init(_ database: Database = .shared) {
         self.database = database

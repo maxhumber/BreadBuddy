@@ -7,7 +7,7 @@ struct RecipeView: View {
     @Environment(\.dismiss) var dismiss
     
     init(_ recipe: Recipe = .init(), mode: Mode = .edit, database: Database = .shared) {
-        let repository = GRDBRecipeRepository(database)
+        let repository = RecipeStore(database)
         let viewModel = ViewModel(recipe, mode: mode, repository: repository)
         _viewModel = StateObject(wrappedValue: viewModel)
     }

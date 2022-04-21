@@ -26,9 +26,9 @@ struct AlertingButton_Previews: PreviewProvider {
     static var previews: some View {
         AlertingButton {
             Alert(
-                title: Text("Cancel"),
+                title: Text("Dismiss"),
                 message: Text("Are you sure?"),
-                dismissButton: .cancel()
+                dismissButton: .default(Text("Confirm"))
             )
         } label: {
             Image(systemName: "xmark.circle")

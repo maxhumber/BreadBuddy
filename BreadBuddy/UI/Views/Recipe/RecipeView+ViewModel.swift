@@ -9,9 +9,9 @@ extension RecipeView {
         @Published var recipe: Recipe
         @Published var mode: Mode
         private var service: RecipeService
-        private var repository: RecipeRepository
+        private var repository: RecipeStoring
         
-        init(_ recipe: Recipe, mode: Mode, service: RecipeService = .init(), repository: RecipeRepository = GRDBRecipeRepository()) {
+        init(_ recipe: Recipe, mode: Mode, service: RecipeService = .init(), repository: RecipeStoring = RecipeStore()) {
             self.recipe = recipe
             self.mode = recipe.isActive ? .make : mode
             self.service = service

@@ -1,10 +1,9 @@
 import SwiftUI
 
 @main
-struct BreadBuddyApp: App {
+struct BreadBuddy: App {
     var body: some Scene {
         WindowGroup {
-//            NotificationTestView()
             IndexView()
         }
     }

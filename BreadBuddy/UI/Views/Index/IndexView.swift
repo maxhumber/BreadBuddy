@@ -6,7 +6,7 @@ struct IndexView: View {
     @StateObject var viewModel: ViewModel
 
     init(database: Database = .shared) {
-        let repository = GRDBRecipeRepository(database)
+        let repository = RecipeStore(database)
         let viewModel = ViewModel(repository: repository)
         _viewModel = StateObject(wrappedValue: viewModel)
     }

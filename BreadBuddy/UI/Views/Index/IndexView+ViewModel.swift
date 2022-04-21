@@ -6,9 +6,9 @@ extension IndexView {
         @Published var addViewIsPresented = false
         @Published var recipesInProgress = [Recipe]()
         @Published var recipes = [Recipe]()
-        private var repository: RecipeRepository
+        private var repository: RecipeStoring
         
-        init(repository: RecipeRepository = GRDBRecipeRepository()) {
+        init(repository: RecipeStoring = RecipeStore()) {
             self.repository = repository
         }
         
