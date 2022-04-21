@@ -62,7 +62,7 @@ extension RecipeView {
             switch viewModel.mode {
             case .display: startButton
             case .edit: editBottomRowLeadingButton
-            case .active: cancelInProgressButton
+            case .active: quitButton
             }
         }
         .buttonStyle(StrokedButtonStyle())
@@ -140,11 +140,11 @@ extension RecipeView {
         .disabled(viewModel.saveButtonIsDisabled)
     }
     
-    private var cancelInProgressButton: some View {
+    private var quitButton: some View {
         Button {
-            viewModel.footerCancelInProgressAction()
+            viewModel.footerQuitAction()
         } label: {
-            makeButtonLabel("Cancel", systemImage: "xmark.circle")
+            makeButtonLabel("Quit", systemImage: "xmark.circle")
         }
     }
     

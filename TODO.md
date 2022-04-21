@@ -1,4 +1,6 @@
 ### TODO
+- [ ] Quit warning
+- [ ] Restart warning
 - [ ] Empty State IndexView
 - [ ] Fix Navigation Update Bug
 - [ ] Update README

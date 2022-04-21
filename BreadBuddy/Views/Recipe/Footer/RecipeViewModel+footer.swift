@@ -38,7 +38,7 @@ extension RecipeViewModel {
         reforward()
     }
     
-    func footerCancelInProgressAction() {
+    func footerQuitAction() {
         recipe.isActive = false
         mode = .display
         save()
