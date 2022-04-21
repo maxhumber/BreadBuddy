@@ -4,7 +4,6 @@
 - [ ] TimeLineView
 - [ ] Fix Navigation Update Bug
 - [ ] Finish Index Row Components
-- [ ] Empty Views (Index + Recipe) 
 - [ ] Schedule all notifications (for step times)
 - [ ] Dequeue active notifications
 - [ ] Update README

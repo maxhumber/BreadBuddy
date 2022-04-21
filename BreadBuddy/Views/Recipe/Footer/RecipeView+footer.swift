@@ -22,8 +22,8 @@ extension RecipeView {
     
     private var pickers: some View {
         HStack(alignment: .bottom, spacing: 10) {
-            timePicker
             dayPicker
+            timePicker
         }
         .font(.matter(.caption))
     }
