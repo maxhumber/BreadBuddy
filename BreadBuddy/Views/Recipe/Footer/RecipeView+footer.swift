@@ -96,13 +96,10 @@ extension RecipeView {
     }
     
     private var deleteButton: some View {
-        Button {
-            viewModel.footerDeleteButtonAction()
+        AlertingButton {
+            deleteAlert
         } label: {
             makeButtonLabel("Delete", systemImage: "trash")
-        }
-        .alert(isPresented: $viewModel.deleteAlertIsPresented) {
-            deleteAlert
         }
     }
     

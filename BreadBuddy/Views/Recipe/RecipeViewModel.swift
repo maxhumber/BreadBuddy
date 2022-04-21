@@ -2,14 +2,11 @@ import Core
 import Foundation
 
 @MainActor final class RecipeViewModel: ObservableObject {
-    @Published var deleteAlertIsPresented = false
     @Published var urlTextAlertIsPresented = false
     @Published var newStep = Step()
     @Published var groups = [StepGroup]()
-
     @Published var recipe: Recipe
     @Published var mode: Mode
-    
     private var service: RecipeService
     private var repository: RecipeRepository
 

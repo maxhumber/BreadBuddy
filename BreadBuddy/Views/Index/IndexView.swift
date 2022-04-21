@@ -30,6 +30,8 @@ struct IndexView: View {
         }
         .navigationBarHidden(true)
         .fullScreenCover(isPresented: $viewModel.addViewIsPresented) {
+            viewModel.didAppear()
+        } content: {
             RecipeView()
         }
     }

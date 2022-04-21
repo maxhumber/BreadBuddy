@@ -17,6 +17,7 @@ extension RecipeView {
                 Spacer()
             }
             .foregroundColor(.text1)
+            .contentShape(Rectangle())
         }
         
         private var timeStart: some View {

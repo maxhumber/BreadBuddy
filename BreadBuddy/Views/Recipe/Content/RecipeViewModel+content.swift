@@ -1,6 +1,10 @@
 import Core
 
 extension RecipeViewModel {
+    func doubleTapAction() {
+        mode = .edit
+    }
+    
     func didChange(to field: EditStepField?, with mode: EditStepMode) {
         if field == .none && mode == .new && newStep.isValid {
             recipe.steps.append(newStep)

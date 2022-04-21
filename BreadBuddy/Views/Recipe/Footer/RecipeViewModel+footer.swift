@@ -23,10 +23,6 @@ extension RecipeViewModel {
         mode = .edit
     }
     
-    func footerDeleteButtonAction() {
-        deleteAlertIsPresented = true
-    }
-    
     func alertDeleteAction() {
         delete()
     }

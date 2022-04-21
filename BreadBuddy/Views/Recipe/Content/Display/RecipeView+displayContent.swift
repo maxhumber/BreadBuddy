@@ -22,6 +22,9 @@ extension RecipeView {
             .foregroundColor(.accent1)
             ForEach(group.steps) { step in
                 DisplayStep(step)
+                    .onTapGesture(count: 2) {
+                        viewModel.doubleTapAction()
+                    }
             }
         }
         Spacer()
