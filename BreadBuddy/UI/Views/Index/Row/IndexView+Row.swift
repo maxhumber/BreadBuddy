@@ -38,9 +38,18 @@ extension IndexView {
         }
         
         private var bottomRow: some View {
-            Text(subtitle)
-                .font(.matter(.caption2, emphasis: .italic))
-                .foregroundColor(.text2)
+            HStack(spacing: 4) {
+                if recipe.isActive {
+                    Image(systemName: "calendar")
+                        .opacity(0.8)
+                } else {
+                    Image(systemName: "hourglass")
+                        .opacity(0.8)
+                }
+                Text(subtitle)
+            }
+            .font(.matter(.caption2, emphasis: .italic))
+            .foregroundColor(.text2)
         }
             
         private var subtitle: String {

@@ -7,12 +7,14 @@ extension RecipeView {
             switch viewModel.mode {
             case .plan: planFooter
             case .edit: editFooter
-            case .make: Text("Hey")
+            case .make: makeFooter
             }
         }
         .foregroundColor(.accent1)
         .font(.matter(.caption))
         .padding()
+        .padding(.horizontal)
+        .padding(.leading, -2)
     }
     
     private var planFooter: some View {
@@ -45,7 +47,6 @@ extension RecipeView {
             .frame(maxWidth: .infinity)
         }
         .buttonStyle(FancyButtonStyle(outline: .accent1, fill: .accent2))
-        .padding(.leading, -2)
         .onChange(of: viewModel.recipe.timeEnd) { timeEnd in
             viewModel.didChange(timeEnd)
         }
@@ -82,7 +83,7 @@ extension RecipeView {
     
     private var discardButton: some View {
         Button {
-            
+            viewModel.discard()
         } label: {
             Image(systemName: "xmark")
                 .padding()
@@ -104,48 +105,36 @@ extension RecipeView {
                 Text("Done")
             }
             .frame(maxWidth: .infinity)
+            .foregroundColor(viewModel.doneButtonIsDisabled ? .accent2 : .accent1)
         }
-        .buttonStyle(FancyButtonStyle(outline: .accent1, fill: .accent2))
+        .buttonStyle(
+            FancyButtonStyle(
+                outline: viewModel.doneButtonIsDisabled ? .accent2 : .accent1,
+                fill: viewModel.doneButtonIsDisabled ? .clear : .accent2
+            )
+        )
+        .disabled(viewModel.doneButtonIsDisabled)
+    }
+    
+    private var makeFooter: some View {
+        HStack(spacing: 15) {
+            resetButton
+            stopButton
+        }
     }
     
     private var resetButton: some View {
         AlertingButton {
             resetAlert
         } label: {
-            makeButtonLabel("Reset", systemImage: "clock.arrow.circlepath")
-        }
-    }
-    
-    private var stopButton: some View {
-        AlertingButton {
-            stopAlert
-        } label: {
-            makeButtonLabel("Stop", systemImage: "xmark.circle")
-        }
-    }
-    
-    private func makeButtonLabel(_ label: String, systemImage: String) -> some View {
-        HStack {
             ZStack {
-                Image(systemName: "trash").opacity(0)
-                Image(systemName: systemImage)
+                Image(systemName: "xmark")
+                    .padding()
+                    .opacity(0)
+                Image(systemName: "clock.arrow.circlepath")
             }
-            .font(.body)
-            Text(label)
-                .font(.matter(.caption2))
         }
-        .padding()
-    }
-    
-    private var stopAlert: Alert {
-        Alert(
-            title: Text("Stop"),
-            message: Text("Are you sure you want to stop making this recipe?"),
-            primaryButton: .destructive(Text("Confirm")) {
-                viewModel.stop()
-            },
-            secondaryButton: .cancel()
-        )
+        .buttonStyle(FancyButtonStyle(outline: .accent1, fill: .accent2))
     }
     
     private var resetAlert: Alert {
@@ -158,13 +147,42 @@ extension RecipeView {
             secondaryButton: .cancel()
         )
     }
+    
+    private var stopButton: some View {
+        AlertingButton {
+            stopAlert
+        } label: {
+            HStack(spacing: 10) {
+                ZStack {
+                    Image(systemName: "xmark")
+                        .padding(.vertical)
+                        .opacity(0)
+                    Image(systemName: "xmark.circle")
+                }
+                Text("Stop")
+            }
+            .frame(maxWidth: .infinity)
+        }
+        .buttonStyle(FancyButtonStyle(outline: .accent1, fill: .accent2))
+    }
+    
+    private var stopAlert: Alert {
+        Alert(
+            title: Text("Stop"),
+            message: Text("Are you sure you want to stop making this recipe?"),
+            primaryButton: .destructive(Text("Confirm")) {
+                viewModel.stop()
+            },
+            secondaryButton: .cancel()
+        )
+    }
 }
 
 struct RecipeView_Footer_Previews: PreviewProvider {
     static var previews: some View {
+        RecipeView(.preview, mode: .make, database: .preview)
         RecipeView(.preview, mode: .edit, database: .preview)
         RecipeView(.init(), mode: .edit, database: .preview)
         RecipeView(.preview, mode: .plan, database: .preview)
-        RecipeView(.preview, mode: .make, database: .preview)
     }
 }

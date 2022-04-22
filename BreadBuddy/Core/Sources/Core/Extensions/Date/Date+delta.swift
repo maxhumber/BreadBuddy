@@ -2,6 +2,7 @@ import Foundation
 
 extension Date {
     public func delta(to end: Date) -> String {
+        let end = end.addingTimeInterval(1)
         let components = Calendar.current.dateComponents([.day, .hour, .minute], from: self, to: end)
         let (days, hours, mins) = (components.day!, components.hour!, components.minute!)
         let (weeks, remainder) = days.quotientAndRemainder(dividingBy: 7)

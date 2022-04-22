@@ -50,6 +50,18 @@ extension RecipeView {
         }
     }
     
+    private var deleteAlert: Alert {
+        Alert(
+            title: Text("Delete"),
+            message: Text("Are you sure you want to delete this recipe?"),
+            primaryButton: .destructive(Text("Confirm")) {
+                viewModel.delete()
+                dismiss()
+            },
+            secondaryButton: .cancel()
+        )
+    }
+    
     private var cancelButton: some View {
         Button {
             dismiss()
@@ -131,18 +143,6 @@ extension RecipeView {
             Image(systemName: "link.badge.plus")
                 .contentShape(Rectangle())
         }
-    }
-    
-    private var deleteAlert: Alert {
-        Alert(
-            title: Text("Delete"),
-            message: Text("Are you sure you want to delete this recipe?"),
-            primaryButton: .destructive(Text("Confirm")) {
-                viewModel.delete()
-                dismiss()
-            },
-            secondaryButton: .cancel()
-        )
     }
 }
 

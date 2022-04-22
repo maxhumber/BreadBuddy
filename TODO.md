@@ -1,5 +1,5 @@
 ### TODO
-- [ ] Disabled done
+- [ ] TestFlight
 - [ ] string to url
 
 - [ ] Update README
@@ -13,7 +13,6 @@
 - [ ] RevenueCat (or StoreKit2)
 - [ ] Analytics (AWS)
 - [ ] iPad Support
-
 - [ ] TimelineView (In Progress Updates)
 - [ ] Swipe Right on Left Side to quit Nav View
 - [ ] Clear 0 on number input field active/focus

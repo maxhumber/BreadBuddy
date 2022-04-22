@@ -43,6 +43,10 @@ extension RecipeView {
             mode = .edit
         }
         
+        func discard() {
+            mode = .plan
+        }
+        
         func done() {
             recipe.steps = recipe.steps.filter { $0.timeValue != 0 }
             mode = .plan
