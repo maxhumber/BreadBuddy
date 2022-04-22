@@ -26,3 +26,19 @@ public struct StealthDatePicker<Label: View>: View {
             .opacity(0.0101)
     }
 }
+
+struct StealthDatePicker_Previews: PreviewProvider {
+    static var previews: some View {
+        Preview()
+    }
+    
+    struct Preview: View {
+        @State private var date = Date()
+        
+        var body: some View {
+            StealthDatePicker(.date, date: $date) {
+                Image(systemName: "calendar")
+            }
+        }
+    }
+}

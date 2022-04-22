@@ -1,12 +1,12 @@
 import SwiftUI
 
-public struct FullScreenCoveringButton<Destination: View, Label: View>: View {
+public struct CoveringButton<Destination: View, Label: View>: View {
     @State private var isPresented = false
     private var destination: Destination
     private var label: Label
-    private var onDismiss: () -> ()
+    private var onDismiss: (() -> ())?
 
-    public init(@ViewBuilder destination: () -> Destination, onDismiss: @escaping () -> (), @ViewBuilder label: () -> Label) {
+    public init(@ViewBuilder destination: () -> Destination, onDismiss: (() -> ())? = nil, @ViewBuilder label: () -> Label) {
         self.destination = destination()
         self.onDismiss = onDismiss
         self.label = label()
@@ -19,16 +19,16 @@ public struct FullScreenCoveringButton<Destination: View, Label: View>: View {
             label
         }
         .fullScreenCover(isPresented: $isPresented) {
-            onDismiss()
+            onDismiss?()
         } content: {
             destination
         }
     }
 }
 
-struct FullScreenCoveringButton_Previews: PreviewProvider {
+struct CoveringButton_Previews: PreviewProvider {
     static var previews: some View {
-        FullScreenCoveringButton {
+        CoveringButton {
             DestinationView()
         } onDismiss: {
             print("didDismiss")

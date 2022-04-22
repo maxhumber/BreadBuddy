@@ -1,7 +1,7 @@
 import SwiftUI
 import UIKit
 
-class AlertInputViewController: UIViewController, UITextFieldDelegate {
+final class AlertInputViewController: UIViewController, UITextFieldDelegate {
     var isPresented: Binding<Bool>
     var alertInput: AlertInput
     

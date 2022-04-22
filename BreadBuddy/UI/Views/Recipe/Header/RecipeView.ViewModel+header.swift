@@ -31,8 +31,4 @@ extension RecipeView.ViewModel {
         guard let link = recipe.link else { return nil }
         return URL(string: link)
     }
-    
-    func headerLinkButtonAction() {
-        urlTextAlertIsPresented = true
-    }
 }

@@ -14,14 +14,11 @@ struct IndexView: View {
         NavigationView {
             VStack(alignment: .leading, spacing: 0) {
                 header
-                xlist
-                newButton
+                content
+                footer
             }
             .background(Color.background)
             .navigationBarHidden(true)
-        }
-        .onAppear {
-            viewModel.refresh()
         }
     }
     
@@ -35,14 +32,11 @@ struct IndexView: View {
             .padding(.top, 5)
     }
     
-    @ViewBuilder private var xlist: some View {
+    @ViewBuilder private var content: some View {
         if viewModel.emptyContentIsDisplayed {
             emptyContent
         } else {
-            XList(spacing: 20) {
-                xlistContent
-                    .padding(.horizontal)
-            }
+            populatedContent
         }
     }
     
@@ -59,18 +53,28 @@ struct IndexView: View {
         .font(.matter(.body))
     }
     
-    @ViewBuilder private var xlistContent: some View {
-        if viewModel.inProgressSectionIsDisplayed {
+    private var populatedContent: some View {
+        StealthList(spacing: 20) {
+            activeSection
+            inactiveSection
+        }
+    }
+    
+    @ViewBuilder var activeSection: some View {
+        if viewModel.activeSectionIsDisplayed {
             divider("In Progress")
-            ForEach(viewModel.recipesInProgress) { recipe in
-                recipeRow(recipe)
+            ForEach(viewModel.activeRecipes) { recipe in
+                Row(recipe: recipe)
             }
         }
+    }
+    
+    @ViewBuilder var inactiveSection: some View {
         if viewModel.recipeDividerIsDisplayed {
             divider("Recipes")
         }
-        ForEach(viewModel.recipes) { recipe in
-            recipeRow(recipe)
+        ForEach(viewModel.inactiveRecipes) { recipe in
+            Row(recipe: recipe)
         }
     }
     
@@ -84,27 +88,9 @@ struct IndexView: View {
         .foregroundColor(.accent1)
     }
     
-    private func recipeRow(_ recipe: Recipe) -> some View {
-        XListLink {
-            RecipeView(recipe, mode: .plan)
-        } label: {
-            HStack {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(recipe.name)
-                        .font(.matter())
-                        .foregroundColor(.text1)
-                    Text(viewModel.subtitle(for: recipe))
-                        .font(.matter(.caption2, emphasis: .italic))
-                        .foregroundColor(.text2)
-                }
-                Spacer()
-            }
-        }
-    }
-    
-    private var newButton: some View {
-        FullScreenCoveringButton {
-            RecipeView()
+    private var footer: some View {
+        CoveringButton {
+            RecipeView(.init(), mode: .edit)
         } onDismiss: {
             viewModel.refresh()
         } label: {

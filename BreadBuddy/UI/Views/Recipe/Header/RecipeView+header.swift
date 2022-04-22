@@ -57,15 +57,16 @@ extension RecipeView {
     }
     
     private var addLinkButton: some View {
-        Button {
-            viewModel.headerLinkButtonAction()
+        InputtingButton {
+            AlertInput(
+                title: "Recipe URL",
+                placeholder: "URL",
+                text: $viewModel.recipe.link
+            )
         } label: {
             Image(systemName: "link.badge.plus")
         }
         .foregroundColor(.accent1)
-        .alert(isPresented: $viewModel.urlTextAlertIsPresented) {
-            AlertInput(title: "Recipe URL", placeholder: "URL", text: $viewModel.recipe.link)
-        }
     }
 }
 

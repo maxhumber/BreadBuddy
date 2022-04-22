@@ -3,6 +3,6 @@ import XCTest
 
 class BreadBuddyTests: XCTestCase {
     func testExample() throws {
-        // See: Modules/Core/Tests
+        // See: Core/Tests
     }
 }

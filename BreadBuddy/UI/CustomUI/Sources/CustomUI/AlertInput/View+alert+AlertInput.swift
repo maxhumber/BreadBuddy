@@ -19,11 +19,11 @@ struct AlertInput_Previews: PreviewProvider {
     
     struct Preview: View {
         @State var alertIsPresented = false
-        @State var text: String? = ""
+        @State var text: String?
         
         var body: some View {
             VStack {
-                Text(text ?? "Nothing")
+                Text(text ?? "Nothing Yet...")
                 Text("Demo")
                 Button {
                     alertIsPresented = true

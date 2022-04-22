@@ -6,29 +6,23 @@ struct RecipeView: View {
     @StateObject var viewModel: ViewModel
     @Environment(\.dismiss) var dismiss
     
-    init(_ recipe: Recipe = .init(), mode: Mode = .edit, database: Database = .persistent) {
-        let viewModel = ViewModel(recipe, mode: mode, service: .init(), store: RecipeStore(database))
+    init(_ recipe: Recipe, mode: Mode, database: Database = .persistent) {
+        let viewModel = ViewModel(recipe, mode: mode, store: RecipeStore(database))
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     
     var body: some View {
-        layout
-            .background(Color.background)
-            .environmentObject(viewModel)
-            .onAppear {
-                viewModel.didAppear()
-            }
-    }
-    
-    private var layout: some View {
         VStack(spacing: 10) {
             header
             content
             footer
         }
+        .background(Color.background)
+        .environmentObject(viewModel)
         .navigationBarHidden(true)
         .ignoresSafeArea(.keyboard)
         .dismissKeyboard()
+        .onAppear { viewModel.didAppear() }
     }
 }
 

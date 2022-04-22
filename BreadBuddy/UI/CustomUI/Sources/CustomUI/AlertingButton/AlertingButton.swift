@@ -1,10 +1,10 @@
 import SwiftUI
 
 public struct AlertingButton<Label: View>: View {
-    public var alert: () -> Alert
-    @ViewBuilder public var label: Label
     @State private var alertIsPresented = false
-    
+    private var alert: () -> Alert
+    private var label: Label
+
     public init(alert: @escaping () -> Alert, @ViewBuilder label: () -> Label) {
         self.alert = alert
         self.label = label()
@@ -31,7 +31,7 @@ struct AlertingButton_Previews: PreviewProvider {
                 dismissButton: .default(Text("Confirm"))
             )
         } label: {
-            Image(systemName: "xmark.circle")
+            Text("Toggle")
         }
     }
 }

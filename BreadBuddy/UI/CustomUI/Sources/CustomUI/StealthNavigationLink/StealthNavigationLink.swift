@@ -1,6 +1,6 @@
 import SwiftUI
 
-public struct XListLink<Destination: View, Label: View>: View {
+public struct StealthNavigationLink<Destination: View, Label: View>: View {
     var destination: Destination
     var label: Label
     
@@ -16,6 +16,20 @@ public struct XListLink<Destination: View, Label: View>: View {
             }
             .contentShape(Rectangle())
             label
+        }
+    }
+}
+
+struct StealthNavigationLink_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            StealthList {
+                StealthNavigationLink {
+                    Text("Hey")
+                } label: {
+                    Text("Toggle")
+                }
+            }
         }
     }
 }
