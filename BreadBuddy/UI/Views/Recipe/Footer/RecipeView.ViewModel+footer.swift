@@ -18,15 +18,7 @@ extension RecipeView.ViewModel {
         mode = .make
         save()
     }
-    
-    func footerEditAction() {
-        mode = .edit
-    }
-    
-    func alertDeleteAction() {
-        delete()
-    }
-    
+
     var footerSaveSystemImage: String {
         recipe.id == nil ? "checkmark" : "square.and.arrow.down"
     }

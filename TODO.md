@@ -1,6 +1,5 @@
 ### TODO
 - [ ] string to url
-- [ ] Fancy buttons
 
 - [ ] Update README
 - [ ] Screens for Store

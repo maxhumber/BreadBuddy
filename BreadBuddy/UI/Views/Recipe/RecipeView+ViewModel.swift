@@ -17,6 +17,15 @@ extension RecipeView {
             self.store = store
         }
         
+        func didAppear() {
+            if !recipe.isActive { reforward() }
+            regroup()
+        }
+        
+        func edit() {
+            mode = .edit
+        }
+        
         func save() {
             Task(priority: .userInitiated) {
                 recipe = try await store.save(recipe)
@@ -27,11 +36,6 @@ extension RecipeView {
             Task(priority: .userInitiated) {
                 try await store.delete(recipe)
             }
-        }
-        
-        func didAppear() {
-            if !recipe.isActive { reforward() }
-            regroup()
         }
         
         func refresh() {

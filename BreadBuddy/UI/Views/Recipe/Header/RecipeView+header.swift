@@ -5,42 +5,89 @@ extension RecipeView {
     var header: some View {
         HStack(spacing: 0) {
             leadingButton
-            nameField
+            name
             trailingButton
         }
         .padding()
     }
     
-    @ViewBuilder private var leadingButton: some View {
+    private var leadingButton: some View {
+        ZStack {
+            Image(systemName: "link.badge.plus")
+                .opacity(0)
+            switch viewModel.mode {
+            case .plan: backButton
+            case .make: backButton
+            case .edit: deleteButton // need to be here? for cancel
+            }
+        }
+    }
+    
+    private var backButton: some View {
         Button {
             dismiss()
         } label: {
-            ZStack {
-                Image(systemName: "link.badge.plus").opacity(0)
-                Image(systemName: "chevron.left")
+            Image(systemName: "chevron.left")
+                .contentShape(Rectangle())
+        }
+    }
+    
+    private var deleteButton: some View {
+        AlertingButton {
+            deleteAlert
+        } label: {
+            Image(systemName: "trash")
+                .contentShape(Rectangle())
+        }
+    }
+    
+    private var name: some View {
+        Group {
+            switch viewModel.mode {
+            case .plan: nameText
+            case .make: nameText
+            case .edit: nameField
             }
         }
-        .opacity(viewModel.headerBackButtonIsDisplayed ? 1 : 0)
-        .foregroundColor(.accent1)
+        .font(.matter())
+        .multilineTextAlignment(.center)
+        .frame(maxWidth: .infinity)
+    }
+    
+    private var nameText: some View {
+        Text(viewModel.recipe.name)
+            .foregroundColor(.text1)
+            .underscore(hidden: true)
+            .onTapGesture { viewModel.edit() }
     }
     
     private var nameField: some View {
-        TextField("Recipe name", text: $viewModel.recipe.name)
-            .font(.body)
-            .foregroundColor(.text1)
-            .underscore(hidden: viewModel.headerNameFieldUnderscoreIsHidden)
-            .foregroundColor(.accent2)
+        TextField("Enter name", text: $viewModel.recipe.name)
             .multilineTextAlignment(.center)
-            .disabled(viewModel.headerNameFieldIsDisabled)
             .frame(maxWidth: .infinity)
+            .foregroundColor(.text1)
+            .underscore()
+            .foregroundColor(.accent2)
     }
     
-    @ViewBuilder private var trailingButton: some View {
-        switch viewModel.mode {
-        case .plan, .make:
-            viewLinkButton
-        case .edit:
-            addLinkButton
+    private var trailingButton: some View {
+        ZStack {
+            Image(systemName: "link.badge.plus")
+                .opacity(0)
+            switch viewModel.mode {
+            case .plan: editButton
+            case .make: viewLinkButton
+            case .edit: addLinkButton
+            }
+        }
+    }
+    
+    private var editButton: some View {
+        Button {
+            viewModel.edit()
+        } label: {
+            Image(systemName: "pencil")
+                .contentShape(Rectangle())
         }
     }
     
@@ -50,6 +97,7 @@ extension RecipeView {
                 Image(systemName: "link.badge.plus").opacity(0)
                 Image(systemName: "link")
             }
+            .contentShape(Rectangle())
         }
         .disabled(viewModel.headerLinkButtonIsDisabled)
         .foregroundColor(viewModel.headerLinkButtonIsDisabled ? .accent2 : .accent1)
@@ -65,15 +113,29 @@ extension RecipeView {
             )
         } label: {
             Image(systemName: "link.badge.plus")
+                .contentShape(Rectangle())
         }
         .foregroundColor(.accent1)
+    }
+    
+    private var deleteAlert: Alert {
+        Alert(
+            title: Text("Delete"),
+            message: Text("Are you sure you want to delete this recipe?"),
+            primaryButton: .destructive(Text("Confirm")) {
+                viewModel.delete()
+                dismiss()
+            },
+            secondaryButton: .cancel()
+        )
     }
 }
 
 struct RecipeView_Header_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeView(.preview, mode: .plan, database: .preview)
         RecipeView(.preview, mode: .edit, database: .preview)
+        RecipeView(.init(), mode: .edit, database: .preview)
+        RecipeView(.preview, mode: .plan, database: .preview)
         RecipeView(.preview, mode: .make, database: .preview)
     }
 }

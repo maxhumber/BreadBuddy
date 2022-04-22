@@ -104,12 +104,14 @@ struct IndexView: View {
                 Text("New")
                     .font(.matter(.caption))
             }
+            .frame(maxWidth: .infinity)
             .padding()
+            .foregroundColor(.accent1)
         }
-        .buttonStyle(StrokedButtonStyle())
+        .buttonStyle(FancyButtonStyle(outline: .accent1, fill: .accent2))
         .padding()
         .padding(.horizontal)
-        .foregroundColor(.accent1)
+        .padding(.leading, -2)
     }
 }
 

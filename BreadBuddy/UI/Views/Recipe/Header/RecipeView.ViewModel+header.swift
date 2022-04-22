@@ -1,18 +1,6 @@
 import Foundation
 
 extension RecipeView.ViewModel {
-    var headerBackButtonIsDisplayed: Bool {
-        mode != .edit
-    }
-    
-    var headerNameFieldIsDisabled: Bool {
-        mode != .edit
-    }
-    
-    var headerNameFieldUnderscoreIsHidden: Bool {
-        mode != .edit
-    }
-    
     var headerViewLinkButtonIsDisplayed: Bool {
         let isNotNil = !(recipe.link == nil)
         let isNotEmpty = !(recipe.link != "")

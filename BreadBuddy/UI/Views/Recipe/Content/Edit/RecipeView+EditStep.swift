@@ -69,7 +69,7 @@ extension RecipeView {
         }
         
         private var activity: some View {
-            TextField("Description", text: $step.description)
+            TextField("Enter step", text: $step.description)
                 .foregroundColor(.text1)
                 .underscore(infinity: true)
                 .foregroundColor(.accent2)

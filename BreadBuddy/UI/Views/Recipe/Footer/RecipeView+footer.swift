@@ -3,87 +3,76 @@ import SwiftUI
 
 extension RecipeView {
     var footer: some View {
-        VStack(spacing: 10) {
-            footerTopRow
-            footerBottomRow
+        Group {
+            switch viewModel.mode {
+            case .plan: planFooter
+            case .make: Text("Hey")
+            case .edit: editFooter
+            }
         }
-        .padding()
         .foregroundColor(.accent1)
+        .padding()
     }
     
-    @ViewBuilder private var footerTopRow: some View {
-        if viewModel.mode == .plan {
-            pickers
-                .onChange(of: viewModel.recipe.timeEnd) { timeEnd in
-                    viewModel.didChange(timeEnd)
-                }
+    private var editFooter: some View {
+        Button {
+            viewModel.footerSaveAction()
+        } label: {
+            makeButtonLabel(viewModel.footerSaveLabel, systemImage: viewModel.footerSaveSystemImage)
+                .frame(maxWidth: .infinity)
         }
+        .buttonStyle(FancyButtonStyle(outline: .accent1, fill: .accent2))
     }
     
-    private var pickers: some View {
-        HStack(alignment: .bottom, spacing: 10) {
-            dayPicker
-            timePicker
+    private var planFooter: some View {
+        HStack(spacing: 15) {
+            startButton
+            finishButton
         }
-        .font(.matter(.caption))
-    }
-    
-    private var timePicker: some View {
-        StealthDatePicker(.hourAndMinute, date: $viewModel.recipe.timeEnd) {
-            Text(viewModel.recipe.timeEnd.clocktime)
-        }
-        .frame(maxWidth: .infinity)
-        .background(
-            RoundedRectangle(cornerRadius: 5)
-                .strokeBorder()
-        )
-    }
-    
-    private var dayPicker: some View {
-        StealthDatePicker(.date, date: $viewModel.recipe.timeEnd) {
-            Text(viewModel.recipe.timeEnd.simple)
-        }
-        .frame(maxWidth: .infinity)
-        .background(
-            RoundedRectangle(cornerRadius: 5)
-                .strokeBorder()
-        )
-    }
-    
-    private var footerBottomRow: some View {
-        HStack(alignment: .bottom, spacing: 10) {
-            bottomRowLeadingButton
-            bottomRowTrailingButton
-        }
-    }
-    
-    private var bottomRowLeadingButton: some View {
-        Group {
-            switch viewModel.mode {
-            case .plan: startButton
-            case .edit: editBottomRowLeadingButton
-            case .make: stopButton
-            }
-        }
-        .buttonStyle(StrokedButtonStyle())
-    }
-    
-    private var bottomRowTrailingButton: some View {
-        Group {
-            switch viewModel.mode {
-            case .plan: editButton
-            case .edit: saveButton
-            case .make: resetButton
-            }
-        }
-        .buttonStyle(StrokedButtonStyle())
     }
     
     private var startButton: some View {
         Button {
             viewModel.footerStartAction()
         } label: {
-            makeButtonLabel("Start", systemImage: "clock")
+            ZStack {
+                Image(systemName: "flag").opacity(0)
+                Image(systemName: "play")
+            }
+            .padding()
+        }
+        .font(.matter(.caption2))
+        .buttonStyle(FancyButtonStyle(outline: .accent1, fill: .accent2))
+    }
+    
+    private var finishButton: some View {
+        Button {} label: {
+            HStack {
+                dayPicker
+                timePicker
+            }
+            .padding(.vertical, 6)
+            .frame(maxWidth: .infinity)
+            .font(.matter(.caption))
+        }
+        .buttonStyle(FancyButtonStyle(outline: .accent1, fill: .accent2))
+        .padding(.leading, -2)
+        .onChange(of: viewModel.recipe.timeEnd) { timeEnd in
+            viewModel.didChange(timeEnd)
+        }
+    }
+
+    private var dayPicker: some View {
+        StealthDatePicker(.date, date: $viewModel.recipe.timeEnd) {
+            HStack(spacing: 15) {
+                Image(systemName: "calendar")
+                Text(viewModel.recipe.timeEnd.simple)
+            }
+        }
+    }
+    private var timePicker: some View {
+        StealthDatePicker(.hourAndMinute, date: $viewModel.recipe.timeEnd) {
+            Text(viewModel.recipe.timeEnd.clocktime)
         }
     }
     
@@ -91,17 +80,10 @@ extension RecipeView {
         if viewModel.cancelEditButtonIsDisplayed {
             editCancel
         } else {
-            deleteButton
+//            deleteButton
         }
     }
-    
-    private var deleteButton: some View {
-        AlertingButton {
-            deleteAlert
-        } label: {
-            makeButtonLabel("Delete", systemImage: "trash")
-        }
-    }
+
     
     private var editCancel: some View {
         Button {
@@ -121,7 +103,7 @@ extension RecipeView {
     
     private var editButton: some View {
         Button {
-            viewModel.footerEditAction()
+            viewModel.edit()
         } label: {
             makeButtonLabel("Edit", systemImage: "pencil")
         }
@@ -158,18 +140,6 @@ extension RecipeView {
         .padding()
     }
     
-    private var deleteAlert: Alert {
-        Alert(
-            title: Text("Delete"),
-            message: Text("Are you sure you want to delete this recipe?"),
-            primaryButton: .destructive(Text("Confirm")) {
-                viewModel.alertDeleteAction()
-                dismiss()
-            },
-            secondaryButton: .cancel()
-        )
-    }
-    
     private var stopAlert: Alert {
         Alert(
             title: Text("Stop"),
@@ -195,9 +165,9 @@ extension RecipeView {
 
 struct RecipeView_Footer_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeView(.init(), mode: .edit, database: .preview)
-        RecipeView(.preview, mode: .edit, database: .preview)
         RecipeView(.preview, mode: .plan, database: .preview)
+        RecipeView(.preview, mode: .edit, database: .preview)
+        RecipeView(.init(), mode: .edit, database: .preview)
         RecipeView(.preview, mode: .make, database: .preview)
     }
 }
