@@ -3,8 +3,8 @@ import CustomUI
 import SwiftUI
 
 struct RecipeView: View {
-    @StateObject var viewModel: ViewModel
     @Environment(\.dismiss) var dismiss
+    @StateObject var viewModel: ViewModel
     
     init(_ recipe: Recipe, mode: Mode, database: Database = .persistent) {
         let viewModel = ViewModel(recipe, mode: mode, store: RecipeStore(database))
@@ -22,7 +22,9 @@ struct RecipeView: View {
         .navigationBarHidden(true)
         .ignoresSafeArea(.keyboard)
         .dismissKeyboard()
-        .onAppear { viewModel.didAppear() }
+        .onAppear {
+            viewModel.didAppear()
+        }
     }
 }
 

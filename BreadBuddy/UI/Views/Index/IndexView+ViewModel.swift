@@ -9,7 +9,7 @@ extension IndexView {
         
         init(store: RecipeStoring) {
             self.store = store
-            self.refresh()
+            refresh()
         }
         
         func refresh() {

@@ -1,5 +1,5 @@
 ### TODO
-- [ ] delete bug??
+- [ ] delete bug
 - [ ] string to url
 - [ ] Fancy buttons
 

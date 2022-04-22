@@ -75,6 +75,9 @@ struct IndexView: View {
         }
         ForEach(viewModel.inactiveRecipes) { recipe in
             Row(recipe: recipe)
+                .onDisappear {
+                    viewModel.refresh()
+                }
         }
     }
     
