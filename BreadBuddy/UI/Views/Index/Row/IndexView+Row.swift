@@ -5,10 +5,17 @@ import SwiftUI
 extension IndexView {
     struct Row: View {
         var recipe: Recipe
+        var onDisappear: () -> ()
+        
+        init(recipe: Recipe, onDisappear: @escaping () -> ()) {
+            self.recipe = recipe
+            self.onDisappear = onDisappear
+        }
         
         var body: some View {
             StealthNavigationLink {
                 RecipeView(recipe, mode: .plan)
+                    .onDisappear { onDisappear() }
             } label: {
                 content
             }

@@ -1,5 +1,4 @@
 ### TODO
-- [ ] delete bug
 - [ ] string to url
 - [ ] Fancy buttons
 

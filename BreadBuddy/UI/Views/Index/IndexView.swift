@@ -64,7 +64,9 @@ struct IndexView: View {
         if viewModel.activeSectionIsDisplayed {
             divider("In Progress")
             ForEach(viewModel.activeRecipes) { recipe in
-                Row(recipe: recipe)
+                Row(recipe: recipe) {
+                    viewModel.refresh()
+                }
             }
         }
     }
@@ -74,10 +76,9 @@ struct IndexView: View {
             divider("Recipes")
         }
         ForEach(viewModel.inactiveRecipes) { recipe in
-            Row(recipe: recipe)
-                .onDisappear {
-                    viewModel.refresh()
-                }
+            Row(recipe: recipe) {
+                viewModel.refresh()
+            }
         }
     }
     
