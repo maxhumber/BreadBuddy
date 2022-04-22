@@ -8,6 +8,7 @@ extension RecipeView {
             name
             trailingButton
         }
+        .foregroundColor(.accent1)
         .padding()
     }
     
@@ -18,7 +19,7 @@ extension RecipeView {
             switch viewModel.mode {
             case .plan: backButton
             case .make: backButton
-            case .edit: deleteButton // need to be here? for cancel
+            case .edit: editLeadingButton
             }
         }
     }
@@ -32,11 +33,28 @@ extension RecipeView {
         }
     }
     
+    @ViewBuilder var editLeadingButton: some View {
+        if viewModel.cancelButtonIsDisplayed {
+            cancelButton
+        } else {
+            deleteButton
+        }
+    }
+    
     private var deleteButton: some View {
         AlertingButton {
             deleteAlert
         } label: {
             Image(systemName: "trash")
+                .contentShape(Rectangle())
+        }
+    }
+    
+    private var cancelButton: some View {
+        Button {
+            dismiss()
+        } label: {
+            Image(systemName: "xmark")
                 .contentShape(Rectangle())
         }
     }
@@ -91,13 +109,11 @@ extension RecipeView {
         }
     }
     
+    #warning("still not right")
     private var viewLinkButton: some View {
         SafariButton(url: viewModel.headerRecipeURL) {
-            ZStack {
-                Image(systemName: "link.badge.plus").opacity(0)
-                Image(systemName: "link")
-            }
-            .contentShape(Rectangle())
+            Image(systemName: "link")
+                .contentShape(Rectangle())
         }
         .disabled(viewModel.headerLinkButtonIsDisabled)
         .foregroundColor(viewModel.headerLinkButtonIsDisabled ? .accent2 : .accent1)
@@ -115,7 +131,6 @@ extension RecipeView {
             Image(systemName: "link.badge.plus")
                 .contentShape(Rectangle())
         }
-        .foregroundColor(.accent1)
     }
     
     private var deleteAlert: Alert {

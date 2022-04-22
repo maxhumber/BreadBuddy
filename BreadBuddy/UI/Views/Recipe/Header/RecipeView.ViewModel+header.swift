@@ -1,6 +1,10 @@
 import Foundation
 
 extension RecipeView.ViewModel {
+    var cancelButtonIsDisplayed: Bool {
+        recipe.id == nil
+    }
+    
     var headerViewLinkButtonIsDisplayed: Bool {
         let isNotNil = !(recipe.link == nil)
         let isNotEmpty = !(recipe.link != "")

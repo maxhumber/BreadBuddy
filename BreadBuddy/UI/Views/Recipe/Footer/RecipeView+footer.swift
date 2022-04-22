@@ -6,22 +6,13 @@ extension RecipeView {
         Group {
             switch viewModel.mode {
             case .plan: planFooter
-            case .make: Text("Hey")
             case .edit: editFooter
+            case .make: Text("Hey")
             }
         }
         .foregroundColor(.accent1)
+        .font(.matter(.caption))
         .padding()
-    }
-    
-    private var editFooter: some View {
-        Button {
-            viewModel.footerSaveAction()
-        } label: {
-            makeButtonLabel(viewModel.footerSaveLabel, systemImage: viewModel.footerSaveSystemImage)
-                .frame(maxWidth: .infinity)
-        }
-        .buttonStyle(FancyButtonStyle(outline: .accent1, fill: .accent2))
     }
     
     private var planFooter: some View {
@@ -33,15 +24,15 @@ extension RecipeView {
     
     private var startButton: some View {
         Button {
-            viewModel.footerStartAction()
+            viewModel.start()
         } label: {
             ZStack {
-                Image(systemName: "flag").opacity(0)
+                Image(systemName: "xmark")
+                    .padding()
+                    .opacity(0)
                 Image(systemName: "play")
             }
-            .padding()
         }
-        .font(.matter(.caption2))
         .buttonStyle(FancyButtonStyle(outline: .accent1, fill: .accent2))
     }
     
@@ -51,9 +42,7 @@ extension RecipeView {
                 dayPicker
                 timePicker
             }
-            .padding(.vertical, 6)
             .frame(maxWidth: .infinity)
-            .font(.matter(.caption))
         }
         .buttonStyle(FancyButtonStyle(outline: .accent1, fill: .accent2))
         .padding(.leading, -2)
@@ -61,11 +50,16 @@ extension RecipeView {
             viewModel.didChange(timeEnd)
         }
     }
-
+    
     private var dayPicker: some View {
         StealthDatePicker(.date, date: $viewModel.recipe.timeEnd) {
-            HStack(spacing: 15) {
-                Image(systemName: "calendar")
+            HStack(spacing: 0) {
+                ZStack {
+                    Image(systemName: "xmark")
+                        .padding()
+                        .opacity(0)
+                    Image(systemName: "calendar")
+                }
                 Text(viewModel.recipe.timeEnd.simple)
             }
         }
@@ -74,23 +68,44 @@ extension RecipeView {
         StealthDatePicker(.hourAndMinute, date: $viewModel.recipe.timeEnd) {
             Text(viewModel.recipe.timeEnd.clocktime)
         }
+        .padding(.trailing, 5)
     }
     
-    @ViewBuilder private var editBottomRowLeadingButton: some View {
-        if viewModel.cancelEditButtonIsDisplayed {
-            editCancel
-        } else {
-//            deleteButton
+    private var editFooter: some View {
+        HStack(spacing: 15) {
+            if viewModel.discardButtonIsDislayed {
+                discardButton
+            }
+            doneButton
         }
     }
-
     
-    private var editCancel: some View {
+    private var discardButton: some View {
         Button {
-            dismiss()
+            
         } label: {
-            makeButtonLabel("Cancel", systemImage: "xmark")
+            Image(systemName: "xmark")
+                .padding()
         }
+        .buttonStyle(FancyButtonStyle(outline: .accent1, fill: .accent2))
+    }
+    
+    private var doneButton: some View {
+        Button {
+            viewModel.done()
+        } label: {
+            HStack {
+                ZStack {
+                    Image(systemName: "xmark")
+                        .padding(.vertical)
+                        .opacity(0)
+                    Image(systemName: "checkmark")
+                }
+                Text("Done")
+            }
+            .frame(maxWidth: .infinity)
+        }
+        .buttonStyle(FancyButtonStyle(outline: .accent1, fill: .accent2))
     }
     
     private var resetButton: some View {
@@ -99,24 +114,6 @@ extension RecipeView {
         } label: {
             makeButtonLabel("Reset", systemImage: "clock.arrow.circlepath")
         }
-    }
-    
-    private var editButton: some View {
-        Button {
-            viewModel.edit()
-        } label: {
-            makeButtonLabel("Edit", systemImage: "pencil")
-        }
-    }
-    
-    private var saveButton: some View {
-        Button {
-            viewModel.footerSaveAction()
-        } label: {
-            makeButtonLabel(viewModel.footerSaveLabel, systemImage: viewModel.footerSaveSystemImage)
-        }
-        .foregroundColor(viewModel.saveButtonIsDisabled ? .accent2 : .accent1)
-        .disabled(viewModel.saveButtonIsDisabled)
     }
     
     private var stopButton: some View {
@@ -145,7 +142,7 @@ extension RecipeView {
             title: Text("Stop"),
             message: Text("Are you sure you want to stop making this recipe?"),
             primaryButton: .destructive(Text("Confirm")) {
-                viewModel.footerStopAction()
+                viewModel.stop()
             },
             secondaryButton: .cancel()
         )
@@ -156,7 +153,7 @@ extension RecipeView {
             title: Text("Reset"),
             message: Text("Are you sure you want to reset the start time for this recipe?"),
             primaryButton: .destructive(Text("Confirm")) {
-                viewModel.footerResetAction()
+                viewModel.reset()
             },
             secondaryButton: .cancel()
         )
@@ -165,9 +162,9 @@ extension RecipeView {
 
 struct RecipeView_Footer_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeView(.preview, mode: .plan, database: .preview)
         RecipeView(.preview, mode: .edit, database: .preview)
         RecipeView(.init(), mode: .edit, database: .preview)
+        RecipeView(.preview, mode: .plan, database: .preview)
         RecipeView(.preview, mode: .make, database: .preview)
     }
 }

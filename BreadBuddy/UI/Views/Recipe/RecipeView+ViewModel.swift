@@ -17,16 +17,7 @@ extension RecipeView {
             self.store = store
         }
         
-        func didAppear() {
-            if !recipe.isActive { reforward() }
-            regroup()
-        }
-        
-        func edit() {
-            mode = .edit
-        }
-        
-        func save() {
+        private func save() {
             Task(priority: .userInitiated) {
                 recipe = try await store.save(recipe)
             }
@@ -38,9 +29,25 @@ extension RecipeView {
             }
         }
         
-        func refresh() {
+        func didAppear() {
+            if !recipe.isActive { reforward() }
+            regroup()
+        }
+        
+        func didChange(_ timeEnd: Date) {
             recipe = service.rewind(recipe)
             regroup()
+        }
+        
+        func edit() {
+            mode = .edit
+        }
+        
+        func done() {
+            recipe.steps = recipe.steps.filter { $0.timeValue != 0 }
+            mode = .plan
+            save()
+            reforward()
         }
         
         func reforward() {
@@ -48,6 +55,22 @@ extension RecipeView {
             regroup()
         }
         
+        func start() {
+            recipe.isActive = true
+            mode = .make
+            save()
+        }
+        
+        func stop() {
+            recipe.isActive = false
+            mode = .plan
+            save()
+        }
+        
+        func reset() {
+            reforward()
+        }
+
         private func regroup() {
             groups = service.group(recipe)
         }

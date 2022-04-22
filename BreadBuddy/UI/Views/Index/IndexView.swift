@@ -100,12 +100,11 @@ struct IndexView: View {
         } label: {
             HStack(spacing: 10) {
                 Image(systemName: "plus")
-                    .font(.body)
                 Text("New")
-                    .font(.matter(.caption))
             }
             .frame(maxWidth: .infinity)
             .padding()
+            .font(.matter(.caption))
             .foregroundColor(.accent1)
         }
         .buttonStyle(FancyButtonStyle(outline: .accent1, fill: .accent2))
