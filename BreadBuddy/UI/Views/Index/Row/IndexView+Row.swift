@@ -4,10 +4,10 @@ import SwiftUI
 
 extension IndexView {
     struct Row: View {
-        var recipe: Recipe
-        var onDisappear: () -> ()
+        private var recipe: Recipe
+        private var onDisappear: () -> ()
         
-        init(recipe: Recipe, onDisappear: @escaping () -> ()) {
+        init(_ recipe: Recipe, onDisappear: @escaping () -> ()) {
             self.recipe = recipe
             self.onDisappear = onDisappear
         }
