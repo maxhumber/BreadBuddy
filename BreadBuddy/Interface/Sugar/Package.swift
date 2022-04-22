@@ -2,13 +2,13 @@
 import PackageDescription
 
 let package = Package(
-    name: "CustomUI",
+    name: "Sugar",
     platforms: [.iOS(.v15)],
     products: [
-        .library(name: "CustomUI", targets: ["CustomUI"])
+        .library(name: "Sugar", targets: ["Sugar"])
     ],
     dependencies: [],
     targets: [
-        .target(name: "CustomUI", dependencies: []),
+        .target(name: "Sugar", dependencies: []),
     ]
 )

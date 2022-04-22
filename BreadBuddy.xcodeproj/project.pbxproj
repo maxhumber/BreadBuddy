@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		500FDB71280F345100556B8E /* RecipeView+Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500FDB70280F345100556B8E /* RecipeView+Mode.swift */; };
-		502042BB280F2617009074BC /* CustomUI in Frameworks */ = {isa = PBXBuildFile; productRef = 502042BA280F2617009074BC /* CustomUI */; };
 		502BF6732809A87200C6AA91 /* RecipeView+header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502BF6722809A87200C6AA91 /* RecipeView+header.swift */; };
 		502BF6752809A87B00C6AA91 /* RecipeView+content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502BF6742809A87B00C6AA91 /* RecipeView+content.swift */; };
 		502BF6772809A88600C6AA91 /* RecipeView+footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502BF6762809A88600C6AA91 /* RecipeView+footer.swift */; };
@@ -32,6 +31,7 @@
 		5099531D2800CBFA004AEEAB /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099531C2800CBFA004AEEAB /* Database.swift */; };
 		509953202800CC60004AEEAB /* IndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099531F2800CC60004AEEAB /* IndexView.swift */; };
 		509953222800CC6F004AEEAB /* IndexView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509953212800CC6F004AEEAB /* IndexView+ViewModel.swift */; };
+		50B45E75281344E3007F2127 /* Sugar in Frameworks */ = {isa = PBXBuildFile; productRef = 50B45E74281344E3007F2127 /* Sugar */; };
 		50C6D9382812DC60001F2EFC /* IndexView+Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C6D9372812DC60001F2EFC /* IndexView+Row.swift */; };
 		50CD03E3280D9ECD0001C3CB /* RecipeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CD03E2280D9ECD0001C3CB /* RecipeStore.swift */; };
 		50CD03E5280D9F340001C3CB /* RecipeStoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CD03E4280D9F340001C3CB /* RecipeStoring.swift */; };
@@ -53,7 +53,6 @@
 
 /* Begin PBXFileReference section */
 		500FDB70280F345100556B8E /* RecipeView+Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeView+Mode.swift"; sourceTree = "<group>"; };
-		502042B9280F25CA009074BC /* CustomUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CustomUI; sourceTree = "<group>"; };
 		502BF6722809A87200C6AA91 /* RecipeView+header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeView+header.swift"; sourceTree = "<group>"; };
 		502BF6742809A87B00C6AA91 /* RecipeView+content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeView+content.swift"; sourceTree = "<group>"; };
 		502BF6762809A88600C6AA91 /* RecipeView+footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeView+footer.swift"; sourceTree = "<group>"; };
@@ -79,6 +78,7 @@
 		5099531C2800CBFA004AEEAB /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		5099531F2800CC60004AEEAB /* IndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexView.swift; sourceTree = "<group>"; };
 		509953212800CC6F004AEEAB /* IndexView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IndexView+ViewModel.swift"; sourceTree = "<group>"; };
+		50B45E73281344CA007F2127 /* Sugar */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Sugar; sourceTree = "<group>"; };
 		50C6D9372812DC60001F2EFC /* IndexView+Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IndexView+Row.swift"; sourceTree = "<group>"; };
 		50CD03E2280D9ECD0001C3CB /* RecipeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStore.swift; sourceTree = "<group>"; };
 		50CD03E4280D9F340001C3CB /* RecipeStoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStoring.swift; sourceTree = "<group>"; };
@@ -94,7 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				502042BB280F2617009074BC /* CustomUI in Frameworks */,
+				50B45E75281344E3007F2127 /* Sugar in Frameworks */,
 				509953192800CB09004AEEAB /* GRDB in Frameworks */,
 				504E6E93280F300E00B5EE21 /* Core in Frameworks */,
 			);
@@ -142,10 +142,10 @@
 		504D3C1727E017B200C95123 /* BreadBuddy */ = {
 			isa = PBXGroup;
 			children = (
-				50E7F3862809F79E008CF185 /* App */,
 				50FA5E7A2812060D00A6725B /* Core */,
+				50E7F3862809F79E008CF185 /* App */,
 				50FA5E77281204C300A6725B /* Data */,
-				50FA5E762812001D00A6725B /* UI */,
+				50FA5E762812001D00A6725B /* Interface */,
 			);
 			path = BreadBuddy;
 			sourceTree = "<group>";
@@ -259,15 +259,15 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		50FA5E762812001D00A6725B /* UI */ = {
+		50FA5E762812001D00A6725B /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				50B45E73281344CA007F2127 /* Sugar */,
 				501E92FD2805C50600F120EA /* Views */,
 				505EAFF7280F9AF2009F596A /* Colors */,
 				505EAFB2280F6CA9009F596A /* Fonts */,
-				502042B9280F25CA009074BC /* CustomUI */,
 			);
-			path = UI;
+			path = Interface;
 			sourceTree = "<group>";
 		};
 		50FA5E77281204C300A6725B /* Data */ = {
@@ -297,8 +297,8 @@
 			name = BreadBuddy;
 			packageProductDependencies = (
 				509953182800CB09004AEEAB /* GRDB */,
-				502042BA280F2617009074BC /* CustomUI */,
 				504E6E92280F300E00B5EE21 /* Core */,
+				50B45E74281344E3007F2127 /* Sugar */,
 			);
 			productName = BreadBuddy;
 			productReference = 504D3C1527E017B200C95123 /* BreadBuddy.app */;
@@ -699,10 +699,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		502042BA280F2617009074BC /* CustomUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = CustomUI;
-		};
 		504E6E92280F300E00B5EE21 /* Core */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Core;
@@ -711,6 +707,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 509953172800CB09004AEEAB /* XCRemoteSwiftPackageReference "GRDB.swift" */;
 			productName = GRDB;
+		};
+		50B45E74281344E3007F2127 /* Sugar */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Sugar;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

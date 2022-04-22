@@ -1,4 +1,4 @@
-import CustomUI
+import Sugar
 import SwiftUI
 
 extension RecipeView {

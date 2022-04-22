@@ -1,5 +1,4 @@
-import Core
-import CustomUI
+import Sugar
 import SwiftUI
 
 struct IndexView: View {
