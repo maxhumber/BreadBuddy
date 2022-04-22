@@ -3,13 +3,13 @@ import CustomUI
 import SwiftUI
 
 extension RecipeView {
-    struct EditStep: View {
-        @EnvironmentObject var viewModel: ViewModel
-        @FocusState private var field: EditStepField?
-        @Binding var step: Step
-        var mode: EditStepMode
+    struct EditRow: View {
+        @EnvironmentObject private var viewModel: ViewModel
+        @FocusState private var field: Field?
+        @Binding private var step: Step
+        private var mode: Mode
         
-        init(_ step: Binding<Step>, mode: EditStepMode = .existing) {
+        init(_ step: Binding<Step>, mode: Mode = .existing) {
             self._step = step
             self.mode = mode
         }
@@ -17,7 +17,9 @@ extension RecipeView {
         var body: some View {
             content
                 .onChange(of: field) { field in
-                    viewModel.didChange(to: field, with: mode)
+                    if field == .none && mode == .new {
+                        viewModel.addStep()
+                    }
                 }
         }
         
@@ -132,7 +134,19 @@ extension RecipeView {
     }
 }
 
-struct EditContent_Previews: PreviewProvider {
+extension RecipeView.EditRow {
+    enum Field {
+        case description
+        case timeValue
+    }
+    
+    enum Mode {
+        case existing
+        case new
+    }
+}
+
+struct EditRow_Previews: PreviewProvider {
     static var previews: some View {
         RecipeView(.preview, mode: .edit, database: .preview)
         RecipeView(.init(), mode: .edit, database: .preview)

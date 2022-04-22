@@ -39,17 +39,21 @@ extension IndexView {
         
         private var bottomRow: some View {
             HStack(spacing: 4) {
-                if recipe.isActive {
-                    Image(systemName: "calendar")
-                        .opacity(0.8)
-                } else {
-                    Image(systemName: "hourglass")
-                        .opacity(0.8)
-                }
+                icon
                 Text(subtitle)
             }
             .font(.matter(.caption2, emphasis: .italic))
             .foregroundColor(.text2)
+        }
+        
+        @ViewBuilder private var icon: some View {
+            if recipe.isActive {
+                Image(systemName: "calendar")
+                    .opacity(0.8)
+            } else {
+                Image(systemName: "hourglass")
+                    .opacity(0.8)
+            }
         }
             
         private var subtitle: String {

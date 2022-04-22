@@ -22,9 +22,6 @@ struct RecipeView: View {
         .navigationBarHidden(true)
         .ignoresSafeArea(.keyboard)
         .dismissKeyboard()
-        .onAppear {
-            viewModel.didAppear()
-        }
     }
 }
 

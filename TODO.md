@@ -1,6 +1,7 @@
 ### TODO
-- [ ] TestFlight
-- [ ] string to url
+- [ ] Upload to TestFlight
+- [ ] Fix URL stuff
+  - [ ] string to url?
 
 - [ ] Update README
 - [ ] Screens for Store

@@ -15,12 +15,33 @@ extension RecipeView {
             self.mode = recipe.isActive ? .make : mode
             self.service = service
             self.store = store
+            if !recipe.isActive { reforward() }
+            self.regroup()
         }
         
+        // MARK: - shared
+        func reforward() {
+            recipe = service.reforward(recipe)
+            regroup()
+        }
+        
+        private func regroup() {
+            groups = service.group(recipe)
+        }
+
         private func save() {
             Task(priority: .userInitiated) {
                 recipe = try await store.save(recipe)
             }
+        }
+        
+        func edit() {
+            mode = .edit
+        }
+        
+        // MARK: - header
+        var cancelButtonIsDisplayed: Bool {
+            recipe.id == nil
         }
         
         func delete() {
@@ -29,22 +50,40 @@ extension RecipeView {
             }
         }
         
-        func didAppear() {
-            if !recipe.isActive { reforward() }
-            regroup()
+        // MARK: - content
+        func addStep() {
+            if newStep.isValid {
+                recipe.steps.append(newStep)
+                newStep = .init()
+            }
         }
         
-        func didChange(_ timeEnd: Date) {
-            recipe = service.rewind(recipe)
-            regroup()
+        func delete(_ step: Step) {
+            if let index = recipe.steps.firstIndex(of: step) {
+                recipe.steps.remove(at: index)
+            }
         }
         
-        func edit() {
-            mode = .edit
+        func insert(_ step: Step, after: Bool = false) {
+            if var index = recipe.steps.firstIndex(of: step) {
+                if after {
+                    index = recipe.steps.index(after: index)
+                }
+                recipe.steps.insert(.init(), at: index)
+            }
+        }
+        
+        // MARK: - footer
+        var discardButtonIsDislayed: Bool {
+            recipe.id != nil
         }
         
         func discard() {
             mode = .plan
+        }
+        
+        var doneButtonIsDisabled: Bool {
+            recipe.name.isEmpty || recipe.steps.isEmpty
         }
         
         func done() {
@@ -54,15 +93,19 @@ extension RecipeView {
             reforward()
         }
         
-        func reforward() {
-            recipe = service.reforward(recipe)
-            regroup()
-        }
-        
         func start() {
             recipe.isActive = true
             mode = .make
             save()
+        }
+        
+        func didChange(_ timeEnd: Date) {
+            recipe = service.rewind(recipe)
+            regroup()
+        }
+    
+        func reset() {
+            reforward()
         }
         
         func stop() {
@@ -70,13 +113,27 @@ extension RecipeView {
             mode = .plan
             save()
         }
-        
-        func reset() {
-            reforward()
-        }
 
-        private func regroup() {
-            groups = service.group(recipe)
+        // MARK: - fix this BS
+        
+        #warning("this shit sucks")
+        var headerViewLinkButtonIsDisplayed: Bool {
+            let isNotNil = !(recipe.link == nil)
+            let isNotEmpty = !(recipe.link != "")
+            return isNotEmpty && isNotNil
+        }
+        
+        var headerLinkButtonIsDisabled: Bool {
+            if mode == .edit {
+                return false
+            } else {
+                return !(recipe.link?.isValidURL == true)
+            }
+        }
+        
+        var headerRecipeURL: URL? {
+            guard let link = recipe.link else { return nil }
+            return URL(string: link)
         }
     }
 }

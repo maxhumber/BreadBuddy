@@ -17,6 +17,8 @@ struct IndexView: View {
                 content
                 footer
             }
+            .font(.matter(.caption))
+            .foregroundColor(.accent1)
             .background(Color.background)
             .navigationBarHidden(true)
         }
@@ -84,12 +86,9 @@ struct IndexView: View {
     
     private func divider(_ label: String) -> some View {
         Divider {
-            Text(label.uppercased())
-                .tracking(2)
-                .font(.matter(.caption))
+            Text(label.uppercased()).tracking(2)
         }
         .padding(.horizontal)
-        .foregroundColor(.accent1)
     }
     
     private var footer: some View {
@@ -98,14 +97,12 @@ struct IndexView: View {
         } onDismiss: {
             viewModel.refresh()
         } label: {
-            HStack(spacing: 10) {
+            HStack {
                 Image(systemName: "plus")
                 Text("New")
             }
             .frame(maxWidth: .infinity)
             .padding()
-            .font(.matter(.caption))
-            .foregroundColor(.accent1)
         }
         .buttonStyle(FancyButtonStyle(outline: .accent1, fill: .accent2))
         .padding()
