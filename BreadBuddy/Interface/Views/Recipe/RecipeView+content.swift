@@ -43,7 +43,7 @@ extension RecipeView {
         EditRow($viewModel.newStep, mode: .new)
             .padding(.top, 5)
         Spacer()
-            .padding(.bottom, 200)
+            .padding(.bottom, 250)
     }
 }
 

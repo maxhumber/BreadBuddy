@@ -6,7 +6,7 @@ public struct FancyButtonStyle: ButtonStyle {
     var outline: Color?
     var fill: Color?
     
-    public init(cornerRadius: Double = 4, offset: (x: Double, y: Double) = (4, -4), outline: Color? = nil, fill: Color? = nil) {
+    public init(cornerRadius: Double = 4, offset: (x: Double, y: Double) = (3, -3), outline: Color? = nil, fill: Color? = nil) {
         self.cornerRadius = cornerRadius
         self.offset = offset
         self.outline = outline
@@ -32,14 +32,10 @@ public struct FancyButtonStyle: ButtonStyle {
     }
     
     private var backgroundRect: some View {
-        ZStack {
-            roundedRect
-                .foregroundColor(fill ?? .blue.opacity(0.25))
-            roundedRect
-                .strokeBorder()
-        }
-        .offset(x: offset.x, y: offset.y)
-        .mask(maskingRect)
+        roundedRect
+            .foregroundColor(fill ?? .blue.opacity(0.25))
+            .offset(x: offset.x, y: offset.y)
+            .mask(maskingRect)
     }
     
     private var maskingRect: some View {

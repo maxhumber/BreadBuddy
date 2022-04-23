@@ -1,12 +1,16 @@
 import SwiftUI
 
 public struct SafariButton<Label: View>: View {
-    var url: URL?
-    var label: Label
     @State private var isPresented = false
-    
-    public init(url: URL?, @ViewBuilder label: () -> Label) {
-        self.url = url
+    private var url: URL
+    private var label: Label
+
+    public init(urlString: String?, @ViewBuilder label: () -> Label) {
+        if let urlString = urlString, let url = URL(string: urlString) {
+            self.url = url
+        } else {
+            self.url = URL(string: "https://")!
+        }
         self.label = label()
     }
     
@@ -17,23 +21,14 @@ public struct SafariButton<Label: View>: View {
             label
         }
         .sheet(isPresented: $isPresented) {
-            content
-                .edgesIgnoringSafeArea(.bottom)
-        }
-    }
-    
-    @ViewBuilder private var content: some View {
-        if let url = url {
-            SafariView(url)
-        } else {
-            Text("Error: Invalid URL")
+            SafariView(url).edgesIgnoringSafeArea(.bottom)
         }
     }
 }
 
 struct SafariButton_Previews: PreviewProvider {
     static var previews: some View {
-        SafariButton(url: URL(string: "https://google.com")!) {
+        SafariButton(urlString: "https://google.com") {
             Text("google.com")
         }
     }

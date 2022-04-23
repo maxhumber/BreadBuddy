@@ -50,6 +50,11 @@ extension RecipeView {
             }
         }
         
+        var viewLinkButtonIsDisabled: Bool {
+            guard let link = recipe.link else { return true }
+            return !link.canOpenUrl()
+        }
+        
         // MARK: - content
         func addStep() {
             if newStep.isValid {
@@ -112,28 +117,6 @@ extension RecipeView {
             recipe.isActive = false
             mode = .plan
             save()
-        }
-
-        // MARK: - fix this BS
-        
-        #warning("this shit sucks")
-        var headerViewLinkButtonIsDisplayed: Bool {
-            let isNotNil = !(recipe.link == nil)
-            let isNotEmpty = !(recipe.link != "")
-            return isNotEmpty && isNotNil
-        }
-        
-        var headerLinkButtonIsDisabled: Bool {
-            if mode == .edit {
-                return false
-            } else {
-                return !(recipe.link?.isValidURL == true)
-            }
-        }
-        
-        var headerRecipeURL: URL? {
-            guard let link = recipe.link else { return nil }
-            return URL(string: link)
         }
     }
 }

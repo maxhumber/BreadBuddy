@@ -121,15 +121,13 @@ extension RecipeView {
         }
     }
     
-    #warning("still not right")
     private var viewLinkButton: some View {
-        SafariButton(url: viewModel.headerRecipeURL) {
+        SafariButton(urlString: viewModel.recipe.link) {
             Image(systemName: "link")
                 .contentShape(Rectangle())
         }
-        .disabled(viewModel.headerLinkButtonIsDisabled)
-        .foregroundColor(viewModel.headerLinkButtonIsDisabled ? .accent2 : .accent1)
-        .opacity(viewModel.headerViewLinkButtonIsDisplayed ? 0 : 1)
+        .disabled(viewModel.viewLinkButtonIsDisabled)
+        .foregroundColor(viewModel.viewLinkButtonIsDisabled ? .accent2 : .accent1)
     }
     
     private var addLinkButton: some View {

@@ -124,8 +124,8 @@ extension RecipeView {
     }
     
     private var resetButton: some View {
-        AlertingButton {
-            resetAlert
+        Button {
+            viewModel.reset()
         } label: {
             ZStack {
                 Image(systemName: "xmark")
@@ -137,20 +137,9 @@ extension RecipeView {
         .buttonStyle(FancyButtonStyle(outline: .accent1, fill: .accent2))
     }
     
-    private var resetAlert: Alert {
-        Alert(
-            title: Text("Reset"),
-            message: Text("Are you sure you want to reset the start time for this recipe?"),
-            primaryButton: .destructive(Text("Confirm")) {
-                viewModel.reset()
-            },
-            secondaryButton: .cancel()
-        )
-    }
-    
     private var stopButton: some View {
-        AlertingButton {
-            stopAlert
+        Button {
+            viewModel.stop()
         } label: {
             HStack(spacing: 10) {
                 ZStack {
@@ -164,17 +153,6 @@ extension RecipeView {
             .frame(maxWidth: .infinity)
         }
         .buttonStyle(FancyButtonStyle(outline: .accent1, fill: .accent2))
-    }
-    
-    private var stopAlert: Alert {
-        Alert(
-            title: Text("Stop"),
-            message: Text("Are you sure you want to stop making this recipe?"),
-            primaryButton: .destructive(Text("Confirm")) {
-                viewModel.stop()
-            },
-            secondaryButton: .cancel()
-        )
     }
 }
 

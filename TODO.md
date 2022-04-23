@@ -1,14 +1,5 @@
 ### TODO
 - [ ] Upload to TestFlight
-- [ ] Fix URL stuff
-  - [ ] string to url?
-- [ ] de-offset logo (and regenerate icons + dark mode)
-- [ ] Add "about" qualifier to time
-- [ ] Fade the overlaps for scroll view
-- [ ] Refactor EditRow (Existing versus Add)
-- [ ] Alerting Play Button to schedule
-
-
 - [ ] Update README
 - [ ] Screens for Store
 - [ ] Schedule all notifications (for step times)

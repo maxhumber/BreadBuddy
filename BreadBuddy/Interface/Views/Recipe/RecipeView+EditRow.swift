@@ -63,11 +63,16 @@ extension RecipeView {
         }
         
         private var actionMenuLabel: some View {
-            Image(systemName: "ellipsis")
-                .rotationEffect(.degrees(90))
-                .padding(.trailing, 5)
-                .padding(.leading, -5)
-                .foregroundColor(.accent1)
+            ZStack {
+                Image(systemName: "square").opacity(0)
+                Image(systemName: "ellipsis")
+                    .rotationEffect(.degrees(90))
+                    .foregroundColor(.accent1)
+                    .padding(.trailing, 5)
+                    .padding(.leading, -5)
+            }
+            .contentShape(Rectangle())
+            .padding(.trailing, -5)
         }
         
         private var activity: some View {

@@ -4,7 +4,7 @@ import SwiftUI
 
 extension RecipeView {
     struct PlanRow: View {
-        var step: Step
+        private var step: Step
         
         init(_ step: Step) {
             self.step = step
@@ -16,7 +16,6 @@ extension RecipeView {
                 activity
                 Spacer()
             }
-            .foregroundColor(.text1)
             .contentShape(Rectangle())
         }
         
@@ -26,16 +25,17 @@ extension RecipeView {
                 Text(step.clocktimeStart)
             }
             .font(.matter(emphasis: .bold))
-            .if(isPast) { $0.foregroundColor(.text2) }
+            .foregroundColor(isPast ? .text2.opacity(0.35) : .text1)
         }
         
         private var activity: some View {
             VStack(alignment: .leading, spacing: 6) {
                 Text(step.description)
                     .font(.matter())
+                    .foregroundColor(isPast ? .text2.opacity(0.4) : .text1)
                 Text(step.duration)
                     .font(.matter(.caption2, emphasis: .italic))
-                    .foregroundColor(.text2)
+                    .foregroundColor(isPast ? .text2.opacity(0.4) : .text2)
             }
         }
         
