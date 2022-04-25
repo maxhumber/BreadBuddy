@@ -48,7 +48,7 @@ With CADI code is organized into the following folders:
 - Database 
   - UserDefaults, CoreData, [GRDB.swift](https://github.com/groue/GRDB.swift), or similar
 - Stores
-- With protocols to allow for future data layer substitutions
+  - With protocols to allow for future data layer substitutions
 
 [`Interface/`](https://github.com/maxhumber/BreadBuddy/tree/master/BreadBuddy/Interface)
 - Views (the **V** in M **V** VM)
@@ -59,7 +59,7 @@ With CADI code is organized into the following folders:
 - Sugar*
   - Custom and reusable UI components
 
-*`Core/` and Sugar are local package firewall-ed from the rest of the app
+*`Core/` and Sugar are local packages firewall-ed from the rest of the app
 
 ### Notable Files
 
