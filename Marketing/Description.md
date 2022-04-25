@@ -1,6 +1,8 @@
 ### BreadBuddy
 
-BreadyBuddy helps you manage, plan, and schedule baked goods.
+BreadyBuddy is a recipe scheduler for baked goods.
 
-The app is great for sourdough baguettes, overnight pizza dough, and anything that requires more than just a couple of hours to bake!
+Great for sourdough baguettes, overnight pizza dough, and recipe that requires more than a couple of hours to bake!
+
+
 

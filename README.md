@@ -1,4 +1,7 @@
-### BreadBuddy
+<h3>
+  <img src="https://raw.githubusercontent.com/maxhumber/BreadBuddy/master/Marketing/Logos/BreadBuddy.png" height="30px" alt="BreadBuddy1">
+  BreadBuddy
+</h3>
 
 BreadBuddy is a recipe scheduler for iOS. I use it to schedule my overnight pizza dough, and my partner uses it schedule her awesomely complicated (but incredibly yummy) sourdough baguettes!
 
