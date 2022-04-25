@@ -1,6 +1,6 @@
 ### BreadBuddy
 
-BreadBuddy is a recipe manager, planner, and scheduler for baked goods. I use it to schedule my overnight pizza dough, and my partner uses it schedule her awesomely complicated (but incredibly yummy) sourdough baguettes!
+BreadBuddy is a recipe scheduler for iOS. I use it to schedule my overnight pizza dough, and my partner uses it schedule her awesomely complicated (but incredibly yummy) sourdough baguettes!
 
 ### Screenshots
 
