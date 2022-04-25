@@ -12,6 +12,7 @@
 		502BF6752809A87B00C6AA91 /* RecipeView+content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502BF6742809A87B00C6AA91 /* RecipeView+content.swift */; };
 		502BF6772809A88600C6AA91 /* RecipeView+footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502BF6762809A88600C6AA91 /* RecipeView+footer.swift */; };
 		5032A6B627FB47610031501D /* RecipeView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032A6B527FB47610031501D /* RecipeView+ViewModel.swift */; };
+		5044B5362816F22700CB8111 /* Preview.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5044B5352816F22700CB8111 /* Preview.xcassets */; };
 		504D3C1927E017B200C95123 /* BreadBuddy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D3C1827E017B200C95123 /* BreadBuddy.swift */; };
 		504D3C1D27E017B300C95123 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504D3C1C27E017B300C95123 /* Assets.xcassets */; };
 		504D3C2A27E017B300C95123 /* BreadBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D3C2927E017B300C95123 /* BreadBuddyTests.swift */; };
@@ -56,6 +57,7 @@
 		502BF6742809A87B00C6AA91 /* RecipeView+content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeView+content.swift"; sourceTree = "<group>"; };
 		502BF6762809A88600C6AA91 /* RecipeView+footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeView+footer.swift"; sourceTree = "<group>"; };
 		5032A6B527FB47610031501D /* RecipeView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeView+ViewModel.swift"; sourceTree = "<group>"; };
+		5044B5352816F22700CB8111 /* Preview.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Preview.xcassets; sourceTree = "<group>"; };
 		504D3C1527E017B200C95123 /* BreadBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreadBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		504D3C1827E017B200C95123 /* BreadBuddy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadBuddy.swift; sourceTree = "<group>"; };
 		504D3C1C27E017B300C95123 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -115,6 +117,14 @@
 				50B6A4C927FDD63600A1F834 /* Recipe */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		5044B5342816F20200CB8111 /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				5044B5352816F22700CB8111 /* Preview.xcassets */,
+			);
+			path = Preview;
 			sourceTree = "<group>";
 		};
 		504D3C0C27E017B200C95123 = {
@@ -252,6 +262,7 @@
 				504D3C1827E017B200C95123 /* BreadBuddy.swift */,
 				504D3C1C27E017B300C95123 /* Assets.xcassets */,
 				505EAFF1280F71C1009F596A /* Info.plist */,
+				5044B5342816F20200CB8111 /* Preview */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -365,6 +376,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5044B5362816F22700CB8111 /* Preview.xcassets in Resources */,
 				505EAFE9280F717C009F596A /* Matter-SemiBold.ttf in Resources */,
 				505EAFF9280F9B12009F596A /* Colors.xcassets in Resources */,
 				505EAFF0280F717C009F596A /* Matter-Regular.ttf in Resources */,
@@ -387,6 +399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				504D3C1927E017B200C95123 /* BreadBuddy.swift in Sources */,
 				5032A6B627FB47610031501D /* RecipeView+ViewModel.swift in Sources */,
 				500FDB71280F345100556B8E /* RecipeView+Mode.swift in Sources */,
 				50631C0B280868A6007985F1 /* RecipeView+PlanRow.swift in Sources */,
@@ -400,7 +413,6 @@
 				508255532811D65800E8B109 /* Recipes.swift in Sources */,
 				509953222800CC6F004AEEAB /* IndexView+ViewModel.swift in Sources */,
 				50E7F3832809F698008CF185 /* Database+preview.swift in Sources */,
-				504D3C1927E017B200C95123 /* BreadBuddy.swift in Sources */,
 				505EAFF4280F7299009F596A /* Font+.swift in Sources */,
 				50631C05280851DF007985F1 /* RecipeView.swift in Sources */,
 				50E7F3792809EFA9008CF185 /* RecipeStorable.swift in Sources */,
@@ -554,7 +566,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BreadBuddy/App\"";
+				DEVELOPMENT_ASSET_PATHS = "\"BreadBuddy/App/Preview\"";
 				DEVELOPMENT_TEAM = 65UTX76JJY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -585,7 +597,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BreadBuddy/App\"";
+				DEVELOPMENT_ASSET_PATHS = "\"BreadBuddy/App/Preview\"";
 				DEVELOPMENT_TEAM = 65UTX76JJY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
