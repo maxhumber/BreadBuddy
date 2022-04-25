@@ -1,5 +1,5 @@
 <h3>
-  <img src="https://raw.githubusercontent.com/maxhumber/BreadBuddy/master/Marketing/Logos/BreadBuddy.png" height="30px" alt="BreadBuddy1">
+  <img src="https://raw.githubusercontent.com/maxhumber/BreadBuddy/master/Marketing/Logos/BreadBuddy.png" height="30px" alt="BreadBuddy Logo">
   BreadBuddy
 </h3>
 
