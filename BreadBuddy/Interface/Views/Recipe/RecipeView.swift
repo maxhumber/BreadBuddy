@@ -22,6 +22,9 @@ struct RecipeView: View {
         .navigationBarHidden(true)
         .ignoresSafeArea(.keyboard)
         .dismissKeyboard()
+        .dismissingGesture {
+            dismiss()
+        }
     }
 }
 
