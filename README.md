@@ -1,5 +1,3 @@
-
-
 ### BreadBuddy
 
 BreadBuddy is a recipe manager, planner, and scheduler for baked goods. I use it to schedule my overnight pizza dough, and my partner uses it schedule her awesomely complicated (but incredibly yummy) sourdough baguettes!
@@ -7,15 +5,15 @@ BreadBuddy is a recipe manager, planner, and scheduler for baked goods. I use it
 ### Screenshots
 
 <h3>
-  <img src="https://raw.githubusercontent.com/maxhumber/BreadBuddy/master/Marketing/Screenshots/Simulator%20Screen%20Shot%20-%20iPhone%2013%20Pro%20Max%20-%201.png?token=GHSAT0AAAAAABRP7X6R3T2ZCBALJJVJ3UUEYTG4XMQ" height="300px" alt="BreadBuddy1">
-  <img src="https://raw.githubusercontent.com/maxhumber/BreadBuddy/master/Marketing/Screenshots/Simulator%20Screen%20Shot%20-%20iPhone%2013%20Pro%20Max%20-%202.png?token=GHSAT0AAAAAABRP7X6QQHEPYWFUAILMRMESYTG4XNQ" height="300px" alt="BreadBuddy2">
-    <img src="https://raw.githubusercontent.com/maxhumber/BreadBuddy/master/Marketing/Screenshots/Simulator%20Screen%20Shot%20-%20iPhone%2013%20Pro%20Max%20-%203.png?token=GHSAT0AAAAAABRP7X6RKJWV5B74B7YVHQI4YTG4XOQ" height="300px" alt="BreadBuddy3">
-    <img src="https://raw.githubusercontent.com/maxhumber/BreadBuddy/master/Marketing/Screenshots/Simulator%20Screen%20Shot%20-%20iPhone%2013%20Pro%20Max%20-%204.png?token=GHSAT0AAAAAABRP7X6QRZNKHDXMRB776FUGYTG4XPQ" height="300px" alt="BreadBuddy4">
+  <img src="https://raw.githubusercontent.com/maxhumber/BreadBuddy/master/Marketing/Screenshots/screenshot_13pm_1.png" height="300px" alt="BreadBuddy1">
+  <img src="https://raw.githubusercontent.com/maxhumber/BreadBuddy/master/Marketing/Screenshots/screenshot_13pm_2.png" height="300px" alt="BreadBuddy2">
+  <img src="https://raw.githubusercontent.com/maxhumber/BreadBuddy/master/Marketing/Screenshots/screenshot_13pm_3.png" height="300px" alt="BreadBuddy3">
+  <img src="https://raw.githubusercontent.com/maxhumber/BreadBuddy/master/Marketing/Screenshots/screenshot_13pm_4.png" height="300px" alt="BreadBuddy4">
 </h3>
 
 ### Download
 
-[![BreadBuddy Download Link](https://moonlight-stream.org/images/App_Store_Badge_135x40.svg)](https://apps.apple.com/app/id1549289924)
+[![BreadBuddy Download Link](https://raw.githubusercontent.com/maxhumber/BreadBuddy/master/Marketing/Logos/appstore.svg)](https://apps.apple.com/app/id1549289924)
 
 ### Open Source
 
@@ -32,7 +30,6 @@ BreadBuddy is built with SwiftUI and uses the [MVVM](https://en.wikipedia.org/wi
 With CADI code is organized into the following folders:
 
 [`Core/`](https://github.com/maxhumber/BreadBuddy/tree/master/BreadBuddy/Core)*
-
 - Models (the **M** in **M** V VM)
   - Core data representations
 - Services (domain logic)
@@ -42,29 +39,27 @@ With CADI code is organized into the following folders:
 
 [`App/`](https://github.com/maxhumber/BreadBuddy/tree/master/BreadBuddy/App)
 
-  - @main entry point
-  - Configuration files
-  - Asset catalogues
-  - Environment/plist variables
+- @main entry point
+- Configuration files
+- Asset catalogues
+- Environment/plist variables
 
 [`Data/`](https://github.com/maxhumber/BreadBuddy/tree/master/BreadBuddy/Data)
-
-  - Database 
-    - UserDefaults, CoreData, [GRDB.swift](https://github.com/groue/GRDB.swift), or similar
-  - Stores
-  - With protocols to allow for future data layer substitutions
+- Database 
+  - UserDefaults, CoreData, [GRDB.swift](https://github.com/groue/GRDB.swift), or similar
+- Stores
+- With protocols to allow for future data layer substitutions
 
 [`Interface/`](https://github.com/maxhumber/BreadBuddy/tree/master/BreadBuddy/Interface)
+- Views (the **V** in M **V** VM)
+  - Organized by screen
+  - With nested ViewModels (the **VM** in M V **VM**)
+- Fonts
+- Colors
+- Sugar*
+  - Custom and reusable UI components
 
-  - Views (the **V** in M **V** VM)
-    - Organized by screen
-    - With nested ViewModels (the **VM** in M V **VM**)
-  - Fonts
-  - Colors
-  - Sugar*
-    - Custom and reusable UI components
-
-** `Core` and `Sugar` are local package firewall-ed from the rest of the app*
+*`Core/` and Sugar are local package firewall-ed from the rest of the app
 
 ### Notable Files
 
