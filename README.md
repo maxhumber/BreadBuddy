@@ -13,7 +13,7 @@ BreadBuddy is a recipe manager, planner, and scheduler for baked goods. I use it
 
 ### Download
 
-[![BreadBuddy Download Link](https://raw.githubusercontent.com/maxhumber/BreadBuddy/master/Marketing/Logos/appstore.svg)](https://apps.apple.com/app/id1549289924)
+[![BreadBuddy Download Link](https://raw.githubusercontent.com/maxhumber/BreadBuddy/master/Marketing/Logos/AppStore.svg)](https://apps.apple.com/app/id1549289924)
 
 ### Open Source
 
