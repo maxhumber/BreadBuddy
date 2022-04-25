@@ -1,24 +1,18 @@
-### TODO
+### Todo
 
-*   [ ] Upload to TestFlight
-*   [ ] Screens for Store
-*   [ ] Cut Release and Publish v1.0
-
-### Next
-
-*   [ ] Step Notification Service
-*   [ ] Settings Screen
-*   [ ] StoreKit2
-*   [ ] Share/Import Recipes
 *   [ ] Landscape Layout
+*   [ ] Share/Import Recipes
+*   [ ] Step Notification Service
 
 ### Eventually
 
+*   [ ] Settings Screen
+*   [ ] StoreKit2
 *   [ ] In Progress updates (using TimelineView)
 *   [ ] Analytics (AWS)
 *   [ ] iPad Support
 
-### Features
+### Plus Features
 
 | Feature                         | Free | Plus      |
 | :------------------------------ | :--- | :-------- |
