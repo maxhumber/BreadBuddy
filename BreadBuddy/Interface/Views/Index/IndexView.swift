@@ -21,6 +21,7 @@ struct IndexView: View {
             .background(Color.background)
             .navigationBarHidden(true)
         }
+        .preferredColorScheme(.light) // FORCE
     }
     
     private var header: some View {
@@ -91,22 +92,48 @@ struct IndexView: View {
     }
     
     private var footer: some View {
+        Group {
+            if viewModel.recipesLimitReached {
+                alertingButton
+            } else {
+                coveringButton
+            }
+        }
+        .padding()
+        .padding(.horizontal)
+        .padding(.leading, -2)
+    }
+    
+    private var coveringButton: some View {
         CoveringButton {
             RecipeView(.init(), mode: .edit)
         } onDismiss: {
             viewModel.refresh()
         } label: {
-            HStack {
-                Image(systemName: "plus")
-                Text("New")
-            }
-            .frame(maxWidth: .infinity)
-            .padding()
+            newButtonLabel
         }
         .buttonStyle(FancyButtonStyle(outline: .accent1, fill: .accent2))
+    }
+    
+    private var alertingButton: some View {
+        AlertingButton {
+            Alert(
+                title: Text("Limit Reached"),
+                message: Text("Unable to add more than five recipes at this time")
+            )
+        } label: {
+            newButtonLabel
+        }
+        .buttonStyle(FancyButtonStyle(outline: .accent1, fill: .accent2))
+    }
+    
+    private var newButtonLabel: some View {
+        HStack {
+            Image(systemName: "plus")
+            Text("New")
+        }
+        .frame(maxWidth: .infinity)
         .padding()
-        .padding(.horizontal)
-        .padding(.leading, -2)
     }
 }
 

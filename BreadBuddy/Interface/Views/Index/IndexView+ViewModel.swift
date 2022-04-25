@@ -31,5 +31,9 @@ extension IndexView {
         var recipeDividerIsDisplayed: Bool {
             !inactiveRecipes.isEmpty
         }
+        
+        var recipesLimitReached: Bool {
+            (activeRecipes.count + inactiveRecipes.count) >= 5
+        }
     }
 }
