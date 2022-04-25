@@ -24,57 +24,37 @@ BreadBuddy is also a reference. It's the reference app that I wish I had when I 
 
 ### Code Philosophy
 
-The source code for BreadBuddy is written to be read, tested, and replaced. Or, if you like, influenced by Clean Code, [SOLID](https://en.wikipedia.org/wiki/SOLID), and TDD... but not quite as dogmatic
+The source code for BreadBuddy is written to be read, tested, and replaced. Or, if you like, influenced by Clean Code, [SOLID](https://en.wikipedia.org/wiki/SOLID), and TDD... but not quite as dogmatic.
 
 ### ⛳️ CADI
 
 BreadBuddy is built with SwiftUI and uses the [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel) architectual pattern. It's organized according to a system I've come to dub CADI. Pronounced like and an homage to "[Caddie](https://en.wikipedia.org/wiki/Caddie)", the system compliments MVVM, much like a caddie compliments a golfer. CADI is an acronym that stands for **C**ore, **A**pp, **D**ata, **I**nterface. It uses folders, local packages, and protocols to make feature iteration, code replacement, and refactoring a relative breeze.
 
 - [**Core/**](https://github.com/maxhumber/BreadBuddy/tree/master/BreadBuddy/Core)*
-
   - Models (the **M** in **M** V VM)
     - Core data representations
   - Services (domain logic)
     - Made as thin as possible
-
   - Type extensions
-
   - Critical unit tests
-
-
 - [**App/**](https://github.com/maxhumber/BreadBuddy/tree/master/BreadBuddy/App)
-
   - @main entry point
-
   - Configuration files
-
   - Asset catalogues
-
   - Environment/plist variables
-
-
 - [**Data/**](https://github.com/maxhumber/BreadBuddy/tree/master/BreadBuddy/Data)
-
   - Database 
     - UserDefaults, CoreData, [GRDB.swift](https://github.com/groue/GRDB.swift), or similar
-
   - Stores
     - With protocols to allow for future data layer substitutions
-
-
 - [**Interface/**](https://github.com/maxhumber/BreadBuddy/tree/master/BreadBuddy/Interface)
-
   - Views (the **V** in M **V** VM)
     - Organized by Screen
     - Co-located/nested ViewModels (the **VM** in M V **VM**)
-
   - Fonts
-
   - Colors
-
   - Sugar*
     - Custom and reusable UI components
-
 
 ​	*Core and Sugar are local packages firewall-ed from the rest of the app
 
