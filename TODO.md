@@ -1,8 +1,12 @@
-### Todo
+### Bugs
 
-*   [ ] Landscape Layout
+- [ ] Past due on first launch (sometimes)
+
+### Next
+
 *   [ ] Share/Import Recipes
 *   [ ] Step Notification Service
+*   [ ] Landscape Layout
 
 ### Eventually
 
@@ -12,7 +16,7 @@
 *   [ ] Analytics (AWS)
 *   [ ] iPad Support
 
-### Plus Features
+### Plus Features?
 
 | Feature                         | Free | Plus      |
 | :------------------------------ | :--- | :-------- |
