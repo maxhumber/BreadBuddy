@@ -1,7 +1,5 @@
 ### Bugs
 
-- [ ] Past due on first launch (sometimes)
-
 ### Next
 
 *   [ ] Share/Import Recipes
