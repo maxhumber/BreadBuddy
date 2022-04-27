@@ -17,6 +17,7 @@ extension RecipeView {
                 Spacer()
             }
             .contentShape(Rectangle())
+            .foregroundColor(.text1)
         }
         
         private var timeStart: some View {
@@ -25,23 +26,16 @@ extension RecipeView {
                 Text(step.clocktimeStart)
             }
             .font(.matter(emphasis: .bold))
-            .foregroundColor(isPast ? .text2.opacity(0.35) : .text1)
         }
         
         private var activity: some View {
             VStack(alignment: .leading, spacing: 6) {
                 Text(step.description)
                     .font(.matter())
-                    .foregroundColor(isPast ? .text2.opacity(0.4) : .text1)
                 Text(step.duration)
                     .font(.matter(.caption2, emphasis: .italic))
-                    .foregroundColor(isPast ? .text2.opacity(0.4) : .text2)
+                    .foregroundColor(.text2)
             }
-        }
-        
-        private var isPast: Bool {
-            guard let timeStart = step.timeStart else { return false }
-            return timeStart < Date().withAdded(minutes: -1)
         }
     }
 }
