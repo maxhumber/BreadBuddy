@@ -23,7 +23,7 @@ public struct StealthDatePicker<Label: View>: View {
     private var picker: some View {
         DatePicker("", selection: $date, displayedComponents: displayedComponent)
             .labelsHidden()
-            .opacity(0.0101)
+            .opacity(0.02)
     }
 }
 

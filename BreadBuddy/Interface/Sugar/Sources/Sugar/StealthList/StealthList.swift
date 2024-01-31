@@ -5,7 +5,6 @@ public struct StealthList<Content: View>: View {
     var content: Content
     
     public init(spacing: Double = 0, @ViewBuilder content: () -> Content) {
-        UITableView.appearance().backgroundColor = UIColor(.clear)
         UITableViewCell.appearance().selectionStyle = .none
         self.spacing = spacing
         self.content = content()
@@ -16,10 +15,10 @@ public struct StealthList<Content: View>: View {
             content
                 .padding(.horizontal)
                 .listRowSeparator(.hidden)
-                .listRowInsets(EdgeInsets(top: spacing/2, leading: 0, bottom: spacing/2, trailing: 0))
                 .listRowBackground(Color.clear)
+                .listRowInsets(EdgeInsets(top: spacing/2, leading: 0, bottom: spacing/2, trailing: 0))
         }
-        .listStyle(InsetListStyle())
+        .listStyle(.plain)
     }
 }
 

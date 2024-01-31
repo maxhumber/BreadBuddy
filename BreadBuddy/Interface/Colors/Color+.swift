@@ -1,13 +1,5 @@
 import SwiftUI
 
-extension Color {
-    static let background = Color("background")
-    static let accent1 = Color("accent1")
-    static let accent2 = Color("accent2")
-    static let text1 = Color("text1")
-    static let text2 = Color("text2")
-}
-
 struct Color_Previews: PreviewProvider {
     static var previews: some View {
         Preview()
