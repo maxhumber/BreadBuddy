@@ -2,11 +2,11 @@ import SwiftUI
 
 public struct FancyButtonStyle: ButtonStyle {
     var cornerRadius: Double
-    var offset: (x: Double, y: Double)
+    var offset: CGSize
     var outline: Color?
     var fill: Color?
     
-    public init(cornerRadius: Double = 4, offset: (x: Double, y: Double) = (3, -3), outline: Color? = nil, fill: Color? = nil) {
+    public init(cornerRadius: Double = 4, offset: CGSize = CGSize(width: 3, height: -3), outline: Color? = nil, fill: Color? = nil) {
         self.cornerRadius = cornerRadius
         self.offset = offset
         self.outline = outline
@@ -15,6 +15,25 @@ public struct FancyButtonStyle: ButtonStyle {
     
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
+            .modifier(FancyBox(cornerRadius: cornerRadius, offset: offset, outline: outline, fill: fill))
+    }
+}
+
+public struct FancyBox: ViewModifier {
+    var cornerRadius: CGFloat
+    var offset: CGSize
+    var outline: Color?
+    var fill: Color?
+    
+    public init(cornerRadius: Double = 4, offset: CGSize = CGSize(width: 3, height: -3), outline: Color? = nil, fill: Color? = nil) {
+        self.cornerRadius = cornerRadius
+        self.offset = offset
+        self.outline = outline
+        self.fill = fill
+    }
+    
+    public func body(content: Content) -> some View {
+        content
             .background {
                 ZStack {
                     backgroundRect
@@ -22,53 +41,50 @@ public struct FancyButtonStyle: ButtonStyle {
                 }
                 .foregroundColor(outline ?? .blue)
             }
-            .opacity(configuration.isPressed ? 0.8 : 1.0)
-            .scaleEffect(configuration.isPressed ? 0.98 : 1.0)
     }
     
     private var foregroundRect: some View {
-        roundedRect
+        RoundedRectangle(cornerRadius: cornerRadius)
             .strokeBorder()
     }
     
     private var backgroundRect: some View {
-        roundedRect
+        RoundedRectangle(cornerRadius: cornerRadius)
             .foregroundColor(fill ?? .blue.opacity(0.25))
-            .offset(x: offset.x, y: offset.y)
+            .offset(offset)
             .mask(maskingRect)
     }
     
     private var maskingRect: some View {
         ZStack {
-            roundedRect
-                .offset(x: offset.x, y: offset.y)
-                .fill(.white)
-            roundedRect
+            RoundedRectangle(cornerRadius: cornerRadius)
+                .offset(offset)
+                .fill(Color.white)
+            RoundedRectangle(cornerRadius: cornerRadius)
                 .foregroundColor(.black)
         }
         .compositingGroup()
         .luminanceToAlpha()
-    }
-    
-    private var roundedRect: RoundedRectangle {
-        RoundedRectangle(cornerRadius: cornerRadius)
     }
 }
 
 struct XButtonStyle_Previews: PreviewProvider {
     static var previews: some View {
         HStack(spacing: 15) {
+            Text("AAA")
+                .padding()
+                .modifier(FancyBox())
             Button {
                 print("Nothing")
             } label: {
-                Text("Hey")
+                Text("BBB")
                     .padding()
             }
             .buttonStyle(FancyButtonStyle(outline: .red, fill: .red.opacity(0.25)))
             Button {
                 print("Nothing")
             } label: {
-                Text("Hey")
+                Text("CCC")
                     .padding()
             }
             .buttonStyle(FancyButtonStyle())

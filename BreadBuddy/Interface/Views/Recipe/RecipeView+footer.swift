@@ -39,14 +39,12 @@ extension RecipeView {
     }
     
     private var finishButton: some View {
-        Button {} label: {
-            HStack {
-                dayPicker
-                timePicker
-            }
-            .frame(maxWidth: .infinity)
+        HStack {
+            dayPicker
+            timePicker
         }
-        .buttonStyle(FancyButtonStyle(outline: .accent1, fill: .accent2))
+        .frame(maxWidth: .infinity)
+        .modifier(FancyBox(outline: .accent1, fill: .accent2))
         .onChange(of: viewModel.recipe.timeEnd) { timeEnd in
             viewModel.didChange(timeEnd)
         }
@@ -158,9 +156,9 @@ extension RecipeView {
 
 struct RecipeView_Footer_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeView(.preview, mode: .make, database: .preview)
-        RecipeView(.preview, mode: .edit, database: .preview)
-        RecipeView(.init(), mode: .edit, database: .preview)
         RecipeView(.preview, mode: .plan, database: .preview)
+        RecipeView(.preview, mode: .edit, database: .preview)
+        RecipeView(.preview, mode: .make, database: .preview)
+        RecipeView(.init(), mode: .edit, database: .preview)
     }
 }

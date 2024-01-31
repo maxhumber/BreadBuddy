@@ -12,19 +12,19 @@ struct RecipeView: View {
     }
     
     var body: some View {
+        stack
+            .environmentObject(viewModel)
+    }
+    
+    private var stack: some View {
         VStack(spacing: 10) {
             header
             content
             footer
         }
         .background(Color.background)
-        .environmentObject(viewModel)
         .navigationBarHidden(true)
         .ignoresSafeArea(.keyboard)
-        .dismissKeyboard()
-        .dismissingGesture {
-            dismiss()
-        }
     }
 }
 

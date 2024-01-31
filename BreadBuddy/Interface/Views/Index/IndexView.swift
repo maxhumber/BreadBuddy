@@ -12,7 +12,6 @@ struct IndexView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 0) {
-                header
                 content
                 footer
             }
@@ -21,17 +20,6 @@ struct IndexView: View {
             .background(Color.background)
             .navigationBarHidden(true)
         }
-        .preferredColorScheme(.light) // FORCE
-    }
-    
-    private var header: some View {
-        Image("Logo")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(height: 40)
-            .frame(maxWidth: .infinity)
-            .padding()
-            .padding(.top, 5)
     }
     
     @ViewBuilder private var content: some View {
